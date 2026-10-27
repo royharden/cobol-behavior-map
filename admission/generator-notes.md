@@ -105,7 +105,8 @@ not observed runs. Cases JSON is exactly loop/verification with32/128 transports
 bytes are preserved. Present descriptors append LF to each record; present-empty is
 zero bytes; missing stays null/no descriptor. No file is materialized. Descriptors have
 path/raw_bytes/raw_sha256/canonical_sha256/spec_lf_sha256. JSON canonical and raw hashes
-are separately named; LF spec pins b0ac6b2d... and08c2e2ca... do not replace raw CRLF hashes.
+are separately named; current LF edition pins a8a28c8b... and4895efdb... do not replace
+raw CRLF hashes (accepted master4975609).
 
 Consumer metadata follows SEAM-receipt-producer-index-r2.md exactly:
 - generation_receipts: {manifest_version:1,tasks:{task_id:{loop:{recipe,fields,receipt},
@@ -181,7 +182,17 @@ no index bytes or generator result were emitted during this construction work.
 
 For a change panel the raw structured-edit descriptor must match binding.change_sha256;
 its task_id/original_sha256/changed_sha256 join task/original/oracle source identities.
-Source raw bytes bind oracle_source_sha256 separately. A changed source hash must
+Source raw bytes bind oracle_source_sha256 separately and must differ from original
+for a change panel. A changed source hash must
 never substitute for the raw edit-artifact digest. Full edit legality, target spans
 and behavioral witness remain later semantic/compiler checks. Unchanged keeps
 change_sha256 null and original/oracle hashes equal. No native recipe keys were added.
+
+Spec edition identity is separately returned as spec_edition_pins (current accepted
+GENERATOR a8a28c8b... / FAMILY4895efdb...). case_hash_contract_sha256 retains accepted
+runner75ccd24's historical b0ac6b2d... identifier for the unchanged case-format contract;
+it does not claim that old digest hashes current GENERATOR.md bytes. Current spec
+descriptors independently check the new LF edition digest and preserve actual raw
+artifact hashes. INT acceptance4975609 changes edition identification only; binary
+case framing is unchanged. A future runner format-ID migration requires a coordinated
+consumer update; never silently relabel a new spec edition as the runner's old pin.

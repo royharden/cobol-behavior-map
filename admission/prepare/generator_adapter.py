@@ -7,9 +7,11 @@ from .generate import (AdmissionError, bundle, canonical, digest, hash_value,
 
 
 SPEC_PINS = {
-    "case_spec": "b0ac6b2d52977025366b75c4ef02435fc70156500eaa2afd5d5eed07476f7f8c",
-    "family_spec": "08c2e2caa5be00c7851e5b3ad37b4f2ce9c6f0be434d2de3ad22b3b9463f7da5",
+    "case_spec": "a8a28c8b656ee61d929f9048c222acf683fe09465c1aa9c240d0177da074bc9d",
+    "family_spec": "4895efdbb65ed26ecf24cece2fcc36a768a9e812a450c8e4f964355b2a78010b",
 }
+# Accepted runner75ccd24's historical format identifier, not a current edition pin.
+CASE_HASH_CONTRACT_SHA256 = "b0ac6b2d52977025366b75c4ef02435fc70156500eaa2afd5d5eed07476f7f8c"
 REQUIRED = frozenset(("source fields loop_recipe verification_recipe program_manifest "
                       "generator case_spec family_spec").split())
 ACTUAL_PINS = ("compiler_source", "compiler_package", "base_image", "libcob",
@@ -61,6 +63,7 @@ def _adapt_task(binding, generated, artifacts, expected_generator_sha256):
         require(original == source_hash and binding["change_sha256"] is None, "bad_hash")
     else:
         hash_value(binding["change_sha256"])
+        require(source_hash != original, "bad_hash")
     required = REQUIRED | ({"change"} if binding["panel"] == "change" else set())
     require(type(artifacts) is dict and not artifacts.keys() - required, "unknown_key")
     missing = sorted(required - artifacts.keys())
@@ -189,7 +192,8 @@ def _adapt_task(binding, generated, artifacts, expected_generator_sha256):
             "role_paths": {role: item["path"] for role, item in inputs.items()},
             "generator_raw_sha256": inputs["generator"]["raw_sha256"],
             "expected_generator_sha256": expected_generator_sha256,
-            "case_hash_contract_sha256": SPEC_PINS["case_spec"], "missing_actual_pins": list(ACTUAL_PINS)}
+            "spec_edition_pins": dict(SPEC_PINS),
+            "case_hash_contract_sha256": CASE_HASH_CONTRACT_SHA256, "missing_actual_pins": list(ACTUAL_PINS)}
 
 
 def combine_tasks(packets):
@@ -215,7 +219,8 @@ def _combine_tasks(packets):
         task, program, panel = binding["task_id"], binding["program_id"], binding["panel"]
         require(task not in tasks and packet["expected_generator_sha256"] == expected
                 and packet["generator_raw_sha256"] == expected
-                and packet["case_hash_contract_sha256"] == SPEC_PINS["case_spec"], "bad_hash")
+                and packet["case_hash_contract_sha256"] == CASE_HASH_CONTRACT_SHA256
+                and packet["spec_edition_pins"] == SPEC_PINS, "bad_hash")
         family_split = (binding["family_id"], binding["split"])
         if program not in programs:
             programs[program] = {"family_split": family_split, "panels": set(),
@@ -251,4 +256,5 @@ def _combine_tasks(packets):
             "pins": pins, "expected_generator_sha256": expected,
             "task_recipe_indexes": {p["binding"]["task_id"]: p["task_recipe_index_path"] for p in packets},
             "task_binding_patches": {p["binding"]["task_id"]: p["task_binding_patch"] for p in packets},
-            "case_hash_contract_sha256": SPEC_PINS["case_spec"], "missing_actual_pins": list(ACTUAL_PINS)}
+            "spec_edition_pins": dict(SPEC_PINS),
+            "case_hash_contract_sha256": CASE_HASH_CONTRACT_SHA256, "missing_actual_pins": list(ACTUAL_PINS)}
