@@ -64,14 +64,14 @@ It does not accept expected-answer fields.
 ## Seam and freeze
 
 INT adopted DL1's GENERATOR.md SHA256
-`a8a28c8b656ee61d929f9048c222acf683fe09465c1aa9c240d0177da074bc9d` and FAMILY.md
-`4895efdbb65ed26ecf24cece2fcc36a768a9e812a450c8e4f964355b2a78010b` for the
-construction edition accepted at `4975609f54ecf29793fcad19cb865b0f1d15c33c`,
-ratified by RULING-boundaries-and-spec-pins-r5.md and ACCEPT-DL1-hash-bindings-r2.md.
-Only this edition is accepted; earlier b0ac/08c2 identities are superseded history.
+`706962cfa01ebe22892e8862260db1b8e4535d38d0e665af1c8b85bc5d4100fd` and FAMILY.md
+`f780695503c0f5764ba6f05737ff6d8c2466f767c847466efc4a1a6496afe483` for the
+current construction edition accepted at `36d4f0923c693d5a627f89f6f5f78ab8f9cde686`,
+ratified by ACCEPT-DL1-hash-bindings-r3.md and RETURN-DL3-r3-current-edition.md.
+Only this edition is accepted; a8a28c/4895ef and earlier b0ac/08c2 are superseded history.
 The accepted master CRLF raw artifact hashes are separately GENERATOR
-`7be09ee4d1218c1361d96fc9585f8f93fdd3b7e3d255abc346b027014eee2ed4` and FAMILY
-`952d0e23d632efd9b3a87523959b12a8e6779acee5c527b1097634bc756afc21`.
+`4d5e94b792f4003c5071197f516515a992112f9953485d12ff8c8b21eb6f738e` and FAMILY
+`fb8db290ab990c9bdc82e0a538f1d6264673eb9e856ca40f9a324dc8f9717180`.
 These raw identities never substitute for the LF edition pins or vice versa.
 The validator requires the former as `case_hash_contract_sha256`. Fields retain
 name/pic/usage/sign/offset/width/scale; recipes specify missing|empty|records and
@@ -200,6 +200,11 @@ Caller must also provide the genuine raw `subset_spec` artifact/pin required by 
 runner, in addition to the accepted adapter's enumerated missing actual pins. The
 adapter's missing_actual_pins list omits subset_spec; that metadata gap was reported
 through INT rather than dropping the consumer's grammar commitment or fabricating it.
+
+Current accepted producer `be2a40983cfe80a9823255e96a81cb104ea0be23` selects the
+same 706962cf/f7806955 LF edition above; exact pin metadata was compared statically.
+The boundary-label and edition corrections do not assert an emitted producer packet,
+an executed join or any change to the pending runtime/admission requirements.
 
 ## Deferred compiler and containment contract
 
