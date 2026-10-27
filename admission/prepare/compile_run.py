@@ -5,11 +5,12 @@ import json
 from pathlib import Path, PurePosixPath
 import re
 import sys
+if __package__: from .receipt_validation import validate_envelope_receipts
+else: from receipt_validation import validate_envelope_receipts
 class Refusal(ValueError):
     """An envelope cannot be admitted for preparation."""
 def require(condition, message):
-    if not condition:
-        raise Refusal(message)
+    if not condition: raise Refusal(message)
 def digest(value):
     require(isinstance(value, str) and re.fullmatch(r"[0-9a-f]{64}", value),
             "invalid SHA256")
@@ -67,7 +68,7 @@ def cases(root, name, artifacts):
                 raw = artifact(root, path)
                 require(hashlib.sha256(raw).hexdigest() == artifacts[path]
                         and raw == b"".join(r + b"\n" for r in records), "raw file mismatch")
-def validate(request, root):
+def validate(request, root, expected_generator_sha256):
     require(isinstance(request, dict), "request must be an object")
     require(set(request) == {"manifest_version", "kind", "artifacts", "pins",
                              "compiler", "runs", "case_hash_contract_sha256"},
@@ -75,7 +76,6 @@ def validate(request, root):
     require(type(request["manifest_version"]) is int and request["manifest_version"] == 1,
             "unsupported manifest version")
     require(request["kind"] == "oracle_preparation", "not an oracle request")
-    digest(request["case_hash_contract_sha256"])
     require(request["case_hash_contract_sha256"] ==
             "b0ac6b2d52977025366b75c4ef02435fc70156500eaa2afd5d5eed07476f7f8c",
             "case contract differs from INT-adopted GENERATOR.md")
@@ -88,7 +88,7 @@ def validate(request, root):
     pins = request["pins"]
     required = {"compiler_source", "compiler_package", "base_image", "libcob",
                 "default_conf", "compiler_config", "runtime_config", "tool_info",
-                "generator", "fields", "recipes", "subset_spec", "runner", "generation_receipts", "program_manifests"}
+                "generator", "fields", "recipes", "subset_spec", "runner", "generation_receipts", "program_manifests", "receipt_validator", "receipt_values"}
     require(isinstance(pins, dict) and set(pins) == required, "incomplete tool pins")
     for pin in pins.values():
         require(pin in artifacts, "tool pin must reference a hashed artifact")
@@ -118,12 +118,12 @@ def validate(request, root):
         tasks.add(task)
         require(run["source"] in artifacts and run["cases"] in artifacts,
                 "source/cases must be pinned")
-        digest(run["case_bundle_sha256"])
         require(artifacts[run["cases"]] == run["case_bundle_sha256"], "case artifact mismatch")
         cases(root, run["cases"], artifacts)
         require(type(run["ordinary_repeats"]) is int and run["ordinary_repeats"] == 2
                 and type(run["trace_repeats"]) is int and run["trace_repeats"] == 2,
                 "two ordinary and two trace runs required")
+    validate_envelope_receipts(request, lambda name: artifact(root, name), expected_generator_sha256)
     require(all((program, panel) in seen for program, _ in seen
                 for panel in ("unchanged", "change")), "missing original/changed pair")
 def main():
@@ -132,6 +132,7 @@ def main():
     parser.add_argument("--sha256", required=True, help="externally supplied envelope hash")
     parser.add_argument("--artifact-root", required=True, type=Path)
     parser.add_argument("--execute", action="store_true")
+    parser.add_argument("--generator-sha256", required=True, help="external actual generator source pin")
     args = parser.parse_args()
     try:
         require(not args.execute, "execution unavailable: validated isolation backend absent")
@@ -139,12 +140,11 @@ def main():
         raw = args.request.read_bytes()
         require(hashlib.sha256(raw).hexdigest() == digest(args.sha256), "envelope pin mismatch")
         request = json.loads(raw, object_pairs_hook=unique_object, parse_constant=reject_constant)
-        validate(request, args.artifact_root.resolve(strict=True))
+        validate(request, args.artifact_root.resolve(strict=True), args.generator_sha256)
         print(json.dumps({"status": "prepared_only", "execution": "unavailable",
                           "request_sha256": args.sha256, "oracle_observations": None}))
         return 0
     except (ValueError, OSError, KeyError, TypeError, AttributeError) as exc:
         print(json.dumps({"status": "refused", "reason": str(exc)}), file=sys.stderr)
         return 2
-if __name__ == "__main__":
-    sys.exit(main())
+if __name__ == "__main__": sys.exit(main())

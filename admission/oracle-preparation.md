@@ -6,7 +6,8 @@ The runner is Python 3.12 standard-library source, not a compiler launcher.
 
 ## Envelope boundary
 
-`prepare/compile_run.py REQUEST --sha256 EXTERNAL_HASH --artifact-root ROOT` validates
+`prepare/compile_run.py REQUEST --sha256 EXTERNAL_HASH --artifact-root ROOT
+--generator-sha256 TRUSTED_SOURCE_HASH` validates
 raw envelope bytes against a separately supplied lowercase SHA256, then checks
 artifact pins and the declared schedule. It prints `prepared_only` with
 `oracle_observations: null`; this is neither a seal signature nor admission GO.
@@ -32,10 +33,14 @@ Top-level fields are closed: `manifest_version: 1`, `kind: oracle_preparation`,
 relative paths to SHA256 of exact bytes. `pins` maps each of the following names to
 one artifact path: `compiler_source`, `compiler_package`, `base_image`, `libcob`,
 `default_conf`, `compiler_config`, `runtime_config`, `tool_info`, `generator`,
-`fields`, `recipes`, `subset_spec`, `runner`, `generation_receipts`, `program_manifests`.
+`fields`, `recipes`, `subset_spec`, `runner`, `generation_receipts`, `program_manifests`,
+`receipt_validator`, `receipt_values`.
 `generator` means the actual standalone generate.py implementation artifact, not
 GENERATOR.md; its implementation hash intentionally differs from the case-format
-spec hash in `case_hash_contract_sha256`. The runner pin must match the validator's
+spec hash in `case_hash_contract_sha256`. The external generator source hash is
+mandatory and must match the actual staged generator artifact. No accepted source
+or receipt is assumed available; missing/mismatched inputs refuse. The runner and
+two receipt helper pins must match their actual local source bytes. The runner pin must match the validator's
 own source. Tool artifacts are future receipts, not invented images/configurations;
 pinning a receipt does not verify that its assertions are true. `base_image` receipt
 must contain the actual immutable OCI digest, not a tag. `tool_info` must preserve
@@ -50,8 +55,10 @@ duplicate program/panel. IDs use `[a-z][a-z0-9_-]{0,63}`.
 `case_bundle_sha256` is the stored cases artifact hash, not one individual case hash.
 The validator checks exact 32/128 case counts, case framing hashes, duplicate and
 cross-partition hashes and physical file materialization. It does **not** establish
-originality, family/split separation, legal subset, field layout correctness, seal
-authority, reachability, oracle validity or custody. Those remain required before GO.
+originality, structural family/split separation, legal program subset, seal authority,
+reachability, oracle validity or custody. Receipt validation now checks input layout,
+source/task/family/partition binding, record widths/digits/signs and explicit boundary
+encoding as described below. Remaining program semantics are required before GO.
 It does not accept expected-answer fields.
 
 ## Seam and freeze
@@ -87,14 +94,56 @@ remain pending. DL3 owns future runner reconciliation when the seam changes.
 
 ## Generation receipts and continuation boundary
 
-`generation_receipts` pins an artifact holding the generator's original receipt
-bytes; `program_manifests` pins source-bound ProgramManifest bytes from FAMILY.md.
-Hash validation does not validate their declarations or make them execution evidence.
-The current validator has **no receipt-semantic checker or continuation engine**;
-it never consumes a next counter, replaces a case or emits an admitted partition.
-Those capabilities are deferred, not coerced into the structural preparation result.
+`generation_receipts` now pins a local adapter index with exactly `manifest_version:1`
+and `tasks`. The tasks object has exactly the scheduled task IDs. Each task maps to
+exactly `loop` and `verification`; each partition maps to exactly `recipe`, `fields`,
+`receipt`, all artifact-path strings. They reference the producer's unmodified raw
+documents. `program_manifests` pins a separate index with exactly `manifest_version:1`
+and `tasks`, mapping those same task IDs to source-bound ProgramManifest paths.
+All referenced files must exist under the pinned root and match actual raw hashes.
+These indices are caller adapter metadata, not additions to the GENERATOR recipe
+or receipt schema. Global `fields`/`recipes` pins retain provenance/catalog roles;
+the per-task indexed raw files are the authoritative receipt inputs.
 
-Later backend admission must validate each receipt's exact fields:
+`receipt_validation.validate_receipt(receipt_raw, recipe_raw, fields_raw, bundles,
+*, task_id, program_id, family_id, source_sha256, partition, excluded_hashes)` checks
+one full generated partition and returns ordered computed case hashes. Inputs are
+raw bytes, preserving exact artifact pins before decoding. Accepted producer receipt
+`recipe_sha256`/`fields_sha256` and recipe `fields_sha256` identify canonical JSON
+documents, computed after strict decoding; they do not identify stored file bytes.
+The envelope artifact map still verifies the original raw bytes independently.
+The caller supplies decoded
+bundle transport and authenticated task/source context; this API does not read files
+or validate physical file bytes. `validate_envelope_receipts(request, read,
+expected_generator_sha256)` is the orchestrator adapter. It rechecks every referenced
+raw artifact hash, verifies generator/helper pins and source-bound manifest fields,
+validates both partitions in order and uses the supplied loop bundle hashes as the
+verification exclusion set. Existing runner case validation checks physical files.
+The pure receipt helper rejects duplicate keys/BOM/floats/nonfinite constants and
+strictly checks scalar types, keys, PIC/layout, exact record encoding, input pins,
+explicit case order, deduplication retaining every boundary ID, and case hashes.
+The same program's panels must retain family/split; partitions share corpus version.
+
+The original recipe must keep `collision_counter:0`; rebased/reset recipes refuse.
+`next_counter == recipe.collision_counter + fill_proposals_consumed`, U64 bounds,
+non-wrapping 100000-proposal ceiling and a sufficient proposal count for the fill
+suffix are checked. Counts are cumulative from the original recipe counter, not
+per invocation. The receipt's ordered case hashes must match the actual bundles;
+explicit top-level/boundary cases form the deduplicated prefix. Verification must
+commit to the canonical sorted unique full 32-hash loop exclusion set. Hash-only
+labels cannot replace re-encoding explicit boundary bytes from the field table.
+
+This validator **does not execute/replay the producer, verify fill draws or observed
+history, authenticate a receipt, continue generation, replace a case or emit admitted
+partitions**. A supplied loop candidate set is not evidence that oracle admission
+has finalized it. The later authorized caller must supply its actual finalized loop
+set; a change invalidates any verification receipt committed to the old set. There
+is no default empty verification exclusion or fallback fabricated receipt. Missing
+producer indices/raw source/receipt refuse; DL2 owns the producer-to-index adapter
+and its actual accepted output must be supplied before claiming this join works.
+Structural declaration consistency is not proof the producer ran or used those inputs.
+
+The source validates each receipt's exact fields:
 manifest_version, recipe_sha256, fields_sha256, partition, case_hashes,
 boundary_case_hashes, next_counter, fill_proposals_consumed, excluded_hashes_sha256.
 Bind recipe/field hashes to the same task/source; compare ordered case_hashes to
@@ -107,8 +156,38 @@ Refuse counter overflow (U64), exhausted cumulative 100000 fill proposals, missi
 history or changed seed; never restart counters to escape the cap. Resume only
 before seal under the original stream, with no candidate-performance influence.
 No recipe row expansion, alternate X draw, sentinel EOF or inferred boundary values.
-ProgramManifest legality, allowed handled return codes, finite-loop proofs, source
-hashes and reachable hazards require later semantic admission; metadata is not proof.
+ProgramManifest source/program/family/input-field hashes are joined here. Full legal
+return-code semantics, finite-loop proofs, authenticity and reachable hazards still
+require later admission; metadata is not proof. DL4's receipt.schema.json represents
+signed actual execution/approval evidence, a separate contract from this generation
+receipt. No generation receipt or prepared_only output is promoted to a DL4 actual
+receipt or GO; the later compiler/evidence adapter is still missing.
+
+Producer comparison is pinned to accepted commit
+`e0cee96af20ca72aa866615773fe8add135b1a72` generate.py, generator_continuation.py
+and generator-notes.md. Both helpers and runner support fixed local namespace
+imports (`admission.prepare...`) as well as the existing standalone script layout;
+neither import path has been executed during construction. Corpus IDs and the
+30-character field-name bound now match the accepted producer's validators.
+INT's RULING-counter-and-field-digests-r3.md ratifies the implemented contextual
+identities: ProgramManifest input/output field pins and native FAMILY task field/
+recipe pins are raw artifact SHA256; native GENERATOR recipe.fields_sha256 and
+generation receipt recipe/fields pins are canonical document SHA256. Artifact
+sidecars remain raw, source hashes remain raw, and the LF spec pin is separate.
+The validator's strict original zero is retained; separate continuation next_counter
+does not become a new recipe origin. DL2 owns the required lower-level producer fix.
+
+The exact accepted adapter at `1499930` supplies the documented generation_receipts
+and program_manifests task indexes, matching run entries, case presence/records_hex/
+LF descriptors and distinct raw/canonical/spec digest descriptors. Its partial batch
+pins match the catalog roles; the external generator source pin remains an external
+argument, not a value inferred from a receipt. This is static interface comparison,
+not an emitted packet or executed join. The adapter's old ProgramManifest canonical
+field comparison is assigned to DL2 r3 for raw-pin correction; no consumer workaround.
+Caller must also provide the genuine raw `subset_spec` artifact/pin required by the
+runner, in addition to the accepted adapter's enumerated missing actual pins. The
+adapter's missing_actual_pins list omits subset_spec; that metadata gap was reported
+through INT rather than dropping the consumer's grammar commitment or fabricating it.
 
 ## Deferred compiler and containment contract
 

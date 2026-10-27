@@ -75,3 +75,10 @@ minimal reproducer, guide citation and observation hashes. Semantic disagreement
 does not remove scored cases; nondeterminism/configuration faults invalidate the
 instrument. No corpus, compiler run, shim result, GO, license adoption or seal is
 claimed by this inventory.
+
+Receipt seam validation is also NOT RUN. Deferred focused negative/positive checks
+must cover raw versus canonical pin mismatch, bool counters, reordered case hashes,
+duplicate boundary labels retained on one case, false boundary mapping, wrong field
+width/sign, incorrect final-loop exclusion commitment, counter overflow/reset and
+cumulative proposal exhaustion. Exercise the real producer adapter when supplied;
+do not substitute synthetic receipts for observed generation or admission evidence.
