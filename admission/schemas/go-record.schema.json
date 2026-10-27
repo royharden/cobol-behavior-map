@@ -1,11 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:m10:admission:go-record:v2",
+  "$id": "urn:m10:admission:go-record:v3",
   "type": "object",
   "properties": {
     "gate_version": {
       "type": "string",
-      "const": "m10-p2-v2"
+      "const": "m10-p2-v3"
     },
     "plan_sha256": {
       "type": "string",
@@ -145,24 +145,6 @@
           "additionalProperties": false
         },
         "compile_runner": {
-          "type": "object",
-          "properties": {
-            "path": {
-              "type": "string",
-              "minLength": 1
-            },
-            "sha256": {
-              "type": "string",
-              "pattern": "[0-9a-f]{64}"
-            }
-          },
-          "required": [
-            "path",
-            "sha256"
-          ],
-          "additionalProperties": false
-        },
-        "compiler_source_package": {
           "type": "object",
           "properties": {
             "path": {
@@ -395,6 +377,78 @@
             "sha256"
           ],
           "additionalProperties": false
+        },
+        "compiler_source": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "compiler_package": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "compiler_config": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "observation_framing": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
         }
       },
       "required": [
@@ -406,7 +460,6 @@
         "shim_api",
         "generator",
         "compile_runner",
-        "compiler_source_package",
         "image",
         "compiler_build_version_info",
         "libcob",
@@ -418,7 +471,11 @@
         "token_template_screen",
         "custody_log",
         "private_manifest",
-        "heldout_lock"
+        "heldout_lock",
+        "compiler_source",
+        "compiler_package",
+        "compiler_config",
+        "observation_framing"
       ],
       "additionalProperties": false
     },

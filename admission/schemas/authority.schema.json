@@ -1,11 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:m10:admission:authority:v2",
+  "$id": "urn:m10:admission:authority:v3",
   "type": "object",
   "properties": {
     "gate_version": {
       "type": "string",
-      "const": "m10-p2-v2"
+      "const": "m10-p2-v3"
     },
     "plan_sha256": {
       "type": "string",
@@ -245,6 +245,10 @@
         "additionalProperties": false
       },
       "minItems": 1
+    },
+    "observation_framing_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
     }
   },
   "required": [
@@ -259,7 +263,8 @@
     "seal_confirmed_at",
     "selected_dev_programs",
     "license_approval_ids",
-    "authors"
+    "authors",
+    "observation_framing_sha256"
   ],
   "additionalProperties": false
 }

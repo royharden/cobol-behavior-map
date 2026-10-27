@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:m10:admission:receipt:v1",
+  "$id": "urn:m10:admission:receipt:v3",
   "type": "object",
   "properties": {
     "check_id": {
@@ -107,6 +107,10 @@
         "additionalProperties": false
       },
       "minItems": 1
+    },
+    "default_conf_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
     }
   },
   "required": [
@@ -126,7 +130,8 @@
     "admission_probes",
     "shim_probes",
     "program_ids",
-    "observations"
+    "observations",
+    "default_conf_sha256"
   ],
   "additionalProperties": false
 }

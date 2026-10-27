@@ -14,7 +14,7 @@ from datetime import datetime
 from pathlib import Path, PurePosixPath
 from typing import Any
 
-VERSION = "m10-p2-v2"
+VERSION = "m10-p2-v3"
 PLAN = "552ddcb9121deb21489a903eaf77979b8068231a94a0fb714b948094c8d4dbed"
 SHA = re.compile(r"[0-9a-f]{64}\Z")
 DOMAINS = {"decimal_fees", "sequential_status", "year_window"}
@@ -35,7 +35,8 @@ CHECKS = {
 }
 PINS = {
     "subset", "hazards", "families", "changes", "provenance", "shim_api",
-    "generator", "compile_runner", "compiler_source_package", "image",
+    "generator", "compile_runner", "compiler_source", "compiler_package", "image",
+    "compiler_config", "observation_framing",
     "compiler_build_version_info", "libcob", "default_conf", "runtime_config",
     "compiler_argv", "quarantine_log", "disputes", "token_template_screen",
     "custody_log", "private_manifest", "heldout_lock",
@@ -66,9 +67,20 @@ def strict_json(raw: bytes) -> Any:
     def nonfinite(value: str) -> None:
         raise Invalid(f"nonfinite number: {value}")
 
+    def integer(value: str) -> int:
+        need(len(value.lstrip("-")) <= 20, "native JSON integer exceeds 20 digits")
+        return int(value)
+
     need(not raw.startswith(b"\xef\xbb\xbf"), "UTF-8 BOM forbidden")
     return json.loads(raw.decode("utf-8"), object_pairs_hook=pairs,
-                      parse_constant=nonfinite, parse_float=nonfinite)
+                      parse_constant=nonfinite, parse_float=nonfinite, parse_int=integer)
+
+
+def canonical_sha256(value: Any) -> str:
+    """Native generation-document commitment, never a raw artifact digest."""
+    encoded = json.dumps(value, sort_keys=True, separators=(",", ":"),
+                         ensure_ascii=True, allow_nan=False).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()
 
 
 def shape(value: Any, schema: dict[str, Any], at: str = "record") -> None:
@@ -86,12 +98,14 @@ def shape(value: Any, schema: dict[str, Any], at: str = "record") -> None:
         need(value in schema["enum"], f"{at}: unknown value")
     if isinstance(value, dict):
         properties = schema["properties"]
-        need(not (value.keys() - properties.keys()), f"{at}: unknown fields")
+        additional = schema.get("additionalProperties", False)
+        need(not (value.keys() - properties.keys()) or isinstance(additional, dict),
+             f"{at}: unknown fields")
         missing = set(schema["required"]) - value.keys()
         if missing:
             raise Pending(f"{at}: missing {sorted(missing)}")
         for key, item in value.items():
-            shape(item, properties[key], f"{at}.{key}")
+            shape(item, properties[key] if key in properties else additional, f"{at}.{key}")
     elif isinstance(value, list):
         need(len(value) >= schema.get("minItems", 0), f"{at}: too few items")
         need(len(value) <= schema.get("maxItems", len(value)), f"{at}: too many items")
@@ -121,6 +135,7 @@ def evaluate(root: Path, record_path: str, authority_path: str,
     signature. Caller must authenticate Roy's authority digest out of band.
     """
     problems: list[dict[str, str]] = []
+    recipe_bindings: list[dict[str, Any]] = []
     evidence_root = root.resolve()
 
     def inspect(label: str, operation: Any) -> Any:
@@ -132,19 +147,27 @@ def evaluate(root: Path, record_path: str, authority_path: str,
             problems.append({"item": label, "status": "NO-GO", "reason": str(exc)})
         return None
 
-    def read(relative: str) -> bytes:
+    def location(relative: str) -> Path:
         path = PurePosixPath(relative)
         need(bool(relative) and "\\" not in relative and ":" not in relative
-             and not path.is_absolute() and all(p not in {".", ".."} for p in relative.split("/"))
+             and all(32 <= ord(c) <= 126 for c in relative)
+             and not path.is_absolute() and all(p and p not in {".", ".."} for p in relative.split("/"))
              and "//" not in relative, "unsafe evidence path")
+        cursor = evidence_root
+        for part in path.parts:
+            cursor = cursor / part
+            need(not cursor.is_symlink() and not cursor.is_junction(), "linked evidence artifact")
         target = (evidence_root / relative).resolve()
         need(target.is_relative_to(evidence_root), "evidence escapes root")
-        return target.read_bytes()
+        return target
 
-    def reference(ref: dict[str, str]) -> bytes:
+    def read(relative: str) -> bytes:
+        return location(relative).read_bytes()
+
+    def reference(ref: dict[str, str], *, allow_empty: bool = False) -> bytes:
         need(SHA.fullmatch(ref["sha256"]) is not None, "bad SHA256")
         raw = read(ref["path"])
-        need(bool(raw), "empty evidence file")
+        need(bool(raw) or allow_empty, "empty evidence file")
         need(hashlib.sha256(raw).hexdigest() == ref["sha256"], "evidence hash mismatch")
         return raw
 
@@ -225,6 +248,9 @@ def evaluate(root: Path, record_path: str, authority_path: str,
         inspect("pin_inventory", lambda: need(set(pins) == PINS, "exact tool/file pin inventory required"))
         for name, ref in pins.items():
             inspect(f"pin:{name}", lambda ref=ref: reference(ref))
+        inspect("observation_framing_edition", lambda: need(
+            authority["observation_framing_sha256"] == pins["observation_framing"]["sha256"],
+            "observation framing differs from externally approved edition"))
         inspect("compiler", lambda: need(
             record["compiler"] == {"name": "GnuCOBOL", "version": "3.2.0",
                 "argv": ["cobc", "-x", "-free", "-std=default", "-O0", "-o", "<bin>", "<source>"],
@@ -292,10 +318,66 @@ def evaluate(root: Path, record_path: str, authority_path: str,
                          "task split/family mismatch")
                     need(pair[0]["oracle_source"]["sha256"] != pair[1]["oracle_source"]["sha256"], "change unchanged")
                     need(pair[0]["original_source"] == pair[1]["original_source"], "panel original-source mismatch")
+                    need(location(pair[0]["recipe"]["path"]) != location(pair[1]["recipe"]["path"])
+                         and pair[0]["recipe"]["sha256"] != pair[1]["recipe"]["sha256"],
+                         "paired panels need distinct task indexes")
                 inspect(f"panels:{program}", panels)
         inspect("orphan_tasks", lambda: need(all(t["program_id"] in declared_programs for t in tasks), "orphan task"))
 
+        partition_recipes: dict[str, dict[str, Any]] = {}
+
+        def paired_recipe_index(task: Any) -> None:
+            need(task["recipe_sha256"] == task["recipe"]["sha256"]
+                 and task["fields_sha256"] == task["input_fields"]["sha256"], "raw task index/fields mismatch")
+            index = document(task["recipe"], "paired-recipe-index")
+            need(all(index[key] == task[key] for key in ("task_id", "program_id", "family_id", "split", "panel"))
+                 and index["fields_sha256"] == task["fields_sha256"], "paired recipe identity/raw fields mismatch")
+            fields = document(task["input_fields"], "fields")
+            need(fields["program_id"] == task["program_id"]
+                 and fields["source_sha256"] == task["oracle_source_sha256"]
+                 == task["oracle_source"]["sha256"], "index fields are not source-bound")
+            canonical_fields_sha256 = canonical_sha256(fields)
+            field_names = {field["name"] for field in fields["fields"]}
+            need(len(field_names) == len(fields["fields"]), "duplicate field names")
+            refs = index["recipes"]
+            need(location(refs["loop"]["path"]) != location(refs["verification"]["path"])
+                 and refs["loop"]["sha256"] != refs["verification"]["sha256"], "aliased paired recipes")
+            commitments = {}
+            for partition, target_count in (("loop", 32), ("verification", 128)):
+                recipe = document(refs[partition], "partition-recipe")
+                need(recipe["partition"] == partition
+                     and all(recipe[key] == index[key] for key in ("task_id", "program_id", "family_id", "corpus_version")),
+                     "native recipe partition/identity mismatch")
+                need(recipe["fields_sha256"] == canonical_fields_sha256,
+                     "native recipe fields commitment must be canonical, not raw artifact SHA256")
+                need(recipe["collision_counter"] == 0, "index requires original recipe counter zero")
+                seed = [index["corpus_version"], index["family_id"], index["program_id"], index["task_id"], partition]
+                need(recipe["fill"]["seed_material"] == seed and recipe["fill"]["target_count"] == target_count,
+                     "recipe seed/partition target mismatch")
+                cases = [(recipe["scenario"], recipe["records"])]
+                boundary_ids: set[str] = set()
+                for boundary in recipe["boundaries"]:
+                    need(boundary["id"] not in boundary_ids, "duplicate boundary ID")
+                    boundary_ids.add(boundary["id"])
+                    need((boundary["field"] is None and boundary["kind"] == "eof")
+                         or boundary["field"] in field_names, "unknown boundary field")
+                    cases.append((boundary["scenario"], boundary["records"]))
+                for scenario, records in cases:
+                    need((not records and scenario in {"missing", "empty"})
+                         or (1 <= len(records) <= 64 and scenario == "records"), "recipe scenario/record mismatch")
+                    for row in records:
+                        need(set(row) == field_names, "recipe row must name all and only declared fields")
+                        need(all(all(32 <= ord(char) <= 126 for char in value) for value in row.values()),
+                             "recipe field values must be printable ASCII")
+                commitments[partition] = {"raw_recipe_sha256": refs[partition]["sha256"],
+                                          "canonical_recipe_sha256": canonical_sha256(recipe)}
+            partition_recipes[task["task_id"]] = refs
+            recipe_bindings.append({"task_id": task["task_id"], "raw_index_sha256": task["recipe_sha256"],
+                                    "raw_fields_sha256": task["fields_sha256"],
+                                    "canonical_fields_sha256": canonical_fields_sha256, "recipes": commitments})
+
         for task in tasks:
+            inspect(f"paired_index:{task['task_id']}", lambda task=task: paired_recipe_index(task))
             def task_check(task: Any = task) -> None:
                 loop, verification = task["loop_hashes"], task["verification_hashes"]
                 need(len(loop) == len(set(loop)) == 32, "32 unique loop cases required")
@@ -366,8 +448,10 @@ def evaluate(root: Path, record_path: str, authority_path: str,
                      and observed["source_sha256"] == task["oracle_source"]["sha256"]
                      and observed["case_manifest_sha256"] == task["case_manifest"]["sha256"]
                      and observed["generator_sha256"] == pins["generator"]["sha256"]
-                     and observed["compiler_config_sha256"] == pins["default_conf"]["sha256"]
-                     and observed["image_sha256"] == pins["image"]["sha256"], "task oracle binding mismatch")
+                     and observed["compiler_config_sha256"] == pins["compiler_config"]["sha256"]
+                     and observed["default_conf_sha256"] == pins["default_conf"]["sha256"]
+                     and observed["observation_framing_sha256"] == pins["observation_framing"]["sha256"]
+                     and observed["base_image_pin_sha256"] == pins["image"]["sha256"], "task oracle binding mismatch")
                 expected_actor = actors["builder" if task["split"] == "dev" else "custodian"]
                 need(observed["session_id"] == expected_actor["session_id"]
                      and observed["mode"] == "actual" and observed["result"] == "pass",
@@ -389,11 +473,20 @@ def evaluate(root: Path, record_path: str, authority_path: str,
                      and trace["oracle_receipt_sha256"] == task["oracle_receipt"]["sha256"]
                      and trace["session_id"] == expected_actor["session_id"]
                      and trace["mode"] == "actual" and trace["result"] == "pass"
-                     and trace["valid_cases"] == 160 and trace["faults"] == 0
-                     and trace["ordinary_observations"]["sha256"] == runs[0]["observations"]["sha256"],
-                     "trace/untraced ordinary observations mismatch")
-                reference(trace["ordinary_observations"])
-                reference(trace["execution_log"])
+                     and trace["observation_framing_sha256"] == pins["observation_framing"]["sha256"],
+                     "trace task/source/framing binding mismatch")
+                trace_runs = trace["trace_runs"]
+                need(len(trace_runs) == 2 and {r["ordinal"] for r in trace_runs} == {1, 2},
+                     "two trace repetitions required for every case")
+                need(len({r["execution_log"]["path"] for r in trace_runs}) == 2,
+                     "trace repetitions need separate execution logs")
+                for trace_run in trace_runs:
+                    need(trace_run["valid_cases"] == 160 and trace_run["faults"] == 0
+                         and trace_run["ordinary_observations"]["sha256"] == runs[0]["observations"]["sha256"],
+                         "each trace repetition must cover all cases and match both ordinary runs")
+                    reference(trace_run["ordinary_observations"])
+                    reference(trace_run["execution_log"])
+                    reference(trace_run["trace_metadata"])
             inspect(f"task:{task['task_id']}", task_check)
 
         artifact_paths: set[str] = set()
@@ -403,8 +496,8 @@ def evaluate(root: Path, record_path: str, authority_path: str,
                 path = artifact["file"]["path"]
                 need(path not in artifact_paths, "duplicate provenance artifact")
                 artifact_paths.add(path)
-                reference(artifact["file"])
                 sidecar = document(artifact["provenance"], "provenance")
+                reference(artifact["file"], allow_empty=sidecar["artifact_kind"] == "input")
                 need(sidecar["artifact_path"] == path and sidecar["artifact_sha256"] == artifact["file"]["sha256"],
                      "sidecar does not bind exact artifact bytes")
                 role = "custodian" if sidecar["split"] == "heldout" else "builder"
@@ -448,14 +541,16 @@ def evaluate(root: Path, record_path: str, authority_path: str,
         task_artifacts = ("original_source", "oracle_source", "input_fields", "output_fields", "recipe",
                           "program_manifest", "case_manifest")
         required_artifacts = {t[k]["path"] for t in tasks for k in task_artifacts}
+        required_artifacts.update(ref["path"] for refs in partition_recipes.values() for ref in refs.values())
         required_artifacts.update(t["change"]["path"] for t in tasks if t["change"] is not None)
         required_artifacts.update(ref["path"] for ref in record["original_artifacts"])
         inspect("provenance_coverage", lambda: need(required_artifacts <= artifact_paths,
                                                    "missing per-artifact provenance"))
         for ref in record["original_artifacts"]:
             def original_binding(ref: Any = ref) -> None:
-                reference(ref)
-                need(provenance_by_path[ref["path"]]["file"] == ref,
+                entry = provenance_by_path[ref["path"]]
+                reference(ref, allow_empty=entry["sidecar"]["artifact_kind"] == "input")
+                need(entry["file"] == ref,
                      "original artifact digest differs from provenance")
             inspect("original_artifact_binding", original_binding)
         for task in tasks:
@@ -469,6 +564,18 @@ def evaluate(root: Path, record_path: str, authority_path: str,
                          and artifact["role"] == role, "task provenance split/family/author/digest mismatch")
                     source_hash = task["original_sha256"] if name in ("original_source", "change") else task["oracle_source_sha256"]
                     need(sidecar["source_sha256"] == source_hash, "task artifact source hash mismatch")
+                need(provenance_by_path[task["recipe"]["path"]]["sidecar"]["artifact_kind"] == "recipe",
+                     "task paired index needs recipe provenance")
+                if task["task_id"] not in partition_recipes:
+                    raise Pending("paired recipe artifacts unavailable for provenance join")
+                for ref in partition_recipes[task["task_id"]].values():
+                    entry = provenance_by_path[ref["path"]]
+                    sidecar = entry["sidecar"]
+                    need(entry["file"] == ref and entry["role"] == role
+                         and sidecar["artifact_kind"] == "recipe" and sidecar["split"] == task["split"]
+                         and sidecar["family_id"] == task["family_id"]
+                         and sidecar["source_sha256"] == task["oracle_source_sha256"],
+                         "underlying recipe provenance family/source/author mismatch")
                 source_entry = provenance_by_path[task["oracle_source"]["path"]]
                 manifest = document(task["program_manifest"], "program-manifest")
                 need(manifest["provenance_sha256"] == source_entry["provenance"]["sha256"],
@@ -516,7 +623,8 @@ def evaluate(root: Path, record_path: str, authority_path: str,
                          "fixture/static/authored evidence cannot prove admission")
                     need(receipt["manifest_sha256"] == authority["seal_manifest_sha256"]
                          and receipt["generator_sha256"] == pins["generator"]["sha256"]
-                         and receipt["compiler_config_sha256"] == pins["default_conf"]["sha256"], "stale receipt pins")
+                         and receipt["compiler_config_sha256"] == pins["compiler_config"]["sha256"]
+                         and receipt["default_conf_sha256"] == pins["default_conf"]["sha256"], "stale receipt pins")
                     need(receipt["failed"] == receipt["skipped"] == 0 and receipt["executed"] > 0,
                          "receipt requires actual completed checks")
                     stamp(receipt["timestamp"])
@@ -534,6 +642,7 @@ def evaluate(root: Path, record_path: str, authority_path: str,
             inspect(f"check:{check}", receipt_check)
 
     status = "NO-GO" if any(p["status"] == "NO-GO" for p in problems) else ("PENDING" if problems else "GO")
-    return {"gate_version": VERSION, "status": status, "issues": problems,
+    return {"gate_version": VERSION, "status": status, "issues": problems, "recipe_bindings": recipe_bindings,
             "claim": "Structural eligibility only; caller must authenticate signatures, appointments and observations. "
+                     "Recipe bindings are computed metadata, not generation or execution receipts. "
                      "No runtime, product, live-run or publication authorization is conferred."}

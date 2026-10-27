@@ -1,0 +1,189 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:m10:admission:partition-recipe:v1",
+  "type": "object",
+  "properties": {
+    "manifest_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "corpus_version": {
+      "type": "string",
+      "pattern": "[a-z][a-z0-9_-]{0,63}"
+    },
+    "family_id": {
+      "type": "string",
+      "pattern": "[a-z][a-z0-9_-]{0,63}"
+    },
+    "program_id": {
+      "type": "string",
+      "pattern": "[a-z][a-z0-9_-]{0,63}"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "[a-z][a-z0-9_-]{0,63}"
+    },
+    "partition": {
+      "type": "string",
+      "enum": [
+        "loop",
+        "verification"
+      ]
+    },
+    "fields_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "scenario": {
+      "type": "string",
+      "enum": [
+        "missing",
+        "empty",
+        "records"
+      ]
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": {
+          "type": "string",
+          "minLength": 0
+        }
+      },
+      "minItems": 0,
+      "maxItems": 64
+    },
+    "boundaries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "[a-z][a-z0-9_-]{0,63}"
+          },
+          "field": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "[A-Z][A-Z0-9-]{0,29}"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "zero",
+              "least_unit",
+              "field_max",
+              "result_max",
+              "result_max_plus_ulp",
+              "tie",
+              "non_tie",
+              "discarded_fraction",
+              "positive",
+              "negative",
+              "negative_zero",
+              "pivot_minus_one",
+              "pivot",
+              "pivot_plus_one",
+              "threshold_below",
+              "threshold",
+              "threshold_above",
+              "eof"
+            ]
+          },
+          "scenario": {
+            "type": "string",
+            "enum": [
+              "missing",
+              "empty",
+              "records"
+            ]
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "required": [],
+              "additionalProperties": {
+                "type": "string",
+                "minLength": 0
+              }
+            },
+            "minItems": 0,
+            "maxItems": 64
+          }
+        },
+        "required": [
+          "id",
+          "field",
+          "kind",
+          "scenario",
+          "records"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "fill": {
+      "type": "object",
+      "properties": {
+        "algorithm": {
+          "type": "string",
+          "const": "sha256-counter-v1"
+        },
+        "seed_material": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 5,
+          "maxItems": 5
+        },
+        "target_count": {
+          "type": "integer",
+          "enum": [
+            32,
+            128
+          ]
+        },
+        "max_records": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 64
+        }
+      },
+      "required": [
+        "algorithm",
+        "seed_material",
+        "target_count",
+        "max_records"
+      ],
+      "additionalProperties": false
+    },
+    "collision_counter": {
+      "type": "integer",
+      "const": 0
+    }
+  },
+  "required": [
+    "manifest_version",
+    "corpus_version",
+    "family_id",
+    "program_id",
+    "task_id",
+    "partition",
+    "fields_sha256",
+    "scenario",
+    "records",
+    "boundaries",
+    "fill",
+    "collision_counter"
+  ],
+  "additionalProperties": false
+}
