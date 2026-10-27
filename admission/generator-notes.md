@@ -85,7 +85,8 @@ Never infer this external value from a generation receipt. Caller authenticates 
 generation results and immutable source artifacts; no generator/adapter was run here.
 
 Artifacts map exactly source, fields, loop_recipe, verification_recipe, program_manifest,
-generator, case_spec, family_spec to {path,raw_bytes}. Missing artifacts return pending.
+generator, case_spec, family_spec to {path,raw_bytes}; change panels additionally require
+the raw structured-edit artifact under change. Missing artifacts return pending.
 Fields/recipe/manifest raw bytes are preserved exactly. Nine-key generator receipt
 objects are serialized individually as canonical JSON descriptors: these are proposed
 serialization of supplied real in-memory generator receipts, not invented run evidence.
@@ -123,10 +124,14 @@ a runner artifact-hash map and partial pins. Catalog paths are reserved and must
 collide with supplied paths; batches over1024 artifacts refuse (split complete pairs).
 
 Caller supplies missing actual compiler/package/image/libcob/config/tool-info/runner
-and DL3 receipt_validator/receipt_values source pins, authenticates complete source
+and DL3 receipt_validator/receipt_values source pins plus the actual raw frozen
+subset_spec grammar artifact, authenticates complete source
 closure, supplies real compiler declaration and freezes immutable staging. The returned
 expected_generator_sha256 is the unchanged external argument for DL3 validator/CLI
 handoff; generator_raw_sha256 separately describes actual provided source bytes.
+subset_spec is distinct from case_spec/GENERATOR.md; its raw artifact pin must never
+be inferred from or replaced by the case contract hash. It remains explicitly missing
+in missing_actual_pins until the caller supplies it when assembling the envelope.
 There is no runnable envelope or execution evidence until those actual artifacts exist.
 DL3 owns semantic receipt checking, boundary/counter obligations and authenticated
 source-context validation; filesystem containment belongs to runner. Actual generation,
@@ -154,3 +159,29 @@ Continuation preserves original recipe0 identity/hash/seed, authenticates previo
 receipt/state, and checks next_counter against cumulative consumed proposals (U64,
 no wrap, at most100000). A positive state next_counter is legal and is never passed
 as a new original recipe origin. No continuation/generation execution validated here.
+
+## Paired task recipe index (INT ruling r4, within DL2 r3)
+
+Successful adapt_task also returns task_recipe_index and its task_recipe_index_path
+descriptor. The index has exactly manifest_version1/task_id/program_id/family_id/split/
+panel/corpus_version/fields_sha256/recipes. recipes is exactly loop/verification, each
+{path,sha256}, identifying the actual distinct raw recipe artifact paths/digests.
+Index fields_sha256 uses the actual raw field descriptor hash. Native recipe
+fields_sha256 and generation receipt commitments still use canonical JSON hashes.
+
+task_binding_patch supplies fields_sha256 (raw fields), recipe_sha256 (raw serialized
+task index), generator_sha256 (provided actual generator source) and change_sha256
+(raw structured-edit artifact, null for unchanged). Caller joins this patch and
+task_recipe_index_path to the authenticated enclosing task/source/artifact references;
+the patch is not a full task, provenance attestation, authority or admission record.
+combine_tasks returns these per-task paths/patches without changing the consumer's
+generation_receipts/program_manifests indexes or field/recipe provenance catalogs.
+Descriptor serialization is only source behavior proposed for future genuine inputs;
+no index bytes or generator result were emitted during this construction work.
+
+For a change panel the raw structured-edit descriptor must match binding.change_sha256;
+its task_id/original_sha256/changed_sha256 join task/original/oracle source identities.
+Source raw bytes bind oracle_source_sha256 separately. A changed source hash must
+never substitute for the raw edit-artifact digest. Full edit legality, target spans
+and behavioral witness remain later semantic/compiler checks. Unchanged keeps
+change_sha256 null and original/oracle hashes equal. No native recipe keys were added.
