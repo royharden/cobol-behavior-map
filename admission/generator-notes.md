@@ -73,3 +73,63 @@ Pairing diagnostics bind an ordered recipe-pair hash; per-partition diagnostics 
 the individual recipe. Decoder errors occur before valid canonical documents exist.
 Earlier note saying quarantine integration is deferred refers to oracle/runner
 integration; pure source continuation is now provided by ruling r2.
+
+## Generator-to-runner adapter (r2, reconciled consumer indexes)
+
+Pure namespace API `admission.prepare.generator_adapter.adapt_task(binding, generated,
+artifacts, *, expected_generator_sha256=...)` never calls the generator, writes paths
+or runs a validator/compiler. Require an externally authenticated generator source
+SHA256; absence returns pending, mismatch with actual supplied generator bytes refuses.
+Never infer this external value from a generation receipt. Caller authenticates real
+generation results and immutable source artifacts; no generator/adapter was run here.
+
+Artifacts map exactly source, fields, loop_recipe, verification_recipe, program_manifest,
+generator, case_spec, family_spec to {path,raw_bytes}. Missing artifacts return pending.
+Fields/recipe/manifest raw bytes are preserved exactly. Nine-key generator receipt
+objects are serialized individually as canonical JSON descriptors: these are proposed
+serialization of supplied real in-memory generator receipts, not invented run evidence.
+No synthetic document or actual emitted index is supplied by this source package.
+Binding has task_id/program_id/family_id/split/panel/original_sha256/oracle_source_sha256/
+change_sha256. Source raw SHA joins fields and ProgramManifest; both recipes join exact
+task/program/family/partition/canonical fields. Original/change source roles are checked.
+Both partitions share corpus_version, and recipes retain original collision_counter0
+for the consumer. Nonzero recipe starts are refused by this adapter even though the
+standalone vocabulary can represent them; continuation uses the unchanged original
+recipe and separate state, never a rebased recipe. No generator schema was changed.
+
+The output run entry keeps the accepted eight-key shape and intended repeat counts2/2,
+not observed runs. Cases JSON is exactly loop/verification with32/128 transports
+{input_present,records_hex,case_sha256,input_file}. Binary full-case hashes and ordered
+bytes are preserved. Present descriptors append LF to each record; present-empty is
+zero bytes; missing stays null/no descriptor. No file is materialized. Descriptors have
+path/raw_bytes/raw_sha256/canonical_sha256/spec_lf_sha256. JSON canonical and raw hashes
+are separately named; LF spec pins b0ac6b2d... and08c2e2ca... do not replace raw CRLF hashes.
+
+Consumer metadata follows SEAM-receipt-producer-index-r2.md exactly:
+- generation_receipts: {manifest_version:1,tasks:{task_id:{loop:{recipe,fields,receipt},
+  verification:{recipe,fields,receipt}}}}, with every leaf a descriptor artifact path.
+- program_manifests: {manifest_version:1,tasks:{task_id:manifest_artifact_path}}.
+Raw original field/recipe/ProgramManifest descriptors and partition-receipt descriptors
+back all references. This supersedes the early inline source-bound receipt wrapper in
+requests/SEAM-DL2-adapter-r2.md; no consumer uses that withdrawn wrapper.
+
+`combine_tasks(packets)` is pure, accepts genuine immutable successful adapt_task
+packets and returns pending for pending inputs. It aggregates only complete original/
+change pairs, rejects duplicate tasks/panels, mismatched same-program family/split/original
+hash or generator pins, and rejects artifact path conflicts. Equal shared descriptors
+may deduplicate. It builds exact batch indexes and fields/recipes provenance catalogs,
+a runner artifact-hash map and partial pins. Catalog paths are reserved and must not
+collide with supplied paths; batches over1024 artifacts refuse (split complete pairs).
+
+Caller supplies missing actual compiler/package/image/libcob/config/tool-info/runner
+and DL3 receipt_validator/receipt_values source pins, authenticates complete source
+closure, supplies real compiler declaration and freezes immutable staging. The returned
+expected_generator_sha256 is the unchanged external argument for DL3 validator/CLI
+handoff; generator_raw_sha256 separately describes actual provided source bytes.
+There is no runnable envelope or execution evidence until those actual artifacts exist.
+DL3 owns semantic receipt checking, boundary/counter obligations and authenticated
+source-context validation; filesystem containment belongs to runner. Actual generation,
+transport/index join execution, malformed input/pin/path/panel/hash checks, compiler,
+quarantine/custody/seal/licenses/P2 all remain deferred. Metadata is never a signed DL4
+actual/approval receipt or oracle-valid observation. Next work requires a concrete
+consumer mismatch; no source replay/fill-draw or continuation execution is claimed.
