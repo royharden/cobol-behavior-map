@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:m10:admission:authority:v1",
+  "type": "object",
+  "properties": {
+    "gate_version": {
+      "type": "string",
+      "const": "m10-p2-v1"
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "approved_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "roy_signature": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "[0-9a-f]{64}"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "actors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": [
+              "builder",
+              "custodian",
+              "verifier",
+              "roy"
+            ]
+          },
+          "actor_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "session_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "harness": {
+            "type": "string",
+            "enum": [
+              "Codex",
+              "Claude",
+              "Cursor",
+              "Grok",
+              "Antigravity",
+              "Human"
+            ]
+          },
+          "lineage_sessions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "appointment": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "brief": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "role",
+          "actor_id",
+          "session_id",
+          "harness",
+          "lineage_sessions",
+          "appointment",
+          "brief"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 4
+    },
+    "author_sessions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "licenses": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "data": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "code",
+        "data"
+      ],
+      "additionalProperties": false
+    },
+    "seal_manifest_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "seal_confirmed_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "selected_dev_programs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 3
+    }
+  },
+  "required": [
+    "gate_version",
+    "plan_sha256",
+    "approved_at",
+    "roy_signature",
+    "actors",
+    "author_sessions",
+    "licenses",
+    "seal_manifest_sha256",
+    "seal_confirmed_at",
+    "selected_dev_programs"
+  ],
+  "additionalProperties": false
+}

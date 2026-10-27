@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:m10:admission:receipt:v1",
+  "type": "object",
+  "properties": {
+    "check_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "checked_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "harness": {
+      "type": "string",
+      "enum": [
+        "Codex",
+        "Claude",
+        "Cursor",
+        "Grok",
+        "Antigravity",
+        "Human"
+      ]
+    },
+    "timestamp": {
+      "type": "string",
+      "minLength": 1
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail"
+      ]
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "actual",
+        "approval",
+        "fixture",
+        "static"
+      ]
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "generator_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "compiler_config_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "executed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "failed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "skipped": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "admission_probes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "shim_probes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "program_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "[0-9a-f]{64}"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "check_id",
+    "checked_by",
+    "session_id",
+    "harness",
+    "timestamp",
+    "result",
+    "mode",
+    "manifest_sha256",
+    "generator_sha256",
+    "compiler_config_sha256",
+    "executed",
+    "failed",
+    "skipped",
+    "admission_probes",
+    "shim_probes",
+    "program_ids",
+    "observations"
+  ],
+  "additionalProperties": false
+}
