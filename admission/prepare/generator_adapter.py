@@ -13,7 +13,8 @@ SPEC_PINS = {
 REQUIRED = frozenset(("source fields loop_recipe verification_recipe program_manifest "
                       "generator case_spec family_spec").split())
 ACTUAL_PINS = ("compiler_source", "compiler_package", "base_image", "libcob",
-               "default_conf", "compiler_config", "runtime_config", "tool_info", "runner")
+               "default_conf", "compiler_config", "runtime_config", "tool_info", "runner",
+               "receipt_validator", "receipt_values")
 RECEIPT_KEYS = ("manifest_version recipe_sha256 fields_sha256 partition case_hashes "
                 "boundary_case_hashes next_counter fill_proposals_consumed excluded_hashes_sha256")
 
@@ -35,21 +36,21 @@ def descriptor(path, raw, document=None, spec=False):
             "spec_lf_sha256": hashlib.sha256(raw.replace(b"\r\n", b"\n")).hexdigest() if spec else None}
 
 
-def adapt_task(binding, generated, artifacts):
+def adapt_task(binding, generated, artifacts, *, expected_generator_sha256=None):
     """Return envelope-ready task data, never a runnable envelope or observations.
 
     Missing actual source documents => pending. Compiler evidence is always external.
     Caller authenticates generated results, artifact provenance and binding authority.
     """
     try:
-        return _adapt_task(binding, generated, artifacts)
+        return _adapt_task(binding, generated, artifacts, expected_generator_sha256)
     except (AdmissionError, TypeError, KeyError, AttributeError, OverflowError) as exc:
         error = exc if isinstance(exc, AdmissionError) else AdmissionError("bad_value")
         error.stage = "transport_adapter"
         raise error from exc
 
 
-def _adapt_task(binding, generated, artifacts):
+def _adapt_task(binding, generated, artifacts, expected_generator_sha256):
     keys(binding, "task_id program_id family_id split panel original_sha256 oracle_source_sha256 change_sha256")
     for key in ("task_id", "program_id", "family_id"):
         identifier(binding[key])
@@ -62,8 +63,11 @@ def _adapt_task(binding, generated, artifacts):
         require(hash_value(binding["change_sha256"]) == source_hash, "bad_hash")
     require(type(artifacts) is dict and not artifacts.keys() - REQUIRED, "unknown_key")
     missing = sorted(REQUIRED - artifacts.keys())
-    if missing:
-        return {"status": "pending", "missing_artifacts": missing, "binding": dict(binding)}
+    if missing or expected_generator_sha256 is None:
+        return {"status": "pending", "missing_artifacts": missing, "binding": dict(binding),
+                "missing_external_bindings": ["expected_generator_sha256"]
+                if expected_generator_sha256 is None else []}
+    hash_value(expected_generator_sha256)
     output, inputs, documents = {}, {}, {}
     for role, artifact in artifacts.items():
         keys(artifact, "path raw_bytes")
@@ -78,6 +82,7 @@ def _adapt_task(binding, generated, artifacts):
         if role in SPEC_PINS:
             require(item["spec_lf_sha256"] == SPEC_PINS[role], "bad_hash")
     require(inputs["source"]["raw_sha256"] == source_hash, "bad_hash")
+    require(inputs["generator"]["raw_sha256"] == expected_generator_sha256, "bad_hash")
     fields, manifest = documents["fields"], documents["program_manifest"]
     validate_fields(fields)
     require(fields["program_id"] == binding["program_id"] and
@@ -90,7 +95,7 @@ def _adapt_task(binding, generated, artifacts):
             and manifest["source_sha256"] == source_hash
             and manifest["input_fields_sha256"] == digest(fields), "bad_hash")
     keys(generated, "loop verification")
-    transport, receipts, recipes, seen = {}, {}, {}, set()
+    transport, references, seen, corpus_version = {}, {}, set(), None
     prefix = "prepared/" + binding["task_id"]
 
     def emit(name, raw, document=None):
@@ -104,7 +109,11 @@ def _adapt_task(binding, generated, artifacts):
         require(type(recipe) is dict and all(recipe.get(key) == binding[key]
                 for key in ("task_id", "program_id", "family_id")) and
                 recipe.get("partition") == partition and recipe.get("fields_sha256") == digest(fields), "bad_hash")
-        recipes[partition] = digest(recipe)
+        require(type(recipe.get("collision_counter")) is int and recipe["collision_counter"] == 0, "bad_seed")
+        identifier(recipe.get("corpus_version"))
+        if corpus_version is None:
+            corpus_version = recipe["corpus_version"]
+        require(recipe["corpus_version"] == corpus_version, "bad_seed")
         result = generated[partition]
         require(type(result) is dict and result.get("status") == "unexecuted_not_admitted", "bad_value")
         cases, receipt = result["cases"], result["receipt"]
@@ -136,19 +145,84 @@ def _adapt_task(binding, generated, artifacts):
         require(receipt["case_hashes"] == hashes and result["ordered_sha256"] == digest(hashes), "bad_hash")
         exclusions = [] if partition == "loop" else [row["case_sha256"] for row in transport["loop"]]
         require(receipt["excluded_hashes_sha256"] == digest(sorted(set(exclusions))), "partition_collision")
-        transport[partition], receipts[partition] = rows, receipt
+        transport[partition] = rows
+        receipt_path = emit(f"{prefix}/receipts/{partition}.json", canonical(receipt), receipt)
+        references[partition] = {"recipe": inputs[partition + "_recipe"]["path"],
+                                 "fields": inputs["fields"]["path"], "receipt": receipt_path}
     cases_path = emit(prefix + "/cases.json", canonical(transport), transport)
-    receipt_record = {"task_id": binding["task_id"], "program_id": binding["program_id"],
-                      "panel": binding["panel"], "source_sha256": source_hash,
-                      "fields_sha256": digest(fields), "recipe_sha256": recipes, "partitions": receipts}
-    receipt_path = emit(prefix + "/generation-receipts.json", canonical(receipt_record), receipt_record)
+    receipt_index = {"manifest_version": 1, "tasks": {binding["task_id"]: references}}
+    manifest_index = {"manifest_version": 1, "tasks": {binding["task_id"]: inputs["program_manifest"]["path"]}}
+    receipt_path = emit(prefix + "/generation-receipts.json", canonical(receipt_index), receipt_index)
+    manifest_path = emit(prefix + "/program-manifests.json", canonical(manifest_index), manifest_index)
     return {"status": "transport_only_execution_pending", "binding": dict(binding),
             "run": {"task_id": binding["task_id"], "program_id": binding["program_id"],
                     "panel": binding["panel"], "source": inputs["source"]["path"],
                     "cases": cases_path, "case_bundle_sha256": output[cases_path]["raw_sha256"],
                     "ordinary_repeats": 2, "trace_repeats": 2},
-            "artifacts": output, "generation_receipts": receipt_record,
+            "artifacts": output, "generation_receipts": receipt_index,
+            "program_manifests": manifest_index, "program_manifests_path": manifest_path,
             "generation_receipts_path": receipt_path, "program_manifest": manifest,
             "role_paths": {role: item["path"] for role, item in inputs.items()},
             "generator_raw_sha256": inputs["generator"]["raw_sha256"],
+            "expected_generator_sha256": expected_generator_sha256,
+            "case_hash_contract_sha256": SPEC_PINS["case_spec"], "missing_actual_pins": list(ACTUAL_PINS)}
+
+
+def combine_tasks(packets):
+    """Build batch indexes for complete panel pairs; no files or tool evidence."""
+    try:
+        return _combine_tasks(packets)
+    except (AdmissionError, TypeError, KeyError, AttributeError, OverflowError) as exc:
+        error = exc if isinstance(exc, AdmissionError) else AdmissionError("bad_value")
+        error.stage = "transport_index"
+        raise error from exc
+
+
+def _combine_tasks(packets):
+    require(type(packets) is list and 1 <= len(packets) <= 4096, "bad_value")
+    if any(type(packet) is not dict or packet.get("status") != "transport_only_execution_pending"
+           for packet in packets):
+        return {"status": "pending", "reason": "complete adapted task packets required"}
+    artifacts, tasks, manifests, programs, runs = {}, {}, {}, {}, []
+    expected = packets[0]["expected_generator_sha256"]
+    generator_path = packets[0]["role_paths"]["generator"]
+    for packet in packets:
+        binding, run = packet["binding"], packet["run"]
+        task, program, panel = binding["task_id"], binding["program_id"], binding["panel"]
+        require(task not in tasks and packet["expected_generator_sha256"] == expected
+                and packet["generator_raw_sha256"] == expected
+                and packet["case_hash_contract_sha256"] == SPEC_PINS["case_spec"], "bad_hash")
+        family_split = (binding["family_id"], binding["split"])
+        if program not in programs:
+            programs[program] = {"family_split": family_split, "panels": set(),
+                                 "original_sha256": binding["original_sha256"]}
+        require(programs[program]["family_split"] == family_split and
+                programs[program]["original_sha256"] == binding["original_sha256"] and
+                panel not in programs[program]["panels"], "bad_identifier")
+        programs[program]["panels"].add(panel)
+        for path, item in packet["artifacts"].items():
+            require(item["path"] == path and hashlib.sha256(item["raw_bytes"]).hexdigest()
+                    == item["raw_sha256"], "bad_hash")
+            require(path not in artifacts or artifacts[path] == item, "duplicate_key")
+            artifacts[path] = item
+        tasks[task] = packet["generation_receipts"]["tasks"][task]
+        manifests[task] = packet["program_manifests"]["tasks"][task]
+        runs.append(run)
+    require(all(p["panels"] == {"unchanged", "change"} for p in programs.values()), "bad_value")
+    indexes = {"generation_receipts": {"manifest_version": 1, "tasks": tasks},
+               "program_manifests": {"manifest_version": 1, "tasks": manifests}}
+    for role in ("fields", "recipes"):
+        indexes[role] = {"manifest_version": 1, "tasks": {
+            task: {partition: refs["fields" if role == "fields" else "recipe"]
+                   for partition, refs in partitions.items()} for task, partitions in tasks.items()}}
+    pins = {"generator": generator_path}
+    for role, index in indexes.items():
+        path = "catalogs/" + role + ".json"
+        require(path not in artifacts, "duplicate_key")
+        artifacts[path] = descriptor(path, canonical(index), index)
+        pins[role] = path
+    require(len(artifacts) <= 1024, "field_limit")
+    return {"status": "transport_only_execution_pending", "runs": runs, "artifacts": artifacts,
+            "artifact_hashes": {path: item["raw_sha256"] for path, item in artifacts.items()},
+            "pins": pins, "expected_generator_sha256": expected,
             "case_hash_contract_sha256": SPEC_PINS["case_spec"], "missing_actual_pins": list(ACTUAL_PINS)}
