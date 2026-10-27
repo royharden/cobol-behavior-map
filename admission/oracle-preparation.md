@@ -64,9 +64,15 @@ It does not accept expected-answer fields.
 ## Seam and freeze
 
 INT adopted DL1's GENERATOR.md SHA256
-`b0ac6b2d52977025366b75c4ef02435fc70156500eaa2afd5d5eed07476f7f8c` and FAMILY.md
-`08c2e2caa5be00c7851e5b3ad37b4f2ce9c6f0be434d2de3ad22b3b9463f7da5` for construction
-through SEAM-DL1-ruling-r2-relay.md; these supersede the earlier relay's stale pins.
+`706962cfa01ebe22892e8862260db1b8e4535d38d0e665af1c8b85bc5d4100fd` and FAMILY.md
+`f780695503c0f5764ba6f05737ff6d8c2466f767c847466efc4a1a6496afe483` for the
+current construction edition accepted at `36d4f0923c693d5a627f89f6f5f78ab8f9cde686`,
+ratified by ACCEPT-DL1-hash-bindings-r3.md and RETURN-DL3-r3-current-edition.md.
+Only this edition is accepted; a8a28c/4895ef and earlier b0ac/08c2 are superseded history.
+The accepted master CRLF raw artifact hashes are separately GENERATOR
+`4d5e94b792f4003c5071197f516515a992112f9953485d12ff8c8b21eb6f738e` and FAMILY
+`fb8db290ab990c9bdc82e0a538f1d6264673eb9e856ca40f9a324dc8f9717180`.
+These raw identities never substitute for the LF edition pins or vice versa.
 The validator requires the former as `case_hash_contract_sha256`. Fields retain
 name/pic/usage/sign/offset/width/scale; recipes specify missing|empty|records and
 ordered field mappings. No generator recipe schema is redefined here.
@@ -132,6 +138,12 @@ per invocation. The receipt's ordered case hashes must match the actual bundles;
 explicit top-level/boundary cases form the deduplicated prefix. Verification must
 commit to the canonical sorted unique full 32-hash loop exclusion set. Hash-only
 labels cannot replace re-encoding explicit boundary bytes from the field table.
+Raw boundary-label count has no additional 100000 cap. Every supplied label is
+validated and retained, including labels sharing one case; unique explicit cases
+must still fit the 32/128 target and mandatory cross-partition collisions refuse.
+The cumulative 100000 cap applies only to seeded fill proposals. Existing envelope
+and artifact byte bounds remain; runtime cost/performance and containment remain
+unverified, not a claim of unlimited operational safety.
 
 This validator **does not execute/replay the producer, verify fill draws or observed
 history, authenticate a receipt, continue generation, replace a case or emit admitted
@@ -163,7 +175,7 @@ signed actual execution/approval evidence, a separate contract from this generat
 receipt. No generation receipt or prepared_only output is promoted to a DL4 actual
 receipt or GO; the later compiler/evidence adapter is still missing.
 
-Producer comparison is pinned to accepted commit
+Historical r2 producer comparison was pinned to accepted commit
 `e0cee96af20ca72aa866615773fe8add135b1a72` generate.py, generator_continuation.py
 and generator-notes.md. Both helpers and runner support fixed local namespace
 imports (`admission.prepare...`) as well as the existing standalone script layout;
@@ -177,7 +189,7 @@ sidecars remain raw, source hashes remain raw, and the LF spec pin is separate.
 The validator's strict original zero is retained; separate continuation next_counter
 does not become a new recipe origin. DL2 owns the required lower-level producer fix.
 
-The exact accepted adapter at `1499930` supplies the documented generation_receipts
+The historical r2 accepted adapter at `1499930` supplies the documented generation_receipts
 and program_manifests task indexes, matching run entries, case presence/records_hex/
 LF descriptors and distinct raw/canonical/spec digest descriptors. Its partial batch
 pins match the catalog roles; the external generator source pin remains an external
@@ -188,6 +200,11 @@ Caller must also provide the genuine raw `subset_spec` artifact/pin required by 
 runner, in addition to the accepted adapter's enumerated missing actual pins. The
 adapter's missing_actual_pins list omits subset_spec; that metadata gap was reported
 through INT rather than dropping the consumer's grammar commitment or fabricating it.
+
+Current accepted producer `be2a40983cfe80a9823255e96a81cb104ea0be23` selects the
+same 706962cf/f7806955 LF edition above; exact pin metadata was compared statically.
+The boundary-label and edition corrections do not assert an emitted producer packet,
+an executed join or any change to the pending runtime/admission requirements.
 
 ## Deferred compiler and containment contract
 

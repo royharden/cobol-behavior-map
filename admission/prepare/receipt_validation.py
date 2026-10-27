@@ -71,7 +71,7 @@ def validate_receipt(receipt_raw, recipe_raw, fields_raw, bundles, *, task_id,
          and not set(actual).intersection(exclusions), "case order/count/disjointness")
     explicit = [explicit_hash(recipe["scenario"], recipe["records"], entries)]
     boundaries = recipe["boundaries"]
-    need(isinstance(boundaries, list) and len(boundaries) <= 100000, "boundary list")
+    need(isinstance(boundaries, list), "boundary list")
     mapping = {}
     for boundary in boundaries:
         shape(boundary, "id field kind scenario records")

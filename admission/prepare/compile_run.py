@@ -77,7 +77,7 @@ def validate(request, root, expected_generator_sha256):
             "unsupported manifest version")
     require(request["kind"] == "oracle_preparation", "not an oracle request")
     require(request["case_hash_contract_sha256"] ==
-            "b0ac6b2d52977025366b75c4ef02435fc70156500eaa2afd5d5eed07476f7f8c",
+            "706962cfa01ebe22892e8862260db1b8e4535d38d0e665af1c8b85bc5d4100fd",
             "case contract differs from INT-adopted GENERATOR.md")
     artifacts = request["artifacts"]
     require(isinstance(artifacts, dict) and 1 <= len(artifacts) <= 1024,
