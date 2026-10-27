@@ -92,7 +92,8 @@ artifact may carry null. Shared instruments have null family_id; only an
 independent shared specification may omit source_sha256. The textual originality
 attestation needs genuine review for contribution/model family and prohibited
 ingestion; a nonempty sentence is not proof. Changed-source sidecars identify
-changed_source and their original source as parent. ProgramManifest provenance
+changed_source and their original source as parent; original source sidecars
+require a null parent. ProgramManifest provenance
 commits to the oracle source sidecar, avoiding a self-hash requirement.
 
 Pending license status requires null license/approval IDs and stays PENDING;

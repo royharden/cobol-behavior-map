@@ -424,6 +424,10 @@ def evaluate(root: Path, record_path: str, authority_path: str,
                 if sidecar["source_sha256"] is None:
                     need(sidecar["split"] == "shared" and sidecar["artifact_kind"] == "specification",
                          "only independent shared specification may omit source hash")
+                if sidecar["artifact_kind"] == "source":
+                    need(sidecar["parent_artifact_sha256"] is None, "original source must have null parent")
+                if sidecar["artifact_kind"] == "changed_source":
+                    need(sidecar["parent_artifact_sha256"] is not None, "changed source requires original parent")
                 stamp(sidecar["created_at"])
                 created = datetime.fromisoformat(sidecar["created_at"].replace("Z", "+00:00"))
                 need(created.utcoffset().total_seconds() == 0, "provenance timestamp must be UTC")
