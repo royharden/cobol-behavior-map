@@ -18,7 +18,8 @@ refusing unsigned negative zero and excess fractional precision without rounding
 Case hashes use M10-CASE-v1 binary framing. Records omit LF; later materialization
 adds LF per record. Missing and empty differ. Partition commitment is SHA256 of
 canonical JSON ordered full-case hash strings. Recipe/field hashes are canonical
-document hashes, distinct from stored artifact sidecars. Source hash is an input
+document hashes in native generator recipes/receipts, distinct from stored artifact
+sidecars and raw ProgramManifest/task pins. Source hash is an input
 binding, not a compiler execution receipt.
 
 Boundary consumption is exactly top-level complete case, ordered complete boundary
@@ -84,7 +85,8 @@ Never infer this external value from a generation receipt. Caller authenticates 
 generation results and immutable source artifacts; no generator/adapter was run here.
 
 Artifacts map exactly source, fields, loop_recipe, verification_recipe, program_manifest,
-generator, case_spec, family_spec to {path,raw_bytes}. Missing artifacts return pending.
+generator, case_spec, family_spec to {path,raw_bytes}; change panels additionally require
+the raw structured-edit artifact under change. Missing artifacts return pending.
 Fields/recipe/manifest raw bytes are preserved exactly. Nine-key generator receipt
 objects are serialized individually as canonical JSON descriptors: these are proposed
 serialization of supplied real in-memory generator receipts, not invented run evidence.
@@ -92,10 +94,10 @@ No synthetic document or actual emitted index is supplied by this source package
 Binding has task_id/program_id/family_id/split/panel/original_sha256/oracle_source_sha256/
 change_sha256. Source raw SHA joins fields and ProgramManifest; both recipes join exact
 task/program/family/partition/canonical fields. Original/change source roles are checked.
-Both partitions share corpus_version, and recipes retain original collision_counter0
-for the consumer. Nonzero recipe starts are refused by this adapter even though the
-standalone vocabulary can represent them; continuation uses the unchanged original
-recipe and separate state, never a rebased recipe. No generator schema was changed.
+Both partitions share corpus_version, and original recipes require strict integer
+collision_counter0 in generator, adapter and continuation validation. Boolean/nonzero
+recipe origins refuse. Continuation uses the unchanged original recipe and separately
+advanced receipt/state next_counter, never a rebased recipe (INT ruling r3).
 
 The output run entry keeps the accepted eight-key shape and intended repeat counts2/2,
 not observed runs. Cases JSON is exactly loop/verification with32/128 transports
@@ -103,7 +105,8 @@ not observed runs. Cases JSON is exactly loop/verification with32/128 transports
 bytes are preserved. Present descriptors append LF to each record; present-empty is
 zero bytes; missing stays null/no descriptor. No file is materialized. Descriptors have
 path/raw_bytes/raw_sha256/canonical_sha256/spec_lf_sha256. JSON canonical and raw hashes
-are separately named; LF spec pins b0ac6b2d... and08c2e2ca... do not replace raw CRLF hashes.
+are separately named; current LF edition pins706962cf... andf7806955... do not replace
+raw CRLF hashes (accepted master36d4f09).
 
 Consumer metadata follows SEAM-receipt-producer-index-r2.md exactly:
 - generation_receipts: {manifest_version:1,tasks:{task_id:{loop:{recipe,fields,receipt},
@@ -122,10 +125,14 @@ a runner artifact-hash map and partial pins. Catalog paths are reserved and must
 collide with supplied paths; batches over1024 artifacts refuse (split complete pairs).
 
 Caller supplies missing actual compiler/package/image/libcob/config/tool-info/runner
-and DL3 receipt_validator/receipt_values source pins, authenticates complete source
+and DL3 receipt_validator/receipt_values source pins plus the actual raw frozen
+subset_spec grammar artifact, authenticates complete source
 closure, supplies real compiler declaration and freezes immutable staging. The returned
 expected_generator_sha256 is the unchanged external argument for DL3 validator/CLI
 handoff; generator_raw_sha256 separately describes actual provided source bytes.
+subset_spec is distinct from case_spec/GENERATOR.md; its raw artifact pin must never
+be inferred from or replaced by the case contract hash. It remains explicitly missing
+in missing_actual_pins until the caller supplies it when assembling the envelope.
 There is no runnable envelope or execution evidence until those actual artifacts exist.
 DL3 owns semantic receipt checking, boundary/counter obligations and authenticated
 source-context validation; filesystem containment belongs to runner. Actual generation,
@@ -133,3 +140,62 @@ transport/index join execution, malformed input/pin/path/panel/hash checks, comp
 quarantine/custody/seal/licenses/P2 all remain deferred. Metadata is never a signed DL4
 actual/approval receipt or oracle-valid observation. Next work requires a concrete
 consumer mismatch; no source replay/fill-draw or continuation execution is claimed.
+
+## Contextual field and recipe commitments (INT ruling r3)
+
+ProgramManifest input_fields_sha256/output_fields_sha256 identify exact stored field
+document raw bytes; adapter compares input_fields_sha256 only to its input field
+descriptor raw_sha256. Output-layout validation remains the independent caller's
+obligation because this transport API receives only the input layout. Native FAMILY
+task fields_sha256/recipe_sha256 likewise identify actual raw field/paired-recipe
+artifact bytes; DL1 owns the paired-recipe artifact shape, not this adapter.
+
+Native GENERATOR recipe.fields_sha256 and generation receipt fields_sha256/recipe_sha256
+retain canonical JSON document commitments. Seed tuples are canonical. These identical
+key spellings are contextual: never accept raw or canonical interchangeably. Artifact
+hash maps, source/tool pins and sidecars always identify raw bytes; explicitly named
+canonical_sha256 and spec_lf_sha256 descriptor metadata never replace raw_sha256.
+
+Continuation preserves original recipe0 identity/hash/seed, authenticates previous
+receipt/state, and checks next_counter against cumulative consumed proposals (U64,
+no wrap, at most100000). A positive state next_counter is legal and is never passed
+as a new original recipe origin. No continuation/generation execution validated here.
+
+## Paired task recipe index (INT ruling r4, within DL2 r3)
+
+Successful adapt_task also returns task_recipe_index and its task_recipe_index_path
+descriptor. The index has exactly manifest_version1/task_id/program_id/family_id/split/
+panel/corpus_version/fields_sha256/recipes. recipes is exactly loop/verification, each
+{path,sha256}, identifying the actual distinct raw recipe artifact paths/digests.
+Index fields_sha256 uses the actual raw field descriptor hash. Native recipe
+fields_sha256 and generation receipt commitments still use canonical JSON hashes.
+
+task_binding_patch supplies fields_sha256 (raw fields), recipe_sha256 (raw serialized
+task index), generator_sha256 (provided actual generator source) and change_sha256
+(raw structured-edit artifact, null for unchanged). Caller joins this patch and
+task_recipe_index_path to the authenticated enclosing task/source/artifact references;
+the patch is not a full task, provenance attestation, authority or admission record.
+combine_tasks returns these per-task paths/patches without changing the consumer's
+generation_receipts/program_manifests indexes or field/recipe provenance catalogs.
+Descriptor serialization is only source behavior proposed for future genuine inputs;
+no index bytes or generator result were emitted during this construction work.
+
+For a change panel the raw structured-edit descriptor must match binding.change_sha256;
+its task_id/original_sha256/changed_sha256 join task/original/oracle source identities.
+Source raw bytes bind oracle_source_sha256 separately and must differ from original
+for a change panel. A changed source hash must
+never substitute for the raw edit-artifact digest. Full edit legality, target spans
+and behavioral witness remain later semantic/compiler checks. Unchanged keeps
+change_sha256 null and original/oracle hashes equal. No native recipe keys were added.
+
+Spec edition identity is returned as spec_edition_pins (current accepted GENERATOR
+706962cfa01ebe22892e8862260db1b8e4535d38d0e665af1c8b85bc5d4100fd / FAMILY
+f780695503c0f5764ba6f05737ff6d8c2466f767c847466efc4a1a6496afe483). R5 and subsequent
+ACCEPT-DL1-hash-bindings-r3.md select
+that exact GENERATOR LF edition for active case_hash_contract_sha256 too; old code
+pins are not alternatives. Binary case framing remains unchanged. Current spec
+descriptors independently preserve raw bytes/hashes: new LF edition pins must not
+replace raw staged artifact hashes. Consumer75ccd24 comparison is historical; DL3's
+new r3 updates its active expected edition and removes its extra boundary-label cap.
+The producer has no raw label-count cap;100000 limits cumulative fill proposals only.
+Source comparison is static and the updated producer/consumer join remains unexecuted.

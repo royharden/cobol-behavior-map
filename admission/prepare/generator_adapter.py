@@ -7,14 +7,16 @@ from .generate import (AdmissionError, bundle, canonical, digest, hash_value,
 
 
 SPEC_PINS = {
-    "case_spec": "b0ac6b2d52977025366b75c4ef02435fc70156500eaa2afd5d5eed07476f7f8c",
-    "family_spec": "08c2e2caa5be00c7851e5b3ad37b4f2ce9c6f0be434d2de3ad22b3b9463f7da5",
+    "case_spec": "706962cfa01ebe22892e8862260db1b8e4535d38d0e665af1c8b85bc5d4100fd",
+    "family_spec": "f780695503c0f5764ba6f05737ff6d8c2466f767c847466efc4a1a6496afe483",
 }
+# R5 selects this construction spec edition; the binary case framing is unchanged.
+CASE_HASH_CONTRACT_SHA256 = SPEC_PINS["case_spec"]
 REQUIRED = frozenset(("source fields loop_recipe verification_recipe program_manifest "
                       "generator case_spec family_spec").split())
 ACTUAL_PINS = ("compiler_source", "compiler_package", "base_image", "libcob",
                "default_conf", "compiler_config", "runtime_config", "tool_info", "runner",
-               "receipt_validator", "receipt_values")
+               "receipt_validator", "receipt_values", "subset_spec")
 RECEIPT_KEYS = ("manifest_version recipe_sha256 fields_sha256 partition case_hashes "
                 "boundary_case_hashes next_counter fill_proposals_consumed excluded_hashes_sha256")
 
@@ -60,9 +62,11 @@ def _adapt_task(binding, generated, artifacts, expected_generator_sha256):
     if binding["panel"] == "unchanged":
         require(original == source_hash and binding["change_sha256"] is None, "bad_hash")
     else:
-        require(hash_value(binding["change_sha256"]) == source_hash, "bad_hash")
-    require(type(artifacts) is dict and not artifacts.keys() - REQUIRED, "unknown_key")
-    missing = sorted(REQUIRED - artifacts.keys())
+        hash_value(binding["change_sha256"])
+        require(source_hash != original, "bad_hash")
+    required = REQUIRED | ({"change"} if binding["panel"] == "change" else set())
+    require(type(artifacts) is dict and not artifacts.keys() - required, "unknown_key")
+    missing = sorted(required - artifacts.keys())
     if missing or expected_generator_sha256 is None:
         return {"status": "pending", "missing_artifacts": missing, "binding": dict(binding),
                 "missing_external_bindings": ["expected_generator_sha256"]
@@ -74,7 +78,7 @@ def _adapt_task(binding, generated, artifacts, expected_generator_sha256):
         raw = artifact["raw_bytes"]
         require(type(raw) is bytes and len(raw) <= 268435456, "bad_value")
         document = load_document(raw) if role in (
-            "fields", "loop_recipe", "verification_recipe", "program_manifest") else None
+            "fields", "loop_recipe", "verification_recipe", "program_manifest", "change") else None
         item = descriptor(artifact["path"], raw, document, role in SPEC_PINS)
         require(item["path"] not in output, "duplicate_key")
         output[item["path"]] = item
@@ -83,6 +87,13 @@ def _adapt_task(binding, generated, artifacts, expected_generator_sha256):
             require(item["spec_lf_sha256"] == SPEC_PINS[role], "bad_hash")
     require(inputs["source"]["raw_sha256"] == source_hash, "bad_hash")
     require(inputs["generator"]["raw_sha256"] == expected_generator_sha256, "bad_hash")
+    if binding["panel"] == "change":
+        change = documents["change"]
+        keys(change, "manifest_version task_id original_sha256 target operation before after prose changed_sha256")
+        require(type(change["manifest_version"]) is int and change["manifest_version"] == 1
+                and change["task_id"] == binding["task_id"]
+                and change["original_sha256"] == original and change["changed_sha256"] == source_hash
+                and inputs["change"]["raw_sha256"] == binding["change_sha256"], "bad_hash")
     fields, manifest = documents["fields"], documents["program_manifest"]
     validate_fields(fields)
     require(fields["program_id"] == binding["program_id"] and
@@ -93,7 +104,7 @@ def _adapt_task(binding, generated, artifacts, expected_generator_sha256):
             "manifest_version")
     require(all(manifest[key] == binding[key] for key in ("program_id", "family_id", "split"))
             and manifest["source_sha256"] == source_hash
-            and manifest["input_fields_sha256"] == digest(fields), "bad_hash")
+            and manifest["input_fields_sha256"] == inputs["fields"]["raw_sha256"], "bad_hash")
     keys(generated, "loop verification")
     transport, references, seen, corpus_version = {}, {}, set(), None
     prefix = "prepared/" + binding["task_id"]
@@ -154,6 +165,20 @@ def _adapt_task(binding, generated, artifacts, expected_generator_sha256):
     manifest_index = {"manifest_version": 1, "tasks": {binding["task_id"]: inputs["program_manifest"]["path"]}}
     receipt_path = emit(prefix + "/generation-receipts.json", canonical(receipt_index), receipt_index)
     manifest_path = emit(prefix + "/program-manifests.json", canonical(manifest_index), manifest_index)
+    require(inputs["loop_recipe"]["path"] != inputs["verification_recipe"]["path"] and
+            inputs["loop_recipe"]["raw_sha256"] != inputs["verification_recipe"]["raw_sha256"], "bad_hash")
+    task_recipe_index = {"manifest_version": 1, "task_id": binding["task_id"],
+                         "program_id": binding["program_id"], "family_id": binding["family_id"],
+                         "split": binding["split"], "panel": binding["panel"],
+                         "corpus_version": corpus_version, "fields_sha256": inputs["fields"]["raw_sha256"],
+                         "recipes": {partition: {"path": inputs[partition + "_recipe"]["path"],
+                                                 "sha256": inputs[partition + "_recipe"]["raw_sha256"]}
+                                     for partition in ("loop", "verification")}}
+    task_index_path = emit(prefix + "/task-recipes.json", canonical(task_recipe_index), task_recipe_index)
+    task_patch = {"fields_sha256": inputs["fields"]["raw_sha256"],
+                  "recipe_sha256": output[task_index_path]["raw_sha256"],
+                  "generator_sha256": inputs["generator"]["raw_sha256"],
+                  "change_sha256": binding["change_sha256"]}
     return {"status": "transport_only_execution_pending", "binding": dict(binding),
             "run": {"task_id": binding["task_id"], "program_id": binding["program_id"],
                     "panel": binding["panel"], "source": inputs["source"]["path"],
@@ -162,10 +187,13 @@ def _adapt_task(binding, generated, artifacts, expected_generator_sha256):
             "artifacts": output, "generation_receipts": receipt_index,
             "program_manifests": manifest_index, "program_manifests_path": manifest_path,
             "generation_receipts_path": receipt_path, "program_manifest": manifest,
+            "task_recipe_index": task_recipe_index, "task_recipe_index_path": task_index_path,
+            "task_binding_patch": task_patch,
             "role_paths": {role: item["path"] for role, item in inputs.items()},
             "generator_raw_sha256": inputs["generator"]["raw_sha256"],
             "expected_generator_sha256": expected_generator_sha256,
-            "case_hash_contract_sha256": SPEC_PINS["case_spec"], "missing_actual_pins": list(ACTUAL_PINS)}
+            "spec_edition_pins": dict(SPEC_PINS),
+            "case_hash_contract_sha256": CASE_HASH_CONTRACT_SHA256, "missing_actual_pins": list(ACTUAL_PINS)}
 
 
 def combine_tasks(packets):
@@ -191,7 +219,8 @@ def _combine_tasks(packets):
         task, program, panel = binding["task_id"], binding["program_id"], binding["panel"]
         require(task not in tasks and packet["expected_generator_sha256"] == expected
                 and packet["generator_raw_sha256"] == expected
-                and packet["case_hash_contract_sha256"] == SPEC_PINS["case_spec"], "bad_hash")
+                and packet["case_hash_contract_sha256"] == CASE_HASH_CONTRACT_SHA256
+                and packet["spec_edition_pins"] == SPEC_PINS, "bad_hash")
         family_split = (binding["family_id"], binding["split"])
         if program not in programs:
             programs[program] = {"family_split": family_split, "panels": set(),
@@ -225,4 +254,7 @@ def _combine_tasks(packets):
     return {"status": "transport_only_execution_pending", "runs": runs, "artifacts": artifacts,
             "artifact_hashes": {path: item["raw_sha256"] for path, item in artifacts.items()},
             "pins": pins, "expected_generator_sha256": expected,
-            "case_hash_contract_sha256": SPEC_PINS["case_spec"], "missing_actual_pins": list(ACTUAL_PINS)}
+            "task_recipe_indexes": {p["binding"]["task_id"]: p["task_recipe_index_path"] for p in packets},
+            "task_binding_patches": {p["binding"]["task_id"]: p["task_binding_patch"] for p in packets},
+            "spec_edition_pins": dict(SPEC_PINS),
+            "case_hash_contract_sha256": CASE_HASH_CONTRACT_SHA256, "missing_actual_pins": list(ACTUAL_PINS)}
