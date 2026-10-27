@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:m10:admission:task-binding:v1",
+  "type": "object",
+  "properties": {
+    "manifest_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "[a-z][a-z0-9_-]{0,63}"
+    },
+    "program_id": {
+      "type": "string",
+      "pattern": "[a-z][a-z0-9_-]{0,63}"
+    },
+    "family_id": {
+      "type": "string",
+      "pattern": "[a-z][a-z0-9_-]{0,63}"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "dev",
+        "heldout"
+      ]
+    },
+    "panel": {
+      "type": "string",
+      "enum": [
+        "unchanged",
+        "change"
+      ]
+    },
+    "original_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "oracle_source_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "fields_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "recipe_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "generator_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "change_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "[0-9a-f]{64}"
+    }
+  },
+  "required": [
+    "manifest_version",
+    "task_id",
+    "program_id",
+    "family_id",
+    "split",
+    "panel",
+    "original_sha256",
+    "oracle_source_sha256",
+    "fields_sha256",
+    "recipe_sha256",
+    "generator_sha256",
+    "change_sha256"
+  ],
+  "additionalProperties": false
+}

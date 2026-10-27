@@ -1,11 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:m10:admission:go-record:v1",
+  "$id": "urn:m10:admission:go-record:v2",
   "type": "object",
   "properties": {
     "gate_version": {
       "type": "string",
-      "const": "m10-p2-v1"
+      "const": "m10-p2-v2"
     },
     "plan_sha256": {
       "type": "string",
@@ -532,34 +532,102 @@
       "items": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "split": {
-            "type": "string",
-            "enum": [
-              "dev",
-              "heldout"
-            ]
-          },
-          "domain": {
-            "type": "string",
-            "enum": [
-              "decimal",
-              "file_status",
-              "year_window"
-            ]
-          },
-          "program_ids": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "minLength": 1
+          "metadata": {
+            "type": "object",
+            "properties": {
+              "manifest_version": {
+                "type": "integer",
+                "const": 1
+              },
+              "family_id": {
+                "type": "string",
+                "pattern": "[a-z][a-z0-9_-]{0,63}"
+              },
+              "split": {
+                "type": "string",
+                "enum": [
+                  "dev",
+                  "heldout"
+                ]
+              },
+              "domain": {
+                "type": "string",
+                "enum": [
+                  "decimal_fees",
+                  "sequential_status",
+                  "year_window"
+                ]
+              },
+              "template_id": {
+                "type": "string",
+                "pattern": "[a-z][a-z0-9_-]{0,63}"
+              },
+              "template_description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "hazard_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "H1",
+                    "H2",
+                    "H3",
+                    "H4",
+                    "H5",
+                    "H6",
+                    "H7",
+                    "H8"
+                  ]
+                },
+                "minItems": 2
+              },
+              "program_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "[a-z][a-z0-9_-]{0,63}"
+                },
+                "minItems": 3
+              },
+              "author_provenance_sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
             },
-            "minItems": 3
+            "required": [
+              "manifest_version",
+              "family_id",
+              "split",
+              "domain",
+              "template_id",
+              "template_description",
+              "hazard_ids",
+              "program_ids",
+              "author_provenance_sha256"
+            ],
+            "additionalProperties": false
           },
           "template_commitment": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "author_provenance": {
             "type": "object",
             "properties": {
               "path": {
@@ -579,11 +647,9 @@
           }
         },
         "required": [
-          "id",
-          "split",
-          "domain",
-          "program_ids",
-          "template_commitment"
+          "metadata",
+          "template_commitment",
+          "author_provenance"
         ],
         "additionalProperties": false
       },
@@ -594,33 +660,84 @@
       "items": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "minLength": 1
+          "binding": {
+            "type": "object",
+            "properties": {
+              "manifest_version": {
+                "type": "integer",
+                "const": 1
+              },
+              "task_id": {
+                "type": "string",
+                "pattern": "[a-z][a-z0-9_-]{0,63}"
+              },
+              "program_id": {
+                "type": "string",
+                "pattern": "[a-z][a-z0-9_-]{0,63}"
+              },
+              "family_id": {
+                "type": "string",
+                "pattern": "[a-z][a-z0-9_-]{0,63}"
+              },
+              "split": {
+                "type": "string",
+                "enum": [
+                  "dev",
+                  "heldout"
+                ]
+              },
+              "panel": {
+                "type": "string",
+                "enum": [
+                  "unchanged",
+                  "change"
+                ]
+              },
+              "original_sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              },
+              "oracle_source_sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              },
+              "fields_sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              },
+              "recipe_sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              },
+              "generator_sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              },
+              "change_sha256": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "manifest_version",
+              "task_id",
+              "program_id",
+              "family_id",
+              "split",
+              "panel",
+              "original_sha256",
+              "oracle_source_sha256",
+              "fields_sha256",
+              "recipe_sha256",
+              "generator_sha256",
+              "change_sha256"
+            ],
+            "additionalProperties": false
           },
-          "program_id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "family_id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "split": {
-            "type": "string",
-            "enum": [
-              "dev",
-              "heldout"
-            ]
-          },
-          "panel": {
-            "type": "string",
-            "enum": [
-              "original",
-              "changed"
-            ]
-          },
-          "source": {
+          "original_source": {
             "type": "object",
             "properties": {
               "path": {
@@ -638,7 +755,43 @@
             ],
             "additionalProperties": false
           },
-          "fields": {
+          "oracle_source": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "input_fields": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "output_fields": {
             "type": "object",
             "properties": {
               "path": {
@@ -658,6 +811,45 @@
           },
           "recipe": {
             "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "program_manifest": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "change": {
+            "type": [
+              "object",
+              "null"
+            ],
             "properties": {
               "path": {
                 "type": "string",
@@ -773,14 +965,14 @@
           }
         },
         "required": [
-          "id",
-          "program_id",
-          "family_id",
-          "split",
-          "panel",
-          "source",
-          "fields",
+          "binding",
+          "original_source",
+          "oracle_source",
+          "input_fields",
+          "output_fields",
           "recipe",
+          "program_manifest",
+          "change",
           "case_manifest",
           "oracle_receipt",
           "trace_receipt",
@@ -818,119 +1010,36 @@
             ],
             "additionalProperties": false
           },
-          "author_role": {
-            "type": "string",
-            "enum": [
-              "builder",
-              "custodian",
-              "verifier",
-              "roy"
-            ]
+          "provenance": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
           },
-          "callsign": {
-            "type": "string",
-            "minLength": 1
-          },
-          "session_id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "harness": {
-            "type": "string",
-            "enum": [
-              "Codex",
-              "Claude",
-              "Cursor",
-              "Grok",
-              "Antigravity",
-              "Human"
-            ]
-          },
-          "created_at": {
-            "type": "string",
-            "minLength": 1
-          },
-          "original_source_attestation": {
-            "type": "boolean"
-          },
-          "family_id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "split": {
-            "type": "string",
-            "enum": [
-              "dev",
-              "heldout"
-            ]
-          },
-          "kind": {
+          "license_class": {
             "type": "string",
             "enum": [
               "code",
               "data"
             ]
-          },
-          "brief": {
-            "type": "object",
-            "properties": {
-              "path": {
-                "type": "string",
-                "minLength": 1
-              },
-              "sha256": {
-                "type": "string",
-                "pattern": "[0-9a-f]{64}"
-              }
-            },
-            "required": [
-              "path",
-              "sha256"
-            ],
-            "additionalProperties": false
-          },
-          "generator_sha256": {
-            "type": "string",
-            "pattern": "[0-9a-f]{64}"
-          },
-          "license": {
-            "type": "string",
-            "minLength": 1
-          },
-          "license_signature": {
-            "type": "object",
-            "properties": {
-              "path": {
-                "type": "string",
-                "minLength": 1
-              },
-              "sha256": {
-                "type": "string",
-                "pattern": "[0-9a-f]{64}"
-              }
-            },
-            "required": [
-              "path",
-              "sha256"
-            ],
-            "additionalProperties": false
           }
         },
         "required": [
           "file",
-          "author_role",
-          "callsign",
-          "session_id",
-          "harness",
-          "created_at",
-          "original_source_attestation",
-          "family_id",
-          "split",
-          "kind",
-          "brief",
-          "generator_sha256",
-          "license",
-          "license_signature"
+          "provenance",
+          "license_class"
         ],
         "additionalProperties": false
       },

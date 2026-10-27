@@ -45,3 +45,12 @@ Later custody chain: sealed → scheduled → running → completed → burned, 
 hash-bound predecessors and no duplicate dispatch or held-out rehearsal. This
 brief creates no chain event. Release burned results inside the private project
 only; public promotion requires separate manual authorization.
+
+r2 native reconciliation: later custody records must use accepted FAMILY /
+GENERATOR / PROVENANCE names and source-bound ProgramManifest instances.
+Gate v2 binds unchanged/change panels, source/field/sidecar hashes and approved
+license decision IDs. Generation-only candidate counts never attest valid
+oracle counts or independent reruns. The singular task recipe commitment's
+partition packaging and actual runner-to-gate receipt production remain
+pending producer seams, owned by INT/contract owners before real admission.
+No execution adapter or synthetic pass receipt is provided.

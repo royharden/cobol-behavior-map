@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:m10:admission:provenance:v1",
+  "type": "object",
+  "properties": {
+    "manifest_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "artifact_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "artifact_kind": {
+      "type": "string",
+      "enum": [
+        "source",
+        "changed_source",
+        "probe",
+        "candidate",
+        "request",
+        "fields",
+        "recipe",
+        "input",
+        "instrument",
+        "specification"
+      ]
+    },
+    "author_callsign": {
+      "type": "string",
+      "minLength": 1
+    },
+    "author_harness": {
+      "type": "string",
+      "enum": [
+        "Codex",
+        "Claude",
+        "Cursor",
+        "Grok",
+        "Antigravity",
+        "Human"
+      ]
+    },
+    "author_session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "originality_attestation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "family_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "[a-z][a-z0-9_-]{0,63}"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "dev",
+        "heldout",
+        "shared"
+      ]
+    },
+    "brief_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "generator_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "[0-9a-f]{64}"
+    },
+    "source_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "[0-9a-f]{64}"
+    },
+    "parent_artifact_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "[0-9a-f]{64}"
+    },
+    "license_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "license_approval_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "license_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "denied"
+      ]
+    },
+    "evidence_paths": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "[0-9a-f]{64}"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "manifest_version",
+    "artifact_path",
+    "artifact_sha256",
+    "artifact_kind",
+    "author_callsign",
+    "author_harness",
+    "author_session_id",
+    "created_at",
+    "originality_attestation",
+    "family_id",
+    "split",
+    "brief_sha256",
+    "generator_sha256",
+    "source_sha256",
+    "parent_artifact_sha256",
+    "license_id",
+    "license_approval_id",
+    "license_status",
+    "evidence_paths"
+  ],
+  "additionalProperties": false
+}
