@@ -188,11 +188,13 @@ never substitute for the raw edit-artifact digest. Full edit legality, target sp
 and behavioral witness remain later semantic/compiler checks. Unchanged keeps
 change_sha256 null and original/oracle hashes equal. No native recipe keys were added.
 
-Spec edition identity is separately returned as spec_edition_pins (current accepted
-GENERATOR a8a28c8b... / FAMILY4895efdb...). case_hash_contract_sha256 retains accepted
-runner75ccd24's historical b0ac6b2d... identifier for the unchanged case-format contract;
-it does not claim that old digest hashes current GENERATOR.md bytes. Current spec
-descriptors independently check the new LF edition digest and preserve actual raw
-artifact hashes. INT acceptance4975609 changes edition identification only; binary
-case framing is unchanged. A future runner format-ID migration requires a coordinated
-consumer update; never silently relabel a new spec edition as the runner's old pin.
+Spec edition identity is returned as spec_edition_pins (current accepted GENERATOR
+a8a28c8b656ee61d929f9048c222acf683fe09465c1aa9c240d0177da074bc9d / FAMILY
+4895efdbb65ed26ecf24cece2fcc36a768a9e812a450c8e4f964355b2a78010b). Ruling r5 selects
+that exact GENERATOR LF edition for active case_hash_contract_sha256 too; old code
+pins are not alternatives. Binary case framing remains unchanged. Current spec
+descriptors independently preserve raw bytes/hashes: new LF edition pins must not
+replace raw staged artifact hashes. Consumer75ccd24 comparison is historical; DL3's
+new r3 updates its active expected edition and removes its extra boundary-label cap.
+The producer has no raw label-count cap;100000 limits cumulative fill proposals only.
+Source comparison is static and the updated producer/consumer join remains unexecuted.

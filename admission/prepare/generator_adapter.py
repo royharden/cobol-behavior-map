@@ -10,8 +10,8 @@ SPEC_PINS = {
     "case_spec": "a8a28c8b656ee61d929f9048c222acf683fe09465c1aa9c240d0177da074bc9d",
     "family_spec": "4895efdbb65ed26ecf24cece2fcc36a768a9e812a450c8e4f964355b2a78010b",
 }
-# Accepted runner75ccd24's historical format identifier, not a current edition pin.
-CASE_HASH_CONTRACT_SHA256 = "b0ac6b2d52977025366b75c4ef02435fc70156500eaa2afd5d5eed07476f7f8c"
+# R5 selects this construction spec edition; the binary case framing is unchanged.
+CASE_HASH_CONTRACT_SHA256 = SPEC_PINS["case_spec"]
 REQUIRED = frozenset(("source fields loop_recipe verification_recipe program_manifest "
                       "generator case_spec family_spec").split())
 ACTUAL_PINS = ("compiler_source", "compiler_package", "base_image", "libcob",
