@@ -148,9 +148,12 @@ def evaluate(root: Path, record_path: str, authority_path: str,
 
     def authority_load() -> Any:
         need(SHA.fullmatch(authority_sha256) is not None, "externally approved digest required")
-        need(hashlib.sha256(read(authority_path)).hexdigest() == authority_sha256,
+        raw = read(authority_path)
+        need(hashlib.sha256(raw).hexdigest() == authority_sha256,
              "authority digest mismatch")
-        return load(authority_path, "authority")
+        value = strict_json(raw)
+        shape(value, strict_json((schema_root / "authority.schema.json").read_bytes()))
+        return value
 
     authority = inspect("authority", authority_load)
     record = inspect("record", lambda: load(record_path, "go-record"))
@@ -169,14 +172,17 @@ def evaluate(root: Path, record_path: str, authority_path: str,
             need(len({a["actor_id"] for a in actors.values()}) == 4, "roles require distinct identities")
             need(actors["custodian"]["harness"] != actors["builder"]["harness"],
                  "custodian requires different harness")
+            need(actors["builder"]["session_id"] in authority["author_sessions"],
+                 "builder must be disclosed in author sessions")
             for role in ("custodian", "verifier"):
                 actor = actors[role]
-                need(actor["session_id"] not in authority["author_sessions"], "custodian/verifier is an author")
+                need(not (set(actor["lineage_sessions"] + [actor["session_id"]])
+                          & set(authority["author_sessions"])), "custodian/verifier has author lineage")
                 need(not (set(actor["lineage_sessions"] + [actor["session_id"]])
                           & set(actors["builder"]["lineage_sessions"] + [actors["builder"]["session_id"]])),
                      "builder/child/fork cannot be independent")
-            need(actors["verifier"]["session_id"] not in actors["custodian"]["lineage_sessions"]
-                 and actors["custodian"]["session_id"] not in actors["verifier"]["lineage_sessions"],
+            need(not (set(actors["verifier"]["lineage_sessions"] + [actors["verifier"]["session_id"]])
+                      & set(actors["custodian"]["lineage_sessions"] + [actors["custodian"]["session_id"]])),
                  "verifier cannot be custodian lineage")
             for actor in actors.values():
                 reference(actor["appointment"])
@@ -196,6 +202,14 @@ def evaluate(root: Path, record_path: str, authority_path: str,
             "compiler invocation/configuration mismatch"))
         for ref in record["frozen_briefs"]:
             inspect("frozen_brief", lambda ref=ref: reference(ref))
+
+        def brief_binding() -> None:
+            frozen = [(ref["path"], ref["sha256"]) for ref in record["frozen_briefs"]]
+            approved = {(actor["brief"]["path"], actor["brief"]["sha256"]) for actor in actors.values()}
+            need(len(frozen) == len(set(frozen)) and set(frozen) == approved,
+                 "frozen briefs must exactly match approved actor briefs without duplicates")
+
+        inspect("brief_binding", brief_binding)
 
         def seal() -> None:
             need(record["seal"]["manifest_sha256"] == pins["private_manifest"]["sha256"]
@@ -287,6 +301,7 @@ def evaluate(root: Path, record_path: str, authority_path: str,
             inspect(f"task:{task['id']}", task_check)
 
         artifact_paths: set[str] = set()
+        provenance_by_path: dict[str, Any] = {}
         for artifact in record["artifacts"]:
             def artifact_check(artifact: Any = artifact) -> None:
                 path = artifact["file"]["path"]
@@ -303,15 +318,32 @@ def evaluate(root: Path, record_path: str, authority_path: str,
                 need(artifact["license"] == authority["licenses"][artifact["kind"]], "unapproved artifact license")
                 reference(artifact["license_signature"])
                 reference(artifact["brief"])
+                need(artifact["brief"] == actor["brief"], "artifact brief differs from approved author brief")
                 need(artifact["generator_sha256"] == pins["generator"]["sha256"], "generator mismatch")
                 need(any(f["id"] == artifact["family_id"] and f["split"] == artifact["split"]
                          for f in record["families"]), "artifact family/split mismatch")
                 stamp(artifact["created_at"])
+                provenance_by_path[path] = artifact
             inspect("provenance", artifact_check)
         required_artifacts = {t[k]["path"] for t in tasks for k in ("source", "fields", "recipe", "case_manifest")}
         required_artifacts.update(ref["path"] for ref in record["original_artifacts"])
         inspect("provenance_coverage", lambda: need(required_artifacts <= artifact_paths,
                                                    "missing per-artifact provenance"))
+        for ref in record["original_artifacts"]:
+            def original_binding(ref: Any = ref) -> None:
+                reference(ref)
+                need(provenance_by_path[ref["path"]]["file"] == ref,
+                     "original artifact digest differs from provenance")
+            inspect("original_artifact_binding", original_binding)
+        for task in tasks:
+            def task_provenance(task: Any = task) -> None:
+                role = "builder" if task["split"] == "dev" else "custodian"
+                for name in ("source", "fields", "recipe", "case_manifest"):
+                    artifact = provenance_by_path[task[name]["path"]]
+                    need(artifact["file"] == task[name] and artifact["split"] == task["split"]
+                         and artifact["family_id"] == task["family_id"]
+                         and artifact["author_role"] == role, "task provenance split/family/author/digest mismatch")
+            inspect(f"task_provenance:{task['id']}", task_provenance)
 
         items = {item["id"]: item for item in record["checks"]}
         inspect("check_inventory", lambda: need(len(items) == len(record["checks"])

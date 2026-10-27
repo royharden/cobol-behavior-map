@@ -57,7 +57,14 @@
           },
           "harness": {
             "type": "string",
-            "minLength": 1
+            "enum": [
+              "Codex",
+              "Claude",
+              "Cursor",
+              "Grok",
+              "Antigravity",
+              "Human"
+            ]
           },
           "lineage_sessions": {
             "type": "array",

@@ -17,7 +17,14 @@
     },
     "harness": {
       "type": "string",
-      "minLength": 1
+      "enum": [
+        "Codex",
+        "Claude",
+        "Cursor",
+        "Grok",
+        "Antigravity",
+        "Human"
+      ]
     },
     "timestamp": {
       "type": "string",

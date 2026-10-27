@@ -36,6 +36,12 @@ confirmation. `author_sessions` means builder/product/preparation authors; the
 custodian is separately the author of the hidden split. Include every parent,
 child and fork session of each actor in `lineage_sessions`, not just its direct
 parent. Registry labels and signer identity require external authentication.
+Harness names use the closed canonical vocabulary Codex, Claude, Cursor, Grok,
+Antigravity, Human; case variants and unknown aliases reject. Both independent
+roles' complete lineage sets must avoid every disclosed builder-author session;
+verifier and custodian lineages must also be disjoint. Frozen briefs equal the
+approved actor-brief references exactly with no duplicate entries; artifact
+briefs equal their appointed author's approved brief.
 
 ## Closed records
 
@@ -62,7 +68,10 @@ Original artifacts include programs, probes, candidates, requests, changed
 originals and generated inputs. `original_artifacts` must enumerate every such
 file beyond the task inventory; every one requires an `artifacts` provenance
 sidecar entry. Each task source/fields/recipe/case-manifest reference also needs
-an entry. A provenance entry binds author/callsign/harness/session/time, original
+an entry joined by exact path/hash, task split/family and designated split
+author. Extra original-artifact references also have their digests checked
+against actual bytes and their matching provenance entries. A provenance entry
+binds author/callsign/harness/session/time, original
 source attestation, family/split, brief/generator hashes, exact approved license
 and signed license evidence. No third-party source ingestion is allowed by the
 adopted plan. Tool notices/review are a separate required receipt.
