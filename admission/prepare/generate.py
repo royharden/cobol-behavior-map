@@ -73,7 +73,7 @@ def load_document(raw):
     try:
         return json.loads(raw.decode("utf-8"), object_pairs_hook=pairs,
                           parse_int=parse_integer, parse_float=reject, parse_constant=reject)
-    except (UnicodeError, json.JSONDecodeError) as exc:
+    except (UnicodeError, json.JSONDecodeError, RecursionError) as exc:
         raise AdmissionError("bad_value") from exc
 
 
