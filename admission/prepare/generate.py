@@ -65,10 +65,14 @@ def load_document(raw):
     def reject(_):
         raise AdmissionError("bad_value")
 
+    def parse_integer(value):
+        require(len(value.lstrip("-")) <= 20, "bad_value")
+        return int(value)
+
     require(type(raw) is bytes and not raw.startswith(b"\xef\xbb\xbf"), "bad_value")
     try:
         return json.loads(raw.decode("utf-8"), object_pairs_hook=pairs,
-                          parse_float=reject, parse_constant=reject)
+                          parse_int=parse_integer, parse_float=reject, parse_constant=reject)
     except (UnicodeError, json.JSONDecodeError) as exc:
         raise AdmissionError("bad_value") from exc
 
@@ -103,6 +107,7 @@ def validate_fields(document):
         match = re.fullmatch(r"(X|S9|9)\(([1-9][0-9]*)\)(?:V9\(([1-9][0-9]*)\))?",
                             field["pic"])
         require(match is not None, "bad_layout_or_sign")
+        require(len(match[2]) <= 4 and len(match[3] or "") <= 1, "field_limit")
         kind, digits, scale = match[1], int(match[2]), int(match[3] or 0)
         signed = kind == "S9"
         require((kind == "X" and not scale and digits <= 8192) or
@@ -215,7 +220,7 @@ def _generate(fields_document, recipe, excluded_hashes):
                                               for i, r in enumerate(rows)])
     candidates = [explicit(recipe)]
     boundaries = recipe["boundaries"]
-    require(type(boundaries) is list and len(boundaries) <= 128, "bad_boundary")
+    require(type(boundaries) is list, "bad_boundary")
     names = {f["name"]: f for f in fields}
     ids = set()
     for boundary in boundaries:
@@ -270,7 +275,7 @@ def generate(fields_document, recipe, excluded_hashes=None):
         raise error from exc
 
 
-def prepare(fields_document, loop_recipe, verification_recipe):
+def _prepare(fields_document, loop_recipe, verification_recipe):
     require(type(loop_recipe) is dict and type(verification_recipe) is dict, "bad_value")
     require(loop_recipe.get("partition") == "loop" and
             verification_recipe.get("partition") == "verification", "bad_seed")
@@ -280,3 +285,14 @@ def prepare(fields_document, loop_recipe, verification_recipe):
     verification = generate(fields_document, verification_recipe,
                             [c["case_sha256"] for c in loop["cases"]])
     return {"loop": loop, "verification": verification}
+
+
+def prepare(fields_document, loop_recipe, verification_recipe):
+    try:
+        return _prepare(fields_document, loop_recipe, verification_recipe)
+    except AdmissionError as error:
+        if not hasattr(error, "stage"):
+            error.stage = "pairing"
+            error.fields_sha256 = digest(fields_document)
+            error.recipe_sha256 = digest([loop_recipe, verification_recipe])
+        raise
