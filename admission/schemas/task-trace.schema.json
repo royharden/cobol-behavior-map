@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:m10:admission:task-trace:v1",
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "actual",
+        "fixture",
+        "static"
+      ]
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail"
+      ]
+    },
+    "oracle_receipt_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "valid_cases": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "faults": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "ordinary_observations": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "[0-9a-f]{64}"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "execution_log": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "[0-9a-f]{64}"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "task_id",
+    "source_sha256",
+    "session_id",
+    "mode",
+    "result",
+    "oracle_receipt_sha256",
+    "valid_cases",
+    "faults",
+    "ordinary_observations",
+    "execution_log"
+  ],
+  "additionalProperties": false
+}

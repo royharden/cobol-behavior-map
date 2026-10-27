@@ -1,0 +1,1058 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:m10:admission:go-record:v1",
+  "type": "object",
+  "properties": {
+    "gate_version": {
+      "type": "string",
+      "const": "m10-p2-v1"
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "authority_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "pins": {
+      "type": "object",
+      "properties": {
+        "subset": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "hazards": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "families": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "changes": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "shim_api": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "generator": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "compile_runner": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "compiler_source_package": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "image": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "compiler_build_version_info": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "libcob": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "default_conf": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "runtime_config": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "compiler_argv": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "quarantine_log": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "disputes": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "token_template_screen": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "custody_log": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "private_manifest": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "heldout_lock": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "subset",
+        "hazards",
+        "families",
+        "changes",
+        "provenance",
+        "shim_api",
+        "generator",
+        "compile_runner",
+        "compiler_source_package",
+        "image",
+        "compiler_build_version_info",
+        "libcob",
+        "default_conf",
+        "runtime_config",
+        "compiler_argv",
+        "quarantine_log",
+        "disputes",
+        "token_template_screen",
+        "custody_log",
+        "private_manifest",
+        "heldout_lock"
+      ],
+      "additionalProperties": false
+    },
+    "compiler": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "argv": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "trace_extra": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tz": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lc_all": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ambient_cob_cleared": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "version",
+        "argv",
+        "trace_extra",
+        "tz",
+        "lc_all",
+        "ambient_cob_cleared"
+      ],
+      "additionalProperties": false
+    },
+    "frozen_briefs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "[0-9a-f]{64}"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 3
+    },
+    "seal": {
+      "type": "object",
+      "properties": {
+        "manifest_sha256": {
+          "type": "string",
+          "pattern": "[0-9a-f]{64}"
+        },
+        "confirmed_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "roy_confirmation": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "manifest_sha256",
+        "confirmed_at",
+        "roy_confirmation"
+      ],
+      "additionalProperties": false
+    },
+    "families": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "split": {
+            "type": "string",
+            "enum": [
+              "dev",
+              "heldout"
+            ]
+          },
+          "domain": {
+            "type": "string",
+            "enum": [
+              "decimal",
+              "file_status",
+              "year_window"
+            ]
+          },
+          "program_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 3
+          },
+          "template_commitment": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "split",
+          "domain",
+          "program_ids",
+          "template_commitment"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 12
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "program_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "family_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "split": {
+            "type": "string",
+            "enum": [
+              "dev",
+              "heldout"
+            ]
+          },
+          "panel": {
+            "type": "string",
+            "enum": [
+              "original",
+              "changed"
+            ]
+          },
+          "source": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "fields": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "recipe": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "case_manifest": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "oracle_receipt": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "trace_receipt": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "loop_hashes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            },
+            "minItems": 32
+          },
+          "verification_hashes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            },
+            "minItems": 128
+          },
+          "oracle_runs": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "ordinary_equal": {
+            "type": "boolean"
+          },
+          "trace_equal": {
+            "type": "boolean"
+          },
+          "hazards": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "H1",
+                "H2",
+                "H3",
+                "H4",
+                "H5",
+                "H6",
+                "H7",
+                "H8"
+              ]
+            },
+            "minItems": 2
+          }
+        },
+        "required": [
+          "id",
+          "program_id",
+          "family_id",
+          "split",
+          "panel",
+          "source",
+          "fields",
+          "recipe",
+          "case_manifest",
+          "oracle_receipt",
+          "trace_receipt",
+          "loop_hashes",
+          "verification_hashes",
+          "oracle_runs",
+          "ordinary_equal",
+          "trace_equal",
+          "hazards"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 84
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "author_role": {
+            "type": "string",
+            "enum": [
+              "builder",
+              "custodian",
+              "verifier",
+              "roy"
+            ]
+          },
+          "callsign": {
+            "type": "string",
+            "minLength": 1
+          },
+          "session_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "harness": {
+            "type": "string",
+            "minLength": 1
+          },
+          "created_at": {
+            "type": "string",
+            "minLength": 1
+          },
+          "original_source_attestation": {
+            "type": "boolean"
+          },
+          "family_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "split": {
+            "type": "string",
+            "enum": [
+              "dev",
+              "heldout"
+            ]
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "code",
+              "data"
+            ]
+          },
+          "brief": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "generator_sha256": {
+            "type": "string",
+            "pattern": "[0-9a-f]{64}"
+          },
+          "license": {
+            "type": "string",
+            "minLength": 1
+          },
+          "license_signature": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "file",
+          "author_role",
+          "callsign",
+          "session_id",
+          "harness",
+          "created_at",
+          "original_source_attestation",
+          "family_id",
+          "split",
+          "kind",
+          "brief",
+          "generator_sha256",
+          "license",
+          "license_signature"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "original_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "[0-9a-f]{64}"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "checked_by": {
+            "type": "string",
+            "minLength": 1
+          },
+          "session_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "harness": {
+            "type": "string",
+            "minLength": 1
+          },
+          "timestamp": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_paths": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "[0-9a-f]{64}"
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          },
+          "signature": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "result": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "fail",
+              "pending"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "checked_by",
+          "session_id",
+          "harness",
+          "timestamp",
+          "evidence_paths",
+          "signature",
+          "result"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 12
+    }
+  },
+  "required": [
+    "gate_version",
+    "plan_sha256",
+    "authority_sha256",
+    "pins",
+    "compiler",
+    "frozen_briefs",
+    "seal",
+    "families",
+    "tasks",
+    "artifacts",
+    "original_artifacts",
+    "checks"
+  ],
+  "additionalProperties": false
+}

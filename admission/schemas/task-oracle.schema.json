@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:m10:admission:task-oracle:v1",
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "actual",
+        "fixture",
+        "static"
+      ]
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail"
+      ]
+    },
+    "case_manifest_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "generator_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "compiler_config_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "image_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "loop_hashes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "[0-9a-f]{64}"
+      },
+      "minItems": 32
+    },
+    "verification_hashes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "[0-9a-f]{64}"
+      },
+      "minItems": 128
+    },
+    "ordinary_runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ordinal": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "valid_cases": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "faults": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "observations": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "execution_log": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "ordinal",
+          "valid_cases",
+          "faults",
+          "observations",
+          "execution_log"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2
+    }
+  },
+  "required": [
+    "task_id",
+    "source_sha256",
+    "session_id",
+    "mode",
+    "result",
+    "case_manifest_sha256",
+    "generator_sha256",
+    "compiler_config_sha256",
+    "image_sha256",
+    "loop_hashes",
+    "verification_hashes",
+    "ordinary_runs"
+  ],
+  "additionalProperties": false
+}
