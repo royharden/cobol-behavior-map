@@ -1,0 +1,5 @@
+# Builder brief v1
+
+Preparation scope derives from PLAN-M10-v1 sections4–5/7. This brief does not appoint staff or lift P2. Read the six adjacent specs plus SHIM-API.md. Author only original dev/preparation within granted ownership; no held-out programs/recipes/answers, no independent-verifier role. Keep original-source sidecars and pending license status. Freeze standalone deterministic generator and exact fields/recipes after dev probes; later product wraps the frozen generator unchanged.
+
+Later authorized P1 work needs24 dev originals and24 changes across six families, >=2 reachable hazards/program, 6+ admission/24+ shim probes, repeated pinned oracle observations and trace parity. Expected answers come only from compiled originals/changes; never shim/parser/translator/model or hand-written Python. All candidate code is hostile, never host-executed. Current Dirty preparation allows specifications/source/static inspection only; runtime, installs, Docker, network/models and product src remain blocked. Report incomplete probes/licenses/custody as pending. Supply compiler/config/notices/dev originality evidence only when actually obtained.
