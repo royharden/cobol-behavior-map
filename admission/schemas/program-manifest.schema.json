@@ -1,0 +1,318 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:m10:admission:program-manifest:v1",
+  "type": "object",
+  "properties": {
+    "manifest_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "program_id": {
+      "type": "string",
+      "pattern": "[a-z][a-z0-9_-]{0,63}"
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "family_id": {
+      "type": "string",
+      "pattern": "[a-z][a-z0-9_-]{0,63}"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "dev",
+        "heldout"
+      ]
+    },
+    "input_fields_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "output_fields_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "allowed_return_codes": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 255
+      },
+      "minItems": 1
+    },
+    "loops": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "object",
+            "properties": {
+              "file": {
+                "type": "string",
+                "minLength": 1
+              },
+              "line": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "byte_start": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "byte_end": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "file",
+              "line",
+              "byte_start",
+              "byte_end"
+            ],
+            "additionalProperties": false
+          },
+          "paragraph": {
+            "type": "string",
+            "pattern": "[A-Z][A-Z0-9-]{0,29}"
+          },
+          "induction_field": {
+            "type": "string",
+            "pattern": "[A-Z][A-Z0-9-]{0,29}"
+          },
+          "initial": {
+            "type": "string",
+            "pattern": "[+-]?[0-9]+"
+          },
+          "step": {
+            "type": "string",
+            "pattern": "[+-]?[0-9]+"
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "=",
+              "<>",
+              "<",
+              "<=",
+              ">",
+              ">="
+            ]
+          },
+          "limit": {
+            "type": "string",
+            "pattern": "[+-]?[0-9]+"
+          },
+          "max_iterations": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 64
+          },
+          "proof": {
+            "type": "object",
+            "properties": {
+              "initialization_span": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "line": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "byte_start": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "byte_end": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                },
+                "required": [
+                  "file",
+                  "line",
+                  "byte_start",
+                  "byte_end"
+                ],
+                "additionalProperties": false
+              },
+              "update_spans": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "file": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "line": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "byte_start": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "byte_end": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "file",
+                    "line",
+                    "byte_start",
+                    "byte_end"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1
+              },
+              "exit_span": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "line": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "byte_start": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "byte_end": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                },
+                "required": [
+                  "file",
+                  "line",
+                  "byte_start",
+                  "byte_end"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "initialization_span",
+              "update_spans",
+              "exit_span"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "target",
+          "paragraph",
+          "induction_field",
+          "initial",
+          "step",
+          "relation",
+          "limit",
+          "max_iterations",
+          "proof"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "hazards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "hazard_id": {
+            "type": "string",
+            "enum": [
+              "H1",
+              "H2",
+              "H3",
+              "H4",
+              "H5",
+              "H6",
+              "H7",
+              "H8"
+            ]
+          },
+          "target": {
+            "type": "object",
+            "properties": {
+              "file": {
+                "type": "string",
+                "minLength": 1
+              },
+              "line": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "byte_start": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "byte_end": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "file",
+              "line",
+              "byte_start",
+              "byte_end"
+            ],
+            "additionalProperties": false
+          },
+          "reachability_recipe_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "[a-z][a-z0-9_-]{0,63}"
+            },
+            "minItems": 1
+          },
+          "observable": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "hazard_id",
+          "target",
+          "reachability_recipe_ids",
+          "observable"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2
+    },
+    "provenance_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    }
+  },
+  "required": [
+    "manifest_version",
+    "program_id",
+    "source_sha256",
+    "family_id",
+    "split",
+    "input_fields_sha256",
+    "output_fields_sha256",
+    "allowed_return_codes",
+    "loops",
+    "hazards",
+    "provenance_sha256"
+  ],
+  "additionalProperties": false
+}

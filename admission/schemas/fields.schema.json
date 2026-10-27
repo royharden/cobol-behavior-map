@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:m10:admission:fields:v1",
+  "type": "object",
+  "properties": {
+    "manifest_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "program_id": {
+      "type": "string",
+      "pattern": "[a-z][a-z0-9_-]{0,63}"
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "record_width": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 8192
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "[A-Z][A-Z0-9-]{0,29}"
+          },
+          "pic": {
+            "type": "string",
+            "pattern": "(?:X\\([1-9][0-9]*\\)|S?9\\([1-9][0-9]*\\)(?:V9\\([1-9][0-9]*\\))?)"
+          },
+          "usage": {
+            "type": "string",
+            "const": "DISPLAY"
+          },
+          "sign": {
+            "type": "string",
+            "enum": [
+              "none",
+              "leading_separate"
+            ]
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "scale": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4
+          }
+        },
+        "required": [
+          "name",
+          "pic",
+          "usage",
+          "sign",
+          "offset",
+          "width",
+          "scale"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 32
+    }
+  },
+  "required": [
+    "manifest_version",
+    "program_id",
+    "source_sha256",
+    "record_width",
+    "fields"
+  ],
+  "additionalProperties": false
+}

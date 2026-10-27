@@ -14,10 +14,10 @@ from datetime import datetime
 from pathlib import Path, PurePosixPath
 from typing import Any
 
-VERSION = "m10-p2-v1"
+VERSION = "m10-p2-v2"
 PLAN = "552ddcb9121deb21489a903eaf77979b8068231a94a0fb714b948094c8d4dbed"
 SHA = re.compile(r"[0-9a-f]{64}\Z")
-DOMAINS = {"decimal", "file_status", "year_window"}
+DOMAINS = {"decimal_fees", "sequential_status", "year_window"}
 # Every requirement needs its own actual receipt; author fixtures are never evidence.
 CHECKS = {
     "compiler_config_notices": "builder",
@@ -66,14 +66,20 @@ def strict_json(raw: bytes) -> Any:
     def nonfinite(value: str) -> None:
         raise Invalid(f"nonfinite number: {value}")
 
-    return json.loads(raw, object_pairs_hook=pairs, parse_constant=nonfinite)
+    need(not raw.startswith(b"\xef\xbb\xbf"), "UTF-8 BOM forbidden")
+    return json.loads(raw.decode("utf-8"), object_pairs_hook=pairs,
+                      parse_constant=nonfinite, parse_float=nonfinite)
 
 
 def shape(value: Any, schema: dict[str, Any], at: str = "record") -> None:
     """Closed, deliberately small subset used by our bundled JSON schemas only."""
     types = {"object": dict, "array": list, "string": str, "integer": int,
-             "boolean": bool}
-    need(type(value) is types[schema["type"]], f"{at}: wrong type")
+             "boolean": bool, "null": type(None)}
+    declared = schema["type"]
+    allowed = declared if isinstance(declared, list) else [declared]
+    need(type(value) in [types[name] for name in allowed], f"{at}: wrong type")
+    if value is None:
+        return
     if "const" in schema:
         need(value == schema["const"], f"{at}: wrong constant")
     if "enum" in schema:
@@ -88,14 +94,18 @@ def shape(value: Any, schema: dict[str, Any], at: str = "record") -> None:
             shape(item, properties[key], f"{at}.{key}")
     elif isinstance(value, list):
         need(len(value) >= schema.get("minItems", 0), f"{at}: too few items")
+        need(len(value) <= schema.get("maxItems", len(value)), f"{at}: too many items")
         for index, item in enumerate(value):
             shape(item, schema["items"], f"{at}[{index}]")
     elif isinstance(value, str):
-        need(bool(value.strip()), f"{at}: blank value")
+        need(len(value) >= schema.get("minLength", 0), f"{at}: short string")
+        if schema.get("minLength", 1) > 0:
+            need(bool(value.strip()), f"{at}: blank value")
         if "pattern" in schema:
             need(re.fullmatch(schema["pattern"], value) is not None, f"{at}: pattern")
     elif type(value) is int:
         need(value >= schema.get("minimum", 0), f"{at}: below minimum")
+        need(value <= schema.get("maximum", value), f"{at}: above maximum")
 
 
 def stamp(value: str) -> None:
@@ -146,6 +156,11 @@ def evaluate(root: Path, record_path: str, authority_path: str,
         shape(value, schema)
         return value
 
+    def document(ref: dict[str, str], name: str) -> Any:
+        value = strict_json(reference(ref))
+        shape(value, strict_json((schema_root / f"{name}.schema.json").read_bytes()))
+        return value
+
     def authority_load() -> Any:
         need(SHA.fullmatch(authority_sha256) is not None, "externally approved digest required")
         raw = read(authority_path)
@@ -163,6 +178,7 @@ def evaluate(root: Path, record_path: str, authority_path: str,
             and record["plan_sha256"] == authority["plan_sha256"] == PLAN
             and record["gate_version"] == VERSION, "authority/plan/version mismatch"))
         actors = {actor["role"]: actor for actor in authority["actors"]}
+        authors = {author["session_id"]: author for author in authority["authors"]}
 
         def roles() -> None:
             need(len(actors) == len(authority["actors"]) == 4
@@ -174,10 +190,22 @@ def evaluate(root: Path, record_path: str, authority_path: str,
                  "custodian requires different harness")
             need(actors["builder"]["session_id"] in authority["author_sessions"],
                  "builder must be disclosed in author sessions")
+            need(len(authors) == len(authority["authors"])
+                 and len({a["actor_id"] for a in authors.values()}) == len(authors)
+                 and len(set(authority["author_sessions"])) == len(authority["author_sessions"])
+                 and set(authors) == set(authority["author_sessions"]), "author profile/session inventory mismatch")
+            builder = actors["builder"]
+            need(all(authors[builder["session_id"]][k] == builder[k]
+                     for k in ("actor_id", "session_id", "harness", "brief", "lineage_sessions")),
+                 "builder author profile differs from appointment")
+            author_lineage = {session for author in authors.values()
+                              for session in [author["session_id"], *author["lineage_sessions"]]}
             for role in ("custodian", "verifier"):
                 actor = actors[role]
+                need(actor["actor_id"] not in {a["actor_id"] for a in authors.values()},
+                     "custodian/verifier identity is a builder author")
                 need(not (set(actor["lineage_sessions"] + [actor["session_id"]])
-                          & set(authority["author_sessions"])), "custodian/verifier has author lineage")
+                          & author_lineage), "custodian/verifier has author lineage")
                 need(not (set(actor["lineage_sessions"] + [actor["session_id"]])
                           & set(actors["builder"]["lineage_sessions"] + [actors["builder"]["session_id"]])),
                      "builder/child/fork cannot be independent")
@@ -187,6 +215,8 @@ def evaluate(root: Path, record_path: str, authority_path: str,
             for actor in actors.values():
                 reference(actor["appointment"])
                 reference(actor["brief"])
+            for author in authors.values():
+                reference(author["brief"])
             reference(authority["roy_signature"])
             stamp(authority["approved_at"])
 
@@ -206,6 +236,7 @@ def evaluate(root: Path, record_path: str, authority_path: str,
         def brief_binding() -> None:
             frozen = [(ref["path"], ref["sha256"]) for ref in record["frozen_briefs"]]
             approved = {(actor["brief"]["path"], actor["brief"]["sha256"]) for actor in actors.values()}
+            approved.update((author["brief"]["path"], author["brief"]["sha256"]) for author in authors.values())
             need(len(frozen) == len(set(frozen)) and set(frozen) == approved,
                  "frozen briefs must exactly match approved actor briefs without duplicates")
 
@@ -219,37 +250,48 @@ def evaluate(root: Path, record_path: str, authority_path: str,
             reference(record["seal"]["roy_confirmation"])
 
         inspect("seal", seal)
+        family_records = []
+        for envelope in record["families"]:
+            metadata = envelope["metadata"]
+            family_records.append({**metadata, "template_commitment": envelope["template_commitment"]})
+            def family_author(envelope: Any = envelope, metadata: Any = metadata) -> None:
+                reference(envelope["author_provenance"])
+                need(metadata["author_provenance_sha256"] == envelope["author_provenance"]["sha256"],
+                     "family author provenance commitment mismatch")
+            inspect("family_author_provenance", family_author)
         family_ids: set[str] = set()
         for split, programs in (("dev", 4), ("heldout", 3)):
             def families(split: str = split, programs: int = programs) -> None:
-                selected = [f for f in record["families"] if f["split"] == split]
+                selected = [f for f in family_records if f["split"] == split]
                 need(len(selected) == 6, f"{split}: six families required")
                 for domain in DOMAINS:
                     need(sum(f["domain"] == domain for f in selected) == 2, "two families per domain")
                 for family in selected:
-                    need(family["id"] not in family_ids, "duplicate family")
-                    family_ids.add(family["id"])
+                    need(family["family_id"] not in family_ids, "duplicate family")
+                    family_ids.add(family["family_id"])
+                    need(len(set(family["hazard_ids"])) >= 2, "family requires two distinct hazard IDs")
                     need(len(set(family["program_ids"])) == programs
                          and len(family["program_ids"]) == programs, "program count per family")
                     reference(family["template_commitment"])
             inspect(f"families:{split}", families)
 
-        tasks = record["tasks"]
+        tasks = [{**envelope, **envelope["binding"]} for envelope in record["tasks"]]
         inspect("task_inventory", lambda: need(
-            len(tasks) == 84 and len({t["id"] for t in tasks}) == 84,
+            len(tasks) == 84 and len({t["task_id"] for t in tasks}) == 84,
             "exactly 48 dev and 36 heldout original/changed task IDs required"))
         declared_programs: set[str] = set()
-        for family in record["families"]:
+        for family in family_records:
             for program in family["program_ids"]:
                 def panels(program: str = program, family: Any = family) -> None:
                     need(program not in declared_programs, "program appears in multiple families")
                     declared_programs.add(program)
                     pair = [t for t in tasks if t["program_id"] == program]
-                    need(len(pair) == 2 and {t["panel"] for t in pair} == {"original", "changed"},
+                    need(len(pair) == 2 and {t["panel"] for t in pair} == {"unchanged", "change"},
                          "original and changed task required per program")
-                    need(all(t["family_id"] == family["id"] and t["split"] == family["split"] for t in pair),
+                    need(all(t["family_id"] == family["family_id"] and t["split"] == family["split"] for t in pair),
                          "task split/family mismatch")
-                    need(pair[0]["source"]["sha256"] != pair[1]["source"]["sha256"], "change unchanged")
+                    need(pair[0]["oracle_source"]["sha256"] != pair[1]["oracle_source"]["sha256"], "change unchanged")
+                    need(pair[0]["original_source"] == pair[1]["original_source"], "panel original-source mismatch")
                 inspect(f"panels:{program}", panels)
         inspect("orphan_tasks", lambda: need(all(t["program_id"] in declared_programs for t in tasks), "orphan task"))
 
@@ -262,12 +304,66 @@ def evaluate(root: Path, record_path: str, authority_path: str,
                 need(task["oracle_runs"] == 2 and task["ordinary_equal"] and task["trace_equal"],
                      "repeat oracle/trace equality required")
                 need(len(set(task["hazards"])) >= 2, "two reachable hazards required")
-                for name in ("source", "fields", "recipe", "case_manifest", "oracle_receipt", "trace_receipt"):
+                for name in ("original_source", "oracle_source", "input_fields", "output_fields", "recipe",
+                             "program_manifest", "case_manifest", "oracle_receipt", "trace_receipt"):
                     reference(task[name])
+                need(task["original_sha256"] == task["original_source"]["sha256"]
+                     and task["oracle_source_sha256"] == task["oracle_source"]["sha256"]
+                     and task["fields_sha256"] == task["input_fields"]["sha256"]
+                     and task["recipe_sha256"] == task["recipe"]["sha256"]
+                     and task["generator_sha256"] == pins["generator"]["sha256"], "task binding hash mismatch")
+                manifest = document(task["program_manifest"], "program-manifest")
+                need(all(manifest[k] == task[k] for k in ("program_id", "family_id", "split"))
+                     and manifest["source_sha256"] == task["oracle_source_sha256"]
+                     and manifest["input_fields_sha256"] == task["input_fields"]["sha256"]
+                     and manifest["output_fields_sha256"] == task["output_fields"]["sha256"],
+                     "ProgramManifest/task/field binding mismatch")
+                need(manifest["allowed_return_codes"] == sorted(set(manifest["allowed_return_codes"]))
+                     and 0 in manifest["allowed_return_codes"], "invalid declared return-code set")
+                need(set(task["hazards"]) == {h["hazard_id"] for h in manifest["hazards"]}, "manifest hazard mismatch")
+                source = reference(task["oracle_source"])
+                def span(target: Any) -> None:
+                    need(target["file"] == task["oracle_source"]["path"]
+                         and 0 <= target["byte_start"] < target["byte_end"] <= len(source)
+                         and target["line"] == source[:target["byte_start"]].count(b"\n") + 1,
+                         "manifest span does not resolve against exact oracle source")
+                targets = []
+                for loop_entry in manifest["loops"]:
+                    span(loop_entry["target"])
+                    targets.append(loop_entry["target"]["byte_start"])
+                    need(int(loop_entry["step"]) != 0, "zero induction step")
+                    proof = loop_entry["proof"]
+                    for target in [proof["initialization_span"], *proof["update_spans"], proof["exit_span"]]:
+                        span(target)
+                need(targets == sorted(set(targets)), "loop targets must be unique in source order")
+                for hazard in manifest["hazards"]:
+                    span(hazard["target"])
+                if task["panel"] == "unchanged":
+                    need(task["oracle_source"] == task["original_source"]
+                         and task["change_sha256"] is None and task["change"] is None, "unchanged task has change")
+                else:
+                    need(task["change"] is not None and task["change_sha256"] == task["change"]["sha256"],
+                         "change panel requires structured edit artifact")
+                    change = document(task["change"], "change")
+                    need(change["task_id"] == task["task_id"] and change["original_sha256"] == task["original_sha256"]
+                         and change["changed_sha256"] == task["oracle_source_sha256"], "structured change binding mismatch")
+                    original = reference(task["original_source"])
+                    target = change["target"]
+                    need(target["file"] == task["original_source"]["path"]
+                         and 0 <= target["byte_start"] < target["byte_end"] <= len(original)
+                         and target["line"] == original[:target["byte_start"]].count(b"\n") + 1,
+                         "change target does not resolve against original source")
+                    need(type(change["before"]) is type(change["after"]) and change["before"] != change["after"],
+                         "change types differ or edit is a no-op")
+                    need((type(change["before"]) is bool) == (change["operation"] == "set_rounded"), "wrong edit value type")
+                for name in ("input_fields", "output_fields"):
+                    fields = document(task[name], "fields")
+                    need(fields["program_id"] == task["program_id"]
+                         and fields["source_sha256"] == task["oracle_source_sha256"], "field document source mismatch")
                 observed = strict_json(reference(task["oracle_receipt"]))
                 shape(observed, strict_json((schema_root / "task-oracle.schema.json").read_bytes()))
-                need(observed["task_id"] == task["id"]
-                     and observed["source_sha256"] == task["source"]["sha256"]
+                need(observed["task_id"] == task["task_id"]
+                     and observed["source_sha256"] == task["oracle_source"]["sha256"]
                      and observed["case_manifest_sha256"] == task["case_manifest"]["sha256"]
                      and observed["generator_sha256"] == pins["generator"]["sha256"]
                      and observed["compiler_config_sha256"] == pins["default_conf"]["sha256"]
@@ -289,7 +385,7 @@ def evaluate(root: Path, record_path: str, authority_path: str,
                     reference(run["execution_log"])
                 trace = strict_json(reference(task["trace_receipt"]))
                 shape(trace, strict_json((schema_root / "task-trace.schema.json").read_bytes()))
-                need(trace["task_id"] == task["id"] and trace["source_sha256"] == task["source"]["sha256"]
+                need(trace["task_id"] == task["task_id"] and trace["source_sha256"] == task["oracle_source"]["sha256"]
                      and trace["oracle_receipt_sha256"] == task["oracle_receipt"]["sha256"]
                      and trace["session_id"] == expected_actor["session_id"]
                      and trace["mode"] == "actual" and trace["result"] == "pass"
@@ -298,7 +394,7 @@ def evaluate(root: Path, record_path: str, authority_path: str,
                      "trace/untraced ordinary observations mismatch")
                 reference(trace["ordinary_observations"])
                 reference(trace["execution_log"])
-            inspect(f"task:{task['id']}", task_check)
+            inspect(f"task:{task['task_id']}", task_check)
 
         artifact_paths: set[str] = set()
         provenance_by_path: dict[str, Any] = {}
@@ -308,24 +404,47 @@ def evaluate(root: Path, record_path: str, authority_path: str,
                 need(path not in artifact_paths, "duplicate provenance artifact")
                 artifact_paths.add(path)
                 reference(artifact["file"])
-                actor = actors[artifact["author_role"]]
-                need(artifact["author_role"] == ("builder" if artifact["split"] == "dev" else "custodian"),
-                     "artifact must be authored by assigned split owner")
-                need(artifact["session_id"] == actor["session_id"]
-                     and artifact["harness"] == actor["harness"]
-                     and artifact["callsign"] == actor["actor_id"], "provenance author mismatch")
-                need(artifact["original_source_attestation"] is True, "original-source attestation absent")
-                need(artifact["license"] == authority["licenses"][artifact["kind"]], "unapproved artifact license")
-                reference(artifact["license_signature"])
-                reference(artifact["brief"])
-                need(artifact["brief"] == actor["brief"], "artifact brief differs from approved author brief")
-                need(artifact["generator_sha256"] == pins["generator"]["sha256"], "generator mismatch")
-                need(any(f["id"] == artifact["family_id"] and f["split"] == artifact["split"]
-                         for f in record["families"]), "artifact family/split mismatch")
-                stamp(artifact["created_at"])
-                provenance_by_path[path] = artifact
+                sidecar = document(artifact["provenance"], "provenance")
+                need(sidecar["artifact_path"] == path and sidecar["artifact_sha256"] == artifact["file"]["sha256"],
+                     "sidecar does not bind exact artifact bytes")
+                role = "custodian" if sidecar["split"] == "heldout" else "builder"
+                actor = actors["custodian"] if role == "custodian" else authors[sidecar["author_session_id"]]
+                need(sidecar["author_session_id"] == actor["session_id"]
+                     and sidecar["author_harness"] == actor["harness"]
+                     and sidecar["author_callsign"] == actor["actor_id"], "provenance author mismatch")
+                need(sidecar["brief_sha256"] == actor["brief"]["sha256"], "unapproved provenance brief")
+                need(sidecar["generator_sha256"] in (None, pins["generator"]["sha256"]), "generator mismatch")
+                if sidecar["artifact_kind"] == "input":
+                    need(sidecar["generator_sha256"] == pins["generator"]["sha256"], "generated input needs generator pin")
+                if sidecar["split"] == "shared":
+                    need(sidecar["family_id"] is None, "shared instrument has family")
+                else:
+                    need(any(f["family_id"] == sidecar["family_id"] and f["split"] == sidecar["split"]
+                             for f in family_records), "artifact family/split mismatch")
+                if sidecar["source_sha256"] is None:
+                    need(sidecar["split"] == "shared" and sidecar["artifact_kind"] == "specification",
+                         "only independent shared specification may omit source hash")
+                stamp(sidecar["created_at"])
+                created = datetime.fromisoformat(sidecar["created_at"].replace("Z", "+00:00"))
+                need(created.utcoffset().total_seconds() == 0, "provenance timestamp must be UTC")
+                for ref in sidecar["evidence_paths"]:
+                    reference(ref)
+                provenance_by_path[path] = {"file": artifact["file"], "provenance": artifact["provenance"],
+                                            "sidecar": sidecar, "role": role}
+                if sidecar["license_status"] == "pending":
+                    need(sidecar["license_id"] is None and sidecar["license_approval_id"] is None,
+                         "pending license must not invent approval")
+                    raise Pending("license_pending: Roy has not approved artifact use")
+                need(sidecar["license_status"] == "approved", "license denied")
+                license_class = artifact["license_class"]
+                need(sidecar["license_id"] == authority["licenses"][license_class]
+                     and sidecar["license_approval_id"] == authority["license_approval_ids"][license_class]
+                     and bool(sidecar["evidence_paths"]), "unapproved license/decision evidence")
             inspect("provenance", artifact_check)
-        required_artifacts = {t[k]["path"] for t in tasks for k in ("source", "fields", "recipe", "case_manifest")}
+        task_artifacts = ("original_source", "oracle_source", "input_fields", "output_fields", "recipe",
+                          "program_manifest", "case_manifest")
+        required_artifacts = {t[k]["path"] for t in tasks for k in task_artifacts}
+        required_artifacts.update(t["change"]["path"] for t in tasks if t["change"] is not None)
         required_artifacts.update(ref["path"] for ref in record["original_artifacts"])
         inspect("provenance_coverage", lambda: need(required_artifacts <= artifact_paths,
                                                    "missing per-artifact provenance"))
@@ -338,12 +457,25 @@ def evaluate(root: Path, record_path: str, authority_path: str,
         for task in tasks:
             def task_provenance(task: Any = task) -> None:
                 role = "builder" if task["split"] == "dev" else "custodian"
-                for name in ("source", "fields", "recipe", "case_manifest"):
+                for name in task_artifacts + (("change",) if task["change"] is not None else ()):
                     artifact = provenance_by_path[task[name]["path"]]
-                    need(artifact["file"] == task[name] and artifact["split"] == task["split"]
-                         and artifact["family_id"] == task["family_id"]
-                         and artifact["author_role"] == role, "task provenance split/family/author/digest mismatch")
-            inspect(f"task_provenance:{task['id']}", task_provenance)
+                    sidecar = artifact["sidecar"]
+                    need(artifact["file"] == task[name] and sidecar["split"] == task["split"]
+                         and sidecar["family_id"] == task["family_id"]
+                         and artifact["role"] == role, "task provenance split/family/author/digest mismatch")
+                    source_hash = task["original_sha256"] if name in ("original_source", "change") else task["oracle_source_sha256"]
+                    need(sidecar["source_sha256"] == source_hash, "task artifact source hash mismatch")
+                source_entry = provenance_by_path[task["oracle_source"]["path"]]
+                manifest = document(task["program_manifest"], "program-manifest")
+                need(manifest["provenance_sha256"] == source_entry["provenance"]["sha256"],
+                     "ProgramManifest source-sidecar commitment mismatch")
+                source_sidecar = source_entry["sidecar"]
+                need(source_sidecar["artifact_kind"] == ("source" if task["panel"] == "unchanged" else "changed_source"),
+                     "wrong original/changed source artifact kind")
+                if task["panel"] == "change":
+                    need(source_sidecar["parent_artifact_sha256"] == task["original_sha256"],
+                         "changed source parent differs from original")
+            inspect(f"task_provenance:{task['task_id']}", task_provenance)
 
         items = {item["id"]: item for item in record["checks"]}
         inspect("check_inventory", lambda: need(len(items) == len(record["checks"])

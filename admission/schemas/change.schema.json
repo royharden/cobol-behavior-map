@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:m10:admission:change:v1",
+  "type": "object",
+  "properties": {
+    "manifest_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "[a-z][a-z0-9_-]{0,63}"
+    },
+    "original_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "target": {
+      "type": "object",
+      "properties": {
+        "file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "byte_start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "byte_end": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "node_kind": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "file",
+        "line",
+        "byte_start",
+        "byte_end",
+        "node_kind"
+      ],
+      "additionalProperties": false
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "replace_numeric_literal",
+        "replace_comparator",
+        "set_rounded",
+        "replace_alpha_literal"
+      ]
+    },
+    "before": {
+      "type": [
+        "string",
+        "boolean"
+      ],
+      "minLength": 0
+    },
+    "after": {
+      "type": [
+        "string",
+        "boolean"
+      ],
+      "minLength": 0
+    },
+    "prose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "changed_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    }
+  },
+  "required": [
+    "manifest_version",
+    "task_id",
+    "original_sha256",
+    "target",
+    "operation",
+    "before",
+    "after",
+    "prose",
+    "changed_sha256"
+  ],
+  "additionalProperties": false
+}

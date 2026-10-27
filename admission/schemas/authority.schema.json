@@ -1,11 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:m10:admission:authority:v1",
+  "$id": "urn:m10:admission:authority:v2",
   "type": "object",
   "properties": {
     "gate_version": {
       "type": "string",
-      "const": "m10-p2-v1"
+      "const": "m10-p2-v2"
     },
     "plan_sha256": {
       "type": "string",
@@ -165,6 +165,86 @@
         "minLength": 1
       },
       "minItems": 3
+    },
+    "license_approval_ids": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "data": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "code",
+        "data"
+      ],
+      "additionalProperties": false
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "actor_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "session_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "harness": {
+            "type": "string",
+            "enum": [
+              "Codex",
+              "Claude",
+              "Cursor",
+              "Grok",
+              "Antigravity",
+              "Human"
+            ]
+          },
+          "brief": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "lineage_sessions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "actor_id",
+          "session_id",
+          "harness",
+          "brief",
+          "lineage_sessions"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
     }
   },
   "required": [
@@ -177,7 +257,9 @@
     "licenses",
     "seal_manifest_sha256",
     "seal_confirmed_at",
-    "selected_dev_programs"
+    "selected_dev_programs",
+    "license_approval_ids",
+    "authors"
   ],
   "additionalProperties": false
 }
