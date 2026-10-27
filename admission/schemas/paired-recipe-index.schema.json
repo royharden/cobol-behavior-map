@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:m10:admission:paired-recipe-index:v1",
+  "type": "object",
+  "properties": {
+    "manifest_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "[a-z][a-z0-9_-]{0,63}"
+    },
+    "program_id": {
+      "type": "string",
+      "pattern": "[a-z][a-z0-9_-]{0,63}"
+    },
+    "family_id": {
+      "type": "string",
+      "pattern": "[a-z][a-z0-9_-]{0,63}"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "dev",
+        "heldout"
+      ]
+    },
+    "panel": {
+      "type": "string",
+      "enum": [
+        "unchanged",
+        "change"
+      ]
+    },
+    "corpus_version": {
+      "type": "string",
+      "pattern": "[a-z][a-z0-9_-]{0,63}"
+    },
+    "fields_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "recipes": {
+      "type": "object",
+      "properties": {
+        "loop": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        },
+        "verification": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "[0-9a-f]{64}"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "loop",
+        "verification"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "manifest_version",
+    "task_id",
+    "program_id",
+    "family_id",
+    "split",
+    "panel",
+    "corpus_version",
+    "fields_sha256",
+    "recipes"
+  ],
+  "additionalProperties": false
+}

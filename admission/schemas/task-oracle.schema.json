@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:m10:admission:task-oracle:v1",
+  "$id": "urn:m10:admission:task-oracle:v3",
   "type": "object",
   "properties": {
     "task_id": {
@@ -39,10 +39,6 @@
       "pattern": "[0-9a-f]{64}"
     },
     "compiler_config_sha256": {
-      "type": "string",
-      "pattern": "[0-9a-f]{64}"
-    },
-    "image_sha256": {
       "type": "string",
       "pattern": "[0-9a-f]{64}"
     },
@@ -126,6 +122,18 @@
         "additionalProperties": false
       },
       "minItems": 2
+    },
+    "observation_framing_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "default_conf_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
+    },
+    "base_image_pin_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
     }
   },
   "required": [
@@ -137,10 +145,12 @@
     "case_manifest_sha256",
     "generator_sha256",
     "compiler_config_sha256",
-    "image_sha256",
     "loop_hashes",
     "verification_hashes",
-    "ordinary_runs"
+    "ordinary_runs",
+    "observation_framing_sha256",
+    "default_conf_sha256",
+    "base_image_pin_sha256"
   ],
   "additionalProperties": false
 }

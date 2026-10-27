@@ -54,3 +54,13 @@ oracle counts or independent reruns. The singular task recipe commitment's
 partition packaging and actual runner-to-gate receipt production remain
 pending producer seams, owned by INT/contract owners before real admission.
 No execution adapter or synthetic pass receipt is provided.
+
+R3 closes the paired-index meaning under accepted DL1 edition36d4f09 and INT r4:
+index/task fields and refs are raw artifact commitments; each native recipe's
+fields commitment and its generation receipt's document commitments are canonical.
+Gate eligibility verifies both namespaces separately and recipe provenance, without
+adding native recipe keys, generating inputs or treating metadata as actual evidence.
+Source comparison with accepted producerbe2a409 and historical runnerc01644f is in
+RUNNER-TRANSPORT.md. Required actual framing, two ordinary/two trace repetitions,
+independent receipts, signatures, licenses/staff/seal all remain pending. DL3 owns
+generation-receipt validation; this gate does not duplicate that checker or execute it.

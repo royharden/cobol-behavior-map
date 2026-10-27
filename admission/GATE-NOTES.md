@@ -1,171 +1,159 @@
-# P2 admission gate, version m10-p2-v2
+# P2 admission gate, protocol m10-p2-v3
 
-Construction only. **P2 remains PENDING; P3–P15 blocked.** No license,
-custodian/verifier appointment, private seal or actual execution receipt has
-been provided. This package supplies no GO record, corpus, hidden data or
-expected answers. Source stays private pending Roy's R03 license decision.
+Construction only; runtime unverified. **P2 remains PENDING; P3+ blocked.** No
+license, independent staff, seal, corpus, expected answer or execution receipt
+is supplied here. Original source stays private pending R03. Adopted plan-body
+SHA256: 552ddcb9121deb21489a903eaf77979b8068231a94a0fb714b948094c8d4dbed.
 
-Authority: promoted PLAN-M10-v1 sections 4–5 and section 10 P1/P2; plan-body
-SHA256 552ddcb9121deb21489a903eaf77979b8068231a94a0fb714b948094c8d4dbed.
-DL4 owns the gate/schema/custody paths only. r2 reconciles the DL1 contracts at
-05a1d0c846b9a40a9bf4b2a0efd67e3865c715f6 after fast-forwarding the assigned lane
-from local master c01644fc7058c1c2806c9b8820f4642dfafb9e44. The additional accepted
-master files were DL3 preparation files; this reconciliation did not inspect or
-modify their source. No product implementation or new custody role is granted.
+DL4 r3 implements RULING-task-recipe-index-r4.md in its owned paths, preserving
+accepted r2 d315613. The lane started clean from accepted master4975609, then
+fast-forwarded current accepted specs36d4f09 and producerbe2a409 while retaining
+its owned source delta. Pre-r3 transport work was preserved as a patch and six
+exact snapshots in ignored .agent-work/receipts/DL4-r3-intake; no reset/deletion.
+Only the explicitly granted producer source and historical runner c01644f were
+inspected; no generator/adapter/runner was imported or executed.
 
-## Interface and authority
+Current accepted spec LF edition IDs are GENERATOR
+706962cfa01ebe22892e8862260db1b8e4535d38d0e665af1c8b85bc5d4100fd and FAMILY
+f780695503c0f5764ba6f05737ff6d8c2466f767c847466efc4a1a6496afe483. These identify
+editions. Actual staged artifact hashes remain hashes of actual read bytes;
+no LF/CRLF or canonical digest substitutes for them.
+
+## API and authority
 
 `evaluate(root: Path, record_path: str, authority_path: str,
-authority_sha256: str) -> dict` reads local evidence and returns gate_version,
-status, issues and the structural-claim limitation. No CLI, product import,
-import-time IO, command execution, signing, evidence write or network access.
-Use only later in an authorized custodian environment: the evidence root holds
-private commitments/receipts that builders must not use for held-out rehearsal.
+authority_sha256: str) -> dict` reads evidence and returns gate_version/status/
+issues/recipe_bindings/claim. It writes nothing, signs nothing and runs no
+commands. No CLI, product dependency, import-time IO or network. Use only later
+in an authorized custodian environment, never as a builder held-out rehearsal.
 
-Only relative forward-slash paths resolved beneath that root are accepted.
-Artifact hashes always bind actual read bytes. LF Git blob hashes and CRLF
-checkout hashes are distinct: never normalize a file before comparing its raw
-artifact SHA256. Canonical JSON hashes and CaseBundle hashes are other, separately
-named commitments. They never substitute for raw artifact hashes.
+File references use printable ASCII relative forward-slash paths under the
+existing evidence root. Empty/dot/dot-dot components, drive/UNC/absolute paths,
+backslashes, controls, linked components/junctions and resolved escapes reject.
+Paired native recipe paths resolve distinctly and raw digests differ. Staging
+must be immutable; hash/path checks do not protect concurrent host mutation.
 
-Caller must independently authenticate Roy's approved authority and supply its
-digest out of band. Authority binds gate version v2, the adopted plan, four
-separate sessions/identities, appointments, approved briefs, licenses and their
-license_approval_ids, deterministic three-dev selection and exact seal/date.
-All disclosed builder/product/preparation authors belong in author_sessions.
-Authority authors profiles bind their exact identity, session, canonical harness,
-approved brief and complete lineage; the author_sessions inventory must match
-those profiles. This allows genuine dev/shared preparation contributors without
-relabeling their work as the primary builder's. The builder profile must match
-its appointment. Profiles are contributor declarations, not custody appointments.
-Include complete parent/child/fork sets in lineage_sessions. Custodian separately
-authors hidden data; both independent roles' lineages must avoid all disclosed
-builder authors and the designated builder lineage. Verifier and custodian
-lineages must be disjoint. No builder or review child can self-appoint.
+Roy's authority digest is authenticated out of band and hashes the exact parsed
+bytes. Authority binds protocol v3, the adopted plan, exact roles/sessions and
+appointments, approved briefs/contributors, license decision IDs, independent
+three-dev selection, seal/date and the approved observation-framing edition.
+Builder-author inventory and profiles match; primary builder profile matches its
+appointment. Both independent identities and complete disclosed lineages avoid
+all builder authors/lineages, and verifier/custodian lineages are disjoint.
+Custodian uses a different canonical harness. Profiles declare contributors,
+not custody appointments. No implementation child may claim independent status.
 
-Harness vocabulary is closed: Codex, Claude, Cursor, Grok, Antigravity, Human.
-Frozen briefs exactly equal the approved actor/author brief set without duplicates.
-Registry labels, complete lineage disclosure and signatures require external
-authentication; a hash cannot establish those facts.
+Registry labels and hashes cannot authenticate those declarations. Caller must
+verify Roy's decision, actual signatories, complete truthful lineage and genuine
+observations. Frozen briefs equal the approved actor/author brief set exactly.
 
-## Canonical joins introduced in r2
+## Paired index and contextual commitments
 
-FAMILY.md, GENERATOR.md and PROVENANCE.md are authoritative for native names.
-The gate record is an evidence envelope, not a replacement native format.
+Task binding uses unchanged/change panels, source/field/generator hashes and the
+raw structured-edit hash (null only for unchanged). Each task.recipe_sha256
+identifies actual stored paired-index bytes, referenced by task.recipe. Its
+closed schema has manifest_version integer1, task/program/family identity,
+split/panel, corpus_version, raw fields_sha256 and exactly loop/verification
+recipe references. No new split/panel/source keys enter native recipes.
 
-| Accepted source field | Gate join |
-|---|---|
-| family_id, split, domain, template/program/hazard metadata | families[].metadata uses exact native family keys; domain is decimal_fees, sequential_status or year_window |
-| author_provenance_sha256 | families[].author_provenance actual-byte reference; template_commitment remains a distinct gate evidence reference |
-| task_id, program_id, family_id, split, panel | tasks[].binding uses native task identity; panel is unchanged or change |
-| original_sha256 / oracle_source_sha256 | original_source / oracle_source actual-byte references; the paired panels share the same original reference |
-| fields_sha256 | input_fields raw artifact hash; output_fields is a separate source-bound document |
-| recipe_sha256 | recipe raw artifact hash, treated as a task-level commitment; see remaining producer gap below |
-| generator_sha256 | frozen generator pin, never a generated-input or canonical-document hash |
-| change_sha256 | null for unchanged; otherwise the structured edit artifact hash; its changed_sha256 binds oracle_source_sha256 |
-| ProgramManifest source/input/output/provenance hashes | exact oracle source, input/output field documents and the source artifact's provenance-sidecar bytes |
-| allowed_return_codes | sorted unique integer list 0..255 including0; no fault becomes a declared code |
-| loops/proof/hazards | closed native objects; unique ordered loop targets, nonzero step, declared 1..64 cap, source-resolving spans and >=2 hazard IDs; semantic proof/reachability still requires verifier evidence |
+Gate checks index identity against the task; index.fields_sha256 equals task's
+raw input-fields digest. It verifies those actual bytes first, strictly decodes
+the source-bound field document, and independently computes canonical JSON SHA256.
+Both raw native recipe references are read/hash-checked, strictly decoded and
+matched to index/task/corpus identity, map-key partition, canonical field digest,
+original strict-integer collision_counter0, original seed tuple and32/128 target.
+Closed recipe/boundary/fill keys, complete field-name rows, scenario/count shapes
+and unique boundary IDs are checked. No counter is rebased for continuation.
 
-Gate schemas validate integer manifest_version=1 on native records. The gate
-protocol version is separately m10-p2-v2. Unknown keys, duplicate JSON keys,
-UTF-8 BOM, noninteger JSON numbers and booleans as integers reject. Source and
-schema bytes must be pinned together for a later launch; version labels alone
-do not authenticate them. The local shape validator implements only the JSON
-Schema subset actually used: closed objects, exact/nullable types, arrays,
-min/max items and integers, strings/patterns, enums and constants.
+Canonical JSON means UTF-8, sorted keys, comma/colon separators, ensure_ascii=true,
+no BOM/trailing newline, integer numbers only and strings unchanged. Strict JSON
+rejects duplicate keys, floats/nonfinite values and integer lexemes over20 digits,
+matching the accepted producer decoder. Native IDs and corpus ID use its lowercase
+ID rule. Typed additional properties occur only in native record-value maps;
+all other schema objects remain closed, and row keys must equal declared fields.
 
-## Native provenance sidecars
+`recipe_bindings` reports computed raw index/raw fields/canonical fields and each
+raw/canonical recipe commitment. This is metadata, **not** a generation receipt,
+case count, observation, approval or independent evidence. Raw/canonical digests
+may coincide for canonically stored bytes; both checks keep their named contexts.
+The gate never accepts either digest as a fallback for the other.
 
-artifacts[] is now a gate envelope of file, provenance and license_class.
-The provenance file uses PROVENANCE.md names exactly: artifact_path/hash/kind,
-author_callsign/harness/session_id, UTC created_at, textual originality_attestation,
-nullable family_id, dev/heldout/shared split, brief/generator/source/parent hashes,
-license_id/approval_id/status and evidence_paths. Gate evidence_paths use hashed
-file references; native prose does not define a weaker alternate path format.
+Generation receipt fields_sha256/recipe_sha256 are canonical document commitments.
+Envelope/sidecar/ProgramManifest/task/index hashes bind raw artifacts. DL3 owns
+generation-receipt semantics; this gate neither calls that checker nor converts
+its result to actual oracle/trace evidence. The paired index and both raw native
+recipes each require recipe-kind provenance inventory entries joined to exact
+bytes, family/split/source and approved contributor/custodian identity.
 
-Hidden author identity joins the appointed custodian; dev/shared authors join
-Roy-approved builder contributor profiles. Task-associated sidecars join
-exact artifact bytes, family and split. Brief hash equals the approved author
-brief. Generated input requires the frozen generator hash; a nongenerated
-artifact may carry null. Shared instruments have null family_id; only an
-independent shared specification may omit source_sha256. The textual originality
-attestation needs genuine review for contribution/model family and prohibited
-ingestion; a nonempty sentence is not proof. Changed-source sidecars identify
-changed_source and their original source as parent; original source sidecars
-require a null parent. ProgramManifest provenance
-commits to the oracle source sidecar, avoiding a self-hash requirement.
+## Native source, fields, edit and provenance joins
 
-Pending license status requires null license/approval IDs and stays PENDING;
-denied is NO-GO. Approved license IDs/decision IDs must equal Roy's externally
-approved authority and have actual evidence references. No MIT/CC0 choice was
-adopted here. original_artifacts enumerates every extra program/probe/candidate/
-request/field/recipe/input/instrument/specification; each actual digest must join
-its checked sidecar. Task source/fields/recipe/manifest/case/edit artifacts also
-require provenance. The custodian/verifier must check corpus completeness.
+Family metadata uses decimal_fees/sequential_status/year_window, six families per
+split and two/domain. Four dev or three held-out originals/family give24+18
+originals and both panels (84 tasks). Both panels share the original source,
+have distinct task IDs/indexes and different oracle sources. Structured edit
+raw bytes bind change_sha256; edit.original_sha256 binds original bytes and
+edit.changed_sha256 binds oracle_source_sha256. No source/hash interchange.
 
-## Case counts and actual receipts
+ProgramManifest binds exact oracle source, input/output field raw documents and
+raw oracle-source sidecar. Return codes are sorted unique0..255 including0;
+source-resolving hazard/proof spans, unique ordered loop targets, nonzero step
+and declared1..64 cap are checked. Metadata does not establish complete loop
+proofs, valid node edits, reachable hazards or changed-behavior witnesses.
 
-Six families/split, two/domain, four dev or three held-out originals/family:
-24 dev +18 held-out originals, each with its own change task =84 tasks. Every
-task requires exactly32 distinct valid loop and128 distinct valid verification
-full-case hashes, disjoint within that task. Case hashes mean GENERATOR.md's
-M10-CASE-v1 binary preimage: presence, count and ordered length-prefixed records.
-They are not raw input.dat hashes or JSON hashes. Missing and present-empty
-are distinct; task labels cannot make duplicate bytes disjoint.
+Native provenance retains author/session/harness, textual originality attestation,
+UTC time, nullable source/generator/family/parent contexts and explicit license
+status/decision. Dev/shared contributors join approved profiles; hidden work
+joins the appointed custodian. Original source parent is null; changed source
+parent equals original hash. Generated inputs need the actual frozen generator
+pin. Approved licenses must match Roy's authority/evidence; pending licenses
+have null IDs and stay pending; denied is NO-GO. No license choice is adopted.
 
-The generator's generation-only receipt reports unique **candidates**, recipe/
-fields/partition hashes, boundary mapping, counters and exclusion commitments.
-Its case_hashes/target count cannot establish valid oracle cases, repeated
-execution, trace equality or independent reproduction. A generation receipt
-fails the closed task-oracle/task-trace schemas and cannot satisfy an actual
-checklist receipt. No conversion to an executed receipt is supplied.
+## Transport and actual observation boundary
 
-Gate-owned task-oracle/task-trace schemas remain a later admission evidence
-contract: two distinct ordinary executions of all160 valid cases and a traced
-ordinary observation equal to those bytes, bound to task/source/case/tool/image
-hashes and actual logs. No runner is claimed to emit them yet. The required
-signed checklist remains compiler/notices, originality/licenses/dev prep;
-hidden authorship/counts/template separation/independence/seal; independent
-compiler/probe/three-dev reruns and recipe/reachability/custody; Roy licenses/
-staffing and manifest confirmation. Distinct actual receipts are mandatory;
-fixture/static modes or absent/skipped executions never pass.
+See custody/RUNNER-TRANSPORT.md for the exact producer/runner mapping. Accepted
+producerbe2a409 emits only pure descriptors/task-binding patches; missing actual
+tool/source pins remain explicit. Historical runnerc01644f emits prepared_only
+with null observations and refuses --execute. Neither status can satisfy the
+closed actual receipt schemas. No source or emitted join is claimed here.
 
-## Remaining producer seams and deferred validation
+The gate keeps exactly32 distinct loop and128 distinct verification full-case
+commitments, disjoint per task. They mean M10-CASE-v1 binary framing, never raw
+input.dat or JSON artifact hashes. Generation target_count/case_hashes establish
+candidates only. Missing/present-empty and record ordering remain distinct.
+Provenance-declared input artifacts may be zero bytes (present-empty input),
+with their actual SHA256 checked. Approvals, signatures, briefs, receipt documents
+and other evidence retain the nonempty-file requirement; an empty input exception
+cannot be used as an empty approval or execution receipt.
 
-FAMILY's singular task recipe_sha256 does not specify how a two-partition native
-recipe inventory is packaged. This gate verifies the declared task commitment,
-but does not claim it is one GENERATOR recipe for both partitions. INT/DL1 must
-confirm the task-level commitment/partition-recipe representation before actual
-admission integration; producer absence is pending. Likewise field documents
-are shape/source/hash checked here; the frozen generator and independent actual
-validation must establish PIC/layout/encoding, boundaries, presence/order,
-1..64 records, deterministic counters, quarantine/replacement semantics and
-full-case hash computation. Metadata does not establish those properties.
-The gate interprets task change_sha256 as the structured edit artifact hash,
-whose changed_sha256 member binds the changed oracle source. INT/DL1 should
-confirm that distinction before connecting actual task producers; no adapter
-silently exchanges a change-document hash and a changed-source hash.
+Actual evidence still requires all160 valid cases twice ordinarily and twice
+traced, separate trace repetition logs, and both trace ordinary observations
+matching both ordinary runs. Trace diagnostics remain separate metadata. The
+approved observation-framing digest binds oracle and trace receipt editions;
+framing ratification/implementation/actual backend remain pending. Compiler
+source/package are separate pins; complete compiler_config and default_conf are
+separate actual raw commitments in task and generic signed receipts. The renamed
+base_image_pin_sha256 denotes the raw base-image receipt artifact, not the OCI
+digest inside it. Actual immutable OCI identity/tool truth still need independent
+inspection. No framing bytes or observation is fabricated.
 
-Loop spans/caps and hazard metadata do not prove every path bounded/reachable,
-complete loop enumeration or return-code reasoning. The appointed verifier's
-recipe/reachability/custody evidence must establish those semantics and changed
-behavior witnesses; source shape inspection does not. No parser or expected-
-answer logic was added to the gate. No builder sees held-out inputs/answers.
+Required signed checklist retains builder compiler/notices/originality/dev prep;
+custodian hidden authorship/counts/template/independence/seal; independent verifier
+pins/probes/three-dev/recipe/reachability/custody; Roy licenses/staffing/seal. Neither
+an index nor a prepared transport closes any of those items. Missing actual
+producers or receipts remain pending, not automatically filled.
 
-After explicit execution authorization and Dirty Mode closure: reconcile real
-generator/runner receipts without inventing execution, exercise positive/negative
-schema/binding cases, test path containment, reproduce actual compiler/probes and
-three-dev receipts, and complete licenses/staffing/seal/custody. Retain failed
-receipts and the plan's retry/reseal/burn rules. None of that ran here.
+## Deferred work and verdict
 
-## Verdict boundary
+After explicit execution authorization/Dirty Mode closure: exercise positive and
+negative raw/canonical/index/identity/path/provenance cases; actual producer→gate
+join; generator/receipt/continuation checks; field/PIC/layout/encoding and full-case
+hashes; semantic loop/return/hazard/edit proofs and compiler witnesses; actual
+framing/isolation/probe/oracle/trace/independent reruns; genuine staff/licenses/seal.
+No tests, gate calls, imports of app modules or emitted data ran in this package.
 
-Missing files/fields or pending items yield PENDING; malformed, contradictory,
-denied or failed evidence yields NO-GO, which dominates PENDING. Errors remain
-aggregated once closed top-level records parse; none defaults to a pass.
-GO is structural eligibility only. It cannot prove truthful authorship, secrecy,
-complete lineage/corpus, semantic independence, genuine signatures or actual
-execution narratives, and grants no product/live/release authority. Fixtures
-are never independent validation. The portable evidence-gate normalized
-checker has not been adopted or claimed equivalent by this package.
+Missing files/fields/pending items yield PENDING. Malformed, failed or contradictory
+evidence yields NO-GO, which dominates PENDING. Computed recipe metadata cannot
+remove errors or authorize execution. GO is structural eligibility only: hashes
+cannot prove authorship/secrecy/completeness/signatures/actual narratives, nor
+grant product/live/release authority. Fixtures never provide independent validation.
+No adoption/parity of the portable evidence-gate normalized evaluator is claimed.

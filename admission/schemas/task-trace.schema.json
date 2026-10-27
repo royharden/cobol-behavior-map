@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:m10:admission:task-trace:v1",
+  "$id": "urn:m10:admission:task-trace:v3",
   "type": "object",
   "properties": {
     "task_id": {
@@ -34,49 +34,95 @@
       "type": "string",
       "pattern": "[0-9a-f]{64}"
     },
-    "valid_cases": {
-      "type": "integer",
-      "minimum": 0
+    "observation_framing_sha256": {
+      "type": "string",
+      "pattern": "[0-9a-f]{64}"
     },
-    "faults": {
-      "type": "integer",
-      "minimum": 0
-    },
-    "ordinary_observations": {
-      "type": "object",
-      "properties": {
-        "path": {
-          "type": "string",
-          "minLength": 1
+    "trace_runs": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "properties": {
+          "ordinal": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2
+          },
+          "valid_cases": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "faults": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "ordinary_observations": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "execution_log": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "trace_metadata": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[0-9a-f]{64}"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          }
         },
-        "sha256": {
-          "type": "string",
-          "pattern": "[0-9a-f]{64}"
-        }
-      },
-      "required": [
-        "path",
-        "sha256"
-      ],
-      "additionalProperties": false
-    },
-    "execution_log": {
-      "type": "object",
-      "properties": {
-        "path": {
-          "type": "string",
-          "minLength": 1
-        },
-        "sha256": {
-          "type": "string",
-          "pattern": "[0-9a-f]{64}"
-        }
-      },
-      "required": [
-        "path",
-        "sha256"
-      ],
-      "additionalProperties": false
+        "required": [
+          "ordinal",
+          "valid_cases",
+          "faults",
+          "ordinary_observations",
+          "execution_log",
+          "trace_metadata"
+        ],
+        "additionalProperties": false
+      }
     }
   },
   "required": [
@@ -86,10 +132,8 @@
     "mode",
     "result",
     "oracle_receipt_sha256",
-    "valid_cases",
-    "faults",
-    "ordinary_observations",
-    "execution_log"
+    "observation_framing_sha256",
+    "trace_runs"
   ],
   "additionalProperties": false
 }
