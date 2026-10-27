@@ -45,3 +45,31 @@ signed-zero/precision/bounds, hash/order/count/disjointness and exhaustion check
 compiler repeated/trace observations; actual boundary/hazard reachability; custodian,
 verifier and seal. Post-probe source/format freeze is not construction acceptance.
 Static review/effort history is in OUTER run requests, not product runtime evidence.
+
+Ruling r2 (GENERATOR b0ac6b2d52977025366b75c4ef02435fc70156500eaa2afd5d5eed07476f7f8c)
+adds exact generation receipt and continuation. Result has cases, receipt,
+ordered_sha256, duplicates, seen_hashes and unexecuted_not_admitted status. The
+receipt alone has exactly the specified nine keys; boundary_case_hashes retains
+every boundary ID even when cases deduplicate. Additional result metadata is not
+part of that receipt schema.
+
+Import as local namespace module admission.prepare.generate. Source-only helper
+admission.prepare.generator_continuation.resume(fields,recipe,previous_result,
+accepted_hashes,quarantine_hashes,excluded_hashes) preserves prior accepted order,
+mandatory base/boundary cases and seen hashes, starts at receipt.next_counter,
+and enforces cumulative100000 proposal budget/U64 bounds. Every omitted prior
+case must be explicitly quarantined; mandatory explicit-case quarantine refuses.
+Continuation checks receipt identity/commitments and prior case byte hashes;
+the external caller authenticates that these are its genuine unsealed artifacts
+and that quarantine decisions came only from candidate-independent oracle faults.
+No oracle decision or seal enforcement is manufactured in this helper.
+
+Finalize loop admission/replacements before producing verification. If loop changes,
+invalidate the unsealed verification proposal and call generate with the original
+verification recipe/seed and final loop hashes; never reuse continuation against a
+changed exclusion commitment. Runner owns durable reasons/quarantine/skip ledger,
+execution isolation and sealed-version reseal rules. These source APIs have not run.
+Pairing diagnostics bind an ordered recipe-pair hash; per-partition diagnostics bind
+the individual recipe. Decoder errors occur before valid canonical documents exist.
+Earlier note saying quarantine integration is deferred refers to oracle/runner
+integration; pure source continuation is now provided by ruling r2.

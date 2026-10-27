@@ -223,6 +223,7 @@ def _generate(fields_document, recipe, excluded_hashes):
     require(type(boundaries) is list, "bad_boundary")
     names = {f["name"]: f for f in fields}
     ids = set()
+    boundary_hashes = {}
     for boundary in boundaries:
         keys(boundary, "id field kind scenario records")
         identifier(boundary["id"])
@@ -232,7 +233,9 @@ def _generate(fields_document, recipe, excluded_hashes):
                 type(boundary["kind"]) is str and
                 boundary["kind"] in BOUNDARY_KINDS, "bad_boundary")
         ids.add(boundary["id"])
-        candidates.append(at("/boundaries/" + str(len(ids) - 1), explicit, boundary))
+        case = at("/boundaries/" + str(len(ids) - 1), explicit, boundary)
+        boundary_hashes[boundary["id"]] = case["case_sha256"]
+        candidates.append(case)
     require(partition != "verification" or excluded_hashes is not None, "partition_collision")
     excluded = set(excluded_hashes or ())
     require(partition != "verification" or len(excluded) == 32, "partition_collision")
@@ -257,10 +260,13 @@ def _generate(fields_document, recipe, excluded_hashes):
             cases.append(case)
         else:
             duplicates.append({"case_sha256": case["case_sha256"], "counter": counter - 1})
-    return {"manifest_version": 1, "partition": partition, "cases": cases,
-            "ordered_sha256": digest([c["case_sha256"] for c in cases]),
-            "fields_sha256": digest(fields_document), "recipe_sha256": digest(recipe),
-            "next_collision_counter": counter, "duplicates": duplicates,
+    receipt = {"manifest_version": 1, "partition": partition,
+               "recipe_sha256": digest(recipe), "fields_sha256": digest(fields_document),
+               "case_hashes": [c["case_sha256"] for c in cases],
+               "boundary_case_hashes": boundary_hashes, "next_counter": counter,
+               "fill_proposals_consumed": proposals, "excluded_hashes_sha256": digest(sorted(excluded))}
+    return {"cases": cases, "receipt": receipt, "ordered_sha256": digest(receipt["case_hashes"]),
+            "duplicates": duplicates, "seen_hashes": sorted(seen),
             "status": "unexecuted_not_admitted"}
 
 
@@ -275,21 +281,17 @@ def generate(fields_document, recipe, excluded_hashes=None):
         raise error from exc
 
 
-def _prepare(fields_document, loop_recipe, verification_recipe):
-    require(type(loop_recipe) is dict and type(verification_recipe) is dict, "bad_value")
-    require(loop_recipe.get("partition") == "loop" and
-            verification_recipe.get("partition") == "verification", "bad_seed")
-    for key in ("corpus_version", "family_id", "program_id", "task_id", "fields_sha256"):
-        require(loop_recipe.get(key) == verification_recipe.get(key), "bad_seed")
-    loop = generate(fields_document, loop_recipe)
-    verification = generate(fields_document, verification_recipe,
-                            [c["case_sha256"] for c in loop["cases"]])
-    return {"loop": loop, "verification": verification}
-
-
 def prepare(fields_document, loop_recipe, verification_recipe):
     try:
-        return _prepare(fields_document, loop_recipe, verification_recipe)
+        require(type(loop_recipe) is dict and type(verification_recipe) is dict, "bad_value")
+        require(loop_recipe.get("partition") == "loop" and
+                verification_recipe.get("partition") == "verification", "bad_seed")
+        for key in ("corpus_version", "family_id", "program_id", "task_id", "fields_sha256"):
+            require(loop_recipe.get(key) == verification_recipe.get(key), "bad_seed")
+        loop = generate(fields_document, loop_recipe)
+        verification = generate(fields_document, verification_recipe,
+                                [c["case_sha256"] for c in loop["cases"]])
+        return {"loop": loop, "verification": verification}
     except AdmissionError as error:
         if not hasattr(error, "stage"):
             error.stage = "pairing"
