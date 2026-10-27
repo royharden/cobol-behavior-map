@@ -70,7 +70,7 @@ def layout(fields):
     for field in entries:
         shape(field, "name pic usage sign offset width scale")
         name = field["name"]
-        need(isinstance(name, str) and re.fullmatch(r"[A-Z](?:[A-Z0-9-]*[A-Z0-9])?", name)
+        need(isinstance(name, str) and re.fullmatch(r"[A-Z](?:[A-Z0-9-]{0,28}[A-Z0-9])?", name)
              and name not in names, "field name")
         names.add(name)
         need(field["usage"] == "DISPLAY", "external usage")

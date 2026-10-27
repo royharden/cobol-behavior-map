@@ -108,7 +108,11 @@ the per-task indexed raw files are the authoritative receipt inputs.
 `receipt_validation.validate_receipt(receipt_raw, recipe_raw, fields_raw, bundles,
 *, task_id, program_id, family_id, source_sha256, partition, excluded_hashes)` checks
 one full generated partition and returns ordered computed case hashes. Inputs are
-raw bytes, preserving stored-byte recipe/fields pins. The caller supplies decoded
+raw bytes, preserving exact artifact pins before decoding. Accepted producer receipt
+`recipe_sha256`/`fields_sha256` and recipe `fields_sha256` identify canonical JSON
+documents, computed after strict decoding; they do not identify stored file bytes.
+The envelope artifact map still verifies the original raw bytes independently.
+The caller supplies decoded
 bundle transport and authenticated task/source context; this API does not read files
 or validate physical file bytes. `validate_envelope_receipts(request, read,
 expected_generator_sha256)` is the orchestrator adapter. It rechecks every referenced
@@ -135,7 +139,8 @@ partitions**. A supplied loop candidate set is not evidence that oracle admissio
 has finalized it. The later authorized caller must supply its actual finalized loop
 set; a change invalidates any verification receipt committed to the old set. There
 is no default empty verification exclusion or fallback fabricated receipt. Missing
-producer indices/raw source/receipt refuse; the DL2-to-index adapter remains unbuilt.
+producer indices/raw source/receipt refuse; DL2 owns the producer-to-index adapter
+and its actual accepted output must be supplied before claiming this join works.
 Structural declaration consistency is not proof the producer ran or used those inputs.
 
 The source validates each receipt's exact fields:
@@ -157,6 +162,19 @@ require later admission; metadata is not proof. DL4's receipt.schema.json repres
 signed actual execution/approval evidence, a separate contract from this generation
 receipt. No generation receipt or prepared_only output is promoted to a DL4 actual
 receipt or GO; the later compiler/evidence adapter is still missing.
+
+Producer comparison is pinned to accepted commit
+`e0cee96af20ca72aa866615773fe8add135b1a72` generate.py, generator_continuation.py
+and generator-notes.md. Both helpers and runner support fixed local namespace
+imports (`admission.prepare...`) as well as the existing standalone script layout;
+neither import path has been executed during construction. Corpus IDs and the
+30-character field-name bound now match the accepted producer's validators.
+Current ProgramManifest
+input-field binding remains the exact raw field-artifact hash, distinct from the
+producer receipt's canonical field digest; the ProgramManifest convention requires
+INT seam ratification before a producer match is claimed. The accepted producer
+currently allows a nonzero recipe origin; this validator preserves strict original
+zero pending INT's ruling rather than silently accepting rebased counts.
 
 ## Deferred compiler and containment contract
 

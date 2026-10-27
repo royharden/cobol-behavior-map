@@ -5,12 +5,12 @@ import json
 from pathlib import Path, PurePosixPath
 import re
 import sys
-from receipt_validation import validate_envelope_receipts
+if __package__: from .receipt_validation import validate_envelope_receipts
+else: from receipt_validation import validate_envelope_receipts
 class Refusal(ValueError):
     """An envelope cannot be admitted for preparation."""
 def require(condition, message):
-    if not condition:
-        raise Refusal(message)
+    if not condition: raise Refusal(message)
 def digest(value):
     require(isinstance(value, str) and re.fullmatch(r"[0-9a-f]{64}", value),
             "invalid SHA256")

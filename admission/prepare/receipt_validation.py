@@ -1,7 +1,11 @@
 """Validate generation declarations against pinned inputs; no generation or execution."""
 from pathlib import Path
-from receipt_values import (canonical, case_hash, document, explicit_hash, hash_value,
-                            identifier, integer, layout, need, record_values, sha, shape)
+if __package__:
+    from .receipt_values import (canonical, case_hash, document, explicit_hash, hash_value,
+                                identifier, integer, layout, need, record_values, sha, shape)
+else:
+    from receipt_values import (canonical, case_hash, document, explicit_hash, hash_value,
+                                identifier, integer, layout, need, record_values, sha, shape)
 
 RECEIPT_KEYS = ("manifest_version recipe_sha256 fields_sha256 partition case_hashes "
                 "boundary_case_hashes next_counter fill_proposals_consumed excluded_hashes_sha256")
@@ -24,16 +28,14 @@ def validate_receipt(receipt_raw, recipe_raw, fields_raw, bundles, *, task_id,
     need(type(receipt["manifest_version"]) is int and receipt["manifest_version"] == 1
          and type(recipe["manifest_version"]) is int and recipe["manifest_version"] == 1, "version")
     need(receipt["partition"] == recipe["partition"] == partition, "partition binding")
-    need(hash_value(receipt["recipe_sha256"]) == sha(recipe_raw)
-         and hash_value(receipt["fields_sha256"]) == sha(fields_raw)
-         and hash_value(recipe["fields_sha256"]) == sha(fields_raw), "raw input pins")
+    need(hash_value(receipt["recipe_sha256"]) == sha(canonical(recipe))
+         and hash_value(receipt["fields_sha256"]) == sha(canonical(fields))
+         and hash_value(recipe["fields_sha256"]) == sha(canonical(fields)), "canonical input pins")
     need(identifier(recipe["task_id"]) == identifier(task_id)
          and identifier(recipe["program_id"]) == identifier(program_id) == fields["program_id"]
          and fields["source_sha256"] == hash_value(source_sha256), "task/source binding")
     need(identifier(recipe["family_id"]) == identifier(family_id), "family binding")
-    corpus = recipe["corpus_version"]
-    need(isinstance(corpus, str) and corpus and corpus.isascii()
-         and all(c.isalnum() or c in "_-" for c in corpus), "corpus id")
+    corpus = identifier(recipe["corpus_version"])
     fill = recipe["fill"]
     shape(fill, "algorithm seed_material target_count max_records")
     need(fill["algorithm"] == "sha256-counter-v1"
