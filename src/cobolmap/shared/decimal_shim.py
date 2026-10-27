@@ -88,6 +88,8 @@ class FieldSpec:
         sign = self.sign.upper() if isinstance(self.sign, str) else self.sign
         if sign == "NONE":
             sign = None
+        if sign == "LEADING_SEPARATE":
+            sign = "LEADING SEPARATE"
         if sign == "SIGN LEADING SEPARATE":
             sign = "LEADING SEPARATE"
         alpha = re.fullmatch(r"X\(([1-9][0-9]*)\)", pic)
@@ -104,6 +106,11 @@ class FieldSpec:
             whole, scale = int(numeric.group(2)), int(numeric.group(3) or 0)
             digits = whole + scale
             signed = bool(numeric.group(1))
+            if sign in ("EMBEDDED", "PACKED"):
+                required_usage = "DISPLAY" if sign == "EMBEDDED" else "COMP-3"
+                if not signed or usage != required_usage:
+                    raise ShimError("shim_layout", "explicit internal sign disagrees with PIC/usage")
+                sign = None
             if digits > 8 or scale > 4:
                 raise ShimError("shim_layout", "numeric digit/scale bounds exceeded")
             if sign not in (None, "LEADING SEPARATE") or (sign and (not signed or usage != "DISPLAY")):
