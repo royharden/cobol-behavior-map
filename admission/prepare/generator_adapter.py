@@ -7,8 +7,8 @@ from .generate import (AdmissionError, bundle, canonical, digest, hash_value,
 
 
 SPEC_PINS = {
-    "case_spec": "a8a28c8b656ee61d929f9048c222acf683fe09465c1aa9c240d0177da074bc9d",
-    "family_spec": "4895efdbb65ed26ecf24cece2fcc36a768a9e812a450c8e4f964355b2a78010b",
+    "case_spec": "706962cfa01ebe22892e8862260db1b8e4535d38d0e665af1c8b85bc5d4100fd",
+    "family_spec": "f780695503c0f5764ba6f05737ff6d8c2466f767c847466efc4a1a6496afe483",
 }
 # R5 selects this construction spec edition; the binary case framing is unchanged.
 CASE_HASH_CONTRACT_SHA256 = SPEC_PINS["case_spec"]

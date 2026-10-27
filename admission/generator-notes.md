@@ -105,8 +105,8 @@ not observed runs. Cases JSON is exactly loop/verification with32/128 transports
 bytes are preserved. Present descriptors append LF to each record; present-empty is
 zero bytes; missing stays null/no descriptor. No file is materialized. Descriptors have
 path/raw_bytes/raw_sha256/canonical_sha256/spec_lf_sha256. JSON canonical and raw hashes
-are separately named; current LF edition pins a8a28c8b... and4895efdb... do not replace
-raw CRLF hashes (accepted master4975609).
+are separately named; current LF edition pins706962cf... andf7806955... do not replace
+raw CRLF hashes (accepted master36d4f09).
 
 Consumer metadata follows SEAM-receipt-producer-index-r2.md exactly:
 - generation_receipts: {manifest_version:1,tasks:{task_id:{loop:{recipe,fields,receipt},
@@ -189,8 +189,9 @@ and behavioral witness remain later semantic/compiler checks. Unchanged keeps
 change_sha256 null and original/oracle hashes equal. No native recipe keys were added.
 
 Spec edition identity is returned as spec_edition_pins (current accepted GENERATOR
-a8a28c8b656ee61d929f9048c222acf683fe09465c1aa9c240d0177da074bc9d / FAMILY
-4895efdbb65ed26ecf24cece2fcc36a768a9e812a450c8e4f964355b2a78010b). Ruling r5 selects
+706962cfa01ebe22892e8862260db1b8e4535d38d0e665af1c8b85bc5d4100fd / FAMILY
+f780695503c0f5764ba6f05737ff6d8c2466f767c847466efc4a1a6496afe483). R5 and subsequent
+ACCEPT-DL1-hash-bindings-r3.md select
 that exact GENERATOR LF edition for active case_hash_contract_sha256 too; old code
 pins are not alternatives. Binary case framing remains unchanged. Current spec
 descriptors independently preserve raw bytes/hashes: new LF edition pins must not
