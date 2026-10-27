@@ -28,6 +28,7 @@ def resume(fields_document, recipe, previous, accepted_hashes, quarantine_hashes
 
 def _resume(fields_document, recipe, previous, accepted_hashes, quarantine_hashes, excluded_hashes):
     fields = validate_fields(fields_document)
+    integer(recipe["collision_counter"], 0, 0, "bad_seed")
     receipt = previous["receipt"]
     keys(receipt, RECEIPT_KEYS)
     require(receipt["manifest_version"] == 1 and type(receipt["manifest_version"]) is int,

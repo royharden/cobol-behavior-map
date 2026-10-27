@@ -93,7 +93,7 @@ def _adapt_task(binding, generated, artifacts, expected_generator_sha256):
             "manifest_version")
     require(all(manifest[key] == binding[key] for key in ("program_id", "family_id", "split"))
             and manifest["source_sha256"] == source_hash
-            and manifest["input_fields_sha256"] == digest(fields), "bad_hash")
+            and manifest["input_fields_sha256"] == inputs["fields"]["raw_sha256"], "bad_hash")
     keys(generated, "loop verification")
     transport, references, seen, corpus_version = {}, {}, set(), None
     prefix = "prepared/" + binding["task_id"]

@@ -18,7 +18,8 @@ refusing unsigned negative zero and excess fractional precision without rounding
 Case hashes use M10-CASE-v1 binary framing. Records omit LF; later materialization
 adds LF per record. Missing and empty differ. Partition commitment is SHA256 of
 canonical JSON ordered full-case hash strings. Recipe/field hashes are canonical
-document hashes, distinct from stored artifact sidecars. Source hash is an input
+document hashes in native generator recipes/receipts, distinct from stored artifact
+sidecars and raw ProgramManifest/task pins. Source hash is an input
 binding, not a compiler execution receipt.
 
 Boundary consumption is exactly top-level complete case, ordered complete boundary
@@ -92,10 +93,10 @@ No synthetic document or actual emitted index is supplied by this source package
 Binding has task_id/program_id/family_id/split/panel/original_sha256/oracle_source_sha256/
 change_sha256. Source raw SHA joins fields and ProgramManifest; both recipes join exact
 task/program/family/partition/canonical fields. Original/change source roles are checked.
-Both partitions share corpus_version, and recipes retain original collision_counter0
-for the consumer. Nonzero recipe starts are refused by this adapter even though the
-standalone vocabulary can represent them; continuation uses the unchanged original
-recipe and separate state, never a rebased recipe. No generator schema was changed.
+Both partitions share corpus_version, and original recipes require strict integer
+collision_counter0 in generator, adapter and continuation validation. Boolean/nonzero
+recipe origins refuse. Continuation uses the unchanged original recipe and separately
+advanced receipt/state next_counter, never a rebased recipe (INT ruling r3).
 
 The output run entry keeps the accepted eight-key shape and intended repeat counts2/2,
 not observed runs. Cases JSON is exactly loop/verification with32/128 transports
@@ -133,3 +134,23 @@ transport/index join execution, malformed input/pin/path/panel/hash checks, comp
 quarantine/custody/seal/licenses/P2 all remain deferred. Metadata is never a signed DL4
 actual/approval receipt or oracle-valid observation. Next work requires a concrete
 consumer mismatch; no source replay/fill-draw or continuation execution is claimed.
+
+## Contextual field and recipe commitments (INT ruling r3)
+
+ProgramManifest input_fields_sha256/output_fields_sha256 identify exact stored field
+document raw bytes; adapter compares input_fields_sha256 only to its input field
+descriptor raw_sha256. Output-layout validation remains the independent caller's
+obligation because this transport API receives only the input layout. Native FAMILY
+task fields_sha256/recipe_sha256 likewise identify actual raw field/paired-recipe
+artifact bytes; DL1 owns the paired-recipe artifact shape, not this adapter.
+
+Native GENERATOR recipe.fields_sha256 and generation receipt fields_sha256/recipe_sha256
+retain canonical JSON document commitments. Seed tuples are canonical. These identical
+key spellings are contextual: never accept raw or canonical interchangeably. Artifact
+hash maps, source/tool pins and sidecars always identify raw bytes; explicitly named
+canonical_sha256 and spec_lf_sha256 descriptor metadata never replace raw_sha256.
+
+Continuation preserves original recipe0 identity/hash/seed, authenticates previous
+receipt/state, and checks next_counter against cumulative consumed proposals (U64,
+no wrap, at most100000). A positive state next_counter is legal and is never passed
+as a new original recipe origin. No continuation/generation execution validated here.

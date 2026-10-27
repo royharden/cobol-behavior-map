@@ -210,7 +210,7 @@ def _generate(fields_document, recipe, excluded_hashes):
     require(fill["algorithm"] == "sha256-counter-v1" and fill["seed_material"] == seed_tuple, "bad_seed")
     integer(fill["target_count"], count, count, "bad_record_count")
     maximum = integer(fill["max_records"], 1, 64, "bad_record_count")
-    counter = integer(recipe["collision_counter"], 0, 2 ** 64 - 100001, "bad_seed")
+    counter = integer(recipe["collision_counter"], 0, 0, "bad_seed")
     def explicit(case):
         scenario, rows = case["scenario"], case["records"]
         require(scenario in ("missing", "empty", "records"), "bad_scenario")
