@@ -169,12 +169,25 @@ and generator-notes.md. Both helpers and runner support fixed local namespace
 imports (`admission.prepare...`) as well as the existing standalone script layout;
 neither import path has been executed during construction. Corpus IDs and the
 30-character field-name bound now match the accepted producer's validators.
-Current ProgramManifest
-input-field binding remains the exact raw field-artifact hash, distinct from the
-producer receipt's canonical field digest; the ProgramManifest convention requires
-INT seam ratification before a producer match is claimed. The accepted producer
-currently allows a nonzero recipe origin; this validator preserves strict original
-zero pending INT's ruling rather than silently accepting rebased counts.
+INT's RULING-counter-and-field-digests-r3.md ratifies the implemented contextual
+identities: ProgramManifest input/output field pins and native FAMILY task field/
+recipe pins are raw artifact SHA256; native GENERATOR recipe.fields_sha256 and
+generation receipt recipe/fields pins are canonical document SHA256. Artifact
+sidecars remain raw, source hashes remain raw, and the LF spec pin is separate.
+The validator's strict original zero is retained; separate continuation next_counter
+does not become a new recipe origin. DL2 owns the required lower-level producer fix.
+
+The exact accepted adapter at `1499930` supplies the documented generation_receipts
+and program_manifests task indexes, matching run entries, case presence/records_hex/
+LF descriptors and distinct raw/canonical/spec digest descriptors. Its partial batch
+pins match the catalog roles; the external generator source pin remains an external
+argument, not a value inferred from a receipt. This is static interface comparison,
+not an emitted packet or executed join. The adapter's old ProgramManifest canonical
+field comparison is assigned to DL2 r3 for raw-pin correction; no consumer workaround.
+Caller must also provide the genuine raw `subset_spec` artifact/pin required by the
+runner, in addition to the accepted adapter's enumerated missing actual pins. The
+adapter's missing_actual_pins list omits subset_spec; that metadata gap was reported
+through INT rather than dropping the consumer's grammar commitment or fabricating it.
 
 ## Deferred compiler and containment contract
 
