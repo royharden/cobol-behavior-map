@@ -73,3 +73,50 @@ Pairing diagnostics bind an ordered recipe-pair hash; per-partition diagnostics 
 the individual recipe. Decoder errors occur before valid canonical documents exist.
 Earlier note saying quarantine integration is deferred refers to oracle/runner
 integration; pure source continuation is now provided by ruling r2.
+
+## Generator-to-runner adapter (r2)
+
+Pure namespace API `admission.prepare.generator_adapter.adapt_task(binding, generated,
+artifacts)` never calls the generator, writes paths or runs a validator/compiler.
+Its provisional API/consumer seam is recorded in OUTER requests/SEAM-DL2-adapter-r2.md.
+Artifacts must be immutable exact bytes in memory, keyed source, fields, loop_recipe,
+verification_recipe, program_manifest, generator, case_spec, family_spec; each value
+is exactly {path,raw_bytes}. Missing source artifacts return pending; malformed or
+contradictory bindings refuse. No actual artifact bytes are authored in this package.
+
+Binding is exactly task_id/program_id/family_id/split/panel/original_sha256/
+oracle_source_sha256/change_sha256. Both recipes must name the same task/program/family,
+partition and canonical field document; fields and ProgramManifest bind exact oracle
+source raw bytes. Unchanged source equals original with null change; change source
+equals change hash. Caller authenticates original/change provenance and joins the
+structured change/task inventory; adapter does not prove program legality or effects.
+
+Output run entry has the accepted runner eight-key shape, intended repeat counts2/2
+as a proposed schedule, not observed runs. Cases artifact has exactly loop/verification
+32/128 bundle transports: presence, ordered records_hex, unchanged binary case hash,
+input_file (null for missing). Every present file descriptor contains ordered records
+with LF after each; present-empty is zero bytes. No path is materialized. Descriptors
+carry path, raw_bytes, exact raw_sha256, separately named canonical_sha256 for JSON,
+and spec_lf_sha256 only for spec documents. LF pins are b0ac6b2d.../08c2e2ca...;
+raw CRLF artifact hashes are retained separately. Case bundle artifact hash is the
+stored JSON bytes hash, not an individual full-case hash.
+
+Generation-receipts record has task_id/program_id/panel/source_sha256/fields_sha256,
+recipe_sha256={loop,verification}, partitions={loop,verification} with the original
+nine-key receipts. It is serialized as a descriptor and returned for DL3 semantic
+validation. Adapter checks task/source/field/recipe joins, ordered case hashes and
+exclusion commitments; DL3 owns full counter/boundary/custody receipt semantics.
+No receipt becomes an oracle observation or valid-oracle case count.
+
+Caller aggregates complete original/change panel pairs, artifact descriptors, recipe/
+field/program-manifest indexes and generation-receipt records using the final DL3
+consumer seam. Caller supplies actual pinned compiler/package/image/libcob/config/
+tool-info/runner artifacts and real compiler declaration; missing_actual_pins reports
+these as pending. Adapter returns no runnable envelope or fabricated pins/authority.
+Generator implementation artifact hash is explicitly generator_raw_sha256; this is
+not the case-spec LF hash. Caller authenticates the complete helper/source closure
+when freezing tools; an arbitrary caller-supplied generator descriptor alone does
+not prove it produced the supplied results. Staging must remain immutable and actual
+filesystem containment belongs to the runner. Exact transport API execution, runner
+join, negative source/recipe/panel/path/byte binding cases, and all compiler/runtime/
+custody/GO validation remain deferred. No adapter or generator was executed here.
