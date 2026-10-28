@@ -1,0 +1,60 @@
+{
+  "baseline_commit": "4f8666c05f02dbd3f04b910aa277d756b59cd0e6",
+  "test_files": [
+    {
+      "path": "tests/translate_source/fixture_helpers.py",
+      "sha256": "21a2fd1f0d7e3c5d85a7213b1bac74add3f223061fe339c877243e034c1a3a62",
+      "test_methods": []
+    },
+    {
+      "path": "tests/translate_source/test_structured_edits.py",
+      "sha256": "1e152b233d08d11f32c849474ea9342ca667f88ce012a8cb3b8e6744deb45300",
+      "test_methods": [
+        "test_numeric_literal_changes_only_bound_arithmetic_operand",
+        "test_comparator_changes_only_numeric_if_relation",
+        "test_alpha_literal_and_rounded_preserve_other_statements",
+        "test_descriptor_identity_and_closed_shape_refusals",
+        "test_semantic_noops_and_context_bounds_refuse",
+        "test_wrong_owner_and_ambiguous_typed_target_refuse"
+      ]
+    },
+    {
+      "path": "tests/translate_source/test_translation_plan.py",
+      "sha256": "b92ffb6280de0bfd1d9ec5a6452becc39b651031dd2e33db7f2b655dea82a831",
+      "test_methods": [
+        "test_fixed_wrapper_contains_only_literal_plan_and_uninvoked_entry",
+        "test_source_hash_filename_and_unverified_diagnostics_preserved",
+        "test_field_storage_record_sign_and_file_bindings_survive_normalization",
+        "test_divide_dividend_divisor_and_subtract_receiver_order",
+        "test_move_add_and_multiply_keep_named_receivers",
+        "test_rounded_and_handler_body_scope_preserved",
+        "test_compute_grouping_and_left_right_tree_preserved",
+        "test_paragraph_order_and_once_perform_metadata_preserved",
+        "test_boolean_comparisons_and_branch_bodies_preserved",
+        "test_all_plan_pointers_bind_exact_original_crlf_bytes",
+        "test_literal_text_cannot_add_generated_imports_or_calls",
+        "test_non_ir_wrong_source_hash_and_foreign_filename_refuse",
+        "test_duplicate_field_and_unsupported_usage_refuse_without_mutation",
+        "test_unknown_node_kind_is_blocked_by_native_ir_constructor",
+        "test_repeat_emission_is_deterministic_and_keeps_original_ir"
+      ]
+    }
+  ],
+  "product_raw_sha256": {
+    "src/cobolmap/translate/__init__.py": "3c8185ce176199f849793cd2569b4fd5985a88ff4ed20ca6c3648005aeb6c1eb",
+    "src/cobolmap/translate/bounds.py": "fe797f824fe295a9970c85622bb80f416d03a67ce1e11fa3863c39dca8dc9643",
+    "src/cobolmap/translate/edits.py": "1a8c1240000069b0026adc01a22fdcd0f11989db111d32c5935f5b2dfb11fa02",
+    "src/cobolmap/translate/errors.py": "92678cdf1802cfdb5f2f5981d7e98ab5a9512150ed4f148cb8a64adf4c973371",
+    "src/cobolmap/translate/normalize.py": "bc296f8d114a7c08794c1d4512b6c1f445fbf97a3fa4cf03715f4b450b3152c3",
+    "src/cobolmap/translate/runtime.py": "e3a0c253761d1f8231eb32ff374f9f92f5a470ab2e0be41ba3327fad3cb7cb26",
+    "src/cobolmap/parse/__init__.py": "b7234b317db1c5d42d7c089b877055ee74bdaf9869bdf508e21a3d47833dd16e",
+    "src/cobolmap/parse/lexer.py": "2bb8adcd7f8aa6a7de9e3cbabd2f10189d58479147b9fbb44a236cbe18341fef",
+    "src/cobolmap/parse/models.py": "5a6933fd64a0856f8edb063a6cc04981bcd8ae78f01f991e981a6f244dc4bba0",
+    "src/cobolmap/parse/parser.py": "f00f7cd3028b28b14bfb0354c00b43c67c921537bf1ceb6142aed6f992a18c85",
+    "src/cobolmap/parse/validation.py": "0f552aa1b7ac30a6b89cbb65a12a9fc47a7d0c89970eb14b201250355c3f3297",
+    "src/cobolmap/shared/__init__.py": "36bd7fd760730546f56de7f76e9b193b14e76d613e7601858cb56d51ec8a5616",
+    "src/cobolmap/shared/codec.py": "d0369ee06e3cc0c82a3ffb93a1d69d4693229987ca36982393adf8103723e2a6",
+    "src/cobolmap/shared/decimal_shim.py": "0b9c3fcf6d7f3b798476bcc3dcf2daa8c42d956feeff5e4b2a7527eef1be174f"
+  },
+  "execution": "pending independent static review; inert generated source only"
+}

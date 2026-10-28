@@ -1,0 +1,26 @@
+{
+  "manifest_version": 1,
+  "artifact_kind": "instrument",
+  "artifact_path": "tests/translate_source/test_translation_plan.py",
+  "artifact_sha256": "b92ffb6280de0bfd1d9ec5a6452becc39b651031dd2e33db7f2b655dea82a831",
+  "source_sha256": "b92ffb6280de0bfd1d9ec5a6452becc39b651031dd2e33db7f2b655dea82a831",
+  "author_callsign": "0003_Codex_GPT-6_M10-DL2",
+  "author_harness": "Codex",
+  "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
+  "brief_sha256": "d7395e46d4c502543da9b21188e2393d094286fa492557095b3832d1f23d7aca",
+  "created_at": "2026-10-28T03:02:31.887065+00:00",
+  "split": "dev",
+  "family_id": null,
+  "generator_sha256": null,
+  "parent_artifact_sha256": null,
+  "license_id": null,
+  "license_approval_id": null,
+  "license_status": "pending",
+  "evidence_paths": [
+    "src/cobolmap/translate/__init__.py",
+    "src/cobolmap/translate/normalize.py",
+    "src/cobolmap/translate/edits.py",
+    "src/cobolmap/parse/models.py"
+  ],
+  "originality_attestation": "Original small builder-authored source/IR assertions and manual AST literal decoder. Generated Python remains inert text/AST; no candidate runtime/compiler observations or admission evidence. No-op descriptors may commit to a trailing newline solely to pass distinct-source hash validation; no changed-source witness claimed."
+}
