@@ -57,8 +57,13 @@ def prepare_arm(call: FixtureCallPlan, packet, *, task: TaskBinding, loop_hashes
             wrapper_type = getattr(prompts, "FixturePrompt", None)
             if wrapper_type is None or type(built) is not wrapper_type:
                 return ArmPreparation("blocked", issues=("exact_canonical_fixture_wrapper_required",))
-            if built.admitted is not False or built.transport_authorized is not False:
-                return ArmPreparation("blocked", issues=("fixture_wrapper_authority_forbidden",))
+            fields = {"messages", "evidence_mode", "processing_mode", "count_provenance",
+                      "admitted", "transport_authorized"}
+            if (set(built.__dict__) != fields or built.admitted is not False
+                    or built.transport_authorized is not False or built.evidence_mode != "fixture"
+                    or built.processing_mode != "dev_fixture_control"
+                    or built.count_provenance != "caller_scripted_control_not_measurement"):
+                return ArmPreparation("blocked", issues=("fixture_wrapper_provenance_or_authority_forbidden",))
             if (call.slot.model_id is not None or run_plan_sha256 is not None
                     or prices_sha256 is not None or input_tokens is not None or token_count_receipt is not None
                     or call.policy.context_authority is not None or call.policy.token_count_receipt is not None):

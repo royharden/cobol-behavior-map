@@ -37,8 +37,8 @@ def validate_unit(unit: DevFixtureInput) -> None:
                 or slot.model_slot != unit.model_slot or type(slot.sample) is not int or slot.sample != 1
                 or type(slot.attempt) is not int or slot.call_id in ids):
             raise ValueError("slot_task_arm_sample_or_identity_drift")
-        if type(slot.call_id) is not str or not re.fullmatch(r"[a-z][a-z0-9_-]{0,63}", slot.call_id):
-            raise ValueError("native_schedule_call_id_incompatible_with_provider_Identifier")
+        if type(slot.call_id) is not str or not re.fullmatch(r"c_[0-9a-f]{62}", slot.call_id):
+            raise ValueError("native_call_id_revision_m10_call_id_v2_required")
         if call.format not in ("openai_chat", "anthropic_messages"):
             raise ValueError("explicit_supported_wire_format_required")
         policy = revalidate_closed(call.policy, LeakagePolicy,
