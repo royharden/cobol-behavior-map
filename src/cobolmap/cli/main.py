@@ -155,8 +155,10 @@ def _emit(document: dict[str, Any], output: Path | None, format_name: str) -> No
     for parent in (*output.absolute().parents, output.absolute()):
         if parent.is_symlink() or parent.is_junction():
             raise ReplayRefusal("artifact_link", "linked output path refused")
+    resolved = output.absolute().resolve(strict=False)
+    forbid_sensitive_parts(resolved.parts)
     # Exclusive creation cannot overwrite inputs, receipts or an existing report.
-    with output.open("x", encoding="utf-8", newline="\n") as stream:
+    with resolved.open("x", encoding="utf-8", newline="\n") as stream:
         stream.write(text)
 
 

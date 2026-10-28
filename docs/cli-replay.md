@@ -59,7 +59,9 @@ is its relative logical source identity; every other kind requires filename null
 Paths are printable-ASCII relative forward-slash paths beneath the manifest's
 artifact-only staging directory. Empty/dot/dot-dot/drive/UNC/control/backslash,
 linked components/junctions, root escapes, aliases, duplicate IDs/paths and known
-credential/private/held-out roots refuse. Never use a home, credentials directory,
+credential/private/held-out roots refuse. Windows trailing-dot/space components
+and reserved device aliases refuse on all platforms; resolved sensitive components
+are rechecked for reads and output. Never use a home, credentials directory,
 private thinking lane or custody vault as a replay root. Metadata cannot prove that
 bytes were never hidden; caller must stage genuine dev-only provenance.
 

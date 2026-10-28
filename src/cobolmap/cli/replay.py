@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from datetime import datetime
 import hashlib
 import json
-from pathlib import Path, PurePosixPath
+from pathlib import Path, PurePosixPath, PureWindowsPath
 import re
 from typing import Any
 
@@ -47,6 +47,8 @@ def guarded_name(name: str) -> str:
 
 
 def forbid_sensitive_parts(parts: Any) -> None:
+    require(not any(part.endswith((".", " ")) or PureWindowsPath(part).is_reserved() for part in parts),
+            "artifact_alias", "Windows dot/space/device aliases are outside the portable artifact profile")
     require(not any(part.lower() in FORBIDDEN or part.lower() == ".env"
                     or part.lower().startswith(".env.") for part in parts),
             "forbidden_artifact", "private, credential or held-out path is outside this CLI")
@@ -125,9 +127,11 @@ class _BundleReader:
         for part in name.split("/"):
             target = target / part
             require(not target.is_symlink() and not target.is_junction(), "artifact_link", "linked artifact refused")
-        require(target.resolve().is_relative_to(self.root) and target.is_file(),
+        resolved = target.resolve()
+        forbid_sensitive_parts(resolved.parts)
+        require(resolved.is_relative_to(self.root) and resolved.is_file(),
                 "artifact_missing", f"artifact is unavailable: {name}")
-        return target
+        return resolved
 
     def ingest(self, item: Any) -> None:
         exact_keys(item, {"artifact_id", "path", "sha256", "kind", "filename"}, "artifact")
