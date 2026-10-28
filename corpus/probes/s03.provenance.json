@@ -1,0 +1,25 @@
+{
+  "manifest_version": 1,
+  "artifact_path": "corpus/probes/s03.cbl",
+  "artifact_sha256": "8d5f765135ddb830bcd7ed96caf119e7029e520e5cd76a1a9b29dce2c1915015",
+  "artifact_kind": "probe",
+  "author_callsign": "0064_Codex_GPT-6_Sub_DL2ProbeSources",
+  "author_harness": "Codex",
+  "author_session_id": "01a1800b-dd5f-7003-b2de-b6b608f63500",
+  "created_at": "2026-10-28T01:08:50Z",
+  "originality_attestation": "New synthetic probe source authored and revised by Codex GPT-6 child 0064 under parent 0003; no external program content ingested; builder lineage only, not independent verification.",
+  "family_id": null,
+  "split": "dev",
+  "brief_sha256": "37d065bc7f1537a737d1d786a5695f9c0c2fd6047452162d792f3ed7690c6c06",
+  "generator_sha256": null,
+  "source_sha256": "8d5f765135ddb830bcd7ed96caf119e7029e520e5cd76a1a9b29dce2c1915015",
+  "parent_artifact_sha256": null,
+  "license_id": null,
+  "license_approval_id": null,
+  "license_status": "pending",
+  "evidence_paths": [
+    "admission/probe-design.md",
+    "admission/specs/SUBSET.md",
+    "corpus/probes/s03.proposal.json"
+  ]
+}

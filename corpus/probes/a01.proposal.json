@@ -1,0 +1,24 @@
+{
+  "manifest_version": 1,
+  "probe_id": "A01",
+  "program_id": "probe-a01",
+  "source_sha256": "256fca3b95ae6d0624a487dd7a0a8524ad78dc6336f2a392d47c0e186c0556f7",
+  "focus": "signed MOVE arithmetic and truncation",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null
+}

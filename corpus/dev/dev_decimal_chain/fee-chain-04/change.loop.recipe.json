@@ -1,0 +1,85 @@
+{
+  "boundaries": [
+    {
+      "field": null,
+      "id": "fee-chain-04-change-loop-empty",
+      "kind": "eof",
+      "records": [],
+      "scenario": "empty"
+    },
+    {
+      "field": "FACTOR",
+      "id": "fee-chain-04-change-loop-mixed",
+      "kind": "positive",
+      "records": [
+        {
+          "AMOUNT": "1.00",
+          "DIVISOR": "3",
+          "FACTOR": "1.01"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": "DIVISOR",
+      "id": "fee-chain-04-change-loop-zero-divisor",
+      "kind": "zero",
+      "records": [
+        {
+          "AMOUNT": "1.00",
+          "DIVISOR": "0",
+          "FACTOR": "1.01"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": "AMOUNT",
+      "id": "fee-chain-04-change-loop-least",
+      "kind": "least_unit",
+      "records": [
+        {
+          "AMOUNT": "0.01",
+          "DIVISOR": "3",
+          "FACTOR": "1.01"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": "AMOUNT",
+      "id": "fee-chain-04-change-loop-max",
+      "kind": "field_max",
+      "records": [
+        {
+          "AMOUNT": "999.99",
+          "DIVISOR": "1",
+          "FACTOR": "9.99"
+        }
+      ],
+      "scenario": "records"
+    }
+  ],
+  "collision_counter": 0,
+  "corpus_version": "m10-dev-source-r4",
+  "family_id": "dev_decimal_chain",
+  "fields_sha256": "95c6c03d61ad427094d6097ae5a97db18f46b65bf54dccd75245e59a6558a191",
+  "fill": {
+    "algorithm": "sha256-counter-v1",
+    "max_records": 2,
+    "seed_material": [
+      "m10-dev-source-r4",
+      "dev_decimal_chain",
+      "fee-chain-04",
+      "fee-chain-04-change",
+      "loop"
+    ],
+    "target_count": 32
+  },
+  "manifest_version": 1,
+  "partition": "loop",
+  "program_id": "fee-chain-04",
+  "records": [],
+  "scenario": "missing",
+  "task_id": "fee-chain-04-change"
+}

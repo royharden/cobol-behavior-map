@@ -7,7 +7,12 @@
     {
       "hazard_id": "H3",
       "observable": "stdout:OUT-STATUS",
-      "reachability_recipe_ids": [],
+      "reachability_recipe_ids": [
+        "status-two-read-04-change-loop-full-width",
+        "status-two-read-04-change-loop-ordered",
+        "status-two-read-04-change-verification-full-width",
+        "status-two-read-04-change-verification-ordered"
+      ],
       "target": {
         "byte_end": 1676,
         "byte_start": 1663,
@@ -18,7 +23,12 @@
     {
       "hazard_id": "H6",
       "observable": "output.dat:OUT-TEXT",
-      "reachability_recipe_ids": [],
+      "reachability_recipe_ids": [
+        "status-two-read-04-change-loop-full-width",
+        "status-two-read-04-change-loop-ordered",
+        "status-two-read-04-change-verification-full-width",
+        "status-two-read-04-change-verification-ordered"
+      ],
       "target": {
         "byte_end": 1592,
         "byte_start": 1568,

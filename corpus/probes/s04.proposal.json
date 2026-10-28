@@ -1,0 +1,24 @@
+{
+  "manifest_version": 1,
+  "probe_id": "S04",
+  "program_id": "probe-s04",
+  "source_sha256": "fd9e5c08f036f292f8e080c8858d504c244bf311fdb0b704c5dd985799b2ecce",
+  "focus": "positive above tie",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null
+}

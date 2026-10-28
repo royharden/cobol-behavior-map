@@ -1,0 +1,25 @@
+{
+  "artifact_kind": "probe",
+  "artifact_path": "corpus/probes/s11.cbl",
+  "artifact_sha256": "41a67e01c511a57e4789c8265893c4cbbf067395558a5f39dd725d160165d2a9",
+  "author_callsign": "0003_Codex_GPT-6_M10-DL2",
+  "author_harness": "Codex",
+  "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
+  "brief_sha256": "9f5a5b807e19217593e11e3a2a9aca14b695cbc8b2ba184b939d7b7738cbd72a",
+  "created_at": "2026-10-28T01:24:02Z",
+  "evidence_paths": [
+    "admission/probe-design.md",
+    "admission/specs/SUBSET.md",
+    "corpus/probes/s11.proposal.json"
+  ],
+  "family_id": null,
+  "generator_sha256": null,
+  "license_approval_id": null,
+  "license_id": null,
+  "license_status": "pending",
+  "manifest_version": 1,
+  "originality_attestation": "Parent builder0003/0912 Codex GPT-6 actual session repaired missing signed DISPLAY receiver declaration and its source-bound metadata, no execution. Original author 0064_Codex_GPT-6_Sub_DL2ProbeSources session 01a1800b-dd5f-7003-b2de-b6b608f63500; prior artifact SHA256 b2e06dd3ae63952979d4268a19a333edbca0fa40a85bcd3dabf885bf87d2daaf and prior sidecar SHA256 2eddaca6287ad0921227115879d1e3b52135c457ecabbd529e093cabc02542fd. Source parent is previous source edition for program revision, current source for proposal. No external ingestion, expected answers, independent role or license approval.",
+  "parent_artifact_sha256": "b2e06dd3ae63952979d4268a19a333edbca0fa40a85bcd3dabf885bf87d2daaf",
+  "source_sha256": "41a67e01c511a57e4789c8265893c4cbbf067395558a5f39dd725d160165d2a9",
+  "split": "dev"
+}

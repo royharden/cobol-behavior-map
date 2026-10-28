@@ -1,0 +1,24 @@
+{
+  "manifest_version": 1,
+  "probe_id": "S15",
+  "program_id": "probe-s15",
+  "source_sha256": "8b3667b5ef21084b37665dddf1c0e48f3251c2a46b837342fe1c8c2fe3eb79cf",
+  "focus": "internal COMP-3 byte size pending: only value movement is observable",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "partial_pending_out_of_subset_measurement",
+  "pending_measurement": "LENGTH/internal byte-size observation is outside SUBSET v1; this source measures only value movement"
+}

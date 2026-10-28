@@ -1,0 +1,127 @@
+{
+  "boundaries": [
+    {
+      "field": "YY-YEAR",
+      "id": "year-pivot-score-04-change-verification-below",
+      "kind": "pivot_minus_one",
+      "records": [
+        {
+          "TODAY-YEAR": "2026",
+          "YEAR-DENOM": "3",
+          "YY-YEAR": "59"
+        },
+        {
+          "TODAY-YEAR": "2026",
+          "YEAR-DENOM": "3",
+          "YY-YEAR": "59"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": "YY-YEAR",
+      "id": "year-pivot-score-04-change-verification-at",
+      "kind": "pivot",
+      "records": [
+        {
+          "TODAY-YEAR": "2026",
+          "YEAR-DENOM": "3",
+          "YY-YEAR": "60"
+        },
+        {
+          "TODAY-YEAR": "2026",
+          "YEAR-DENOM": "3",
+          "YY-YEAR": "60"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": "YY-YEAR",
+      "id": "year-pivot-score-04-change-verification-above",
+      "kind": "pivot_plus_one",
+      "records": [
+        {
+          "TODAY-YEAR": "2026",
+          "YEAR-DENOM": "3",
+          "YY-YEAR": "61"
+        },
+        {
+          "TODAY-YEAR": "2026",
+          "YEAR-DENOM": "3",
+          "YY-YEAR": "61"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": "YEAR-DENOM",
+      "id": "year-pivot-score-04-change-verification-zero-divisor",
+      "kind": "zero",
+      "records": [
+        {
+          "TODAY-YEAR": "2026",
+          "YEAR-DENOM": "0",
+          "YY-YEAR": "30"
+        },
+        {
+          "TODAY-YEAR": "2026",
+          "YEAR-DENOM": "0",
+          "YY-YEAR": "30"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": "YEAR-DENOM",
+      "id": "year-pivot-score-04-change-verification-least-divisor",
+      "kind": "least_unit",
+      "records": [
+        {
+          "TODAY-YEAR": "2026",
+          "YEAR-DENOM": "1",
+          "YY-YEAR": "30"
+        },
+        {
+          "TODAY-YEAR": "2026",
+          "YEAR-DENOM": "1",
+          "YY-YEAR": "30"
+        }
+      ],
+      "scenario": "records"
+    }
+  ],
+  "collision_counter": 0,
+  "corpus_version": "m10-dev-source-r4",
+  "family_id": "dev_year_pivot_score",
+  "fields_sha256": "596ad17cfcb888bac1d695f8374dd1a36ae436ee4dcb5a90776915534278a871",
+  "fill": {
+    "algorithm": "sha256-counter-v1",
+    "max_records": 2,
+    "seed_material": [
+      "m10-dev-source-r4",
+      "dev_year_pivot_score",
+      "year-pivot-score-04",
+      "year-pivot-score-04-change",
+      "verification"
+    ],
+    "target_count": 128
+  },
+  "manifest_version": 1,
+  "partition": "verification",
+  "program_id": "year-pivot-score-04",
+  "records": [
+    {
+      "TODAY-YEAR": "2026",
+      "YEAR-DENOM": "3",
+      "YY-YEAR": "30"
+    },
+    {
+      "TODAY-YEAR": "2026",
+      "YEAR-DENOM": "3",
+      "YY-YEAR": "30"
+    }
+  ],
+  "scenario": "records",
+  "task_id": "year-pivot-score-04-change"
+}

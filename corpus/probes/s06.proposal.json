@@ -1,0 +1,24 @@
+{
+  "manifest_version": 1,
+  "probe_id": "S06",
+  "program_id": "probe-s06",
+  "source_sha256": "c0da5c873af7f24c042b7baa5cc376fb3457ce1b8b2f358bd7aad2c0d0ff4a3d",
+  "focus": "negative above magnitude tie",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null
+}

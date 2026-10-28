@@ -1,0 +1,20 @@
+{
+  "corpus_version": "m10-dev-source-r4",
+  "family_id": "dev_status_two_read",
+  "fields_sha256": "3a1cec704c957691b6412ee95a7034d295445defcde2d44e66c853b7132d077e",
+  "manifest_version": 1,
+  "panel": "change",
+  "program_id": "status-two-read-04",
+  "recipes": {
+    "loop": {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-04/change.loop.recipe.json",
+      "sha256": "de19a1cfbf28a50372aef6064d21acfa2096dc9a72fbb6d3029db1e9d8e85c38"
+    },
+    "verification": {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-04/change.verification.recipe.json",
+      "sha256": "e7e4c26bc08a6dc60f46c3632601f2a36b6bc5729509629ca09e0d4d36fb4791"
+    }
+  },
+  "split": "dev",
+  "task_id": "status-two-read-04-change"
+}

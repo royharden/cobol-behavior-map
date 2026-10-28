@@ -1,0 +1,85 @@
+{
+  "boundaries": [
+    {
+      "field": null,
+      "id": "year-century-03-change-loop-empty",
+      "kind": "eof",
+      "records": [],
+      "scenario": "empty"
+    },
+    {
+      "field": "YY-YEAR",
+      "id": "year-century-03-change-loop-year-zero",
+      "kind": "zero",
+      "records": [
+        {
+          "SIGNED-DELTA": "-1",
+          "TODAY-YEAR": "2026",
+          "YY-YEAR": "0"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": "YY-YEAR",
+      "id": "year-century-03-change-loop-year-max",
+      "kind": "field_max",
+      "records": [
+        {
+          "SIGNED-DELTA": "-1",
+          "TODAY-YEAR": "2026",
+          "YY-YEAR": "99"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": "SIGNED-DELTA",
+      "id": "year-century-03-change-loop-negative",
+      "kind": "negative",
+      "records": [
+        {
+          "SIGNED-DELTA": "-1",
+          "TODAY-YEAR": "2026",
+          "YY-YEAR": "24"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": "SIGNED-DELTA",
+      "id": "year-century-03-change-loop-negzero",
+      "kind": "negative_zero",
+      "records": [
+        {
+          "SIGNED-DELTA": "-0",
+          "TODAY-YEAR": "2026",
+          "YY-YEAR": "24"
+        }
+      ],
+      "scenario": "records"
+    }
+  ],
+  "collision_counter": 0,
+  "corpus_version": "m10-dev-source-r4",
+  "family_id": "dev_year_century",
+  "fields_sha256": "9f470aab10d47c78cea8596aae71ea8a32a4167bbfe016ff07453598e3eb7cc6",
+  "fill": {
+    "algorithm": "sha256-counter-v1",
+    "max_records": 2,
+    "seed_material": [
+      "m10-dev-source-r4",
+      "dev_year_century",
+      "year-century-03",
+      "year-century-03-change",
+      "loop"
+    ],
+    "target_count": 32
+  },
+  "manifest_version": 1,
+  "partition": "loop",
+  "program_id": "year-century-03",
+  "records": [],
+  "scenario": "missing",
+  "task_id": "year-century-03-change"
+}

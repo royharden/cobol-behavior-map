@@ -1,0 +1,20 @@
+{
+  "corpus_version": "m10-dev-source-r4",
+  "family_id": "dev_year_century",
+  "fields_sha256": "b5bab1451ddeaa68c6ee7c9e8c9286ba86935ab78f16a950ea686971fa71082a",
+  "manifest_version": 1,
+  "panel": "change",
+  "program_id": "year-century-02",
+  "recipes": {
+    "loop": {
+      "path": "corpus/dev/dev_year_century/year-century-02/change.loop.recipe.json",
+      "sha256": "39d23d68e3f05a7da505114d6f796e697ad2369d7f518cfd848f3ab160b8c5c9"
+    },
+    "verification": {
+      "path": "corpus/dev/dev_year_century/year-century-02/change.verification.recipe.json",
+      "sha256": "2bf3452281a17e34429c2ef359b2f602b8cdba02ba23dc4cace25196b1834e3f"
+    }
+  },
+  "split": "dev",
+  "task_id": "year-century-02-change"
+}

@@ -1,0 +1,24 @@
+{
+  "coverage_status": "proposed_unverified",
+  "focus": "internal packed truncation to display",
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "offset": 0,
+      "pic": "X(8)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 8
+    }
+  ],
+  "manifest_version": 1,
+  "pending_measurement": null,
+  "probe_id": "S16",
+  "program_id": "probe-s16",
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "record_width": 8,
+  "source_execution_status": "not_run",
+  "source_sha256": "1089553d46b9372e87c29ec7ad54b080a2c3ed40e17eedc4992938cbcddbed0e"
+}

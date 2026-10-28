@@ -1,0 +1,98 @@
+{
+  "boundaries": [
+    {
+      "field": null,
+      "id": "year-pivot-score-03-original-loop-empty",
+      "kind": "eof",
+      "records": [],
+      "scenario": "empty"
+    },
+    {
+      "field": "YY-YEAR",
+      "id": "year-pivot-score-03-original-loop-below",
+      "kind": "pivot_minus_one",
+      "records": [
+        {
+          "TODAY-YEAR": "2026",
+          "YEAR-DENOM": "3",
+          "YY-YEAR": "49"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": "YY-YEAR",
+      "id": "year-pivot-score-03-original-loop-at",
+      "kind": "pivot",
+      "records": [
+        {
+          "TODAY-YEAR": "2026",
+          "YEAR-DENOM": "3",
+          "YY-YEAR": "50"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": "YY-YEAR",
+      "id": "year-pivot-score-03-original-loop-above",
+      "kind": "pivot_plus_one",
+      "records": [
+        {
+          "TODAY-YEAR": "2026",
+          "YEAR-DENOM": "3",
+          "YY-YEAR": "51"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": "YEAR-DENOM",
+      "id": "year-pivot-score-03-original-loop-zero-divisor",
+      "kind": "zero",
+      "records": [
+        {
+          "TODAY-YEAR": "2026",
+          "YEAR-DENOM": "0",
+          "YY-YEAR": "30"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": "YEAR-DENOM",
+      "id": "year-pivot-score-03-original-loop-least-divisor",
+      "kind": "least_unit",
+      "records": [
+        {
+          "TODAY-YEAR": "2026",
+          "YEAR-DENOM": "1",
+          "YY-YEAR": "30"
+        }
+      ],
+      "scenario": "records"
+    }
+  ],
+  "collision_counter": 0,
+  "corpus_version": "m10-dev-source-r4",
+  "family_id": "dev_year_pivot_score",
+  "fields_sha256": "e60544f5873c711abb244c5ce89bcf8947787b326cd3c985dc6a83aac2151eff",
+  "fill": {
+    "algorithm": "sha256-counter-v1",
+    "max_records": 2,
+    "seed_material": [
+      "m10-dev-source-r4",
+      "dev_year_pivot_score",
+      "year-pivot-score-03",
+      "year-pivot-score-03-original",
+      "loop"
+    ],
+    "target_count": 32
+  },
+  "manifest_version": 1,
+  "partition": "loop",
+  "program_id": "year-pivot-score-03",
+  "records": [],
+  "scenario": "missing",
+  "task_id": "year-pivot-score-03-original"
+}

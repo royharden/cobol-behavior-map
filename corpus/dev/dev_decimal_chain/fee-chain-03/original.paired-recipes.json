@@ -1,0 +1,20 @@
+{
+  "corpus_version": "m10-dev-source-r4",
+  "family_id": "dev_decimal_chain",
+  "fields_sha256": "bc63f5364b64a85a18ef6927a3ee8f346792b0c7ba6af3ccb2ab3001d874ff5e",
+  "manifest_version": 1,
+  "panel": "unchanged",
+  "program_id": "fee-chain-03",
+  "recipes": {
+    "loop": {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.loop.recipe.json",
+      "sha256": "13e4bffb5aa446c8399971071fc37ee651b5e021614ed723cc0268b8d37c3ddc"
+    },
+    "verification": {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.verification.recipe.json",
+      "sha256": "282e2dbfb5e93a72bbf54f6968329f8140451c40ffabc00bd1c0380726ae9918"
+    }
+  },
+  "split": "dev",
+  "task_id": "fee-chain-03-original"
+}

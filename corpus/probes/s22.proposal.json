@@ -1,0 +1,26 @@
+{
+  "manifest_version": 1,
+  "probe_id": "S22",
+  "program_id": "probe-s22",
+  "source_sha256": "570b4432c6669fd45be102658e5d95ce5718031f711765bb6ee361e93652d772",
+  "focus": "missing input status",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [
+    "missing"
+  ],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null
+}

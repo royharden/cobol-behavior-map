@@ -1,0 +1,44 @@
+{
+  "boundaries": [
+    {
+      "field": null,
+      "id": "status-fallback-04-change-loop-empty",
+      "kind": "eof",
+      "records": [],
+      "scenario": "empty"
+    },
+    {
+      "field": "PAYLOAD",
+      "id": "status-fallback-04-change-loop-full-width",
+      "kind": "field_max",
+      "records": [
+        {
+          "PAYLOAD": "ABCDEF"
+        }
+      ],
+      "scenario": "records"
+    }
+  ],
+  "collision_counter": 0,
+  "corpus_version": "m10-dev-source-r4",
+  "family_id": "dev_status_fallback",
+  "fields_sha256": "ef718af8499ae8c9f9fed32c71ed68e37cd9d0e05914f04e31bcab98808aa53d",
+  "fill": {
+    "algorithm": "sha256-counter-v1",
+    "max_records": 2,
+    "seed_material": [
+      "m10-dev-source-r4",
+      "dev_status_fallback",
+      "status-fallback-04",
+      "status-fallback-04-change",
+      "loop"
+    ],
+    "target_count": 32
+  },
+  "manifest_version": 1,
+  "partition": "loop",
+  "program_id": "status-fallback-04",
+  "records": [],
+  "scenario": "missing",
+  "task_id": "status-fallback-04-change"
+}

@@ -7,7 +7,10 @@
     {
       "hazard_id": "H3",
       "observable": "stdout:OUT-STATUS",
-      "reachability_recipe_ids": [],
+      "reachability_recipe_ids": [
+        "status-fallback-02-original-loop-full-width",
+        "status-fallback-02-original-verification-full-width"
+      ],
       "target": {
         "byte_end": 1045,
         "byte_start": 1032,
@@ -18,7 +21,10 @@
     {
       "hazard_id": "H6",
       "observable": "output.dat:OUT-TEXT",
-      "reachability_recipe_ids": [],
+      "reachability_recipe_ids": [
+        "status-fallback-02-original-loop-full-width",
+        "status-fallback-02-original-verification-full-width"
+      ],
       "target": {
         "byte_end": 1007,
         "byte_start": 983,

@@ -1,0 +1,109 @@
+{
+  "boundaries": [
+    {
+      "field": "YY-YEAR",
+      "id": "year-century-01-change-verification-year-zero",
+      "kind": "zero",
+      "records": [
+        {
+          "SIGNED-DELTA": "-1",
+          "TODAY-YEAR": "2026",
+          "YY-YEAR": "0"
+        },
+        {
+          "SIGNED-DELTA": "-1",
+          "TODAY-YEAR": "2026",
+          "YY-YEAR": "0"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": "YY-YEAR",
+      "id": "year-century-01-change-verification-year-max",
+      "kind": "field_max",
+      "records": [
+        {
+          "SIGNED-DELTA": "-1",
+          "TODAY-YEAR": "2026",
+          "YY-YEAR": "99"
+        },
+        {
+          "SIGNED-DELTA": "-1",
+          "TODAY-YEAR": "2026",
+          "YY-YEAR": "99"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": "SIGNED-DELTA",
+      "id": "year-century-01-change-verification-negative",
+      "kind": "negative",
+      "records": [
+        {
+          "SIGNED-DELTA": "-1",
+          "TODAY-YEAR": "2026",
+          "YY-YEAR": "24"
+        },
+        {
+          "SIGNED-DELTA": "-1",
+          "TODAY-YEAR": "2026",
+          "YY-YEAR": "24"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": "SIGNED-DELTA",
+      "id": "year-century-01-change-verification-negzero",
+      "kind": "negative_zero",
+      "records": [
+        {
+          "SIGNED-DELTA": "-0",
+          "TODAY-YEAR": "2026",
+          "YY-YEAR": "24"
+        },
+        {
+          "SIGNED-DELTA": "-0",
+          "TODAY-YEAR": "2026",
+          "YY-YEAR": "24"
+        }
+      ],
+      "scenario": "records"
+    }
+  ],
+  "collision_counter": 0,
+  "corpus_version": "m10-dev-source-r4",
+  "family_id": "dev_year_century",
+  "fields_sha256": "7f4d3868dd9036acd9c42f4b5635a51b26fb2b17ddf8c8e78e8686441309709a",
+  "fill": {
+    "algorithm": "sha256-counter-v1",
+    "max_records": 2,
+    "seed_material": [
+      "m10-dev-source-r4",
+      "dev_year_century",
+      "year-century-01",
+      "year-century-01-change",
+      "verification"
+    ],
+    "target_count": 128
+  },
+  "manifest_version": 1,
+  "partition": "verification",
+  "program_id": "year-century-01",
+  "records": [
+    {
+      "SIGNED-DELTA": "-1",
+      "TODAY-YEAR": "2026",
+      "YY-YEAR": "24"
+    },
+    {
+      "SIGNED-DELTA": "-1",
+      "TODAY-YEAR": "2026",
+      "YY-YEAR": "24"
+    }
+  ],
+  "scenario": "records",
+  "task_id": "year-century-01-change"
+}

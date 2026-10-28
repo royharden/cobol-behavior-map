@@ -1,0 +1,24 @@
+{
+  "coverage_status": "proposed_unverified",
+  "focus": "negative zero through arithmetic",
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "offset": 0,
+      "pic": "X(8)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 8
+    }
+  ],
+  "manifest_version": 1,
+  "pending_measurement": null,
+  "probe_id": "S12",
+  "program_id": "probe-s12",
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "record_width": 8,
+  "source_execution_status": "not_run",
+  "source_sha256": "24f30b0166187ee8ba6f7abcbd46ace634b6a7fa2b32ef38b0d296ad59d9a16b"
+}

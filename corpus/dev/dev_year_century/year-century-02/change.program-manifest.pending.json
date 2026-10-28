@@ -7,7 +7,12 @@
     {
       "hazard_id": "H4",
       "observable": "output.dat:OUT-YEAR",
-      "reachability_recipe_ids": [],
+      "reachability_recipe_ids": [
+        "year-century-02-change-loop-year-zero",
+        "year-century-02-change-loop-year-max",
+        "year-century-02-change-verification-year-zero",
+        "year-century-02-change-verification-year-max"
+      ],
       "target": {
         "byte_end": 1441,
         "byte_start": 1395,
@@ -18,7 +23,14 @@
     {
       "hazard_id": "H5",
       "observable": "output.dat:OUT-MAGNITUDE",
-      "reachability_recipe_ids": [],
+      "reachability_recipe_ids": [
+        "year-century-02-change-loop-year-zero",
+        "year-century-02-change-loop-year-max",
+        "year-century-02-change-loop-negative",
+        "year-century-02-change-verification-year-zero",
+        "year-century-02-change-verification-year-max",
+        "year-century-02-change-verification-negative"
+      ],
       "target": {
         "byte_end": 1587,
         "byte_start": 1553,

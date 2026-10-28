@@ -1,0 +1,24 @@
+{
+  "manifest_version": 1,
+  "probe_id": "S26",
+  "program_id": "probe-s26",
+  "source_sha256": "b39bf01c11a52cc66eec056104dd4409d3034272fd76456ad4faf36e6d58c432",
+  "focus": "signed to unsigned MOVE",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null
+}

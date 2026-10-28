@@ -1,0 +1,20 @@
+{
+  "corpus_version": "m10-dev-source-r4",
+  "family_id": "dev_year_pivot_score",
+  "fields_sha256": "ac6c78be5ba327828a139d7a7e2971a7e46c120a27dd63537cda67ab985f0c0a",
+  "manifest_version": 1,
+  "panel": "change",
+  "program_id": "year-pivot-score-04",
+  "recipes": {
+    "loop": {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/change.loop.recipe.json",
+      "sha256": "7cce60ec6afd0d082df69ce542d573a7f90f52d0b8e701d79a516b76f33bdf98"
+    },
+    "verification": {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/change.verification.recipe.json",
+      "sha256": "025a4b76e0c3a60cafc248dc0e5b2f5b58d5a23f6b3f0c9ceafdafca5005b5bf"
+    }
+  },
+  "split": "dev",
+  "task_id": "year-pivot-score-04-change"
+}

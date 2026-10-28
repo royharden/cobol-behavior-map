@@ -1,0 +1,25 @@
+{
+  "manifest_version": 1,
+  "artifact_path": "corpus/probes/s24.proposal.json",
+  "artifact_sha256": "123d9739a867b679af18d490d8d7045aecefae99f17ab5419c40cae9e704e5c3",
+  "artifact_kind": "request",
+  "author_callsign": "0064_Codex_GPT-6_Sub_DL2ProbeSources",
+  "author_harness": "Codex",
+  "author_session_id": "01a1800b-dd5f-7003-b2de-b6b608f63500",
+  "created_at": "2026-10-28T01:10:33Z",
+  "originality_attestation": "New partial synthetic probe proposal authored by Codex GPT-6 child 0064 under parent 0003; no external content ingested; builder lineage only, not an independent recipe, generated case, or observation.",
+  "family_id": null,
+  "split": "dev",
+  "brief_sha256": "37d065bc7f1537a737d1d786a5695f9c0c2fd6047452162d792f3ed7690c6c06",
+  "generator_sha256": null,
+  "source_sha256": "6b4731bbf3fffbfb1d71d8fe498531783ed615a376856eef1c51ef9960fbd0b8",
+  "parent_artifact_sha256": "6b4731bbf3fffbfb1d71d8fe498531783ed615a376856eef1c51ef9960fbd0b8",
+  "license_id": null,
+  "license_approval_id": null,
+  "license_status": "pending",
+  "evidence_paths": [
+    "admission/probe-design.md",
+    "admission/specs/SUBSET.md",
+    "corpus/probes/s24.cbl"
+  ]
+}
