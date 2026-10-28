@@ -1,0 +1,35 @@
+{
+  "fields": [
+    {
+      "name": "YY-YEAR",
+      "offset": 0,
+      "pic": "9(2)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 2
+    },
+    {
+      "name": "TODAY-YEAR",
+      "offset": 2,
+      "pic": "9(4)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 4
+    },
+    {
+      "name": "SIGNED-DELTA",
+      "offset": 6,
+      "pic": "S9(2)",
+      "scale": 0,
+      "sign": "leading_separate",
+      "usage": "DISPLAY",
+      "width": 3
+    }
+  ],
+  "manifest_version": 1,
+  "program_id": "year-century-03",
+  "record_width": 9,
+  "source_sha256": "471eed53e2ee7b3c593a16dbb6a4a6ff664781c06c9a5ed46dde5d9a43158f4f"
+}

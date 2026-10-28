@@ -1,0 +1,35 @@
+{
+  "fields": [
+    {
+      "name": "OUT-FEE",
+      "offset": 0,
+      "pic": "9(3)V9(2)",
+      "scale": 2,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 5
+    },
+    {
+      "name": "OUT-MAGNITUDE",
+      "offset": 5,
+      "pic": "9(2)V9(2)",
+      "scale": 2,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 4
+    },
+    {
+      "name": "OUT-MARK",
+      "offset": 9,
+      "pic": "X(1)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 1
+    }
+  ],
+  "manifest_version": 1,
+  "program_id": "fee-tier-01",
+  "record_width": 10,
+  "source_sha256": "ea3d69ee5bca97599ec13883bcc60e88f5c5abe1b6d8f0a3f00af92a8f55afe5"
+}

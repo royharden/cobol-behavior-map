@@ -1,0 +1,17 @@
+{
+  "fields": [
+    {
+      "name": "PAYLOAD",
+      "offset": 0,
+      "pic": "X(5)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 5
+    }
+  ],
+  "manifest_version": 1,
+  "program_id": "status-two-read-02",
+  "record_width": 5,
+  "source_sha256": "fa50365ea1f360f4fe9a1a8a5a93e3a9cb0bd5070d8caaf8603b71705a81eea1"
+}

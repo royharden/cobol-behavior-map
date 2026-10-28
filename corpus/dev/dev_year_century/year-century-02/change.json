@@ -1,0 +1,17 @@
+{
+  "after": "1900",
+  "before": "1800",
+  "changed_sha256": "b160deeb5803c10c9fd7517c54923741261436dd4842e12a7b565fa0993a786f",
+  "manifest_version": 1,
+  "operation": "replace_numeric_literal",
+  "original_sha256": "076c43fd128ef6a409425b12558b43a3672560de6b86c83430b0223f75f1bb01",
+  "prose": "Replace one fixed century literal; integer today remains an input, and changed behavior is unmeasured.",
+  "target": {
+    "byte_end": 1059,
+    "byte_start": 1055,
+    "file": "original.cbl",
+    "line": 43,
+    "node_kind": "literal"
+  },
+  "task_id": "year-century-02-change"
+}

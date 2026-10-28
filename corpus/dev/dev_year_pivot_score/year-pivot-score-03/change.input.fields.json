@@ -1,0 +1,35 @@
+{
+  "fields": [
+    {
+      "name": "YY-YEAR",
+      "offset": 0,
+      "pic": "9(2)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 2
+    },
+    {
+      "name": "TODAY-YEAR",
+      "offset": 2,
+      "pic": "9(4)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 4
+    },
+    {
+      "name": "YEAR-DENOM",
+      "offset": 6,
+      "pic": "9(1)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 1
+    }
+  ],
+  "manifest_version": 1,
+  "program_id": "year-pivot-score-03",
+  "record_width": 7,
+  "source_sha256": "fc2b0c37ac5affc44bab546b91bd100bb1925170a73edb257f2de6f68fabaa09"
+}

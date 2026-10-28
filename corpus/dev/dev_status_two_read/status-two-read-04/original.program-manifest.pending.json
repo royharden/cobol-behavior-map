@@ -1,0 +1,38 @@
+{
+  "allowed_return_codes": [
+    0
+  ],
+  "family_id": "dev_status_two_read",
+  "hazards": [
+    {
+      "hazard_id": "H3",
+      "observable": "stdout:OUT-STATUS",
+      "reachability_recipe_ids": [],
+      "target": {
+        "byte_end": 717,
+        "byte_start": 698,
+        "file": "original.cbl",
+        "line": 26
+      }
+    },
+    {
+      "hazard_id": "H6",
+      "observable": "output.dat:OUT-TEXT",
+      "reachability_recipe_ids": [],
+      "target": {
+        "byte_end": 1125,
+        "byte_start": 1101,
+        "file": "original.cbl",
+        "line": 48
+      }
+    }
+  ],
+  "input_fields_sha256": "cade81aaadc1c2fdb3016c80167dd5e340f04fd8bbfeb9b404542c6cac6571da",
+  "loops": [],
+  "manifest_version": 1,
+  "output_fields_sha256": "407eaf463f5018b0d8e82df97ac874a2bc0ae7cb8c6cf6939bd4b23f568d1755",
+  "program_id": "status-two-read-04",
+  "provenance_sha256": "982bfa96746dbffb0251726e6dbde3d51f9b4c15530b5a7e18aa90346c8cd086",
+  "source_sha256": "533cb38bc67c57d72391cbfc7ad487641a50ecc549abb97ae82f8047e0208d2e",
+  "split": "dev"
+}

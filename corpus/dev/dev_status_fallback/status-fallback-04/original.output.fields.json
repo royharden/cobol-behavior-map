@@ -1,0 +1,26 @@
+{
+  "fields": [
+    {
+      "name": "OUT-TEXT",
+      "offset": 0,
+      "pic": "X(3)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 3
+    },
+    {
+      "name": "OUT-MARK",
+      "offset": 3,
+      "pic": "X(1)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 1
+    }
+  ],
+  "manifest_version": 1,
+  "program_id": "status-fallback-04",
+  "record_width": 4,
+  "source_sha256": "2c3cdb99f980e85aedfc5997f6cd74a64f441b682d0a803f205f14f9d26cd527"
+}

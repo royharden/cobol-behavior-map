@@ -1,0 +1,19 @@
+{
+  "author_provenance_sha256": "b3e9f2321ce4b61d25656c95e32091a7adc6dd8cde98f614ab6edb16b09d1648",
+  "domain": "year_window",
+  "family_id": "dev_year_century",
+  "hazard_ids": [
+    "H4",
+    "H5"
+  ],
+  "manifest_version": 1,
+  "program_ids": [
+    "year-century-01",
+    "year-century-02",
+    "year-century-03",
+    "year-century-04"
+  ],
+  "split": "dev",
+  "template_description": "Direct fixed-century two-digit-year arithmetic without a pivot and signed-to-unsigned magnitude transfer; today remains an input.",
+  "template_id": "century_direct"
+}

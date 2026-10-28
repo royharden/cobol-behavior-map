@@ -1,0 +1,35 @@
+{
+  "fields": [
+    {
+      "name": "OUT-YEAR",
+      "offset": 0,
+      "pic": "9(4)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 4
+    },
+    {
+      "name": "OUT-SCORE",
+      "offset": 4,
+      "pic": "S9(2)V9(1)",
+      "scale": 1,
+      "sign": "leading_separate",
+      "usage": "DISPLAY",
+      "width": 4
+    },
+    {
+      "name": "OUT-MARK",
+      "offset": 8,
+      "pic": "X(1)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 1
+    }
+  ],
+  "manifest_version": 1,
+  "program_id": "year-pivot-score-03",
+  "record_width": 9,
+  "source_sha256": "fc2b0c37ac5affc44bab546b91bd100bb1925170a73edb257f2de6f68fabaa09"
+}

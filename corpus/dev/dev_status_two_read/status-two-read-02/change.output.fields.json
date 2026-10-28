@@ -1,0 +1,35 @@
+{
+  "fields": [
+    {
+      "name": "OUT-TEXT",
+      "offset": 0,
+      "pic": "X(2)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 2
+    },
+    {
+      "name": "OUT-ORDER",
+      "offset": 2,
+      "pic": "9(1)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 1
+    },
+    {
+      "name": "OUT-MARK",
+      "offset": 3,
+      "pic": "X(1)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 1
+    }
+  ],
+  "manifest_version": 1,
+  "program_id": "status-two-read-02",
+  "record_width": 4,
+  "source_sha256": "dea374cbd8a7e318c1609419947cb85370d9fbebbc719898f9455826c15971bf"
+}

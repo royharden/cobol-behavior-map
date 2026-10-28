@@ -1,0 +1,38 @@
+{
+  "allowed_return_codes": [
+    0
+  ],
+  "family_id": "dev_status_fallback",
+  "hazards": [
+    {
+      "hazard_id": "H3",
+      "observable": "stdout:OUT-STATUS",
+      "reachability_recipe_ids": [],
+      "target": {
+        "byte_end": 627,
+        "byte_start": 608,
+        "file": "changed.cbl",
+        "line": 23
+      }
+    },
+    {
+      "hazard_id": "H6",
+      "observable": "output.dat:OUT-TEXT",
+      "reachability_recipe_ids": [],
+      "target": {
+        "byte_end": 733,
+        "byte_start": 709,
+        "file": "changed.cbl",
+        "line": 28
+      }
+    }
+  ],
+  "input_fields_sha256": "824a69e3f07c7d901b00cb09ec31b77f782dc9954b2e757171a11f3365cd9973",
+  "loops": [],
+  "manifest_version": 1,
+  "output_fields_sha256": "6dc70c399e558be5633ed86740dfd38e047e3a3f7a54eb2a8146ff0bff53e487",
+  "program_id": "status-fallback-04",
+  "provenance_sha256": "8eb6ab36aa73e335c36045b3f981a28e32fc5b6ef4248bd2d3186c07ab4830c0",
+  "source_sha256": "4831e3bff7fc524f7501a13bc895cf821a17ecb7d724ccd38456eacd8492a99f",
+  "split": "dev"
+}

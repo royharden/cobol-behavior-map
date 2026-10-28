@@ -1,0 +1,4 @@
+# Preserve raw artifact pins in this private builder-source tree.
+*.cbl -text
+*.json -text
+*.md -text

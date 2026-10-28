@@ -1,0 +1,3790 @@
+{
+  "absent": [
+    "actual_input_records",
+    "native_partition_recipes",
+    "case_partitions",
+    "expected_outputs",
+    "oracle_observations",
+    "compiler_receipts",
+    "behavioral_witnesses",
+    "heldout_data",
+    "independent_appointments",
+    "license_authority",
+    "GO"
+  ],
+  "author_callsign": "0003_Codex_GPT-6_M10-DL2",
+  "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
+  "brief_sha256": "42383cf484a9d97f5ea5e117f6e68addc7a19aadbbe9639180421b70b21a7d25",
+  "created_at": "2026-10-28T00:44:08Z",
+  "families": [
+    {
+      "artifact": {
+        "path": "corpus/dev/dev_decimal_tier/family.json",
+        "sha256": "79c401f34bc531395c2f210c983e93e112dba8d84bae7433284d0e72f7c94b7b"
+      },
+      "domain": "decimal_fees",
+      "family_id": "dev_decimal_tier",
+      "hazard_themes": [
+        "H1",
+        "H5"
+      ],
+      "template_id": "fee_threshold_branch"
+    },
+    {
+      "artifact": {
+        "path": "corpus/dev/dev_decimal_chain/family.json",
+        "sha256": "c45f0f98745bccd4993154870978ed4734f72755f21c54914a0261e381569289"
+      },
+      "domain": "decimal_fees",
+      "family_id": "dev_decimal_chain",
+      "hazard_themes": [
+        "H7",
+        "H8"
+      ],
+      "template_id": "three_operator_division"
+    },
+    {
+      "artifact": {
+        "path": "corpus/dev/dev_status_fallback/family.json",
+        "sha256": "4048f3f90566f832de313f5eb4552cba6dc8d42ec234203743a8421780e7462a"
+      },
+      "domain": "sequential_status",
+      "family_id": "dev_status_fallback",
+      "hazard_themes": [
+        "H3",
+        "H6"
+      ],
+      "template_id": "linear_eof_fallback"
+    },
+    {
+      "artifact": {
+        "path": "corpus/dev/dev_status_two_read/family.json",
+        "sha256": "4fdd209d6d21adc608a7e4063b83f5fee7ab57b830580368586c0d4070b68ff7"
+      },
+      "domain": "sequential_status",
+      "family_id": "dev_status_two_read",
+      "hazard_themes": [
+        "H3",
+        "H6"
+      ],
+      "template_id": "two_read_gate"
+    },
+    {
+      "artifact": {
+        "path": "corpus/dev/dev_year_century/family.json",
+        "sha256": "596d2a90a8d195c858c5bb07aa8271789400e6dd7b0cfc73b87ef94730e330f6"
+      },
+      "domain": "year_window",
+      "family_id": "dev_year_century",
+      "hazard_themes": [
+        "H4",
+        "H5"
+      ],
+      "template_id": "century_direct"
+    },
+    {
+      "artifact": {
+        "path": "corpus/dev/dev_year_pivot_score/family.json",
+        "sha256": "5fa18fba54d0f3ad7f050b9d19d973fd4aabf01331f1cda1a559020aa9803b2b"
+      },
+      "domain": "year_window",
+      "family_id": "dev_year_pivot_score",
+      "hazard_themes": [
+        "H2",
+        "H7"
+      ],
+      "template_id": "pivot_division"
+    }
+  ],
+  "manifest_version": 1,
+  "programs": [
+    {
+      "change": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-01/change.json",
+        "sha256": "17d8384d7a17fbda03c0ab5bc70c9ca1a06d6e932eef54dd2440b8cb66e5d23c"
+      },
+      "domain": "decimal_fees",
+      "family_id": "dev_decimal_tier",
+      "field_count": 8,
+      "hazard_themes": [
+        "H1",
+        "H5"
+      ],
+      "intended_change": "Move one fee-tier threshold within its declared amount field; no behavior-changing witness claimed.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-01/change.input.fields.json",
+            "sha256": "617e1cc6ce259503abe0369331b258927031f8338ac9c226e613e9f49ed7ecc9"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-01/change.output.fields.json",
+            "sha256": "174c36aecda0476510b0b929155e7480feca53b9b2e2b0011f5b30fbe7d4130e"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-01/change.program-manifest.pending.json",
+            "sha256": "dedcffbdec91cfe2777d8f41dcdac8e1a9de4fd9e386685ffee68b01f3c3398e"
+          },
+          "source": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-01/changed.cbl",
+            "sha256": "ea3d69ee5bca97599ec13883bcc60e88f5c5abe1b6d8f0a3f00af92a8f55afe5"
+          },
+          "source_lines": 49,
+          "source_provenance": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-01/changed.cbl.provenance.json",
+            "sha256": "c40f7d65170c7e66cf2a72fcd2bdde5a8046cd863e6603cfbf9352cbe52f8752"
+          },
+          "task_id": "fee-tier-01-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-01/original.input.fields.json",
+            "sha256": "7c2aae7d9701b3c2a1a6fbbd35dd6a4c3a09391e42c15dbdbffd2892c0e88ff7"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-01/original.output.fields.json",
+            "sha256": "a9c80a6a8fcb966357e3b322053927f772ecd7451d753329cde73a5a34dc7572"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-01/original.program-manifest.pending.json",
+            "sha256": "254db2d30230ec9ae62dea1786c248a86c4f0929774b8b5cbb1de68d1bd7625f"
+          },
+          "source": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-01/original.cbl",
+            "sha256": "74e74fc1e600fe593dac14409252886a2d023ca27094523b7f8e1e9b8fa17794"
+          },
+          "source_lines": 49,
+          "source_provenance": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-01/original.cbl.provenance.json",
+            "sha256": "d45188b934661fd8fa28117cd510d47b92931bbdb56e7da2f328a6ec6176f3ee"
+          },
+          "task_id": "fee-tier-01-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "fee-tier-01",
+      "static_reachability_rationale": [
+        "Present successful read with an amount taking a multiplication path whose fractional result may lose scale.",
+        "Present successful read with a negative representable signed debt reaching unsigned output assignment."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-02/change.json",
+        "sha256": "a8deb15c17a03b2134f78186defab33f8eab4f985135f6cd0c51b0ca30c0b6a2"
+      },
+      "domain": "decimal_fees",
+      "family_id": "dev_decimal_tier",
+      "field_count": 8,
+      "hazard_themes": [
+        "H1",
+        "H5"
+      ],
+      "intended_change": "Move one fee-tier threshold within its declared amount field; no behavior-changing witness claimed.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-02/change.input.fields.json",
+            "sha256": "9fb5a7e3c15e4ab66e4846633541db32059096618041cff9d23e558e7168a336"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-02/change.output.fields.json",
+            "sha256": "d603bc4f7d3f0786484683ba6b653a96e6eb57f9579be6d200f10427d0ea8e96"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-02/change.program-manifest.pending.json",
+            "sha256": "fc086fd689e9aa6b249f89498f656f376d431cb66bb68c638963719bc1f25a49"
+          },
+          "source": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-02/changed.cbl",
+            "sha256": "ea51ba2ca58b9a071412d59addd9f35eefc4d41889bee006c38a170da05b5caa"
+          },
+          "source_lines": 49,
+          "source_provenance": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-02/changed.cbl.provenance.json",
+            "sha256": "aa1178cde6a1dedd015a93e96d815c5fc653520c555a15ea69fa1b3c81533dd0"
+          },
+          "task_id": "fee-tier-02-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-02/original.input.fields.json",
+            "sha256": "157b0029bdc05d63221921bfb62b67edd85fd5ad2a98fdc372e0803623aa563b"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-02/original.output.fields.json",
+            "sha256": "a285ebb11be1d1a6818a226f57f766d0e6bd035168f8c3b9b597731660dfa918"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-02/original.program-manifest.pending.json",
+            "sha256": "458566873b9e20411c2de5f0570d864563a6e23e42af7b5436a43f4b823d973e"
+          },
+          "source": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-02/original.cbl",
+            "sha256": "8c4f3847607cba23d6fed8e8516953ce83b599c658cfab0f00505fdebdf3ac07"
+          },
+          "source_lines": 49,
+          "source_provenance": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-02/original.cbl.provenance.json",
+            "sha256": "723eef09e0cf941dde2b5542eb2ab47059f511b01278bf349630e864a823b99e"
+          },
+          "task_id": "fee-tier-02-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "fee-tier-02",
+      "static_reachability_rationale": [
+        "Present successful read with an amount taking a multiplication path whose fractional result may lose scale.",
+        "Present successful read with a negative representable signed debt reaching unsigned output assignment."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-03/change.json",
+        "sha256": "dbb142f952df5e9d9cf125b5473b161886ee7183cde23b07e6f20e6d0a839fb3"
+      },
+      "domain": "decimal_fees",
+      "family_id": "dev_decimal_tier",
+      "field_count": 8,
+      "hazard_themes": [
+        "H1",
+        "H5"
+      ],
+      "intended_change": "Move one fee-tier threshold within its declared amount field; no behavior-changing witness claimed.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-03/change.input.fields.json",
+            "sha256": "72b49b3e303390844b0b508778ef1c34f105372a4bfbcfd2003421f9d4f65a39"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-03/change.output.fields.json",
+            "sha256": "31abebdf63ff3ee905f5f04708777474f237d41013873e2d40ab397b864b4352"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-03/change.program-manifest.pending.json",
+            "sha256": "e374395e308b3cb75968a308f35a6c44d3766b73537d364e18f2b985c4b53a16"
+          },
+          "source": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-03/changed.cbl",
+            "sha256": "5e0147b45a3e0374ac9b54def58e3637923634610dcd316da18b2bd1dee54afc"
+          },
+          "source_lines": 49,
+          "source_provenance": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-03/changed.cbl.provenance.json",
+            "sha256": "6385a118fcab10ddb18a7af1bfae61506d3e5f807f4593f4f1e6abaaf5abf5a5"
+          },
+          "task_id": "fee-tier-03-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-03/original.input.fields.json",
+            "sha256": "1039befead8adc038639842b0803655e05a8d8deab0fb41f1d8cbb7a5086c3e0"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-03/original.output.fields.json",
+            "sha256": "14265863429c7fde7b928e792d4a640ad6c46f1d6214f7bd9e74b8526194d1fe"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-03/original.program-manifest.pending.json",
+            "sha256": "52a828ef5648036b4c999453cacf1be5edbd28dd12c74c2cc4d945ecb639bad6"
+          },
+          "source": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-03/original.cbl",
+            "sha256": "2b0d8642a4c60a05988e96918df714a119211b0ac4c8999b8412dc63b275a3da"
+          },
+          "source_lines": 49,
+          "source_provenance": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-03/original.cbl.provenance.json",
+            "sha256": "f823153c6b9c39a1f3f520ca12b95fb75b5e218c406a999d56376de78ee2a73c"
+          },
+          "task_id": "fee-tier-03-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "fee-tier-03",
+      "static_reachability_rationale": [
+        "Present successful read with an amount taking a multiplication path whose fractional result may lose scale.",
+        "Present successful read with a negative representable signed debt reaching unsigned output assignment."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-04/change.json",
+        "sha256": "d5279555cef2961cc476a67ca4b27c558738fca7e5751ce38a528bbcf3902026"
+      },
+      "domain": "decimal_fees",
+      "family_id": "dev_decimal_tier",
+      "field_count": 8,
+      "hazard_themes": [
+        "H1",
+        "H5"
+      ],
+      "intended_change": "Move one fee-tier threshold within its declared amount field; no behavior-changing witness claimed.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-04/change.input.fields.json",
+            "sha256": "90b17de6bd3d1317e94d0255f8adf8682bcf09dccd12e1d5c1454f39bdad6cc0"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-04/change.output.fields.json",
+            "sha256": "73dfa262ead1639d93c0fec0872f75d7985515f472007c4d1849ae9d00119876"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-04/change.program-manifest.pending.json",
+            "sha256": "59dda61d718bac220974702f6da18716bdd3c5b2c83c841fb5e001ca2be91e0c"
+          },
+          "source": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-04/changed.cbl",
+            "sha256": "b087e98bb61d5b5abd9d98dcc208da18c4a821ee757cb4edbc851bee49f2d2c9"
+          },
+          "source_lines": 49,
+          "source_provenance": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-04/changed.cbl.provenance.json",
+            "sha256": "b3860dec59b5cedfa7d516d7f45ac92e07c912fe58cecc406902275f5e2cb690"
+          },
+          "task_id": "fee-tier-04-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-04/original.input.fields.json",
+            "sha256": "71238fcc9423aa19286a3eb927586294e9d9cf20f4efde8e8f7e323a978f7397"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-04/original.output.fields.json",
+            "sha256": "5bcd5559c427fd2fc9cf222785327a147291de847530ae49140652953a67a60a"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-04/original.program-manifest.pending.json",
+            "sha256": "0208dfd327e0f04945e1ebba9681e36d889deaaf69908edee277a74960661dd1"
+          },
+          "source": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-04/original.cbl",
+            "sha256": "88b95d1dab4bf39ec1d2644314af50bf7c36b26ed622b38aa9af9f8c2a43f68d"
+          },
+          "source_lines": 49,
+          "source_provenance": {
+            "path": "corpus/dev/dev_decimal_tier/fee-tier-04/original.cbl.provenance.json",
+            "sha256": "0e98ffc15b67a8dac7f1d5b9afa277852b3fdc5a65e5804d4bc7d2ae2008fe06"
+          },
+          "task_id": "fee-tier-04-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "fee-tier-04",
+      "static_reachability_rationale": [
+        "Present successful read with an amount taking a multiplication path whose fractional result may lose scale.",
+        "Present successful read with a negative representable signed debt reaching unsigned output assignment."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-01/change.json",
+        "sha256": "f7872b5f1ee5cd17ef336ad5f415e42d490ae3ec710a623506895e666be5319c"
+      },
+      "domain": "decimal_fees",
+      "family_id": "dev_decimal_chain",
+      "field_count": 9,
+      "hazard_themes": [
+        "H7",
+        "H8"
+      ],
+      "intended_change": "Enable default ROUNDED on one three-operator COMPUTE; ties and actual compiler effect remain unmeasured.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-01/change.input.fields.json",
+            "sha256": "3bcb44383591d85be943c7e0660645009be33544599826384b55197c59699917"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-01/change.output.fields.json",
+            "sha256": "2b40e0ec6a645c59969c893a7f9a8e24f9508c1510561c51c1359e2b4d58e129"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-01/change.program-manifest.pending.json",
+            "sha256": "fee7b1c2c55c07e84228a5458d9cc3369d10e0265eeb6e57f17bacba06051ef6"
+          },
+          "source": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-01/changed.cbl",
+            "sha256": "b342167535ec14f708602936d3092c0d3e52ad3cc517e5e18ebac6455d28b597"
+          },
+          "source_lines": 43,
+          "source_provenance": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-01/changed.cbl.provenance.json",
+            "sha256": "2597fa79ceb0f8ef08e5dfc044e57dea3c0d1126646ee6350de445604232dfad"
+          },
+          "task_id": "fee-chain-01-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-01/original.input.fields.json",
+            "sha256": "426ef794f8e4c0b128322c21a4cac100d7d5d019236fbab8a4b8015a62c4cff2"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-01/original.output.fields.json",
+            "sha256": "ba6d1643ea39619c46fc96d0b87537506276ccd1593eda3953f3b94222fa937e"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-01/original.program-manifest.pending.json",
+            "sha256": "b3e839c72eff56e31f3f24df901a29523255cb7e56b95ef627f660b4d5e7d921"
+          },
+          "source": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-01/original.cbl",
+            "sha256": "233314621482bc4ca93d2d88ebc0cd4b68f2db894dc64fe1e0b596e8b2ec26aa"
+          },
+          "source_lines": 43,
+          "source_provenance": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-01/original.cbl.provenance.json",
+            "sha256": "5ea2258c60ad158b8df7c654e4d75015f17081d897aa1e2107f8ca8083b36ea2"
+          },
+          "task_id": "fee-chain-01-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "fee-chain-01",
+      "static_reachability_rationale": [
+        "Successful input read with divisor at its representable zero boundary reaches the unguarded division.",
+        "Successful read reaches multiplication/addition/division intermediates before assignment to packed total."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-02/change.json",
+        "sha256": "213a047ab7a29346d76ea20bcbb6b1ebbcf73581181a3aad279a634ce1f7d7c1"
+      },
+      "domain": "decimal_fees",
+      "family_id": "dev_decimal_chain",
+      "field_count": 9,
+      "hazard_themes": [
+        "H7",
+        "H8"
+      ],
+      "intended_change": "Enable default ROUNDED on one three-operator COMPUTE; ties and actual compiler effect remain unmeasured.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-02/change.input.fields.json",
+            "sha256": "d4e6220dd8e8ad1ca57d43528945f132c44e7c174653e21a48740f80c598c890"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-02/change.output.fields.json",
+            "sha256": "28290c92453c22a7284edbf689411aaf7bcfe8a81e070aca280400c795055595"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-02/change.program-manifest.pending.json",
+            "sha256": "d4881d683e69bb1495c07645f3320dd65f02932dc5dd909b4747371062fe705d"
+          },
+          "source": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-02/changed.cbl",
+            "sha256": "fabe4b4a045a902d1358e28b78e3455c4b421c134a4a808772df936c20b27e7f"
+          },
+          "source_lines": 43,
+          "source_provenance": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-02/changed.cbl.provenance.json",
+            "sha256": "1ba356e22b41094e81cf30a2cc7f175c6024ddec67c66aa0e17acdae7f0d103c"
+          },
+          "task_id": "fee-chain-02-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-02/original.input.fields.json",
+            "sha256": "a15e0616323e353392bd224e38397360cd6b82f49de06390880478e921b9a9ea"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-02/original.output.fields.json",
+            "sha256": "14efe5db81490fb794029f487a8776b5da0e2b729475ee800b1e7dbf02a53eff"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-02/original.program-manifest.pending.json",
+            "sha256": "f5ef9106155f31aaddd22f5fe816e91965807284acdf972efe26018033951643"
+          },
+          "source": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-02/original.cbl",
+            "sha256": "350a57504e3b1504c3d22ce2f977febaa9950f2d6a3adb1c9bb1c59aae64aa9c"
+          },
+          "source_lines": 43,
+          "source_provenance": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-02/original.cbl.provenance.json",
+            "sha256": "dbace711f7c8d82060db51549cdf45fd7885703ded8123e068d2a233bf57ee6e"
+          },
+          "task_id": "fee-chain-02-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "fee-chain-02",
+      "static_reachability_rationale": [
+        "Successful input read with divisor at its representable zero boundary reaches the unguarded division.",
+        "Successful read reaches multiplication/addition/division intermediates before assignment to packed total."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-03/change.json",
+        "sha256": "064d341b2de02c8274a886e773a5d8224ab50141686432e58526b52fb9cc6690"
+      },
+      "domain": "decimal_fees",
+      "family_id": "dev_decimal_chain",
+      "field_count": 9,
+      "hazard_themes": [
+        "H7",
+        "H8"
+      ],
+      "intended_change": "Enable default ROUNDED on one three-operator COMPUTE; ties and actual compiler effect remain unmeasured.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-03/change.input.fields.json",
+            "sha256": "3e292dad469752940c9f0cb448961bf3dcd83a196ab74fb6db22d747903af327"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-03/change.output.fields.json",
+            "sha256": "930b01a339c5389dcaeda0c16e96a91fa34b5e7fb30e8503169bd8ae51c39025"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-03/change.program-manifest.pending.json",
+            "sha256": "9a4a836b0f555adf6b970913675b40c42623eb1de96a3f2ab619f016ac903981"
+          },
+          "source": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-03/changed.cbl",
+            "sha256": "95a0a28e7e38cda51668cbc30d9dceee048daa41ca581a940f661ef189058c57"
+          },
+          "source_lines": 43,
+          "source_provenance": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-03/changed.cbl.provenance.json",
+            "sha256": "feeac2c3f470bdb59e45eb2cb9ebd91f9df3c5a8f5e480ad45322d7dba1822c8"
+          },
+          "task_id": "fee-chain-03-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.input.fields.json",
+            "sha256": "385d69781abff4d2af43f8d348ceae2b6d8aa195982f34acaf609a42ae3aa4ad"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.output.fields.json",
+            "sha256": "2c01041aff397afe7ab8786388f3e269bee1fcbdff00988df86ea04f26e0d4b3"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.program-manifest.pending.json",
+            "sha256": "cb017531f6ffc66652a60de320705c487a176b34e5b5cabc40f8abeb54fd58f6"
+          },
+          "source": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.cbl",
+            "sha256": "a7ec210b1dc61594bb052f1f1625b7891e2303f616c2684a9646b0967a2379d8"
+          },
+          "source_lines": 43,
+          "source_provenance": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.cbl.provenance.json",
+            "sha256": "9ebf47e0664e16298b9930f88408f415757d25f1e1e4bb0b398a167cbce4a666"
+          },
+          "task_id": "fee-chain-03-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "fee-chain-03",
+      "static_reachability_rationale": [
+        "Successful input read with divisor at its representable zero boundary reaches the unguarded division.",
+        "Successful read reaches multiplication/addition/division intermediates before assignment to packed total."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-04/change.json",
+        "sha256": "2f109d36cbd17c3695c9098970736e55cdaa7f97e227ba1effd91d9526fa1d3d"
+      },
+      "domain": "decimal_fees",
+      "family_id": "dev_decimal_chain",
+      "field_count": 9,
+      "hazard_themes": [
+        "H7",
+        "H8"
+      ],
+      "intended_change": "Enable default ROUNDED on one three-operator COMPUTE; ties and actual compiler effect remain unmeasured.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-04/change.input.fields.json",
+            "sha256": "4a15cf1ea3e1e85503d0346e44f852ab2250daba5a93da0b49b887b6ca0a86e2"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-04/change.output.fields.json",
+            "sha256": "d62160caa1245bb949a48caf66aadee76d5f2e6e6ea503d31c9e89444c378f24"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-04/change.program-manifest.pending.json",
+            "sha256": "ca0dab00d1e8c60943da6e85a37052e9dab6dad6c6c28a650fd76788773d5c29"
+          },
+          "source": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-04/changed.cbl",
+            "sha256": "6af8668f172198b622b8ed28d799699530e3a2f93e161f446da6390bd416f32c"
+          },
+          "source_lines": 43,
+          "source_provenance": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-04/changed.cbl.provenance.json",
+            "sha256": "e85dafe12b9e1ae30131d7093d932ccabdbfc175bf439c334984b5e8b45ac229"
+          },
+          "task_id": "fee-chain-04-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-04/original.input.fields.json",
+            "sha256": "47cf4138739dc553cf11d184ce04db0ff05713cb5a3e234a157e6966e77186bb"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-04/original.output.fields.json",
+            "sha256": "9605a4293fa928ba72a667838a5fe8f0c82b2374cf16d50d44d2ef50ad85eff4"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-04/original.program-manifest.pending.json",
+            "sha256": "1fbaa8c364b428419d86dddc26face3578a8168180c73c9c227442f152f66f72"
+          },
+          "source": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-04/original.cbl",
+            "sha256": "8fd771866c67ce378be17eaf25f334ca70eea8601ceb5b2b568639ec0d091c18"
+          },
+          "source_lines": 43,
+          "source_provenance": {
+            "path": "corpus/dev/dev_decimal_chain/fee-chain-04/original.cbl.provenance.json",
+            "sha256": "09e9973f4fb24a41589d9c2bade6fb04aa698a09f2613d9d6f1fc4063c917fcf"
+          },
+          "task_id": "fee-chain-04-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "fee-chain-04",
+      "static_reachability_rationale": [
+        "Successful input read with divisor at its representable zero boundary reaches the unguarded division.",
+        "Successful read reaches multiplication/addition/division intermediates before assignment to packed total."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-01/change.json",
+        "sha256": "d1d489c00010cae9ec4524f32da4f10cf94fc009876e11614e3c873fe61601af"
+      },
+      "domain": "sequential_status",
+      "family_id": "dev_status_fallback",
+      "field_count": 5,
+      "hazard_themes": [
+        "H3",
+        "H6"
+      ],
+      "intended_change": "Replace one EOF fallback literal before truncating MOVE; actual EOF/witness behavior is pending.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-01/change.input.fields.json",
+            "sha256": "48803e17f96e28f8a0cfa7776c5ac1e820ccc14c1470f22aa1f1599404dbcfdb"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-01/change.output.fields.json",
+            "sha256": "9091de21e863e888c8723790407ef1c4d158a84d37eb628531fdbbf5d439b00c"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-01/change.program-manifest.pending.json",
+            "sha256": "6cc93b707864c7048fc6047958d4a692934b7016631fa659c7053b7e0e3fbff2"
+          },
+          "source": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-01/changed.cbl",
+            "sha256": "54d885a6283fa9fb86dd0931e86ee83449c796e57e0ea41d7f7fc89a5b633d29"
+          },
+          "source_lines": 33,
+          "source_provenance": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-01/changed.cbl.provenance.json",
+            "sha256": "793e66a826ab80dfefc85dee411b0115518a054c51379e018e03a704b757f491"
+          },
+          "task_id": "status-fallback-01-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-01/original.input.fields.json",
+            "sha256": "357cac9b75862ca7dbe49725ba851acd284100f12d9b17b83881c71708dc2a86"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-01/original.output.fields.json",
+            "sha256": "45b73d931b3dcaa5483fa85a21c42ac2fa2bcdfd09868888c1e888e7b89ce37b"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-01/original.program-manifest.pending.json",
+            "sha256": "cf416d0c2c9140465c85d454482974db05e5acd41e788352259f26af354f9552"
+          },
+          "source": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-01/original.cbl",
+            "sha256": "9774bc0d23880d99cf28bafbf3c61cf1a5519186f082ce201efc7290af9b771f"
+          },
+          "source_lines": 33,
+          "source_provenance": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-01/original.cbl.provenance.json",
+            "sha256": "75ab4cc99beb9ef8c9804ef8763bdd318774dc3dedd74b7353031756cecc6bb8"
+          },
+          "task_id": "status-fallback-01-original"
+        }
+      },
+      "paragraph_count": 1,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "status-fallback-01",
+      "static_reachability_rationale": [
+        "Open/read/write statuses are displayed but never tested; missing/EOF/backend outcomes require probes.",
+        "Normal payload or EOF fallback reaches MOVE from a wider input field into narrower output."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-02/change.json",
+        "sha256": "476c8bbc1ecb47f5c140bef96dac793e7c9357ff3d8d4f691461d24af4434b7d"
+      },
+      "domain": "sequential_status",
+      "family_id": "dev_status_fallback",
+      "field_count": 5,
+      "hazard_themes": [
+        "H3",
+        "H6"
+      ],
+      "intended_change": "Replace one EOF fallback literal before truncating MOVE; actual EOF/witness behavior is pending.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-02/change.input.fields.json",
+            "sha256": "880ba924eecb0ac83a107dcdf8f026e6328afd9a45a17f0992ea6a074083fcb9"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-02/change.output.fields.json",
+            "sha256": "b96014e4562ab22a8c46d22adf1bd52379a49428c60353fe1638a0a8f7f2cede"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-02/change.program-manifest.pending.json",
+            "sha256": "13f5de381bb4ae79ab3a38d40201b46e130342e69e3729d9ca0270032b0d321e"
+          },
+          "source": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-02/changed.cbl",
+            "sha256": "072d105b2b2f781f03f56e2ed85242b2f162987e62ae0f20ec5bb09b897ba2eb"
+          },
+          "source_lines": 33,
+          "source_provenance": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-02/changed.cbl.provenance.json",
+            "sha256": "acf7b2fa2e417239196722d5ad6578a2ee88bd9db4ecc2441d10ebe573db5e8b"
+          },
+          "task_id": "status-fallback-02-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-02/original.input.fields.json",
+            "sha256": "c8d00ec6a1d22413a4a05413f0c9c0674fd3a5d2ec8e863d097400b2fdac2be9"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-02/original.output.fields.json",
+            "sha256": "e46b09719082281b63eada30cdf4eda5ca65478c0434afd0f4941d9a6203a221"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-02/original.program-manifest.pending.json",
+            "sha256": "536b57cbc33d0c418bbf0fac3fc08574b950b3c4a13cf688432493a3e5f21ec0"
+          },
+          "source": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-02/original.cbl",
+            "sha256": "3f02e58849953299600ee4f410d4341add79fcbd6c04ba0e8526b0a35a6f699d"
+          },
+          "source_lines": 33,
+          "source_provenance": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-02/original.cbl.provenance.json",
+            "sha256": "d4ca63b5c8dd70b3ca1bb699b655cc3fe0e3237d45eaef57398938a637380ffd"
+          },
+          "task_id": "status-fallback-02-original"
+        }
+      },
+      "paragraph_count": 1,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "status-fallback-02",
+      "static_reachability_rationale": [
+        "Open/read/write statuses are displayed but never tested; missing/EOF/backend outcomes require probes.",
+        "Normal payload or EOF fallback reaches MOVE from a wider input field into narrower output."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-03/change.json",
+        "sha256": "c83e51d122cf3656194d5ea037055fac1b89fc4dcf8443e74c18f64bb0c570f3"
+      },
+      "domain": "sequential_status",
+      "family_id": "dev_status_fallback",
+      "field_count": 5,
+      "hazard_themes": [
+        "H3",
+        "H6"
+      ],
+      "intended_change": "Replace one EOF fallback literal before truncating MOVE; actual EOF/witness behavior is pending.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-03/change.input.fields.json",
+            "sha256": "e454cd411d2e2f7fa64128bfe59c8a96b32c85d4346cb189bffa58ebca030765"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-03/change.output.fields.json",
+            "sha256": "dd6b103944becb38fc0e36d1948781305a62383d84696db085c3c4330d0fc8be"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-03/change.program-manifest.pending.json",
+            "sha256": "265d0e3916d8c88081c5e5a12e0156df3756930a15756160bb61fa45a9d42b43"
+          },
+          "source": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-03/changed.cbl",
+            "sha256": "39b4f9ee91b3afdd6f5cd710a546efe5b65bd16671353ea84f4e01a630cee9b9"
+          },
+          "source_lines": 33,
+          "source_provenance": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-03/changed.cbl.provenance.json",
+            "sha256": "e745339d8b5ad6f7888d190efadc29ee42c7de59780c15bd0b7f041c3028deaa"
+          },
+          "task_id": "status-fallback-03-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-03/original.input.fields.json",
+            "sha256": "14b510ba8b07456a91be8b4bd0f7210439005faf36c4bf4da26f34a36606aa02"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-03/original.output.fields.json",
+            "sha256": "566283bb486a4292b9aab499d4a9cceea71a537dad4ee60db6a8fc6cf20e74f0"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-03/original.program-manifest.pending.json",
+            "sha256": "e24d24bef5bd9be2d4783d5ffda526d966b081fd3025d3165c7b55274d865d09"
+          },
+          "source": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-03/original.cbl",
+            "sha256": "c587291f7c1ce987a6fcfb6871f7cfdea94c59be05787da079dfdb28b7827618"
+          },
+          "source_lines": 33,
+          "source_provenance": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-03/original.cbl.provenance.json",
+            "sha256": "9786069466d0b0f7f451095f863b58827278eca48ba0870b113e856390d6cb35"
+          },
+          "task_id": "status-fallback-03-original"
+        }
+      },
+      "paragraph_count": 1,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "status-fallback-03",
+      "static_reachability_rationale": [
+        "Open/read/write statuses are displayed but never tested; missing/EOF/backend outcomes require probes.",
+        "Normal payload or EOF fallback reaches MOVE from a wider input field into narrower output."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-04/change.json",
+        "sha256": "a51405124ab9b84d4f7526e04900addcca18a792d11a60c3c69cf695e45065cf"
+      },
+      "domain": "sequential_status",
+      "family_id": "dev_status_fallback",
+      "field_count": 5,
+      "hazard_themes": [
+        "H3",
+        "H6"
+      ],
+      "intended_change": "Replace one EOF fallback literal before truncating MOVE; actual EOF/witness behavior is pending.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-04/change.input.fields.json",
+            "sha256": "824a69e3f07c7d901b00cb09ec31b77f782dc9954b2e757171a11f3365cd9973"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-04/change.output.fields.json",
+            "sha256": "6dc70c399e558be5633ed86740dfd38e047e3a3f7a54eb2a8146ff0bff53e487"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-04/change.program-manifest.pending.json",
+            "sha256": "27e600d80dd10c7911b4c82f2f2b5da65e1ccaec86e8c8419bc5f20ad93559f1"
+          },
+          "source": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-04/changed.cbl",
+            "sha256": "4831e3bff7fc524f7501a13bc895cf821a17ecb7d724ccd38456eacd8492a99f"
+          },
+          "source_lines": 33,
+          "source_provenance": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-04/changed.cbl.provenance.json",
+            "sha256": "8eb6ab36aa73e335c36045b3f981a28e32fc5b6ef4248bd2d3186c07ab4830c0"
+          },
+          "task_id": "status-fallback-04-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-04/original.input.fields.json",
+            "sha256": "f73a90bead0cbbe0357061b6aa3583dc403802bf0824f94246684dea34cb42ed"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-04/original.output.fields.json",
+            "sha256": "d0c9e0b944960892ba4113bd00a79d962b1178197209e78552c4505b06b65de4"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-04/original.program-manifest.pending.json",
+            "sha256": "e54439dd8e5c50a2b3afa6205cf3e4b280a75e93c56ff1c2780e9ce0dc3322ee"
+          },
+          "source": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-04/original.cbl",
+            "sha256": "2c3cdb99f980e85aedfc5997f6cd74a64f441b682d0a803f205f14f9d26cd527"
+          },
+          "source_lines": 33,
+          "source_provenance": {
+            "path": "corpus/dev/dev_status_fallback/status-fallback-04/original.cbl.provenance.json",
+            "sha256": "13d6bbb17a5e5650bdb4981cf558a8bfc6da00e8146034859c97e35acfbe2133"
+          },
+          "task_id": "status-fallback-04-original"
+        }
+      },
+      "paragraph_count": 1,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "status-fallback-04",
+      "static_reachability_rationale": [
+        "Open/read/write statuses are displayed but never tested; missing/EOF/backend outcomes require probes.",
+        "Normal payload or EOF fallback reaches MOVE from a wider input field into narrower output."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-01/change.json",
+        "sha256": "7334ebbf55fc06bf3fa958d783c973a67f5d79816cb409755a14f13434a8723b"
+      },
+      "domain": "sequential_status",
+      "family_id": "dev_status_two_read",
+      "field_count": 8,
+      "hazard_themes": [
+        "H3",
+        "H6"
+      ],
+      "intended_change": "Change one count gate on the second unrolled read; intended record-count effect has no compiler witness.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-01/change.input.fields.json",
+            "sha256": "71b831b6a160f2aba008e3fc85fb093fef4ad07dde57f07476ecfea7cef74e1e"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-01/change.output.fields.json",
+            "sha256": "bc04089596a6181ae1c0728b107a4f1eff11f4aabd3e43b37aaf6778a74400a2"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-01/change.program-manifest.pending.json",
+            "sha256": "e23dec74f527215cd1be06ab466c4acaa10baada12bb1f4071c557352b39f7c0"
+          },
+          "source": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-01/changed.cbl",
+            "sha256": "acb27fd536d0bdb8d878fe216a5aabad291d3ad04299de4cd35c878d0a4dc848"
+          },
+          "source_lines": 52,
+          "source_provenance": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-01/changed.cbl.provenance.json",
+            "sha256": "5a501e8ee23d940919c16efd99d72de2c9717f585624d96badbf0b7b91437444"
+          },
+          "task_id": "status-two-read-01-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-01/original.input.fields.json",
+            "sha256": "d0ecc43c184ddcd0bd904414b4e8988b02b602b7d2eb6f0f5d8cf4074a94d731"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-01/original.output.fields.json",
+            "sha256": "9faf2b845e199622cac84f92cbb2ad52fdcf1e2ce9bf945d1d1caf0be1691731"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-01/original.program-manifest.pending.json",
+            "sha256": "2799c38c9311b595cb591fe4b3ea2a997c79b914169df963f98fb0ada7fd8544"
+          },
+          "source": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-01/original.cbl",
+            "sha256": "b81bcc818ab30603dea1041def422f3385a7c7de138e66fccb5f134fe9823b11"
+          },
+          "source_lines": 52,
+          "source_provenance": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-01/original.cbl.provenance.json",
+            "sha256": "7225bf5c2db31f983fbac3ae7e46dd531e7ccc3ce7e1315563a8ff7cb181afaa"
+          },
+          "task_id": "status-two-read-01-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "status-two-read-01",
+      "static_reachability_rationale": [
+        "Output status is emitted but never tested at its write/open sites.",
+        "A successful first read reaches the performed narrowing emitter; later reads are independent source paths."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-02/change.json",
+        "sha256": "243d371eb6fba7473377453147b22f00556d66ca19007bc1c4c81648fb751a1f"
+      },
+      "domain": "sequential_status",
+      "family_id": "dev_status_two_read",
+      "field_count": 8,
+      "hazard_themes": [
+        "H3",
+        "H6"
+      ],
+      "intended_change": "Change one count gate on the second unrolled read; intended record-count effect has no compiler witness.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-02/change.input.fields.json",
+            "sha256": "c873f4ee4fc7a9a9bd7de101c6e78cc64bbe343cea62d2443bc62f015023161f"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-02/change.output.fields.json",
+            "sha256": "ca9823f1b42008b31f2737866c8feb7e90e11ff2d6fcbb9a0fb16cef073bc420"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-02/change.program-manifest.pending.json",
+            "sha256": "5b77e2fed1bc890e77ed804a3ffa323d18dc4c690f77c3a95df3618091de4d09"
+          },
+          "source": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-02/changed.cbl",
+            "sha256": "dea374cbd8a7e318c1609419947cb85370d9fbebbc719898f9455826c15971bf"
+          },
+          "source_lines": 52,
+          "source_provenance": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-02/changed.cbl.provenance.json",
+            "sha256": "49f7adcd7e9a9a15c7843fd30829af225de8915c5f5e4c4e1377dc04170b9b2d"
+          },
+          "task_id": "status-two-read-02-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-02/original.input.fields.json",
+            "sha256": "ed2123ab3ee8e97dfe8677adb55f08eb250b6d63b6eb9cf4ef1e9365bc8abc78"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-02/original.output.fields.json",
+            "sha256": "786ff88c2789ae34eabf2b78df69e5d1dde4bd23a238578272278843bf68fdd6"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-02/original.program-manifest.pending.json",
+            "sha256": "78c433b0c9326b7d860aebc9431e0785727fe40cdbded521596840bcb6ddebb2"
+          },
+          "source": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-02/original.cbl",
+            "sha256": "fa50365ea1f360f4fe9a1a8a5a93e3a9cb0bd5070d8caaf8603b71705a81eea1"
+          },
+          "source_lines": 52,
+          "source_provenance": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-02/original.cbl.provenance.json",
+            "sha256": "f49481e0427c23e4f0f0d7ec50cdae92590851392a8c784e1d4af14093b38680"
+          },
+          "task_id": "status-two-read-02-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "status-two-read-02",
+      "static_reachability_rationale": [
+        "Output status is emitted but never tested at its write/open sites.",
+        "A successful first read reaches the performed narrowing emitter; later reads are independent source paths."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-03/change.json",
+        "sha256": "9a972797eb7a937c1d7c52241285bec6174892e0b47fd06213153fb402b7a872"
+      },
+      "domain": "sequential_status",
+      "family_id": "dev_status_two_read",
+      "field_count": 8,
+      "hazard_themes": [
+        "H3",
+        "H6"
+      ],
+      "intended_change": "Change one count gate on the second unrolled read; intended record-count effect has no compiler witness.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-03/change.input.fields.json",
+            "sha256": "8974b17f61a99ac764e5240e857733ba908f5498b24f487b5bd346ec1a43a19a"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-03/change.output.fields.json",
+            "sha256": "20fc85c1456463ecef0a8bea2ac5ff7d8f2dd745f7323c5c560354ba3bdd0e8a"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-03/change.program-manifest.pending.json",
+            "sha256": "3f5ef6722f2c126325ae86f9e4c8f4141103c76472b01a4211f56bb5d71ef62a"
+          },
+          "source": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-03/changed.cbl",
+            "sha256": "5cf93258b79954af2333bc876c4ed7ee75276ff4f0044388f7bbd0a228989c88"
+          },
+          "source_lines": 52,
+          "source_provenance": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-03/changed.cbl.provenance.json",
+            "sha256": "5ed0aa17ae8122b358aca6334738e7e33adeb775e551df29e23b0a88112f8976"
+          },
+          "task_id": "status-two-read-03-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-03/original.input.fields.json",
+            "sha256": "4f06de2799e176bdf760c7a0a62a857dc87bf17ed70440e03cb50acab4a75671"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-03/original.output.fields.json",
+            "sha256": "86d5d1f0a11e0da968e304397a8282baa12945eacf90195dba95915bf9369942"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-03/original.program-manifest.pending.json",
+            "sha256": "a5de53ca95eae88b7c611ff3d91d6d5c6ada511195ca4425cd7d6e6ed3c9b564"
+          },
+          "source": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-03/original.cbl",
+            "sha256": "2923e7a25ba404209bc80b719271271a7d4c37dac802cb74f14c6664f80e2e8d"
+          },
+          "source_lines": 52,
+          "source_provenance": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-03/original.cbl.provenance.json",
+            "sha256": "3d05d8f26b06fa4e32db506678049ad1e6032225cb8cfd9796864b3396f02c3b"
+          },
+          "task_id": "status-two-read-03-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "status-two-read-03",
+      "static_reachability_rationale": [
+        "Output status is emitted but never tested at its write/open sites.",
+        "A successful first read reaches the performed narrowing emitter; later reads are independent source paths."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-04/change.json",
+        "sha256": "643540e6c25341c14718774f5a58e1d2d3c5f015e6e9f228436e9774d08779ad"
+      },
+      "domain": "sequential_status",
+      "family_id": "dev_status_two_read",
+      "field_count": 8,
+      "hazard_themes": [
+        "H3",
+        "H6"
+      ],
+      "intended_change": "Change one count gate on the second unrolled read; intended record-count effect has no compiler witness.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-04/change.input.fields.json",
+            "sha256": "c7db49b430686c6893bef9daae7b940408bebe31e7b6278dce1dd67c2382def3"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-04/change.output.fields.json",
+            "sha256": "907a3b38cbff4c77ee243aa802e7b117c1f564c988d3be44458002a597c5ba41"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-04/change.program-manifest.pending.json",
+            "sha256": "3f41086b838592cee2be0c43fc98374270a29e8e563f5af09f6176919aeb3eac"
+          },
+          "source": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-04/changed.cbl",
+            "sha256": "49e15e50becd2baaafe04546510a7f658309ef80e96edd65e22bf8603ad6f71c"
+          },
+          "source_lines": 52,
+          "source_provenance": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-04/changed.cbl.provenance.json",
+            "sha256": "18a898ce3f7536a538ced393c9a5f95d33dde16042424f446ad5a5506a1583d0"
+          },
+          "task_id": "status-two-read-04-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-04/original.input.fields.json",
+            "sha256": "cade81aaadc1c2fdb3016c80167dd5e340f04fd8bbfeb9b404542c6cac6571da"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-04/original.output.fields.json",
+            "sha256": "407eaf463f5018b0d8e82df97ac874a2bc0ae7cb8c6cf6939bd4b23f568d1755"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-04/original.program-manifest.pending.json",
+            "sha256": "03584a06633fa7c743a0756466c9611ecee6a4783b2df31d99a6a6409e374fef"
+          },
+          "source": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-04/original.cbl",
+            "sha256": "533cb38bc67c57d72391cbfc7ad487641a50ecc549abb97ae82f8047e0208d2e"
+          },
+          "source_lines": 52,
+          "source_provenance": {
+            "path": "corpus/dev/dev_status_two_read/status-two-read-04/original.cbl.provenance.json",
+            "sha256": "982bfa96746dbffb0251726e6dbde3d51f9b4c15530b5a7e18aa90346c8cd086"
+          },
+          "task_id": "status-two-read-04-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "status-two-read-04",
+      "static_reachability_rationale": [
+        "Output status is emitted but never tested at its write/open sites.",
+        "A successful first read reaches the performed narrowing emitter; later reads are independent source paths."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_year_century/year-century-01/change.json",
+        "sha256": "154a28127cdd7d2f3921f61b6b662bf4f9a4daeba5a5d452e604a92a91c34632"
+      },
+      "domain": "year_window",
+      "family_id": "dev_year_century",
+      "field_count": 11,
+      "hazard_themes": [
+        "H4",
+        "H5"
+      ],
+      "intended_change": "Replace one fixed century literal; integer today remains an input, and changed behavior is unmeasured.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_year_century/year-century-01/change.input.fields.json",
+            "sha256": "65e2706a63aac029b5e7ae50a6b6a459251b52c6e0ad10dc1dbc210757400b30"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_year_century/year-century-01/change.output.fields.json",
+            "sha256": "d45d1dfb63f513e4e4a72f861d55b1324e956df16d59eb1903edf3510498b348"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_year_century/year-century-01/change.program-manifest.pending.json",
+            "sha256": "a3495e66e86527aabbea3e8addeede317206182fe4bc70dc903c6fa9403568e1"
+          },
+          "source": {
+            "path": "corpus/dev/dev_year_century/year-century-01/changed.cbl",
+            "sha256": "46039a5edb6c0acc00e2dacd8a23429f2c040bd4550227b1a0d16bf927d5f805"
+          },
+          "source_lines": 49,
+          "source_provenance": {
+            "path": "corpus/dev/dev_year_century/year-century-01/changed.cbl.provenance.json",
+            "sha256": "cccb012bcd3a859c883780d03080e9767f5814ded1d8666311580aa4045d4b16"
+          },
+          "task_id": "year-century-01-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_year_century/year-century-01/original.input.fields.json",
+            "sha256": "7d144aa631b6364a214e02c94f747c13beeab0fb1267b5b38541dad94b30ac54"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_year_century/year-century-01/original.output.fields.json",
+            "sha256": "fc180d916b8598bd527a3817f8c3e3f6e012336251835456d445eab8f7f741a3"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_year_century/year-century-01/original.program-manifest.pending.json",
+            "sha256": "62d8cdd326b8b10d5fc980d45deb0fdba03e44a1edf5554f16e82f5265d711f6"
+          },
+          "source": {
+            "path": "corpus/dev/dev_year_century/year-century-01/original.cbl",
+            "sha256": "bc0a6f2315bb4f3b5395ec810b136e2c3db35935416c6ae50d44db47e5811a8b"
+          },
+          "source_lines": 49,
+          "source_provenance": {
+            "path": "corpus/dev/dev_year_century/year-century-01/original.cbl.provenance.json",
+            "sha256": "5c220bb80d44b0b9b6fafcd27c664682ea4e6a33f810ee4a5fe97842c7a34e3a"
+          },
+          "task_id": "year-century-01-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "year-century-01",
+      "static_reachability_rationale": [
+        "Successful input reaches fixed-century arithmetic using a two-digit year without a pivot.",
+        "Representable negative signed delta reaches unsigned magnitude output transfer."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_year_century/year-century-02/change.json",
+        "sha256": "0a1ba6a9a195a7756743adfb94914e659778b0d92b18a1143e97179b59c2a866"
+      },
+      "domain": "year_window",
+      "family_id": "dev_year_century",
+      "field_count": 11,
+      "hazard_themes": [
+        "H4",
+        "H5"
+      ],
+      "intended_change": "Replace one fixed century literal; integer today remains an input, and changed behavior is unmeasured.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_year_century/year-century-02/change.input.fields.json",
+            "sha256": "f41b2a7fed5c9a547f4f1ab285ee196b6fbcfd360acd427d748370db97cbb25d"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_year_century/year-century-02/change.output.fields.json",
+            "sha256": "61bde74c567d0387377aff1a700219074267d98bbd8fd10fb77098e9259266df"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_year_century/year-century-02/change.program-manifest.pending.json",
+            "sha256": "e274405fab53da0c8f75d05365b1441417cc0fc31049d59271c62dc199a8a2b2"
+          },
+          "source": {
+            "path": "corpus/dev/dev_year_century/year-century-02/changed.cbl",
+            "sha256": "b160deeb5803c10c9fd7517c54923741261436dd4842e12a7b565fa0993a786f"
+          },
+          "source_lines": 49,
+          "source_provenance": {
+            "path": "corpus/dev/dev_year_century/year-century-02/changed.cbl.provenance.json",
+            "sha256": "4f12ea2ad3207f7c0eacd6f36d4a8fcc3944d0040562dace5b236b7bc0b57836"
+          },
+          "task_id": "year-century-02-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_year_century/year-century-02/original.input.fields.json",
+            "sha256": "cf4e4479a5b6d2d6b9801aa9b6186808770250066688386a87a535ef0d0a1375"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_year_century/year-century-02/original.output.fields.json",
+            "sha256": "7272cdb3fcf68c3ec0a435589820224b3dee278cd650036ef0f96029a49ccfd0"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_year_century/year-century-02/original.program-manifest.pending.json",
+            "sha256": "450ecc4a4084377da3ec566c2334dce82edaaeb66f3d3da8070770e84b568a4e"
+          },
+          "source": {
+            "path": "corpus/dev/dev_year_century/year-century-02/original.cbl",
+            "sha256": "076c43fd128ef6a409425b12558b43a3672560de6b86c83430b0223f75f1bb01"
+          },
+          "source_lines": 49,
+          "source_provenance": {
+            "path": "corpus/dev/dev_year_century/year-century-02/original.cbl.provenance.json",
+            "sha256": "df22b41e65702a56a219ce6673252394d5d56624962d1650e9b4204e9ae2c3a8"
+          },
+          "task_id": "year-century-02-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "year-century-02",
+      "static_reachability_rationale": [
+        "Successful input reaches fixed-century arithmetic using a two-digit year without a pivot.",
+        "Representable negative signed delta reaches unsigned magnitude output transfer."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_year_century/year-century-03/change.json",
+        "sha256": "b4dea526e36f6adc6b6735129747deec40520a046a1d8e2d88b9506dea26ebbb"
+      },
+      "domain": "year_window",
+      "family_id": "dev_year_century",
+      "field_count": 11,
+      "hazard_themes": [
+        "H4",
+        "H5"
+      ],
+      "intended_change": "Replace one fixed century literal; integer today remains an input, and changed behavior is unmeasured.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_year_century/year-century-03/change.input.fields.json",
+            "sha256": "788b21284178a8c268dacfc77e0099ac097f4a71b6fc97c7b97752fbc12818b6"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_year_century/year-century-03/change.output.fields.json",
+            "sha256": "936998b1a3038baa889037f412a585f45d73ef2ab92abd2b530cd4fc930161ca"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_year_century/year-century-03/change.program-manifest.pending.json",
+            "sha256": "013b2d282f238196c91ba6aa95bf9d3c4f05f487be8828f16cdc9cb53290245d"
+          },
+          "source": {
+            "path": "corpus/dev/dev_year_century/year-century-03/changed.cbl",
+            "sha256": "471eed53e2ee7b3c593a16dbb6a4a6ff664781c06c9a5ed46dde5d9a43158f4f"
+          },
+          "source_lines": 49,
+          "source_provenance": {
+            "path": "corpus/dev/dev_year_century/year-century-03/changed.cbl.provenance.json",
+            "sha256": "612284d7eb22e7f3452c4f68a7fcf472145011e2bc8011e7f83dae5ed08be73a"
+          },
+          "task_id": "year-century-03-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_year_century/year-century-03/original.input.fields.json",
+            "sha256": "1a2d77854d0812344cec9c4ec1f0dc5d0aee089901b52837a4f04222b47abee3"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_year_century/year-century-03/original.output.fields.json",
+            "sha256": "c6cc018e6f50bc3c15c724a96de6aa525ac36696a0d24d57d5a8c9cf5e1e2d7c"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_year_century/year-century-03/original.program-manifest.pending.json",
+            "sha256": "da61535423313d3658388d284b59548c16bafcadcbe261c1ca20fd285c7c8d52"
+          },
+          "source": {
+            "path": "corpus/dev/dev_year_century/year-century-03/original.cbl",
+            "sha256": "781ea65b5290f3de52c42a62f015ca50d9f5effb83b1ee210d1cc2b2425fe9ae"
+          },
+          "source_lines": 49,
+          "source_provenance": {
+            "path": "corpus/dev/dev_year_century/year-century-03/original.cbl.provenance.json",
+            "sha256": "47fd985598f6fe17cd6f73d3d7a7f394c500a3f1b5404df92ab3143ded8522ce"
+          },
+          "task_id": "year-century-03-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "year-century-03",
+      "static_reachability_rationale": [
+        "Successful input reaches fixed-century arithmetic using a two-digit year without a pivot.",
+        "Representable negative signed delta reaches unsigned magnitude output transfer."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_year_century/year-century-04/change.json",
+        "sha256": "ee666732de1d43eed87a598c4ce7ff2b5a6f23e7e7658d113685e5140f040805"
+      },
+      "domain": "year_window",
+      "family_id": "dev_year_century",
+      "field_count": 11,
+      "hazard_themes": [
+        "H4",
+        "H5"
+      ],
+      "intended_change": "Replace one fixed century literal; integer today remains an input, and changed behavior is unmeasured.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_year_century/year-century-04/change.input.fields.json",
+            "sha256": "42e696fec1a8924093be58baac32546c608ba0ab542a904ea524f2eac743a7da"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_year_century/year-century-04/change.output.fields.json",
+            "sha256": "87899cf4778e557186a6d02d93a25fa16db16bcd8125ef737308866caf926c65"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_year_century/year-century-04/change.program-manifest.pending.json",
+            "sha256": "66c096373f05d317072c412e9fde39b03a53e5bb1ebd98551aaaf84af90f6c1c"
+          },
+          "source": {
+            "path": "corpus/dev/dev_year_century/year-century-04/changed.cbl",
+            "sha256": "befbc40c27de724aa2230e50136b7755e53d8673c62ede82fa43169aae4bb72d"
+          },
+          "source_lines": 49,
+          "source_provenance": {
+            "path": "corpus/dev/dev_year_century/year-century-04/changed.cbl.provenance.json",
+            "sha256": "14e0e95f1230061bbc0b1e912d5edde0b5d9e1c7755801d560bde5a49c377e54"
+          },
+          "task_id": "year-century-04-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_year_century/year-century-04/original.input.fields.json",
+            "sha256": "eb9c555179a41830c107378a70bc82d4fe1d3e32d64e8e51a3bd02c6c34201b0"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_year_century/year-century-04/original.output.fields.json",
+            "sha256": "2e880a2294159648d80459eb9c127578a22b145b831a9fff9079d32b099eafc5"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_year_century/year-century-04/original.program-manifest.pending.json",
+            "sha256": "66e6fc598a21b38a041da8def8028a75fe334421735e6f8b62be75a09e27f37e"
+          },
+          "source": {
+            "path": "corpus/dev/dev_year_century/year-century-04/original.cbl",
+            "sha256": "9e57a60012f3360092365451aa9106e170d57e6c4ff54768c08859b855fc9853"
+          },
+          "source_lines": 49,
+          "source_provenance": {
+            "path": "corpus/dev/dev_year_century/year-century-04/original.cbl.provenance.json",
+            "sha256": "7fb41a3e1969778f5a0063c0c5ff33855379d49b7e3b63c33975c7e48be52fdc"
+          },
+          "task_id": "year-century-04-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "year-century-04",
+      "static_reachability_rationale": [
+        "Successful input reaches fixed-century arithmetic using a two-digit year without a pivot.",
+        "Representable negative signed delta reaches unsigned magnitude output transfer."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/change.json",
+        "sha256": "e8ac7a49c613736bb435b7b2f270fbdbb04b638feb40136ae6309d143ded3bf2"
+      },
+      "domain": "year_window",
+      "family_id": "dev_year_pivot_score",
+      "field_count": 11,
+      "hazard_themes": [
+        "H2",
+        "H7"
+      ],
+      "intended_change": "Toggle one pivot comparator boundary; actual century/score witness remains pending.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/change.input.fields.json",
+            "sha256": "c73a49e3efbc207a0c939078d3a36f2928d7b7a7185b3e2bff4a1b5973013ec5"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/change.output.fields.json",
+            "sha256": "86b5a08f7e4256f552a3461dcd56fbfb8889a34f50562a1e88b8364c7f08793a"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/change.program-manifest.pending.json",
+            "sha256": "f7b3615941201506a84af17e0f9ee194fc1de6077e8323c45cbef53602e616b0"
+          },
+          "source": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/changed.cbl",
+            "sha256": "4a1e267a22d625965959c0e1d983c5869cfc34a637ea0d5af57036f6337a9388"
+          },
+          "source_lines": 53,
+          "source_provenance": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/changed.cbl.provenance.json",
+            "sha256": "16fa247216a41f5f01b97569d8c00a665aebeadf256c2b853c50e518ac481b40"
+          },
+          "task_id": "year-pivot-score-01-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/original.input.fields.json",
+            "sha256": "f8e52871ed535cd8629dba376784849662fa0c32c263e29d4914dfac8e73dd1b"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/original.output.fields.json",
+            "sha256": "f8b26d2ecc38fe5dd1ff8231f9ef8b293630968976ac18d6d242d027be831b35"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/original.program-manifest.pending.json",
+            "sha256": "7a7e80d45ce458b1bea04d32aca028f760d862106c648880ff9973438719b3d5"
+          },
+          "source": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/original.cbl",
+            "sha256": "1cf2a5a13fe03b94a9636977bad1a7576c1ef4a42a567bd2bcefe98d9d6b5ce7"
+          },
+          "source_lines": 53,
+          "source_provenance": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/original.cbl.provenance.json",
+            "sha256": "9aab5776aa1e2a6e97f24aa33f49a71b3011d145b3d4607b44db383a84d1917f"
+          },
+          "task_id": "year-pivot-score-01-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "year-pivot-score-01",
+      "static_reachability_rationale": [
+        "Large representable age and low nonzero divisor can exceed the smaller score receiver without a handler.",
+        "A representable zero divisor reaches the same unguarded divide after either pivot branch."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/change.json",
+        "sha256": "066361722a3949b4b1254715fdc1501b08b068342613b6e18395a8a5ff1a276c"
+      },
+      "domain": "year_window",
+      "family_id": "dev_year_pivot_score",
+      "field_count": 11,
+      "hazard_themes": [
+        "H2",
+        "H7"
+      ],
+      "intended_change": "Toggle one pivot comparator boundary; actual century/score witness remains pending.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/change.input.fields.json",
+            "sha256": "b80313aa2d4951a51948a8f7b6e2c77e9ce8cf127394aab0cf2569b717651c90"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/change.output.fields.json",
+            "sha256": "3b13985d73109092228f91cdb0c8cf8253f82556dc0a64a1bf45bedcd8e18276"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/change.program-manifest.pending.json",
+            "sha256": "a539c410233b5a0769ee5d3f8a837ed6650725f2c8f025b4cc7e6db315449677"
+          },
+          "source": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/changed.cbl",
+            "sha256": "8474c0531cf27701ad610e03522815e70951043d23bf74744b211ecfc170ab4c"
+          },
+          "source_lines": 53,
+          "source_provenance": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/changed.cbl.provenance.json",
+            "sha256": "cfcb11851ebe190904a6576bc8e1ab732937b19b0df5ce50b1af7ea9ef561fbe"
+          },
+          "task_id": "year-pivot-score-02-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/original.input.fields.json",
+            "sha256": "ac9816de4de236e771215fa88ad922688aea8adb3986db2f9bd442d613938743"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/original.output.fields.json",
+            "sha256": "797b5a7bfeac43c7822bfbc825f8c4056e68f6cd8799a532cda201357a5c5cd0"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/original.program-manifest.pending.json",
+            "sha256": "542c1b454f3eeef6fb27bc866522517b6a2ba276f21d491190cb78e759b9094a"
+          },
+          "source": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/original.cbl",
+            "sha256": "d9e48f0ffb5ca7267d1826fc43f2ed6877161d1551d02fd8868efc7e2351ebeb"
+          },
+          "source_lines": 53,
+          "source_provenance": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/original.cbl.provenance.json",
+            "sha256": "5d3d0ee55a25af36ebff3b99b9606dd64dc992066a720398b33d3271264d71e4"
+          },
+          "task_id": "year-pivot-score-02-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "year-pivot-score-02",
+      "static_reachability_rationale": [
+        "Large representable age and low nonzero divisor can exceed the smaller score receiver without a handler.",
+        "A representable zero divisor reaches the same unguarded divide after either pivot branch."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/change.json",
+        "sha256": "ccb871f61f3f82b97989716caf0eb5b308f9a0b0a520d73f19e57867fb10b6d0"
+      },
+      "domain": "year_window",
+      "family_id": "dev_year_pivot_score",
+      "field_count": 11,
+      "hazard_themes": [
+        "H2",
+        "H7"
+      ],
+      "intended_change": "Toggle one pivot comparator boundary; actual century/score witness remains pending.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/change.input.fields.json",
+            "sha256": "4f5ba668081109d1e25bcc970a464535dfc55e00769e31c5333660e8d2036a9c"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/change.output.fields.json",
+            "sha256": "a5ed1a165086563423e07e10ae8a126794f528b98c34860447fcacbaf090a310"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/change.program-manifest.pending.json",
+            "sha256": "1ffdeff9f1fa075f677a12d79ec29b94faae1f2bda5465bab366dd9e17300921"
+          },
+          "source": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/changed.cbl",
+            "sha256": "fc2b0c37ac5affc44bab546b91bd100bb1925170a73edb257f2de6f68fabaa09"
+          },
+          "source_lines": 53,
+          "source_provenance": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/changed.cbl.provenance.json",
+            "sha256": "f05ff57f4c3fdb26ec88443b7cb7982cc975a8c181d202dd86fcc1ac7bdc1142"
+          },
+          "task_id": "year-pivot-score-03-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/original.input.fields.json",
+            "sha256": "c632e0d86f9404778c5f1a237da10571bed960857f35c86dba7d3e877646f894"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/original.output.fields.json",
+            "sha256": "34576400a905ae3499299e439856013957996675705f38d37ee6ec3a044e5163"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/original.program-manifest.pending.json",
+            "sha256": "ee90adbfed7cf068a009747980d54c72053d7f836b8416a982fc5ac6c906c4a1"
+          },
+          "source": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/original.cbl",
+            "sha256": "ea36b844f0d5f0f7f7c960958a3ba0abf9a7df7f5dba18a68c85d595eeac556a"
+          },
+          "source_lines": 53,
+          "source_provenance": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/original.cbl.provenance.json",
+            "sha256": "fa6bc6b25d7d847a282f1b3c6d0527353790e73b9f34d253306b3f263759a0b6"
+          },
+          "task_id": "year-pivot-score-03-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "year-pivot-score-03",
+      "static_reachability_rationale": [
+        "Large representable age and low nonzero divisor can exceed the smaller score receiver without a handler.",
+        "A representable zero divisor reaches the same unguarded divide after either pivot branch."
+      ],
+      "status": "builder_source_only_pending_admission"
+    },
+    {
+      "change": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/change.json",
+        "sha256": "17a5c7e75c02dd4487712e54c5108ccdf4ff1b7ad8b70dbec58172d911d8f786"
+      },
+      "domain": "year_window",
+      "family_id": "dev_year_pivot_score",
+      "field_count": 11,
+      "hazard_themes": [
+        "H2",
+        "H7"
+      ],
+      "intended_change": "Toggle one pivot comparator boundary; actual century/score witness remains pending.",
+      "panels": {
+        "change": {
+          "input_fields": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/change.input.fields.json",
+            "sha256": "46102251be5821c6a4c14d9541f2751d24d8532977e38058c7159086e86b8bfb"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/change.output.fields.json",
+            "sha256": "2da42b74daf6a3161b4199e198a46933f955b16dc1a25c204cd70b2b3691d6c1"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/change.program-manifest.pending.json",
+            "sha256": "d5249628efb5ff6fa117a260f01b785a1241fd88592ed4346e1e682a4213e463"
+          },
+          "source": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/changed.cbl",
+            "sha256": "7de0c2ac10d2ec49c942125d69a71795ea732dc81a202f1988a41f05605b0c07"
+          },
+          "source_lines": 53,
+          "source_provenance": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/changed.cbl.provenance.json",
+            "sha256": "51e66cb65e1fa8428cbbf7eb4f80665a0c11456700f202d254a24e94522ec5cc"
+          },
+          "task_id": "year-pivot-score-04-change"
+        },
+        "original": {
+          "input_fields": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/original.input.fields.json",
+            "sha256": "fb24ee10e747ab439c83416f806e0d026f184e9473ca1b8cffb563439ef34427"
+          },
+          "output_fields": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/original.output.fields.json",
+            "sha256": "7d021615e27f40275166d29dea17c4a1c8810b12e7041cee021d9399ba970bfd"
+          },
+          "program_manifest_pending": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/original.program-manifest.pending.json",
+            "sha256": "7e4d35fc523c885d904ed2c84407da03119d9cea5e7f21b82c8586f3b5ef2556"
+          },
+          "source": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/original.cbl",
+            "sha256": "a1d468922080da6ad2dba859701330e23711920bfe358e47c7dffcc1b8a687fa"
+          },
+          "source_lines": 53,
+          "source_provenance": {
+            "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/original.cbl.provenance.json",
+            "sha256": "d3aedef2a05c8edb4535fc9170a5cd51a1e388293e7c2d949acac8680f82cf7e"
+          },
+          "task_id": "year-pivot-score-04-original"
+        }
+      },
+      "paragraph_count": 2,
+      "pending": [
+        "actual_parser_compiler_checks",
+        "real_reachability_recipe_ids",
+        "behavior_changing_witness",
+        "license_approval",
+        "provenance_authentication",
+        "P2_admission"
+      ],
+      "program_id": "year-pivot-score-04",
+      "static_reachability_rationale": [
+        "Large representable age and low nonzero divisor can exceed the smaller score receiver without a handler.",
+        "A representable zero divisor reaches the same unguarded divide after either pivot branch."
+      ],
+      "status": "builder_source_only_pending_admission"
+    }
+  ],
+  "provenance_artifacts": [
+    {
+      "path": "corpus/dev/AUTHORSHIP.md",
+      "provenance": {
+        "path": "corpus/dev/AUTHORSHIP.md.provenance.json",
+        "sha256": "b3e9f2321ce4b61d25656c95e32091a7adc6dd8cde98f614ab6edb16b09d1648"
+      },
+      "sha256": "23e91d28f9ff104d21eb1393aacdcc72111dc2dee9e822069eab3c4295586410"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/family.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/family.json.provenance.json",
+        "sha256": "eaf11aba6e7928a635b164ee6132af911da61e00838dff0e54cc1690640a577f"
+      },
+      "sha256": "79c401f34bc531395c2f210c983e93e112dba8d84bae7433284d0e72f7c94b7b"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-01/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-01/original.cbl.provenance.json",
+        "sha256": "d45188b934661fd8fa28117cd510d47b92931bbdb56e7da2f328a6ec6176f3ee"
+      },
+      "sha256": "74e74fc1e600fe593dac14409252886a2d023ca27094523b7f8e1e9b8fa17794"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-01/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-01/changed.cbl.provenance.json",
+        "sha256": "c40f7d65170c7e66cf2a72fcd2bdde5a8046cd863e6603cfbf9352cbe52f8752"
+      },
+      "sha256": "ea3d69ee5bca97599ec13883bcc60e88f5c5abe1b6d8f0a3f00af92a8f55afe5"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-01/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-01/change.json.provenance.json",
+        "sha256": "0428b702de677beed6a71364fa237af4eff7bb93b637afdf29ac3e02eb51ca7c"
+      },
+      "sha256": "17d8384d7a17fbda03c0ab5bc70c9ca1a06d6e932eef54dd2440b8cb66e5d23c"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-01/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-01/original.input.fields.json.provenance.json",
+        "sha256": "a0607718ba9165257c01eeac4319497a517f6ca80374c2455a46ce1b99f63341"
+      },
+      "sha256": "7c2aae7d9701b3c2a1a6fbbd35dd6a4c3a09391e42c15dbdbffd2892c0e88ff7"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-01/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-01/original.output.fields.json.provenance.json",
+        "sha256": "bbf4ace459858c1fc4c879a8276b0dfc4b7c3a3996b8de1834a725b0ca972333"
+      },
+      "sha256": "a9c80a6a8fcb966357e3b322053927f772ecd7451d753329cde73a5a34dc7572"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-01/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-01/original.program-manifest.pending.json.provenance.json",
+        "sha256": "a6a4e4cf51685c4cf69d7e877e51e8e072d4819f2fe2d51c09d4d5f9eefd99e2"
+      },
+      "sha256": "254db2d30230ec9ae62dea1786c248a86c4f0929774b8b5cbb1de68d1bd7625f"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-01/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-01/change.input.fields.json.provenance.json",
+        "sha256": "7749213f3ae80441edfb4e80bf300c6fe22b4f6d63c0a0c4ff11b119bbfd837f"
+      },
+      "sha256": "617e1cc6ce259503abe0369331b258927031f8338ac9c226e613e9f49ed7ecc9"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-01/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-01/change.output.fields.json.provenance.json",
+        "sha256": "4de751ee557637a7836a5afa1a9b0f5b79c1aedf2999228d61d303804e596a85"
+      },
+      "sha256": "174c36aecda0476510b0b929155e7480feca53b9b2e2b0011f5b30fbe7d4130e"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-01/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-01/change.program-manifest.pending.json.provenance.json",
+        "sha256": "dd14e9ed7d78575a4897365ce02778c4d0ecda537dc1f3493fb4b7aa2a48eeef"
+      },
+      "sha256": "dedcffbdec91cfe2777d8f41dcdac8e1a9de4fd9e386685ffee68b01f3c3398e"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-02/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-02/original.cbl.provenance.json",
+        "sha256": "723eef09e0cf941dde2b5542eb2ab47059f511b01278bf349630e864a823b99e"
+      },
+      "sha256": "8c4f3847607cba23d6fed8e8516953ce83b599c658cfab0f00505fdebdf3ac07"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-02/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-02/changed.cbl.provenance.json",
+        "sha256": "aa1178cde6a1dedd015a93e96d815c5fc653520c555a15ea69fa1b3c81533dd0"
+      },
+      "sha256": "ea51ba2ca58b9a071412d59addd9f35eefc4d41889bee006c38a170da05b5caa"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-02/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-02/change.json.provenance.json",
+        "sha256": "7b6d966bb16c1f41316c72ab3ba2d7242f290fe916d2e70fbde1816464aaf525"
+      },
+      "sha256": "a8deb15c17a03b2134f78186defab33f8eab4f985135f6cd0c51b0ca30c0b6a2"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-02/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-02/original.input.fields.json.provenance.json",
+        "sha256": "f5004ad0e3e084d9a321bf8d831d17e6d021c01571c6f0cd940a3dab3d3dd23a"
+      },
+      "sha256": "157b0029bdc05d63221921bfb62b67edd85fd5ad2a98fdc372e0803623aa563b"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-02/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-02/original.output.fields.json.provenance.json",
+        "sha256": "053db33fd850aaa1ea9521590a55ff1ab19218691b64a91b6dd448340098b254"
+      },
+      "sha256": "a285ebb11be1d1a6818a226f57f766d0e6bd035168f8c3b9b597731660dfa918"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-02/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-02/original.program-manifest.pending.json.provenance.json",
+        "sha256": "fd1f50c7354d8dc13f178a97dec79f34bdd6ef736d6f4b3bee6ebdcfdeefb9e7"
+      },
+      "sha256": "458566873b9e20411c2de5f0570d864563a6e23e42af7b5436a43f4b823d973e"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-02/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-02/change.input.fields.json.provenance.json",
+        "sha256": "64148eb981d62c16ebb08600a89be1f6d8f55718c778a03f587c2a3b36557665"
+      },
+      "sha256": "9fb5a7e3c15e4ab66e4846633541db32059096618041cff9d23e558e7168a336"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-02/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-02/change.output.fields.json.provenance.json",
+        "sha256": "2d522704a4288a399883186f801b7a9cce08bd7841d27ce02119ba605ff2aac7"
+      },
+      "sha256": "d603bc4f7d3f0786484683ba6b653a96e6eb57f9579be6d200f10427d0ea8e96"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-02/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-02/change.program-manifest.pending.json.provenance.json",
+        "sha256": "bc735a5b82df332391cb196c30a760b4da967131507a89fd5b16fd9366fb9240"
+      },
+      "sha256": "fc086fd689e9aa6b249f89498f656f376d431cb66bb68c638963719bc1f25a49"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-03/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-03/original.cbl.provenance.json",
+        "sha256": "f823153c6b9c39a1f3f520ca12b95fb75b5e218c406a999d56376de78ee2a73c"
+      },
+      "sha256": "2b0d8642a4c60a05988e96918df714a119211b0ac4c8999b8412dc63b275a3da"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-03/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-03/changed.cbl.provenance.json",
+        "sha256": "6385a118fcab10ddb18a7af1bfae61506d3e5f807f4593f4f1e6abaaf5abf5a5"
+      },
+      "sha256": "5e0147b45a3e0374ac9b54def58e3637923634610dcd316da18b2bd1dee54afc"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-03/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-03/change.json.provenance.json",
+        "sha256": "30f20953bff7bfb76e7aef789bd52ff109b37cc558126dedb95bcfb7934ff8f3"
+      },
+      "sha256": "dbb142f952df5e9d9cf125b5473b161886ee7183cde23b07e6f20e6d0a839fb3"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-03/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-03/original.input.fields.json.provenance.json",
+        "sha256": "317a08129eadcb64dadf85a6142ab9cf6f9d144094230009627f7bee7aca6922"
+      },
+      "sha256": "1039befead8adc038639842b0803655e05a8d8deab0fb41f1d8cbb7a5086c3e0"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-03/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-03/original.output.fields.json.provenance.json",
+        "sha256": "ecdc118a9f3b8785bd645b129cfa67b3ee358e74c7dbcebd112d9c8832aebaf8"
+      },
+      "sha256": "14265863429c7fde7b928e792d4a640ad6c46f1d6214f7bd9e74b8526194d1fe"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-03/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-03/original.program-manifest.pending.json.provenance.json",
+        "sha256": "1fd773ec4fff03fec8608094ecffe1b46ae9e09f142a1f652d6ab1895905b83b"
+      },
+      "sha256": "52a828ef5648036b4c999453cacf1be5edbd28dd12c74c2cc4d945ecb639bad6"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-03/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-03/change.input.fields.json.provenance.json",
+        "sha256": "bdca86b459e624ca7c9f0fb48bd0c4e7f2a58b453a03739175d687200c08cbc9"
+      },
+      "sha256": "72b49b3e303390844b0b508778ef1c34f105372a4bfbcfd2003421f9d4f65a39"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-03/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-03/change.output.fields.json.provenance.json",
+        "sha256": "f8c6880409e5f1d0714ef35827b91fb9cc83c248b218b9a69e2705215ba8bde9"
+      },
+      "sha256": "31abebdf63ff3ee905f5f04708777474f237d41013873e2d40ab397b864b4352"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-03/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-03/change.program-manifest.pending.json.provenance.json",
+        "sha256": "443c2ec0bcde20e271f0e2d762a43214fdb788f12ada893b4b37e1b1dcebecbf"
+      },
+      "sha256": "e374395e308b3cb75968a308f35a6c44d3766b73537d364e18f2b985c4b53a16"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-04/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-04/original.cbl.provenance.json",
+        "sha256": "0e98ffc15b67a8dac7f1d5b9afa277852b3fdc5a65e5804d4bc7d2ae2008fe06"
+      },
+      "sha256": "88b95d1dab4bf39ec1d2644314af50bf7c36b26ed622b38aa9af9f8c2a43f68d"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-04/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-04/changed.cbl.provenance.json",
+        "sha256": "b3860dec59b5cedfa7d516d7f45ac92e07c912fe58cecc406902275f5e2cb690"
+      },
+      "sha256": "b087e98bb61d5b5abd9d98dcc208da18c4a821ee757cb4edbc851bee49f2d2c9"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-04/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-04/change.json.provenance.json",
+        "sha256": "a4037943c97f2bc2667962889a30b57e5708ca034b8a641f8882835d92e3d25d"
+      },
+      "sha256": "d5279555cef2961cc476a67ca4b27c558738fca7e5751ce38a528bbcf3902026"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-04/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-04/original.input.fields.json.provenance.json",
+        "sha256": "86f42ac090f53c2bbf8e1c46391272c882ac195fe000ed1db5a4f91a564bfbf9"
+      },
+      "sha256": "71238fcc9423aa19286a3eb927586294e9d9cf20f4efde8e8f7e323a978f7397"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-04/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-04/original.output.fields.json.provenance.json",
+        "sha256": "7dd2efecc99cb5d55dae7b517e4c8c3af0c34838ac0d0b74935158fb67d4d3c1"
+      },
+      "sha256": "5bcd5559c427fd2fc9cf222785327a147291de847530ae49140652953a67a60a"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-04/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-04/original.program-manifest.pending.json.provenance.json",
+        "sha256": "65379be54b67cedc3a5cd0b7f891014039622d57fee02158e74cb95d1e0a781e"
+      },
+      "sha256": "0208dfd327e0f04945e1ebba9681e36d889deaaf69908edee277a74960661dd1"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-04/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-04/change.input.fields.json.provenance.json",
+        "sha256": "bd10b9f4edf1578c670d152777e936d69cd7b6aae8a1a16786d0b4e5cf18012d"
+      },
+      "sha256": "90b17de6bd3d1317e94d0255f8adf8682bcf09dccd12e1d5c1454f39bdad6cc0"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-04/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-04/change.output.fields.json.provenance.json",
+        "sha256": "28daa0ccea654756f55c0fd28530f66f0079224ab3968bca2f183c0b6ef30ad0"
+      },
+      "sha256": "73dfa262ead1639d93c0fec0872f75d7985515f472007c4d1849ae9d00119876"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-04/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_tier/fee-tier-04/change.program-manifest.pending.json.provenance.json",
+        "sha256": "436c3a5d262342e6d8e07fd7c06e933234cfc0d46e1ae5a52ffa4bb80e650aff"
+      },
+      "sha256": "59dda61d718bac220974702f6da18716bdd3c5b2c83c841fb5e001ca2be91e0c"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/family.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/family.json.provenance.json",
+        "sha256": "68db16a25e139ec71d2e1d91ccd9ce84cdffc2497795946f81283dbba7c77c28"
+      },
+      "sha256": "c45f0f98745bccd4993154870978ed4734f72755f21c54914a0261e381569289"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-01/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-01/original.cbl.provenance.json",
+        "sha256": "5ea2258c60ad158b8df7c654e4d75015f17081d897aa1e2107f8ca8083b36ea2"
+      },
+      "sha256": "233314621482bc4ca93d2d88ebc0cd4b68f2db894dc64fe1e0b596e8b2ec26aa"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-01/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-01/changed.cbl.provenance.json",
+        "sha256": "2597fa79ceb0f8ef08e5dfc044e57dea3c0d1126646ee6350de445604232dfad"
+      },
+      "sha256": "b342167535ec14f708602936d3092c0d3e52ad3cc517e5e18ebac6455d28b597"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-01/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-01/change.json.provenance.json",
+        "sha256": "13d617839d8169ae27f18e73654ed3bb051efe77ecc541dc5bbcc27eb8eb189a"
+      },
+      "sha256": "f7872b5f1ee5cd17ef336ad5f415e42d490ae3ec710a623506895e666be5319c"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-01/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-01/original.input.fields.json.provenance.json",
+        "sha256": "c5399cd697b3c531c98f4d99ef1b873328597411838b543a546a697f3b9ce948"
+      },
+      "sha256": "426ef794f8e4c0b128322c21a4cac100d7d5d019236fbab8a4b8015a62c4cff2"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-01/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-01/original.output.fields.json.provenance.json",
+        "sha256": "4df413f717399fe0e33d1f97823f839abc8157a589e30b070f7b40db2a0db5ab"
+      },
+      "sha256": "ba6d1643ea39619c46fc96d0b87537506276ccd1593eda3953f3b94222fa937e"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-01/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-01/original.program-manifest.pending.json.provenance.json",
+        "sha256": "c8f01da3b16f18a007ddb545f14cc4447a510d7cf011681e3fe3efd27f529e0b"
+      },
+      "sha256": "b3e839c72eff56e31f3f24df901a29523255cb7e56b95ef627f660b4d5e7d921"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-01/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-01/change.input.fields.json.provenance.json",
+        "sha256": "c80b61e11801169f8166375acfaf6aaf8337df086a73752c6b8a0ac4f60c210b"
+      },
+      "sha256": "3bcb44383591d85be943c7e0660645009be33544599826384b55197c59699917"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-01/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-01/change.output.fields.json.provenance.json",
+        "sha256": "0d40b5b2db5adbaf3336c630261991c8c788aeb23254ed36fdcdde57e45fac05"
+      },
+      "sha256": "2b40e0ec6a645c59969c893a7f9a8e24f9508c1510561c51c1359e2b4d58e129"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-01/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-01/change.program-manifest.pending.json.provenance.json",
+        "sha256": "7dba0974860ae58bafdd7fa79c54d222b8f3e0652a07cc9daea216f314a65ed3"
+      },
+      "sha256": "fee7b1c2c55c07e84228a5458d9cc3369d10e0265eeb6e57f17bacba06051ef6"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-02/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-02/original.cbl.provenance.json",
+        "sha256": "dbace711f7c8d82060db51549cdf45fd7885703ded8123e068d2a233bf57ee6e"
+      },
+      "sha256": "350a57504e3b1504c3d22ce2f977febaa9950f2d6a3adb1c9bb1c59aae64aa9c"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-02/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-02/changed.cbl.provenance.json",
+        "sha256": "1ba356e22b41094e81cf30a2cc7f175c6024ddec67c66aa0e17acdae7f0d103c"
+      },
+      "sha256": "fabe4b4a045a902d1358e28b78e3455c4b421c134a4a808772df936c20b27e7f"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-02/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-02/change.json.provenance.json",
+        "sha256": "0fdef72f2104feda87341b24ec7d5347e3fa20864640dd7fca7cff596c3b10b6"
+      },
+      "sha256": "213a047ab7a29346d76ea20bcbb6b1ebbcf73581181a3aad279a634ce1f7d7c1"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-02/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-02/original.input.fields.json.provenance.json",
+        "sha256": "99e9f230e8ea4991ba278daf7a744b1c5756ceaec9b229962e492aa40da6922f"
+      },
+      "sha256": "a15e0616323e353392bd224e38397360cd6b82f49de06390880478e921b9a9ea"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-02/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-02/original.output.fields.json.provenance.json",
+        "sha256": "a70916b238fbc9049130b1100caabf4aacd07d89719914b8df6cf9a0953cfde0"
+      },
+      "sha256": "14efe5db81490fb794029f487a8776b5da0e2b729475ee800b1e7dbf02a53eff"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-02/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-02/original.program-manifest.pending.json.provenance.json",
+        "sha256": "85f3822386933e6e395f4dd0517ee8f51cd2d9e8df3782bf24d7f31b1a451984"
+      },
+      "sha256": "f5ef9106155f31aaddd22f5fe816e91965807284acdf972efe26018033951643"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-02/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-02/change.input.fields.json.provenance.json",
+        "sha256": "8d2759c674def50e90bbb3c0c2cc7ebc0205f1574b1eda078f3af04029d79800"
+      },
+      "sha256": "d4e6220dd8e8ad1ca57d43528945f132c44e7c174653e21a48740f80c598c890"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-02/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-02/change.output.fields.json.provenance.json",
+        "sha256": "9d907e90a65e9c30535e18950a2d65e818e737220bca320687a98f7459518b18"
+      },
+      "sha256": "28290c92453c22a7284edbf689411aaf7bcfe8a81e070aca280400c795055595"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-02/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-02/change.program-manifest.pending.json.provenance.json",
+        "sha256": "5f943d8f706dd347bd1340ab2c7af8b8cacca12bd9f3c49ee9faf5517606cda8"
+      },
+      "sha256": "d4881d683e69bb1495c07645f3320dd65f02932dc5dd909b4747371062fe705d"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.cbl.provenance.json",
+        "sha256": "9ebf47e0664e16298b9930f88408f415757d25f1e1e4bb0b398a167cbce4a666"
+      },
+      "sha256": "a7ec210b1dc61594bb052f1f1625b7891e2303f616c2684a9646b0967a2379d8"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-03/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-03/changed.cbl.provenance.json",
+        "sha256": "feeac2c3f470bdb59e45eb2cb9ebd91f9df3c5a8f5e480ad45322d7dba1822c8"
+      },
+      "sha256": "95a0a28e7e38cda51668cbc30d9dceee048daa41ca581a940f661ef189058c57"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-03/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-03/change.json.provenance.json",
+        "sha256": "b11427e0f7c8e2c3424752ec2544857afabc367df5b6672d85c53981323fd847"
+      },
+      "sha256": "064d341b2de02c8274a886e773a5d8224ab50141686432e58526b52fb9cc6690"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.input.fields.json.provenance.json",
+        "sha256": "2a42dff11349d5d231f0b043f00b9d682247f8d23b15055dfcbe4d3e26fc3a54"
+      },
+      "sha256": "385d69781abff4d2af43f8d348ceae2b6d8aa195982f34acaf609a42ae3aa4ad"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.output.fields.json.provenance.json",
+        "sha256": "2cc3c470fd6dba0b1dc5a294421ae4a9087d2350ebec36c449c686229b650621"
+      },
+      "sha256": "2c01041aff397afe7ab8786388f3e269bee1fcbdff00988df86ea04f26e0d4b3"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.program-manifest.pending.json.provenance.json",
+        "sha256": "2ba028ec95c6f53169f6a6e802de7c2e5bdec9369888dd1e5eabafbc15ced8ce"
+      },
+      "sha256": "cb017531f6ffc66652a60de320705c487a176b34e5b5cabc40f8abeb54fd58f6"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-03/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-03/change.input.fields.json.provenance.json",
+        "sha256": "728385946f611ba1308bb4e3a35e8593a773c5fe5de03d78a04a446085852f12"
+      },
+      "sha256": "3e292dad469752940c9f0cb448961bf3dcd83a196ab74fb6db22d747903af327"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-03/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-03/change.output.fields.json.provenance.json",
+        "sha256": "d168e6a27e6d118f69559733479735b4f7cd2ed74049a8b0467682b037bf8b55"
+      },
+      "sha256": "930b01a339c5389dcaeda0c16e96a91fa34b5e7fb30e8503169bd8ae51c39025"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-03/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-03/change.program-manifest.pending.json.provenance.json",
+        "sha256": "1eedd901b5891c14a8674b54992c7b5b9fbe63074992c2709e33c335f9c0b6aa"
+      },
+      "sha256": "9a4a836b0f555adf6b970913675b40c42623eb1de96a3f2ab619f016ac903981"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-04/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-04/original.cbl.provenance.json",
+        "sha256": "09e9973f4fb24a41589d9c2bade6fb04aa698a09f2613d9d6f1fc4063c917fcf"
+      },
+      "sha256": "8fd771866c67ce378be17eaf25f334ca70eea8601ceb5b2b568639ec0d091c18"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-04/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-04/changed.cbl.provenance.json",
+        "sha256": "e85dafe12b9e1ae30131d7093d932ccabdbfc175bf439c334984b5e8b45ac229"
+      },
+      "sha256": "6af8668f172198b622b8ed28d799699530e3a2f93e161f446da6390bd416f32c"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-04/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-04/change.json.provenance.json",
+        "sha256": "b109daa9211b826de9da81fee4ef3e5e59c4453fe5b879a08ea18bf9dd9390f8"
+      },
+      "sha256": "2f109d36cbd17c3695c9098970736e55cdaa7f97e227ba1effd91d9526fa1d3d"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-04/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-04/original.input.fields.json.provenance.json",
+        "sha256": "5ff9fb2935542e26c8e75635c9480e19b4af2f2a02a82a73da2f5f619cf5f8f7"
+      },
+      "sha256": "47cf4138739dc553cf11d184ce04db0ff05713cb5a3e234a157e6966e77186bb"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-04/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-04/original.output.fields.json.provenance.json",
+        "sha256": "232cb500779b14633a14648075a053adb5bbaa6e1f147564f4f7abd0c164daf4"
+      },
+      "sha256": "9605a4293fa928ba72a667838a5fe8f0c82b2374cf16d50d44d2ef50ad85eff4"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-04/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-04/original.program-manifest.pending.json.provenance.json",
+        "sha256": "0ae2b0e7626d79b052225d5ad2f91a401ed72fa614873d2859c4e5b710a8e58f"
+      },
+      "sha256": "1fbaa8c364b428419d86dddc26face3578a8168180c73c9c227442f152f66f72"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-04/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-04/change.input.fields.json.provenance.json",
+        "sha256": "86ca422387c20c8ca2d6fd47f2ce2107c454b56a8d46be0dd84771955a851f21"
+      },
+      "sha256": "4a15cf1ea3e1e85503d0346e44f852ab2250daba5a93da0b49b887b6ca0a86e2"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-04/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-04/change.output.fields.json.provenance.json",
+        "sha256": "55ee50ec4f3647ea5f6b5d36ad4ef18c988d686e39c69dd61359605157531694"
+      },
+      "sha256": "d62160caa1245bb949a48caf66aadee76d5f2e6e6ea503d31c9e89444c378f24"
+    },
+    {
+      "path": "corpus/dev/dev_decimal_chain/fee-chain-04/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_decimal_chain/fee-chain-04/change.program-manifest.pending.json.provenance.json",
+        "sha256": "34afa8b5ee8852246467c3d57ae05eedd72e74b06c4724f0262597ddb5485140"
+      },
+      "sha256": "ca0dab00d1e8c60943da6e85a37052e9dab6dad6c6c28a650fd76788773d5c29"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/family.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/family.json.provenance.json",
+        "sha256": "f2d0e931a23ad4c0494c1f4ba806354dcffe5c9ca376c3604a5e289a0b84ee1d"
+      },
+      "sha256": "4048f3f90566f832de313f5eb4552cba6dc8d42ec234203743a8421780e7462a"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-01/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-01/original.cbl.provenance.json",
+        "sha256": "75ab4cc99beb9ef8c9804ef8763bdd318774dc3dedd74b7353031756cecc6bb8"
+      },
+      "sha256": "9774bc0d23880d99cf28bafbf3c61cf1a5519186f082ce201efc7290af9b771f"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-01/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-01/changed.cbl.provenance.json",
+        "sha256": "793e66a826ab80dfefc85dee411b0115518a054c51379e018e03a704b757f491"
+      },
+      "sha256": "54d885a6283fa9fb86dd0931e86ee83449c796e57e0ea41d7f7fc89a5b633d29"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-01/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-01/change.json.provenance.json",
+        "sha256": "eb0a9bafa3ab617f0447dba70bb8e9c2813d6ec377761beba0fe6f162483cae2"
+      },
+      "sha256": "d1d489c00010cae9ec4524f32da4f10cf94fc009876e11614e3c873fe61601af"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-01/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-01/original.input.fields.json.provenance.json",
+        "sha256": "a6a4371819cc8cf67d05a23e78bfe92ffd5aed360b7d2af219556972b86ca594"
+      },
+      "sha256": "357cac9b75862ca7dbe49725ba851acd284100f12d9b17b83881c71708dc2a86"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-01/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-01/original.output.fields.json.provenance.json",
+        "sha256": "a2e3d4ede0254f618b127d1956f3de799bfe74efbe173ff70e9bff0ddb54a465"
+      },
+      "sha256": "45b73d931b3dcaa5483fa85a21c42ac2fa2bcdfd09868888c1e888e7b89ce37b"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-01/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-01/original.program-manifest.pending.json.provenance.json",
+        "sha256": "5ca8f0249963aa4926150e5585e59ffb795be1a531a7b1847f46b9a14f0f2355"
+      },
+      "sha256": "cf416d0c2c9140465c85d454482974db05e5acd41e788352259f26af354f9552"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-01/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-01/change.input.fields.json.provenance.json",
+        "sha256": "b947aa9c5a489f08df739b55a8a814083604a9552c18e04d01dd439f75c498a6"
+      },
+      "sha256": "48803e17f96e28f8a0cfa7776c5ac1e820ccc14c1470f22aa1f1599404dbcfdb"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-01/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-01/change.output.fields.json.provenance.json",
+        "sha256": "1693cc061fdcafcbe3bcc7509f6e117ce04f5b8c163f0199b6e6cfd1d3c1dbb1"
+      },
+      "sha256": "9091de21e863e888c8723790407ef1c4d158a84d37eb628531fdbbf5d439b00c"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-01/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-01/change.program-manifest.pending.json.provenance.json",
+        "sha256": "8a5b77be68c0992f794b3ee7458760645562b2020cb73ac89420ed874f35b59c"
+      },
+      "sha256": "6cc93b707864c7048fc6047958d4a692934b7016631fa659c7053b7e0e3fbff2"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-02/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-02/original.cbl.provenance.json",
+        "sha256": "d4ca63b5c8dd70b3ca1bb699b655cc3fe0e3237d45eaef57398938a637380ffd"
+      },
+      "sha256": "3f02e58849953299600ee4f410d4341add79fcbd6c04ba0e8526b0a35a6f699d"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-02/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-02/changed.cbl.provenance.json",
+        "sha256": "acf7b2fa2e417239196722d5ad6578a2ee88bd9db4ecc2441d10ebe573db5e8b"
+      },
+      "sha256": "072d105b2b2f781f03f56e2ed85242b2f162987e62ae0f20ec5bb09b897ba2eb"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-02/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-02/change.json.provenance.json",
+        "sha256": "f993cfe3f4480af3197f552a86a5a006686584869443bf7e323d88a952bbae1d"
+      },
+      "sha256": "476c8bbc1ecb47f5c140bef96dac793e7c9357ff3d8d4f691461d24af4434b7d"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-02/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-02/original.input.fields.json.provenance.json",
+        "sha256": "45956002a7d5cb36c489fbbe9bc4b492cf4a5ea009121b7906f5203955603eb1"
+      },
+      "sha256": "c8d00ec6a1d22413a4a05413f0c9c0674fd3a5d2ec8e863d097400b2fdac2be9"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-02/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-02/original.output.fields.json.provenance.json",
+        "sha256": "d989e6c29e8cb3862b51ed7b433e0d8f3fc0e64cbe377d6677b4ad2a425764f2"
+      },
+      "sha256": "e46b09719082281b63eada30cdf4eda5ca65478c0434afd0f4941d9a6203a221"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-02/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-02/original.program-manifest.pending.json.provenance.json",
+        "sha256": "0fa74caf904d477cce7d54ea02cb056ba9e8484bea978cfdc5a1008d9e76bb41"
+      },
+      "sha256": "536b57cbc33d0c418bbf0fac3fc08574b950b3c4a13cf688432493a3e5f21ec0"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-02/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-02/change.input.fields.json.provenance.json",
+        "sha256": "17b77cc6bb5ffa31fc97e51c72c9399c3ccd29ee95280fb4328110266fa34ef3"
+      },
+      "sha256": "880ba924eecb0ac83a107dcdf8f026e6328afd9a45a17f0992ea6a074083fcb9"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-02/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-02/change.output.fields.json.provenance.json",
+        "sha256": "c5c5f1741d33e229ff31323b37b8d171076e3c39dc552ced8c3df48287890bb5"
+      },
+      "sha256": "b96014e4562ab22a8c46d22adf1bd52379a49428c60353fe1638a0a8f7f2cede"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-02/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-02/change.program-manifest.pending.json.provenance.json",
+        "sha256": "8e1ed21f4e1e8adbe50f8c2851cd864530a2426644780eff6b177cfb6ff96fbd"
+      },
+      "sha256": "13f5de381bb4ae79ab3a38d40201b46e130342e69e3729d9ca0270032b0d321e"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-03/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-03/original.cbl.provenance.json",
+        "sha256": "9786069466d0b0f7f451095f863b58827278eca48ba0870b113e856390d6cb35"
+      },
+      "sha256": "c587291f7c1ce987a6fcfb6871f7cfdea94c59be05787da079dfdb28b7827618"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-03/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-03/changed.cbl.provenance.json",
+        "sha256": "e745339d8b5ad6f7888d190efadc29ee42c7de59780c15bd0b7f041c3028deaa"
+      },
+      "sha256": "39b4f9ee91b3afdd6f5cd710a546efe5b65bd16671353ea84f4e01a630cee9b9"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-03/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-03/change.json.provenance.json",
+        "sha256": "4ecec66313dd94d6357c184ff3509d6397f195f25fb692600a272b37137a44e4"
+      },
+      "sha256": "c83e51d122cf3656194d5ea037055fac1b89fc4dcf8443e74c18f64bb0c570f3"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-03/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-03/original.input.fields.json.provenance.json",
+        "sha256": "6be692a72696c94639356d2e1a6dcdb9e84ea742715aaaeadabf3927eef46815"
+      },
+      "sha256": "14b510ba8b07456a91be8b4bd0f7210439005faf36c4bf4da26f34a36606aa02"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-03/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-03/original.output.fields.json.provenance.json",
+        "sha256": "9bafa99a2651a451b35a704ef0573c55fc43199df0487ddc0e71c55d6f53dd45"
+      },
+      "sha256": "566283bb486a4292b9aab499d4a9cceea71a537dad4ee60db6a8fc6cf20e74f0"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-03/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-03/original.program-manifest.pending.json.provenance.json",
+        "sha256": "7e5641892d7338b2fa338a30ecb78e80b87ebdeaa865d98df1b1c71e4f8f4580"
+      },
+      "sha256": "e24d24bef5bd9be2d4783d5ffda526d966b081fd3025d3165c7b55274d865d09"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-03/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-03/change.input.fields.json.provenance.json",
+        "sha256": "a3319c9904e60a4462d8df2b3b2ad79f459afb0ee256e3ef047bb2f43a88ab0e"
+      },
+      "sha256": "e454cd411d2e2f7fa64128bfe59c8a96b32c85d4346cb189bffa58ebca030765"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-03/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-03/change.output.fields.json.provenance.json",
+        "sha256": "0e23c05f1bef50ddc9ca9c367da6096ffe86ff290c2856d1b3f395803200aff9"
+      },
+      "sha256": "dd6b103944becb38fc0e36d1948781305a62383d84696db085c3c4330d0fc8be"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-03/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-03/change.program-manifest.pending.json.provenance.json",
+        "sha256": "9e4abeb17a6c4013110d1c5831426e2cf9e22b61baa7f27969a46c7fc7bd60c3"
+      },
+      "sha256": "265d0e3916d8c88081c5e5a12e0156df3756930a15756160bb61fa45a9d42b43"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-04/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-04/original.cbl.provenance.json",
+        "sha256": "13d6bbb17a5e5650bdb4981cf558a8bfc6da00e8146034859c97e35acfbe2133"
+      },
+      "sha256": "2c3cdb99f980e85aedfc5997f6cd74a64f441b682d0a803f205f14f9d26cd527"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-04/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-04/changed.cbl.provenance.json",
+        "sha256": "8eb6ab36aa73e335c36045b3f981a28e32fc5b6ef4248bd2d3186c07ab4830c0"
+      },
+      "sha256": "4831e3bff7fc524f7501a13bc895cf821a17ecb7d724ccd38456eacd8492a99f"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-04/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-04/change.json.provenance.json",
+        "sha256": "afd1a7138e46453a8c5ecf2a0527e0f471c7588682556e7d408cf005445e3d3c"
+      },
+      "sha256": "a51405124ab9b84d4f7526e04900addcca18a792d11a60c3c69cf695e45065cf"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-04/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-04/original.input.fields.json.provenance.json",
+        "sha256": "ff80c306c7863e36755d388a14ed6daaaf37a7f25f4969e7f1b72037f517c5c8"
+      },
+      "sha256": "f73a90bead0cbbe0357061b6aa3583dc403802bf0824f94246684dea34cb42ed"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-04/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-04/original.output.fields.json.provenance.json",
+        "sha256": "50527ec133da5583ef5890624019bb7ffc525ce5dc3d210d611e6d77062254d0"
+      },
+      "sha256": "d0c9e0b944960892ba4113bd00a79d962b1178197209e78552c4505b06b65de4"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-04/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-04/original.program-manifest.pending.json.provenance.json",
+        "sha256": "50d413ff238bedf14248d4389363be3b88a7b925b98078293703478e24e456e2"
+      },
+      "sha256": "e54439dd8e5c50a2b3afa6205cf3e4b280a75e93c56ff1c2780e9ce0dc3322ee"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-04/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-04/change.input.fields.json.provenance.json",
+        "sha256": "1d8512190e1d96fea979d8fd19fb99c1734dd7ecf8f07897ee79686d2bf65c4f"
+      },
+      "sha256": "824a69e3f07c7d901b00cb09ec31b77f782dc9954b2e757171a11f3365cd9973"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-04/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-04/change.output.fields.json.provenance.json",
+        "sha256": "7d170f2e784acf8027d79352785d4ef5db77835f9dad606e0e3cc8e078d5b875"
+      },
+      "sha256": "6dc70c399e558be5633ed86740dfd38e047e3a3f7a54eb2a8146ff0bff53e487"
+    },
+    {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-04/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_fallback/status-fallback-04/change.program-manifest.pending.json.provenance.json",
+        "sha256": "709c178eae94d74c00ebccecb20d512d020f91aa11fd0a49c9e3946e769a7d15"
+      },
+      "sha256": "27e600d80dd10c7911b4c82f2f2b5da65e1ccaec86e8c8419bc5f20ad93559f1"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/family.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/family.json.provenance.json",
+        "sha256": "7f3b976881d1213e1cea4903ed94496150263c46f555e6ac8f90852529e965fe"
+      },
+      "sha256": "4fdd209d6d21adc608a7e4063b83f5fee7ab57b830580368586c0d4070b68ff7"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-01/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-01/original.cbl.provenance.json",
+        "sha256": "7225bf5c2db31f983fbac3ae7e46dd531e7ccc3ce7e1315563a8ff7cb181afaa"
+      },
+      "sha256": "b81bcc818ab30603dea1041def422f3385a7c7de138e66fccb5f134fe9823b11"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-01/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-01/changed.cbl.provenance.json",
+        "sha256": "5a501e8ee23d940919c16efd99d72de2c9717f585624d96badbf0b7b91437444"
+      },
+      "sha256": "acb27fd536d0bdb8d878fe216a5aabad291d3ad04299de4cd35c878d0a4dc848"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-01/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-01/change.json.provenance.json",
+        "sha256": "d6c55b7e85d6a9bd8031fe8b1e6a141763812cd8dcc0c6d83784bfb49c4cc793"
+      },
+      "sha256": "7334ebbf55fc06bf3fa958d783c973a67f5d79816cb409755a14f13434a8723b"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-01/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-01/original.input.fields.json.provenance.json",
+        "sha256": "cef686b3e2f80ac5fc6dc661cd54127b8347ad7c70d5b2ee13843bc06e43c220"
+      },
+      "sha256": "d0ecc43c184ddcd0bd904414b4e8988b02b602b7d2eb6f0f5d8cf4074a94d731"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-01/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-01/original.output.fields.json.provenance.json",
+        "sha256": "c87dbd05a343ad12921f2133816f52f51cd17956c14bbe3c9162f6f8b9b182e8"
+      },
+      "sha256": "9faf2b845e199622cac84f92cbb2ad52fdcf1e2ce9bf945d1d1caf0be1691731"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-01/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-01/original.program-manifest.pending.json.provenance.json",
+        "sha256": "af1868003548900c21038732861b785252dd1e9c1d7a8acb3271323027bf16df"
+      },
+      "sha256": "2799c38c9311b595cb591fe4b3ea2a997c79b914169df963f98fb0ada7fd8544"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-01/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-01/change.input.fields.json.provenance.json",
+        "sha256": "20d749046a3e2b3010faa296f181534a5d70a0081134f9b2ff245a9f998cfd8d"
+      },
+      "sha256": "71b831b6a160f2aba008e3fc85fb093fef4ad07dde57f07476ecfea7cef74e1e"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-01/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-01/change.output.fields.json.provenance.json",
+        "sha256": "6e116569f62c7528d1e1f92e7e7cb019f40c1d6b93e1fc517558dd6f3690e57f"
+      },
+      "sha256": "bc04089596a6181ae1c0728b107a4f1eff11f4aabd3e43b37aaf6778a74400a2"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-01/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-01/change.program-manifest.pending.json.provenance.json",
+        "sha256": "1b271aec79a35dbc51fe43ac2214cf4060ee95e426381b35ac1f03f3afcb161f"
+      },
+      "sha256": "e23dec74f527215cd1be06ab466c4acaa10baada12bb1f4071c557352b39f7c0"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-02/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-02/original.cbl.provenance.json",
+        "sha256": "f49481e0427c23e4f0f0d7ec50cdae92590851392a8c784e1d4af14093b38680"
+      },
+      "sha256": "fa50365ea1f360f4fe9a1a8a5a93e3a9cb0bd5070d8caaf8603b71705a81eea1"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-02/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-02/changed.cbl.provenance.json",
+        "sha256": "49f7adcd7e9a9a15c7843fd30829af225de8915c5f5e4c4e1377dc04170b9b2d"
+      },
+      "sha256": "dea374cbd8a7e318c1609419947cb85370d9fbebbc719898f9455826c15971bf"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-02/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-02/change.json.provenance.json",
+        "sha256": "72ff9e5b7447205ae11706a8800f6b3f17044511b915903d0f96664820a93efc"
+      },
+      "sha256": "243d371eb6fba7473377453147b22f00556d66ca19007bc1c4c81648fb751a1f"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-02/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-02/original.input.fields.json.provenance.json",
+        "sha256": "cb56fd5d352066ca7a8162746c087802034c4afb59ddb4fb7e9c7bd9f32f6576"
+      },
+      "sha256": "ed2123ab3ee8e97dfe8677adb55f08eb250b6d63b6eb9cf4ef1e9365bc8abc78"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-02/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-02/original.output.fields.json.provenance.json",
+        "sha256": "2af792097eb90efceb4aa5d211960565aabf5fe7b6d5da18e1354a52d68df477"
+      },
+      "sha256": "786ff88c2789ae34eabf2b78df69e5d1dde4bd23a238578272278843bf68fdd6"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-02/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-02/original.program-manifest.pending.json.provenance.json",
+        "sha256": "11456ea78ee7ebef3962c94f44a18e36ffe658e822791b3c41e987bfde3bd71a"
+      },
+      "sha256": "78c433b0c9326b7d860aebc9431e0785727fe40cdbded521596840bcb6ddebb2"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-02/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-02/change.input.fields.json.provenance.json",
+        "sha256": "7344180140304bd5be1c34b95e5ee0b93e3f8af14d8f0cc802c1ed89e933d588"
+      },
+      "sha256": "c873f4ee4fc7a9a9bd7de101c6e78cc64bbe343cea62d2443bc62f015023161f"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-02/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-02/change.output.fields.json.provenance.json",
+        "sha256": "ef56aae085693d733ec1c257edcc089b13538f16ab22ac5bf6b9fc41805870cf"
+      },
+      "sha256": "ca9823f1b42008b31f2737866c8feb7e90e11ff2d6fcbb9a0fb16cef073bc420"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-02/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-02/change.program-manifest.pending.json.provenance.json",
+        "sha256": "7e61e75cdd3ee6cbe6a90da974e394507cf512dfd1f4e0e5c53cb499461efc65"
+      },
+      "sha256": "5b77e2fed1bc890e77ed804a3ffa323d18dc4c690f77c3a95df3618091de4d09"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-03/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-03/original.cbl.provenance.json",
+        "sha256": "3d05d8f26b06fa4e32db506678049ad1e6032225cb8cfd9796864b3396f02c3b"
+      },
+      "sha256": "2923e7a25ba404209bc80b719271271a7d4c37dac802cb74f14c6664f80e2e8d"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-03/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-03/changed.cbl.provenance.json",
+        "sha256": "5ed0aa17ae8122b358aca6334738e7e33adeb775e551df29e23b0a88112f8976"
+      },
+      "sha256": "5cf93258b79954af2333bc876c4ed7ee75276ff4f0044388f7bbd0a228989c88"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-03/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-03/change.json.provenance.json",
+        "sha256": "fb74e297e16652b5c96a5f1a9c1d3dcab6f138c2204597ef732ba115907ff18a"
+      },
+      "sha256": "9a972797eb7a937c1d7c52241285bec6174892e0b47fd06213153fb402b7a872"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-03/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-03/original.input.fields.json.provenance.json",
+        "sha256": "b06e22ea4aacfbc465d01dca4713879ea53ffeff58b5a3c20f55da3a34a3b047"
+      },
+      "sha256": "4f06de2799e176bdf760c7a0a62a857dc87bf17ed70440e03cb50acab4a75671"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-03/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-03/original.output.fields.json.provenance.json",
+        "sha256": "e67f59098b8cbb19c751d42e4f2becf08b36f0128c993e888a7b8d4da3d5cb24"
+      },
+      "sha256": "86d5d1f0a11e0da968e304397a8282baa12945eacf90195dba95915bf9369942"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-03/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-03/original.program-manifest.pending.json.provenance.json",
+        "sha256": "fa366a1a3d4962363c6beb4f37bc475e7254180202dd996e00f1e3914d5e9020"
+      },
+      "sha256": "a5de53ca95eae88b7c611ff3d91d6d5c6ada511195ca4425cd7d6e6ed3c9b564"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-03/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-03/change.input.fields.json.provenance.json",
+        "sha256": "dedf5e95a4fc84def812b4cb09a244e6ae9aee24558016164cb1da36f240b879"
+      },
+      "sha256": "8974b17f61a99ac764e5240e857733ba908f5498b24f487b5bd346ec1a43a19a"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-03/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-03/change.output.fields.json.provenance.json",
+        "sha256": "b2251340ee83c004f60cbd87b2adf89b6fe6eeaee5ae07893b661e5cc6808b1b"
+      },
+      "sha256": "20fc85c1456463ecef0a8bea2ac5ff7d8f2dd745f7323c5c560354ba3bdd0e8a"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-03/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-03/change.program-manifest.pending.json.provenance.json",
+        "sha256": "13e51d78f49093f5cee71710917204e38848ca9c786d83ff61cdcdf0d067b4af"
+      },
+      "sha256": "3f5ef6722f2c126325ae86f9e4c8f4141103c76472b01a4211f56bb5d71ef62a"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-04/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-04/original.cbl.provenance.json",
+        "sha256": "982bfa96746dbffb0251726e6dbde3d51f9b4c15530b5a7e18aa90346c8cd086"
+      },
+      "sha256": "533cb38bc67c57d72391cbfc7ad487641a50ecc549abb97ae82f8047e0208d2e"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-04/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-04/changed.cbl.provenance.json",
+        "sha256": "18a898ce3f7536a538ced393c9a5f95d33dde16042424f446ad5a5506a1583d0"
+      },
+      "sha256": "49e15e50becd2baaafe04546510a7f658309ef80e96edd65e22bf8603ad6f71c"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-04/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-04/change.json.provenance.json",
+        "sha256": "1b4fc071cff2e99e3de847c56620ee9ea2967226ea0ac884b550db4ba1d6a4a1"
+      },
+      "sha256": "643540e6c25341c14718774f5a58e1d2d3c5f015e6e9f228436e9774d08779ad"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-04/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-04/original.input.fields.json.provenance.json",
+        "sha256": "9e9ee5b81d0519b5961cfe3d2c2a793f1f6ccdacf6eeec94a1a5120186133424"
+      },
+      "sha256": "cade81aaadc1c2fdb3016c80167dd5e340f04fd8bbfeb9b404542c6cac6571da"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-04/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-04/original.output.fields.json.provenance.json",
+        "sha256": "0ed1dad637d9fb0659221a2043fe404d2e21ff087f632315cd3e97e4679f389a"
+      },
+      "sha256": "407eaf463f5018b0d8e82df97ac874a2bc0ae7cb8c6cf6939bd4b23f568d1755"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-04/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-04/original.program-manifest.pending.json.provenance.json",
+        "sha256": "58ad724ecaa3d85f32afb3e82749733b830b2bae652f96811e6f606778b68ba6"
+      },
+      "sha256": "03584a06633fa7c743a0756466c9611ecee6a4783b2df31d99a6a6409e374fef"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-04/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-04/change.input.fields.json.provenance.json",
+        "sha256": "ca787eab9a1c79ff12343a9c64d96e27dea7dd3dcc4cfe7d5e7a6066766de38b"
+      },
+      "sha256": "c7db49b430686c6893bef9daae7b940408bebe31e7b6278dce1dd67c2382def3"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-04/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-04/change.output.fields.json.provenance.json",
+        "sha256": "5d470b047e0a96f68c321e61c78e4b47fe0be37aef4159337b2f0a2dd3b8157b"
+      },
+      "sha256": "907a3b38cbff4c77ee243aa802e7b117c1f564c988d3be44458002a597c5ba41"
+    },
+    {
+      "path": "corpus/dev/dev_status_two_read/status-two-read-04/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_status_two_read/status-two-read-04/change.program-manifest.pending.json.provenance.json",
+        "sha256": "d145e598367bd4d869c822ad7798a037007391eff49345ef784d28d0aa72e40a"
+      },
+      "sha256": "3f41086b838592cee2be0c43fc98374270a29e8e563f5af09f6176919aeb3eac"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/family.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/family.json.provenance.json",
+        "sha256": "3915556372c103bd6924220ecca15aca24ea087c60c643552578a7db4cca09d1"
+      },
+      "sha256": "596d2a90a8d195c858c5bb07aa8271789400e6dd7b0cfc73b87ef94730e330f6"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-01/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-01/original.cbl.provenance.json",
+        "sha256": "5c220bb80d44b0b9b6fafcd27c664682ea4e6a33f810ee4a5fe97842c7a34e3a"
+      },
+      "sha256": "bc0a6f2315bb4f3b5395ec810b136e2c3db35935416c6ae50d44db47e5811a8b"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-01/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-01/changed.cbl.provenance.json",
+        "sha256": "cccb012bcd3a859c883780d03080e9767f5814ded1d8666311580aa4045d4b16"
+      },
+      "sha256": "46039a5edb6c0acc00e2dacd8a23429f2c040bd4550227b1a0d16bf927d5f805"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-01/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-01/change.json.provenance.json",
+        "sha256": "bb0dd2e2236b4d7e319a5e7cdff3cdd09331027f2011c09fe81310ad38070a47"
+      },
+      "sha256": "154a28127cdd7d2f3921f61b6b662bf4f9a4daeba5a5d452e604a92a91c34632"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-01/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-01/original.input.fields.json.provenance.json",
+        "sha256": "d9fc09818b8f56134b40a81f31cb5739464a7bcd697df6d69767cb29c72ed2d6"
+      },
+      "sha256": "7d144aa631b6364a214e02c94f747c13beeab0fb1267b5b38541dad94b30ac54"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-01/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-01/original.output.fields.json.provenance.json",
+        "sha256": "27ad95702283fa2785282c6384fcd0fd16c088876e3fd500abee005083631ebf"
+      },
+      "sha256": "fc180d916b8598bd527a3817f8c3e3f6e012336251835456d445eab8f7f741a3"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-01/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-01/original.program-manifest.pending.json.provenance.json",
+        "sha256": "b2480bf977dad9a58f205a08f24e9f740e31189ca12535b02c4694a2fedfc4a3"
+      },
+      "sha256": "62d8cdd326b8b10d5fc980d45deb0fdba03e44a1edf5554f16e82f5265d711f6"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-01/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-01/change.input.fields.json.provenance.json",
+        "sha256": "e42a89cb8ad0d1bb8b1f1377de0d22d9b456e7626288850de8a592248656915e"
+      },
+      "sha256": "65e2706a63aac029b5e7ae50a6b6a459251b52c6e0ad10dc1dbc210757400b30"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-01/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-01/change.output.fields.json.provenance.json",
+        "sha256": "d644f94c0f6bad874894cdc037de264a9fa108a78147d33bc1bffb742726d3c1"
+      },
+      "sha256": "d45d1dfb63f513e4e4a72f861d55b1324e956df16d59eb1903edf3510498b348"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-01/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-01/change.program-manifest.pending.json.provenance.json",
+        "sha256": "14b9f424fff35bd8294c70b6ae92d2969676dabc3316b9cd71d3aee141c5551c"
+      },
+      "sha256": "a3495e66e86527aabbea3e8addeede317206182fe4bc70dc903c6fa9403568e1"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-02/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-02/original.cbl.provenance.json",
+        "sha256": "df22b41e65702a56a219ce6673252394d5d56624962d1650e9b4204e9ae2c3a8"
+      },
+      "sha256": "076c43fd128ef6a409425b12558b43a3672560de6b86c83430b0223f75f1bb01"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-02/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-02/changed.cbl.provenance.json",
+        "sha256": "4f12ea2ad3207f7c0eacd6f36d4a8fcc3944d0040562dace5b236b7bc0b57836"
+      },
+      "sha256": "b160deeb5803c10c9fd7517c54923741261436dd4842e12a7b565fa0993a786f"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-02/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-02/change.json.provenance.json",
+        "sha256": "357732a30d215163e0a94f9dc8eb74cf4e3e8afb2e20a1c4f084407852517937"
+      },
+      "sha256": "0a1ba6a9a195a7756743adfb94914e659778b0d92b18a1143e97179b59c2a866"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-02/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-02/original.input.fields.json.provenance.json",
+        "sha256": "78ebf0fc2db4aff305befb36d86b3a63f887f94bc18fb6820de215b676df5e03"
+      },
+      "sha256": "cf4e4479a5b6d2d6b9801aa9b6186808770250066688386a87a535ef0d0a1375"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-02/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-02/original.output.fields.json.provenance.json",
+        "sha256": "352afb7ec177b4c64b2890418374aad46a510d40b0046a916bf0b0c8c0bb5a50"
+      },
+      "sha256": "7272cdb3fcf68c3ec0a435589820224b3dee278cd650036ef0f96029a49ccfd0"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-02/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-02/original.program-manifest.pending.json.provenance.json",
+        "sha256": "07f1761a90cd9c6daafba5f891458cb993a1d07670be2c5b97776b2d14b292ed"
+      },
+      "sha256": "450ecc4a4084377da3ec566c2334dce82edaaeb66f3d3da8070770e84b568a4e"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-02/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-02/change.input.fields.json.provenance.json",
+        "sha256": "b609e9ea962d1d21ee72e6ea28ecbd0beb14daefe3e567666bf0a57cddf02ca6"
+      },
+      "sha256": "f41b2a7fed5c9a547f4f1ab285ee196b6fbcfd360acd427d748370db97cbb25d"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-02/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-02/change.output.fields.json.provenance.json",
+        "sha256": "eccb793c28ad764c375c696c77ea17f5440b5b0f0970e4a228c5ca9e5ef43a40"
+      },
+      "sha256": "61bde74c567d0387377aff1a700219074267d98bbd8fd10fb77098e9259266df"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-02/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-02/change.program-manifest.pending.json.provenance.json",
+        "sha256": "71f01e30d739c31b90a43563d2c8ea4c4c4686287a8390769a087b29b7de94d2"
+      },
+      "sha256": "e274405fab53da0c8f75d05365b1441417cc0fc31049d59271c62dc199a8a2b2"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-03/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-03/original.cbl.provenance.json",
+        "sha256": "47fd985598f6fe17cd6f73d3d7a7f394c500a3f1b5404df92ab3143ded8522ce"
+      },
+      "sha256": "781ea65b5290f3de52c42a62f015ca50d9f5effb83b1ee210d1cc2b2425fe9ae"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-03/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-03/changed.cbl.provenance.json",
+        "sha256": "612284d7eb22e7f3452c4f68a7fcf472145011e2bc8011e7f83dae5ed08be73a"
+      },
+      "sha256": "471eed53e2ee7b3c593a16dbb6a4a6ff664781c06c9a5ed46dde5d9a43158f4f"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-03/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-03/change.json.provenance.json",
+        "sha256": "444ea0a08b8c942b4f6ac15c23d4a7a9e0e34f98dca141f45088b9536351aac1"
+      },
+      "sha256": "b4dea526e36f6adc6b6735129747deec40520a046a1d8e2d88b9506dea26ebbb"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-03/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-03/original.input.fields.json.provenance.json",
+        "sha256": "13c2502d8dcbe195952fa1bdc465ea5ca272093dbce5b8503800ffdaf813815e"
+      },
+      "sha256": "1a2d77854d0812344cec9c4ec1f0dc5d0aee089901b52837a4f04222b47abee3"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-03/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-03/original.output.fields.json.provenance.json",
+        "sha256": "1623df38b36b25f3d81d7987af47ebe3c9d34d36de7dc76fdb5129567bb27510"
+      },
+      "sha256": "c6cc018e6f50bc3c15c724a96de6aa525ac36696a0d24d57d5a8c9cf5e1e2d7c"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-03/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-03/original.program-manifest.pending.json.provenance.json",
+        "sha256": "d1a16f11bc593e1633930ef777e832995e8a02b347fb0aaaac7c2e3c7b823a6b"
+      },
+      "sha256": "da61535423313d3658388d284b59548c16bafcadcbe261c1ca20fd285c7c8d52"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-03/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-03/change.input.fields.json.provenance.json",
+        "sha256": "def6baf8deade67837e7e72400a20f3d3f4af278541ba38b65cbfb87adec68b7"
+      },
+      "sha256": "788b21284178a8c268dacfc77e0099ac097f4a71b6fc97c7b97752fbc12818b6"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-03/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-03/change.output.fields.json.provenance.json",
+        "sha256": "660797c2f7af34b24e0cb3c37c89236709f5d96c93916be6b50d349e4413fe10"
+      },
+      "sha256": "936998b1a3038baa889037f412a585f45d73ef2ab92abd2b530cd4fc930161ca"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-03/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-03/change.program-manifest.pending.json.provenance.json",
+        "sha256": "9456c3fed25248042868136ca5977d01ce8ec403e989577645fd513e14d778d7"
+      },
+      "sha256": "013b2d282f238196c91ba6aa95bf9d3c4f05f487be8828f16cdc9cb53290245d"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-04/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-04/original.cbl.provenance.json",
+        "sha256": "7fb41a3e1969778f5a0063c0c5ff33855379d49b7e3b63c33975c7e48be52fdc"
+      },
+      "sha256": "9e57a60012f3360092365451aa9106e170d57e6c4ff54768c08859b855fc9853"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-04/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-04/changed.cbl.provenance.json",
+        "sha256": "14e0e95f1230061bbc0b1e912d5edde0b5d9e1c7755801d560bde5a49c377e54"
+      },
+      "sha256": "befbc40c27de724aa2230e50136b7755e53d8673c62ede82fa43169aae4bb72d"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-04/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-04/change.json.provenance.json",
+        "sha256": "d337e87d1c427751a49079fdd2c8b5e33b8dcfc636a901a3bf61819893652733"
+      },
+      "sha256": "ee666732de1d43eed87a598c4ce7ff2b5a6f23e7e7658d113685e5140f040805"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-04/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-04/original.input.fields.json.provenance.json",
+        "sha256": "1c4ba7fcbee5aa71cb950871c7dc5cd4067ad4cc39c578d6379c17e4ec9721d9"
+      },
+      "sha256": "eb9c555179a41830c107378a70bc82d4fe1d3e32d64e8e51a3bd02c6c34201b0"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-04/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-04/original.output.fields.json.provenance.json",
+        "sha256": "86220d5c2f0453b939a0c68b105088b66af6c5c5ac22c1283d2b4cbc90f6c4e5"
+      },
+      "sha256": "2e880a2294159648d80459eb9c127578a22b145b831a9fff9079d32b099eafc5"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-04/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-04/original.program-manifest.pending.json.provenance.json",
+        "sha256": "15010a9e0848f21f879d0fff09a2c50f4883fd57d45925febdc9b36319143f1b"
+      },
+      "sha256": "66e6fc598a21b38a041da8def8028a75fe334421735e6f8b62be75a09e27f37e"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-04/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-04/change.input.fields.json.provenance.json",
+        "sha256": "f8c350ad118721c8bccc0abac94ab8ad0929779f93dece43e2840c2322346b03"
+      },
+      "sha256": "42e696fec1a8924093be58baac32546c608ba0ab542a904ea524f2eac743a7da"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-04/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-04/change.output.fields.json.provenance.json",
+        "sha256": "a19c70add0c5532cabb1828fa7b2367f77f4cdf2420fc5398179a3fb31b43517"
+      },
+      "sha256": "87899cf4778e557186a6d02d93a25fa16db16bcd8125ef737308866caf926c65"
+    },
+    {
+      "path": "corpus/dev/dev_year_century/year-century-04/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_century/year-century-04/change.program-manifest.pending.json.provenance.json",
+        "sha256": "d5b1bfbd91da6ad379b66c2d4d3f456837650ac9414cc5b2422b81391f059aa1"
+      },
+      "sha256": "66c096373f05d317072c412e9fde39b03a53e5bb1ebd98551aaaf84af90f6c1c"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/family.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/family.json.provenance.json",
+        "sha256": "e7d06a6c1d795fcbb4e926b345bb9baf67cff90b8033565d2ef15016bf3d8e97"
+      },
+      "sha256": "5fa18fba54d0f3ad7f050b9d19d973fd4aabf01331f1cda1a559020aa9803b2b"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/original.cbl.provenance.json",
+        "sha256": "9aab5776aa1e2a6e97f24aa33f49a71b3011d145b3d4607b44db383a84d1917f"
+      },
+      "sha256": "1cf2a5a13fe03b94a9636977bad1a7576c1ef4a42a567bd2bcefe98d9d6b5ce7"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/changed.cbl.provenance.json",
+        "sha256": "16fa247216a41f5f01b97569d8c00a665aebeadf256c2b853c50e518ac481b40"
+      },
+      "sha256": "4a1e267a22d625965959c0e1d983c5869cfc34a637ea0d5af57036f6337a9388"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/change.json.provenance.json",
+        "sha256": "39e325f8baddf64ed92a548e7f895dcc49dbd83ef0189f23304b0341aab905cd"
+      },
+      "sha256": "e8ac7a49c613736bb435b7b2f270fbdbb04b638feb40136ae6309d143ded3bf2"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/original.input.fields.json.provenance.json",
+        "sha256": "284311a1f964149af1abb2527cacf6f7a38635c0bb2befc118e6023e5fbb3b34"
+      },
+      "sha256": "f8e52871ed535cd8629dba376784849662fa0c32c263e29d4914dfac8e73dd1b"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/original.output.fields.json.provenance.json",
+        "sha256": "c560926ad2dd0e9829c20ed3baa230b19b49b89ad74f233492578b67a07c508b"
+      },
+      "sha256": "f8b26d2ecc38fe5dd1ff8231f9ef8b293630968976ac18d6d242d027be831b35"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/original.program-manifest.pending.json.provenance.json",
+        "sha256": "407f39e81adf1965bd0a8ffd6de6ca0098469a6044aca6b7b9ee33b5267eaa20"
+      },
+      "sha256": "7a7e80d45ce458b1bea04d32aca028f760d862106c648880ff9973438719b3d5"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/change.input.fields.json.provenance.json",
+        "sha256": "a0d7954ceb6f694cf34de6d97a3d97d242c4a102c795c0006b53cbb21087e189"
+      },
+      "sha256": "c73a49e3efbc207a0c939078d3a36f2928d7b7a7185b3e2bff4a1b5973013ec5"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/change.output.fields.json.provenance.json",
+        "sha256": "8612ab26bf5619c3bfc792b32aac1061c3ce30486b13107d427d7d10366297e8"
+      },
+      "sha256": "86b5a08f7e4256f552a3461dcd56fbfb8889a34f50562a1e88b8364c7f08793a"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/change.program-manifest.pending.json.provenance.json",
+        "sha256": "ab784e2d5353fe9a007808295dc44161809835f390ee3d24d49b8ac52fd15813"
+      },
+      "sha256": "f7b3615941201506a84af17e0f9ee194fc1de6077e8323c45cbef53602e616b0"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/original.cbl.provenance.json",
+        "sha256": "5d3d0ee55a25af36ebff3b99b9606dd64dc992066a720398b33d3271264d71e4"
+      },
+      "sha256": "d9e48f0ffb5ca7267d1826fc43f2ed6877161d1551d02fd8868efc7e2351ebeb"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/changed.cbl.provenance.json",
+        "sha256": "cfcb11851ebe190904a6576bc8e1ab732937b19b0df5ce50b1af7ea9ef561fbe"
+      },
+      "sha256": "8474c0531cf27701ad610e03522815e70951043d23bf74744b211ecfc170ab4c"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/change.json.provenance.json",
+        "sha256": "663de63fbfad2594aa38e7d8d1837dcb0c72af7c7e781f3d0d0146154ba48b64"
+      },
+      "sha256": "066361722a3949b4b1254715fdc1501b08b068342613b6e18395a8a5ff1a276c"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/original.input.fields.json.provenance.json",
+        "sha256": "5d089f3840e7009e1ce8c24ce299cdf613dfe452e52360211aa085fd255e033b"
+      },
+      "sha256": "ac9816de4de236e771215fa88ad922688aea8adb3986db2f9bd442d613938743"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/original.output.fields.json.provenance.json",
+        "sha256": "b00d790bd9ec261a4d97d08d01cb1cb9df19cfad6fc9c96a25856779448b478f"
+      },
+      "sha256": "797b5a7bfeac43c7822bfbc825f8c4056e68f6cd8799a532cda201357a5c5cd0"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/original.program-manifest.pending.json.provenance.json",
+        "sha256": "963d5080de5eefc23d77b16880e2dee2c04a5a59a2d78aa268fde4a6894f00be"
+      },
+      "sha256": "542c1b454f3eeef6fb27bc866522517b6a2ba276f21d491190cb78e759b9094a"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/change.input.fields.json.provenance.json",
+        "sha256": "deb941713e8d272b51f112e6503e601746235575b47a416ead2578afbcc6bac0"
+      },
+      "sha256": "b80313aa2d4951a51948a8f7b6e2c77e9ce8cf127394aab0cf2569b717651c90"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/change.output.fields.json.provenance.json",
+        "sha256": "f79cc483079d67cea8c080c5eaa0d638bb5b972f3b1226393183e5b0daaa8a39"
+      },
+      "sha256": "3b13985d73109092228f91cdb0c8cf8253f82556dc0a64a1bf45bedcd8e18276"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/change.program-manifest.pending.json.provenance.json",
+        "sha256": "d43b0dab5bc1b443c3842ad8882f2ae8f8ebeca27c71dd23f78669d469e3711b"
+      },
+      "sha256": "a539c410233b5a0769ee5d3f8a837ed6650725f2c8f025b4cc7e6db315449677"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/original.cbl.provenance.json",
+        "sha256": "fa6bc6b25d7d847a282f1b3c6d0527353790e73b9f34d253306b3f263759a0b6"
+      },
+      "sha256": "ea36b844f0d5f0f7f7c960958a3ba0abf9a7df7f5dba18a68c85d595eeac556a"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/changed.cbl.provenance.json",
+        "sha256": "f05ff57f4c3fdb26ec88443b7cb7982cc975a8c181d202dd86fcc1ac7bdc1142"
+      },
+      "sha256": "fc2b0c37ac5affc44bab546b91bd100bb1925170a73edb257f2de6f68fabaa09"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/change.json.provenance.json",
+        "sha256": "ee215fc9c6012d03d403b58ca6a3888835c9b4202f13ce235d692800add012b3"
+      },
+      "sha256": "ccb871f61f3f82b97989716caf0eb5b308f9a0b0a520d73f19e57867fb10b6d0"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/original.input.fields.json.provenance.json",
+        "sha256": "519dbc7a4af1dce4c20b923accace80e46545476a4efa3d1f26280a813daa96b"
+      },
+      "sha256": "c632e0d86f9404778c5f1a237da10571bed960857f35c86dba7d3e877646f894"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/original.output.fields.json.provenance.json",
+        "sha256": "3d19c64e4bde2bfb77ecbdb025c6f38acf7f566a881b9ff4b303abacd06ed047"
+      },
+      "sha256": "34576400a905ae3499299e439856013957996675705f38d37ee6ec3a044e5163"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/original.program-manifest.pending.json.provenance.json",
+        "sha256": "476ace4025dd74c6fbedbab9ed418327044fe0854d405908032c09b981718699"
+      },
+      "sha256": "ee90adbfed7cf068a009747980d54c72053d7f836b8416a982fc5ac6c906c4a1"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/change.input.fields.json.provenance.json",
+        "sha256": "0a3f594e0bd66fddfe6f01c06e70706e23f7d168a7298ed0f707c267f3087cbc"
+      },
+      "sha256": "4f5ba668081109d1e25bcc970a464535dfc55e00769e31c5333660e8d2036a9c"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/change.output.fields.json.provenance.json",
+        "sha256": "d9f6ca3ae8411b33ea7a2c1c44568cb227f5df2cdbc9aa647afbd5c5c882d63b"
+      },
+      "sha256": "a5ed1a165086563423e07e10ae8a126794f528b98c34860447fcacbaf090a310"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/change.program-manifest.pending.json.provenance.json",
+        "sha256": "9a223a5fb3e37677899ef72fab74c370aa45322e0f637d2f2b059ac5e33dbd44"
+      },
+      "sha256": "1ffdeff9f1fa075f677a12d79ec29b94faae1f2bda5465bab366dd9e17300921"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/original.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/original.cbl.provenance.json",
+        "sha256": "d3aedef2a05c8edb4535fc9170a5cd51a1e388293e7c2d949acac8680f82cf7e"
+      },
+      "sha256": "a1d468922080da6ad2dba859701330e23711920bfe358e47c7dffcc1b8a687fa"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/changed.cbl",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/changed.cbl.provenance.json",
+        "sha256": "51e66cb65e1fa8428cbbf7eb4f80665a0c11456700f202d254a24e94522ec5cc"
+      },
+      "sha256": "7de0c2ac10d2ec49c942125d69a71795ea732dc81a202f1988a41f05605b0c07"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/change.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/change.json.provenance.json",
+        "sha256": "5547c742cc37cea3af27f93a301359e112dc03d01df462c10dbe9559252bc8ed"
+      },
+      "sha256": "17a5c7e75c02dd4487712e54c5108ccdf4ff1b7ad8b70dbec58172d911d8f786"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/original.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/original.input.fields.json.provenance.json",
+        "sha256": "fa9db45285ec065f31bd7bd85d9ecd6d68c25caa04539ff499a6491d9001b6f8"
+      },
+      "sha256": "fb24ee10e747ab439c83416f806e0d026f184e9473ca1b8cffb563439ef34427"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/original.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/original.output.fields.json.provenance.json",
+        "sha256": "24f9a7eb83ed238c401280f7236badc63dde13209d146bd46007e3f62993dfa9"
+      },
+      "sha256": "7d021615e27f40275166d29dea17c4a1c8810b12e7041cee021d9399ba970bfd"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/original.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/original.program-manifest.pending.json.provenance.json",
+        "sha256": "2e88241ca6eda90209b91cde50b604a9a5359b8220319a068f11e4047f1ed1b6"
+      },
+      "sha256": "7e4d35fc523c885d904ed2c84407da03119d9cea5e7f21b82c8586f3b5ef2556"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/change.input.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/change.input.fields.json.provenance.json",
+        "sha256": "14f6cc63bf8055b4112d2c15b0aaa9e6cdea2114ed331402c91279d7d7274a2a"
+      },
+      "sha256": "46102251be5821c6a4c14d9541f2751d24d8532977e38058c7159086e86b8bfb"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/change.output.fields.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/change.output.fields.json.provenance.json",
+        "sha256": "8519616c446b0404acbfbfbd8763a2cc34e4e4461f16f7c06c1f5b512dde0bc6"
+      },
+      "sha256": "2da42b74daf6a3161b4199e198a46933f955b16dc1a25c204cd70b2b3691d6c1"
+    },
+    {
+      "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/change.program-manifest.pending.json",
+      "provenance": {
+        "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/change.program-manifest.pending.json.provenance.json",
+        "sha256": "a2851a9531f2f5dd8e374e77ffac88ab01e47a14b2f7c6192c3d88e9accc70e3"
+      },
+      "sha256": "d5249628efb5ff6fa117a260f01b785a1241fd88592ed4346e1e682a4213e463"
+    }
+  ],
+  "source_counts": {
+    "changed": 24,
+    "families": 6,
+    "original": 24
+  },
+  "status": "builder_source_only_pending_admission"
+}

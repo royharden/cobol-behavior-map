@@ -1,0 +1,19 @@
+{
+  "author_provenance_sha256": "b3e9f2321ce4b61d25656c95e32091a7adc6dd8cde98f614ab6edb16b09d1648",
+  "domain": "year_window",
+  "family_id": "dev_year_pivot_score",
+  "hazard_ids": [
+    "H2",
+    "H7"
+  ],
+  "manifest_version": 1,
+  "program_ids": [
+    "year-pivot-score-01",
+    "year-pivot-score-02",
+    "year-pivot-score-03",
+    "year-pivot-score-04"
+  ],
+  "split": "dev",
+  "template_description": "Explicit two-branch pivot followed by signed age/divisor score into a smaller receiver; different template/hazards from fixed-century arithmetic.",
+  "template_id": "pivot_division"
+}

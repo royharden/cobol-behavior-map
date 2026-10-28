@@ -1,0 +1,19 @@
+{
+  "author_provenance_sha256": "b3e9f2321ce4b61d25656c95e32091a7adc6dd8cde98f614ab6edb16b09d1648",
+  "domain": "sequential_status",
+  "family_id": "dev_status_two_read",
+  "hazard_ids": [
+    "H3",
+    "H6"
+  ],
+  "manifest_version": 1,
+  "program_ids": [
+    "status-two-read-01",
+    "status-two-read-02",
+    "status-two-read-03",
+    "status-two-read-04"
+  ],
+  "split": "dev",
+  "template_description": "Two unrolled reads with success/count gates and a performed emitter. Different control template from linear fallback; no loop proof inferred.",
+  "template_id": "two_read_gate"
+}

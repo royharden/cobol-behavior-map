@@ -1,0 +1,44 @@
+{
+  "fields": [
+    {
+      "name": "OUT-YEAR",
+      "offset": 0,
+      "pic": "9(4)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 4
+    },
+    {
+      "name": "OUT-AGE",
+      "offset": 4,
+      "pic": "S9(4)",
+      "scale": 0,
+      "sign": "leading_separate",
+      "usage": "DISPLAY",
+      "width": 5
+    },
+    {
+      "name": "OUT-MAGNITUDE",
+      "offset": 9,
+      "pic": "9(2)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 2
+    },
+    {
+      "name": "OUT-MARK",
+      "offset": 11,
+      "pic": "X(1)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 1
+    }
+  ],
+  "manifest_version": 1,
+  "program_id": "year-century-01",
+  "record_width": 12,
+  "source_sha256": "bc0a6f2315bb4f3b5395ec810b136e2c3db35935416c6ae50d44db47e5811a8b"
+}

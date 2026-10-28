@@ -1,0 +1,26 @@
+{
+  "fields": [
+    {
+      "name": "OUT-TOTAL",
+      "offset": 0,
+      "pic": "S9(3)V9(2)",
+      "scale": 2,
+      "sign": "leading_separate",
+      "usage": "DISPLAY",
+      "width": 6
+    },
+    {
+      "name": "OUT-MARK",
+      "offset": 6,
+      "pic": "X(1)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 1
+    }
+  ],
+  "manifest_version": 1,
+  "program_id": "fee-chain-01",
+  "record_width": 7,
+  "source_sha256": "b342167535ec14f708602936d3092c0d3e52ad3cc517e5e18ebac6455d28b597"
+}

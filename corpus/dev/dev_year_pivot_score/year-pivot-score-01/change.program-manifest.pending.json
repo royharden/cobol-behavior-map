@@ -1,0 +1,38 @@
+{
+  "allowed_return_codes": [
+    0
+  ],
+  "family_id": "dev_year_pivot_score",
+  "hazards": [
+    {
+      "hazard_id": "H2",
+      "observable": "output.dat:OUT-SCORE / source error outcome pending",
+      "reachability_recipe_ids": [],
+      "target": {
+        "byte_end": 1270,
+        "byte_start": 1222,
+        "file": "changed.cbl",
+        "line": 50
+      }
+    },
+    {
+      "hazard_id": "H7",
+      "observable": "output.dat:OUT-SCORE / source error outcome pending",
+      "reachability_recipe_ids": [],
+      "target": {
+        "byte_end": 1270,
+        "byte_start": 1222,
+        "file": "changed.cbl",
+        "line": 50
+      }
+    }
+  ],
+  "input_fields_sha256": "c73a49e3efbc207a0c939078d3a36f2928d7b7a7185b3e2bff4a1b5973013ec5",
+  "loops": [],
+  "manifest_version": 1,
+  "output_fields_sha256": "86b5a08f7e4256f552a3461dcd56fbfb8889a34f50562a1e88b8364c7f08793a",
+  "program_id": "year-pivot-score-01",
+  "provenance_sha256": "16fa247216a41f5f01b97569d8c00a665aebeadf256c2b853c50e518ac481b40",
+  "source_sha256": "4a1e267a22d625965959c0e1d983c5869cfc34a637ea0d5af57036f6337a9388",
+  "split": "dev"
+}
