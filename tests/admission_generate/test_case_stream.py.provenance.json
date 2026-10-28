@@ -1,0 +1,25 @@
+{
+  "manifest_version": 1,
+  "artifact_kind": "instrument",
+  "artifact_path": "tests/admission_generate/test_case_stream.py",
+  "artifact_sha256": "38ebca1ec1c5084b450994a36c4789362f60b7cf3db5a2d9b53d9b6a48545647",
+  "source_sha256": "38ebca1ec1c5084b450994a36c4789362f60b7cf3db5a2d9b53d9b6a48545647",
+  "author_callsign": "0003_Codex_GPT-6_M10-DL2",
+  "author_harness": "Codex",
+  "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
+  "brief_sha256": "f277f03c95338faf601248a86384945de455df8546506c8c46bfb352d4652b0c",
+  "created_at": "2026-10-28T03:18:07.187535+00:00",
+  "split": "dev",
+  "family_id": null,
+  "generator_sha256": "4438bb3a481ca5e88d0cba7451e9de4c4a6d613686c67759043a40aff14278a8",
+  "parent_artifact_sha256": null,
+  "license_id": null,
+  "license_approval_id": null,
+  "license_status": "pending",
+  "evidence_paths": [
+    "admission/specs/GENERATOR.md",
+    "admission/specs/FAMILY.md",
+    "admission/prepare/generate.py"
+  ],
+  "originality_attestation": "Original small synthetic builder DEV LOOP-only helper/schema/hash/draw/refusal unit vectors, not real corpus or oracle observations. Fixed native source only; no prepare/full partition generation. Four seeded_case bundles total; early generate refusal tests install assertion-only fill guard, no alternative generator. Golden hashes/draw bytes computed from explicit immutable spec framing/SHA preimages before native import, not from product outputs. Initial manual numeric field1 preimage calculation included an extra four zero bytes and was corrected during authoring to exact U64counter+U32row+U32field+U32block, expected unscaled+91, before source commit/review/runtime. No admission, independent role or license approval."
+}
