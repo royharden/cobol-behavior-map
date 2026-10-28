@@ -11,7 +11,8 @@ manifests from DL2 are not admitted corpus or measured reachability evidence.
 
 `schedule.build_schedule(native RunPlan)` requires the entire unique 84-task frame:
 six dev families with four programs and both panels (48), six heldout families with
-three programs and both panels (36). Programs cannot cross families/splits. The two
+three programs and both panels (36). Paired panels must bind the identical original
+source hash; a shared program ID alone is insufficient. Programs cannot cross families/splits. The two
 logical slots are `primary` and `replication`; model IDs stay `None` until actually
 declared. Declarations are never model approval. There is one sample per task/model.
 

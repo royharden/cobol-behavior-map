@@ -47,6 +47,10 @@ def validate_tasks(tasks: tuple[TaskBinding, ...]) -> None:
                 raise ScheduleError('paired panels must cover every family program')
             if len(members) != programs * 2:
                 raise ScheduleError('duplicate family/program/panel')
+            for program in by_panel[0]:
+                pair = [t for t in members if t.program_id == program]
+                if pair[0].original.sha256 != pair[1].original.sha256:
+                    raise ScheduleError('unchanged/change pair must bind identical original source bytes')
     dev = {t.program_id for t in tasks if t.split == 'dev'}
     held = {t.program_id for t in tasks if t.split == 'heldout'}
     if dev & held:
