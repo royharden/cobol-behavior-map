@@ -93,13 +93,41 @@ The exact command/output/version record is retained in the owner's ignored
 .agent-work/instrument-r4-test-output.txt and pinned in READY. Source test pins
 remain unchanged from the pre-execution High-reviewed edition.
 
+## Designated supported-interpreter cross-check
+
+ROUND2-PY312-TEST-ENV.md subsequently authorized one corresponding run of these
+unchanged reviewed tests in the INT-provisioned read-only project-local environment.
+Preflight verified all four reviewed test hashes and requirements-312.lock SHA256
+860845b56a69e5b715790c9b0d8f096383b081cd5849eed345fbc82255e0f905.
+Actual CPython3.12.13 and every pinned package matched: Pydantic2.12.5,
+pydantic-core2.41.5, annotated-types0.8.0, typing-extensions4.16.0 and
+typing-inspection0.4.4. Pydantic imported from that venv, not user/global site.
+
+Exact interpreter:
+C:\Users\Roy Harden\OneDrive\PJ-OD\PortfolioBuilder\cobol-behavior-map\cobol-behavior-map\.agent-work\venv-312\Scripts\python.exe
+
+The same unittest arguments/process-local src path/plugin-disable flag and `-B`
+were used, with a hidden owned process and30second timeout. No environment install
+or modification occurred. On product5b75af5 and unchanged test sources reviewed at
+5cbe784 (then doc-only HEAD658643c), this run discovered/executed46 tests in0.545s:
+46 passed, zero failures/errors/skips, process exit0. The version/output log is
+.agent-work/instrument-r4-py312-test-output.txt; raw stdout/stderr are retained
+separately under the same owner directory. No other suites or repeated trials ran.
+
+Python3.12.13 meets the declared minimum; this is still only the bounded builder
+diagnostic selection. It establishes no full package/build, compiler/COBOL parity,
+actual mutant validity/kills, genuine A/frozen cases, OS containment, independent
+verification, P2 or live/model result. The earlier3.11 diagnostic is retained as
+its own environment edition, not relabeled as a3.12 execution. Candidate bytes
+remained inert data. Product/test logic was not changed between these runs.
+
 Current reported RAM is below the install/Docker gate; no install/Docker attempt is
 made. USD0; no keys, account, model pin or placeholder value is consumed. Missing
 model/key/account values remain documented in the existing handoff and native
 slots unset. Canonical ACCESS-AND-BUDGET-HANDOFF.md remains INT-owned; READY reports
 zero new executable placeholder uses and the still-missing values to that owner.
 
-Deferred: supported Python>=3.12/import/package validation, independent actual data
+Deferred: broader supported-runtime package/build validation, independent actual data
 and proofs, true A/frozen128 comparisons on both panels, authentic mutant class/
 equivalence/kill/survivor checks, real instruction/payload/canary/model behavior,
 SDK/helper/entry/screen/FD3/physical-channel containment and authenticated execution.
