@@ -1,0 +1,4 @@
+# Preserve exact source/JSON raw artifact pins.
+*.py -text
+*.json -text
+*.md -text
