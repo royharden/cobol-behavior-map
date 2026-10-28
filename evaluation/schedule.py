@@ -5,6 +5,8 @@ from typing import Literal
 
 from cobolmap.contracts import CandidateAttempt, RunPlan, TaskBinding
 
+CALL_ID_ALGORITHM = 'm10-call-id-v2'
+
 
 class ScheduleError(ValueError):
     pass
@@ -71,9 +73,9 @@ def build_schedule(plan: RunPlan) -> Schedule:
         raise ScheduleError('zero pending or two distinct declared model IDs required')
     def identity(task: str, model_slot: str, arm: str, attempt: int, *, domain: str = 'study_task') -> str:
         # Length framing prevents delimiter collisions in arbitrary identifiers.
-        fields = (domain, plan.run_id, task, model_slot, arm, str(attempt))
+        fields = (CALL_ID_ALGORITHM, domain, plan.run_id, task, model_slot, arm, '1', str(attempt))
         raw = b''.join(len(f.encode()).to_bytes(4, 'big') + f.encode() for f in fields)
-        return sha256(raw).hexdigest()
+        return 'c_' + sha256(raw).hexdigest()[:62]
     calls = []
     for task in sorted(plan.tasks, key=lambda t: t.task_id):
         for index, model_slot in enumerate(('primary', 'replication')):

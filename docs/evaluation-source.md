@@ -25,6 +25,14 @@ oracle/edit and recipe refs are native `TaskBinding`, not a second corpus model.
 Hidden slots are opaque metadata only; builders must not materialize/read hidden
 programs, cases or outcomes. A declared frame is not authority to access it.
 
+The identifier algorithm is now `m10-call-id-v2`: its version, domain, run, task,
+model slot, arm, fixed sample1 and attempt are length-framed before SHA256; native
+call IDs are `c_` plus the first62 lowercase hex characters,64 total. Ordinary,
+shared-C and smoke references use the same algorithm and combined uniqueness check.
+Actual SHA256 commitment fields remain full hashes. This is an explicit identifier
+edition change; previously sealed inventories must never be silently rewritten.
+This construction team has emitted no actual inventory.
+
 `fork_shared_c(CandidateAttempt)` shares the identical frozen C object, including
 its bytes/hash/call/status when invalid or refused. D and R have separate immutable
 `SampleState`. `record_loop` records only the trusted 32-case loop failure count;
