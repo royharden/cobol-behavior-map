@@ -12,6 +12,8 @@ from evaluation.instrument import (
     CATALOGUE, INSTRUMENT_EDITION, FrozenVerification, InstrumentPolicy,
     MutantAssessment, evaluate_instrument,
 )
+from evaluation.mutants import mutate
+from instrument_fixtures import SOURCE_SHA, binding, vector
 
 
 TARGET_CLASSES = frozenset({
@@ -71,6 +73,24 @@ def edited_task(task, **updates):
     """Revalidate metadata; do not use unchecked native model copies."""
     values = {name: getattr(task, name) for name in TaskBinding.model_fields}
     return TaskBinding(**(values | updates))
+
+
+def builder_source_mutation(policy):
+    """Join one inert source edit to DEV declarations, never execution evidence."""
+    source_ref = ArtifactRef(path='synthetic-builder/dev-source-identity.txt',
+                             sha256=SOURCE_SHA)
+    tasks = policy.dev_tasks
+    unchanged = edited_task(tasks[0], original=source_ref, oracle_source=source_ref)
+    changed = edited_task(tasks[1], original=source_ref)
+    joined = replace(policy, dev_tasks=(unchanged, changed) + tasks[2:])
+    raw, _, _, _ = vector('M13')
+    metadata = replace(binding(raw),
+        task_id=unchanged.task_id, program_id=unchanged.program_id,
+        family_id=unchanged.family_id, generator_sha256=policy.generator_sha256,
+        runtime_sha256=policy.runtime_sha256,
+        operator_source_sha256=policy.catalogue_source_sha256,
+        plan_reader_sha256=policy.plan_reader_sha256)
+    return joined, mutate(raw, 'M13', binding=metadata)
 
 
 class InstrumentBuilderTests(unittest.TestCase):
@@ -209,6 +229,39 @@ class InstrumentBuilderTests(unittest.TestCase):
                 assessment = MutantAssessment('M01', status=status)
                 with self.assertRaisesRegex(ValueError, 'exact closed instrument record required'):
                     evaluate_instrument(self.policy, (), (), (assessment,))
+
+    def test_inert_source_edit_cannot_supply_missing_outcome_proofs(self):
+        policy, mutation = builder_source_mutation(self.policy)
+        # These labels exercise rejection branches; they are not observed outcomes.
+        expected = {
+            'invalid': ('not_fit', ('invalid_catalogue_requires_recorded_replacement',)),
+            'survived': ('not_fit', ('missing_frozen_partition', 'valid_nonequivalent_survivor')),
+            'equivalent-with-written-proof': ('pending', ('missing_written_equivalence_proof',)),
+            'killed': ('pending', ('kill_not_in_frozen_verification', 'missing_exact_kill_observation')),
+        }
+        for label, (status, reasons) in expected.items():
+            with self.subTest(builder_label=label):
+                assessment = MutantAssessment('M13', mutation=mutation, status=label)
+                report = evaluate_instrument(policy, (), (), (assessment,))
+                self.assertEqual(report.status, status)
+                self.assertFalse(report.product_go)
+                self.assertFalse(report.dispatch_allowed)
+                self.assertEqual(report.scheduled, 20)
+                self.assertEqual(report.pending, 19)
+                # The remaining declared slot is retained even with missing proof.
+                self.assertEqual(report.pending + report.killed + report.survived
+                                 + report.invalid + report.equivalent_with_written_proof, 20)
+                self.assertEqual(set(report.missing_classes), TARGET_CLASSES)
+                self.assertEqual(sum(i.startswith('missing_operator:') for i in report.issues), 19)
+                self.assertEqual(sum(i.startswith('missing_target_class:') for i in report.issues), 9)
+                self.assertIn('external_nonauthor_authority_missing', report.issues)
+                self.assertIn('M13:missing_matching_passing_A', report.issues)
+                self.assertIn('M13:missing_nonauthor_validity', report.issues)
+                for reason in reasons:
+                    self.assertIn('M13:' + reason, report.issues)
+                for task in policy.dev_tasks:
+                    self.assertIn('missing_frozen_partition:' + task.task_id, report.issues)
+                    self.assertIn('missing_passing_A:' + task.task_id, report.issues)
 
     def test_pending_cannot_discard_claimed_kill_metadata(self):
         assessment = MutantAssessment('M01', status='pending', observed_class='padding')

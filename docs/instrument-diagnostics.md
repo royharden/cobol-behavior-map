@@ -32,6 +32,10 @@ drift; malicious module/import/decorator/default/return/PLAN expression syntax;
 duplicate/unknown keys; source pointers; depth and byte ceilings; malformed encoding;
 full48 DEV frame/pair/program/pin-role metadata; required20/nine classes; empty
 partitions; absent authority; status misuse; and sole-improvement/reseal obligations.
+Inert source-edit artifacts also reach the survivor/invalid not-fit and missing
+written-equivalence/kill-evidence branches. Statuses are deliberately unproved
+input labels; these tests preserve missing evidence and all required obligations,
+and do not assert actual survivor, equivalence, class or kill findings.
 The largest allocated rejection vector is2MiB+1 bytes, rejected before AST parsing.
 The depth vector is only66 list levels. High-node-count/large AST stress is deferred.
 No full1346 schedule or builder-authored heldout task/data is constructed. The native
@@ -50,11 +54,15 @@ Approved bounded PowerShell command, from the assigned worktree:
 
 ```powershell
 $env:PYTHONPATH = Join-Path (Get-Location) 'src'
+$env:PYDANTIC_DISABLE_PLUGINS = '__all__'
 & 'C:\Program Files\Python311\python.exe' -B -m unittest discover -s tests/instrument_source -p 'test_*.py' -v
 ```
 
 This assignment affects only the child PowerShell process environment, with no
-shell/profile/system PATH changes. `-B` suppresses bytecode caches. Exact observed
+shell/profile/system PATH changes. `-B` suppresses bytecode caches. The installed
+Pydantic2.12.5 loader source was read as text: the process-local disable flag returns
+before entry-point enumeration/loading, preserving the no-plugin-discovery grant.
+No Pydantic/test/product module was imported to inspect that setting. Exact observed
 interpreter, target commit, test-source pins, command, counts, exit and failures
 belong in READY. Any failure is a reproduction to retain and route to INT; a
 fixture expectation mistake requires reviewed test-source correction before a
