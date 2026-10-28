@@ -9,10 +9,10 @@
       "observable": "output.dat:OUT-SCORE / source error outcome pending",
       "reachability_recipe_ids": [],
       "target": {
-        "byte_end": 1269,
-        "byte_start": 1221,
+        "byte_end": 1629,
+        "byte_start": 1581,
         "file": "original.cbl",
-        "line": 50
+        "line": 67
       }
     },
     {
@@ -20,19 +20,19 @@
       "observable": "output.dat:OUT-SCORE / source error outcome pending",
       "reachability_recipe_ids": [],
       "target": {
-        "byte_end": 1269,
-        "byte_start": 1221,
+        "byte_end": 1629,
+        "byte_start": 1581,
         "file": "original.cbl",
-        "line": 50
+        "line": 67
       }
     }
   ],
-  "input_fields_sha256": "fb24ee10e747ab439c83416f806e0d026f184e9473ca1b8cffb563439ef34427",
+  "input_fields_sha256": "e636262a074ce5e9a629931f71dfb59ff31e8f3fc5b12df7eddbee132e32f729",
   "loops": [],
   "manifest_version": 1,
-  "output_fields_sha256": "7d021615e27f40275166d29dea17c4a1c8810b12e7041cee021d9399ba970bfd",
+  "output_fields_sha256": "46d1d40f95b6227f34a2f6bdac73cc915ec29c017c96209c634f9cdc53481fdd",
   "program_id": "year-pivot-score-04",
-  "provenance_sha256": "d3aedef2a05c8edb4535fc9170a5cd51a1e388293e7c2d949acac8680f82cf7e",
-  "source_sha256": "a1d468922080da6ad2dba859701330e23711920bfe358e47c7dffcc1b8a687fa",
+  "provenance_sha256": "550373256cc026b1d3b6b512c8922e1daae8a1d108b7108b8efa9410fd389a52",
+  "source_sha256": "d4028ceee984fd59c587393aa8548166b71127d4c15cf85eb9f837d55f61206b",
   "split": "dev"
 }

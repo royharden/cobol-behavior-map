@@ -1,7 +1,7 @@
 {
   "artifact_kind": "specification",
   "artifact_path": "corpus/dev/dev_status_fallback/family.json",
-  "artifact_sha256": "4048f3f90566f832de313f5eb4552cba6dc8d42ec234203743a8421780e7462a",
+  "artifact_sha256": "a2023925076c75e7f100f77fc20502b17cffa6a3128395bfa0a1a1bb35797c4b",
   "author_callsign": "0003_Codex_GPT-6_M10-DL2",
   "author_harness": "Codex",
   "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",

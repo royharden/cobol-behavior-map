@@ -40,3 +40,5 @@ No root attributes or other lane source were edited. docs/translation.md policie
 Source bytes, JSON syntax/keys, counts, raw hashes, exact edit/target spans and declared static limits can be inspected offline.
 Actual COBOL syntax/compiler acceptance, parser/translator/CLI joins, case counts, reachable hazards, behavioral witnesses,
 license approval, provenance authentication, independent custody/verifier/seal and P2 all remain unverified/pending.
+
+All sources guard READ/WRITE/CLOSE with successful-open flags, avoid a second READ after EOF, and emit FILE STATUS outcomes before cleanup and after CLOSE attempts. H3 targets a WRITE result that is emitted without conditional handling. Current parser flow and runtime failed-OPEN modeling need owner reconciliation; no executed join is claimed.

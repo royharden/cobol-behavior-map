@@ -1,16 +1,16 @@
 {
   "after": true,
   "before": false,
-  "changed_sha256": "95a0a28e7e38cda51668cbc30d9dceee048daa41ca581a940f661ef189058c57",
+  "changed_sha256": "9d3f6512d0cc7315de1e35b7de3e0abad8d90224368e7d5da2f8a53544fb838a",
   "manifest_version": 1,
   "operation": "set_rounded",
-  "original_sha256": "a7ec210b1dc61594bb052f1f1625b7891e2303f616c2684a9646b0967a2379d8",
+  "original_sha256": "4eead74518456bee51470ecd091864c571b5e7c8f61b74ed310c3d6f48c28835",
   "prose": "Enable default ROUNDED on one three-operator COMPUTE; ties and actual compiler effect remain unmeasured.",
   "target": {
-    "byte_end": 1085,
-    "byte_start": 1017,
+    "byte_end": 1445,
+    "byte_start": 1377,
     "file": "original.cbl",
-    "line": 41,
+    "line": 58,
     "node_kind": "compute"
   },
   "task_id": "fee-chain-03-change"

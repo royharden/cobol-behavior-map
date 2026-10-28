@@ -1,7 +1,7 @@
 {
   "artifact_kind": "specification",
   "artifact_path": "corpus/dev/dev_status_two_read/family.json",
-  "artifact_sha256": "4fdd209d6d21adc608a7e4063b83f5fee7ab57b830580368586c0d4070b68ff7",
+  "artifact_sha256": "1ba920d018fd086031dc603f4b6edd49eead31650a42ce8699644433fa5cd187",
   "author_callsign": "0003_Codex_GPT-6_M10-DL2",
   "author_harness": "Codex",
   "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",

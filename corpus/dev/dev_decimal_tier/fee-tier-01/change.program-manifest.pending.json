@@ -9,10 +9,10 @@
       "observable": "output.dat:OUT-FEE",
       "reachability_recipe_ids": [],
       "target": {
-        "byte_end": 1032,
-        "byte_start": 998,
+        "byte_end": 1392,
+        "byte_start": 1358,
         "file": "changed.cbl",
-        "line": 42
+        "line": 59
       }
     },
     {
@@ -20,19 +20,19 @@
       "observable": "output.dat:OUT-MAGNITUDE",
       "reachability_recipe_ids": [],
       "target": {
-        "byte_end": 1160,
-        "byte_start": 1127,
+        "byte_end": 1520,
+        "byte_start": 1487,
         "file": "changed.cbl",
-        "line": 48
+        "line": 65
       }
     }
   ],
-  "input_fields_sha256": "617e1cc6ce259503abe0369331b258927031f8338ac9c226e613e9f49ed7ecc9",
+  "input_fields_sha256": "b42b9eb744fff9584e32cef2d294d9b46e411a7c22c1896427e67b73891e2fe8",
   "loops": [],
   "manifest_version": 1,
-  "output_fields_sha256": "174c36aecda0476510b0b929155e7480feca53b9b2e2b0011f5b30fbe7d4130e",
+  "output_fields_sha256": "f030d6eeb0eaca580eb86a0de81643be4bda5801a9d630c6b22af07a81f647e0",
   "program_id": "fee-tier-01",
-  "provenance_sha256": "c40f7d65170c7e66cf2a72fcd2bdde5a8046cd863e6603cfbf9352cbe52f8752",
-  "source_sha256": "ea3d69ee5bca97599ec13883bcc60e88f5c5abe1b6d8f0a3f00af92a8f55afe5",
+  "provenance_sha256": "9f4b9343cc950a1c37714993cb2b9ecfa99c5a9201b1aedaf65b4570c1dc1c44",
+  "source_sha256": "84365b8bc1f7bda4e6cad9ad29c54d1094d2f87346a666ed78fdcadce6296e6e",
   "split": "dev"
 }

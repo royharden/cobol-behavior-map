@@ -1,7 +1,7 @@
 {
   "artifact_kind": "fields",
   "artifact_path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/original.input.fields.json",
-  "artifact_sha256": "fb24ee10e747ab439c83416f806e0d026f184e9473ca1b8cffb563439ef34427",
+  "artifact_sha256": "e636262a074ce5e9a629931f71dfb59ff31e8f3fc5b12df7eddbee132e32f729",
   "author_callsign": "0003_Codex_GPT-6_M10-DL2",
   "author_harness": "Codex",
   "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
@@ -15,7 +15,7 @@
   "license_status": "pending",
   "manifest_version": 1,
   "originality_attestation": "Original synthetic source/declarations authored by builder 0003/0912, Codex GPT-6 family, this exact session; generic static file writer only; no external/client/Gauntlet/partner/NIST ingestion, human authorship, independent custody or observed behavior claimed.",
-  "parent_artifact_sha256": "a1d468922080da6ad2dba859701330e23711920bfe358e47c7dffcc1b8a687fa",
-  "source_sha256": "a1d468922080da6ad2dba859701330e23711920bfe358e47c7dffcc1b8a687fa",
+  "parent_artifact_sha256": "d4028ceee984fd59c587393aa8548166b71127d4c15cf85eb9f837d55f61206b",
+  "source_sha256": "d4028ceee984fd59c587393aa8548166b71127d4c15cf85eb9f837d55f61206b",
   "split": "dev"
 }

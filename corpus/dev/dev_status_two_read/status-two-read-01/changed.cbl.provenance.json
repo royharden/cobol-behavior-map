@@ -1,7 +1,7 @@
 {
   "artifact_kind": "changed_source",
   "artifact_path": "corpus/dev/dev_status_two_read/status-two-read-01/changed.cbl",
-  "artifact_sha256": "acb27fd536d0bdb8d878fe216a5aabad291d3ad04299de4cd35c878d0a4dc848",
+  "artifact_sha256": "b17b084d896a5ad81bb3584d582690c4f62d73cff07c87db797e5cc3be6af0c3",
   "author_callsign": "0003_Codex_GPT-6_M10-DL2",
   "author_harness": "Codex",
   "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
@@ -15,7 +15,7 @@
   "license_status": "pending",
   "manifest_version": 1,
   "originality_attestation": "Original synthetic source/declarations authored by builder 0003/0912, Codex GPT-6 family, this exact session; generic static file writer only; no external/client/Gauntlet/partner/NIST ingestion, human authorship, independent custody or observed behavior claimed.",
-  "parent_artifact_sha256": "b81bcc818ab30603dea1041def422f3385a7c7de138e66fccb5f134fe9823b11",
-  "source_sha256": "acb27fd536d0bdb8d878fe216a5aabad291d3ad04299de4cd35c878d0a4dc848",
+  "parent_artifact_sha256": "0e6a2382752bc419d6717fce64bf1d790a3f19d651a6ef36b06adb4348aa007c",
+  "source_sha256": "b17b084d896a5ad81bb3584d582690c4f62d73cff07c87db797e5cc3be6af0c3",
   "split": "dev"
 }

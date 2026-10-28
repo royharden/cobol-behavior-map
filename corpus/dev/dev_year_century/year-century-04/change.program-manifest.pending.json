@@ -9,10 +9,10 @@
       "observable": "output.dat:OUT-YEAR",
       "reachability_recipe_ids": [],
       "target": {
-        "byte_end": 1081,
-        "byte_start": 1035,
+        "byte_end": 1441,
+        "byte_start": 1395,
         "file": "changed.cbl",
-        "line": 43
+        "line": 60
       }
     },
     {
@@ -20,19 +20,19 @@
       "observable": "output.dat:OUT-MAGNITUDE",
       "reachability_recipe_ids": [],
       "target": {
-        "byte_end": 1227,
-        "byte_start": 1193,
+        "byte_end": 1587,
+        "byte_start": 1553,
         "file": "changed.cbl",
-        "line": 48
+        "line": 65
       }
     }
   ],
-  "input_fields_sha256": "42e696fec1a8924093be58baac32546c608ba0ab542a904ea524f2eac743a7da",
+  "input_fields_sha256": "247b10da230138019ca3c5b2286fd853814d14d7dbc8f79a3694ba45a3543430",
   "loops": [],
   "manifest_version": 1,
-  "output_fields_sha256": "87899cf4778e557186a6d02d93a25fa16db16bcd8125ef737308866caf926c65",
+  "output_fields_sha256": "744e7a8dd604c4c1cf7fff7950e3d563723f5515c78f1592e19085ae4e8d942a",
   "program_id": "year-century-04",
-  "provenance_sha256": "14e0e95f1230061bbc0b1e912d5edde0b5d9e1c7755801d560bde5a49c377e54",
-  "source_sha256": "befbc40c27de724aa2230e50136b7755e53d8673c62ede82fa43169aae4bb72d",
+  "provenance_sha256": "d802aee347f52a765f33dead52f15d3da79175522a1912f10453923f6d8302f2",
+  "source_sha256": "b9b6bb89c54244ebd1749bc781803512be281f6341a8348cd72ea4a0daf98772",
   "split": "dev"
 }

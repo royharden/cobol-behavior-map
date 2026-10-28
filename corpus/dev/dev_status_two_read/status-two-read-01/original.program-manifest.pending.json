@@ -9,10 +9,10 @@
       "observable": "stdout:OUT-STATUS",
       "reachability_recipe_ids": [],
       "target": {
-        "byte_end": 717,
-        "byte_start": 698,
+        "byte_end": 1675,
+        "byte_start": 1662,
         "file": "original.cbl",
-        "line": 26
+        "line": 70
       }
     },
     {
@@ -20,19 +20,19 @@
       "observable": "output.dat:OUT-TEXT",
       "reachability_recipe_ids": [],
       "target": {
-        "byte_end": 1125,
-        "byte_start": 1101,
+        "byte_end": 1591,
+        "byte_start": 1567,
         "file": "original.cbl",
-        "line": 48
+        "line": 67
       }
     }
   ],
-  "input_fields_sha256": "d0ecc43c184ddcd0bd904414b4e8988b02b602b7d2eb6f0f5d8cf4074a94d731",
+  "input_fields_sha256": "728683386f22a66632ce58fa2b9f5b0b54ebb34b3e1e9b97106323190399f374",
   "loops": [],
   "manifest_version": 1,
-  "output_fields_sha256": "9faf2b845e199622cac84f92cbb2ad52fdcf1e2ce9bf945d1d1caf0be1691731",
+  "output_fields_sha256": "196a9dd80f0979272dd93b968989106162e8cd1564917050dd6b12a373cb4ccc",
   "program_id": "status-two-read-01",
-  "provenance_sha256": "7225bf5c2db31f983fbac3ae7e46dd531e7ccc3ce7e1315563a8ff7cb181afaa",
-  "source_sha256": "b81bcc818ab30603dea1041def422f3385a7c7de138e66fccb5f134fe9823b11",
+  "provenance_sha256": "16c6bf8523f68fc8219b89c9f03e2f57eff8c134e3d56d25b664dafaf0aa5782",
+  "source_sha256": "0e6a2382752bc419d6717fce64bf1d790a3f19d651a6ef36b06adb4348aa007c",
   "split": "dev"
 }

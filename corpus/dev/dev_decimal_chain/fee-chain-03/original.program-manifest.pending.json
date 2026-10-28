@@ -9,10 +9,10 @@
       "observable": "output.dat:OUT-TOTAL / source error outcome pending",
       "reachability_recipe_ids": [],
       "target": {
-        "byte_end": 1085,
-        "byte_start": 1017,
+        "byte_end": 1445,
+        "byte_start": 1377,
         "file": "original.cbl",
-        "line": 41
+        "line": 58
       }
     },
     {
@@ -20,19 +20,19 @@
       "observable": "output.dat:OUT-TOTAL",
       "reachability_recipe_ids": [],
       "target": {
-        "byte_end": 1085,
-        "byte_start": 1017,
+        "byte_end": 1445,
+        "byte_start": 1377,
         "file": "original.cbl",
-        "line": 41
+        "line": 58
       }
     }
   ],
-  "input_fields_sha256": "385d69781abff4d2af43f8d348ceae2b6d8aa195982f34acaf609a42ae3aa4ad",
+  "input_fields_sha256": "bc63f5364b64a85a18ef6927a3ee8f346792b0c7ba6af3ccb2ab3001d874ff5e",
   "loops": [],
   "manifest_version": 1,
-  "output_fields_sha256": "2c01041aff397afe7ab8786388f3e269bee1fcbdff00988df86ea04f26e0d4b3",
+  "output_fields_sha256": "7760272d264166004f5a67ac70db274b574645b48bd8727303dd6d396766f5b6",
   "program_id": "fee-chain-03",
-  "provenance_sha256": "9ebf47e0664e16298b9930f88408f415757d25f1e1e4bb0b398a167cbce4a666",
-  "source_sha256": "a7ec210b1dc61594bb052f1f1625b7891e2303f616c2684a9646b0967a2379d8",
+  "provenance_sha256": "4a32be13f66239d2c2bf57abe3d8f51cf63b07ec449c16e7b3418ddff31eb781",
+  "source_sha256": "4eead74518456bee51470ecd091864c571b5e7c8f61b74ed310c3d6f48c28835",
   "split": "dev"
 }

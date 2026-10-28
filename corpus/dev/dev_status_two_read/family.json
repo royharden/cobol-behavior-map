@@ -14,6 +14,6 @@
     "status-two-read-04"
   ],
   "split": "dev",
-  "template_description": "Two unrolled reads with success/count gates and a performed emitter. Different control template from linear fallback; no loop proof inferred.",
+  "template_description": "Two unrolled reads with success/count gates and a performed emitter. Different control template from linear fallback; no loop proof inferred. Successful OPEN guards and emitted status outcomes; H3 targets unchecked WRITE status, H6 truncating MOVE.",
   "template_id": "two_read_gate"
 }

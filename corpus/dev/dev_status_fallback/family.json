@@ -14,6 +14,6 @@
     "status-fallback-04"
   ],
   "split": "dev",
-  "template_description": "One linear READ AT END with explicit fallback followed by unconditional truncating emit and displayed, untested file statuses.",
+  "template_description": "One linear READ AT END with explicit fallback followed by unconditional truncating emit and displayed, untested file statuses. Successful OPEN guards and emitted status outcomes; H3 targets unchecked WRITE status, H6 truncating MOVE.",
   "template_id": "linear_eof_fallback"
 }

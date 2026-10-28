@@ -9,10 +9,10 @@
       "observable": "stdout:OUT-STATUS",
       "reachability_recipe_ids": [],
       "target": {
-        "byte_end": 627,
-        "byte_start": 608,
+        "byte_end": 1045,
+        "byte_start": 1032,
         "file": "changed.cbl",
-        "line": 23
+        "line": 43
       }
     },
     {
@@ -20,19 +20,19 @@
       "observable": "output.dat:OUT-TEXT",
       "reachability_recipe_ids": [],
       "target": {
-        "byte_end": 733,
-        "byte_start": 709,
+        "byte_end": 1007,
+        "byte_start": 983,
         "file": "changed.cbl",
-        "line": 28
+        "line": 41
       }
     }
   ],
-  "input_fields_sha256": "48803e17f96e28f8a0cfa7776c5ac1e820ccc14c1470f22aa1f1599404dbcfdb",
+  "input_fields_sha256": "560b024fac422419d29c511e6934c268f46ca04c4ebfa37e900ce3b1161f13f9",
   "loops": [],
   "manifest_version": 1,
-  "output_fields_sha256": "9091de21e863e888c8723790407ef1c4d158a84d37eb628531fdbbf5d439b00c",
+  "output_fields_sha256": "b171945ff3f04b86d7ecd98615d741754422d0bc0c6fcb356a8a46b00fec644a",
   "program_id": "status-fallback-01",
-  "provenance_sha256": "793e66a826ab80dfefc85dee411b0115518a054c51379e018e03a704b757f491",
-  "source_sha256": "54d885a6283fa9fb86dd0931e86ee83449c796e57e0ea41d7f7fc89a5b633d29",
+  "provenance_sha256": "56e728f72435a0a046da566aea44efd4c8a8e7f21fb3735182e99c541f16b6f6",
+  "source_sha256": "3e2a661a39aecbed0a1cfb76568adf541d5160addfd93f3be31f4e5daebde27e",
   "split": "dev"
 }
