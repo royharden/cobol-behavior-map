@@ -1,0 +1,63 @@
+{
+  "baseline_commit": "441fedc9fe068377d56889b4260b4fd26d10f0ec",
+  "test_files": [
+    {
+      "path": "tests/admission_adapter/fixture_helpers.py",
+      "sha256": "f36bd62a1643d1382c6a4125aa0910e65de832e41fefe2916e3bc82704c9511c",
+      "test_methods": []
+    },
+    {
+      "path": "tests/admission_adapter/test_continuation_refusals.py",
+      "sha256": "e975a540eef709fcc9aa0dd958282714555a05c47f59c1923e1f9f77d3613116",
+      "test_methods": [
+        "test_original_counter_is_strict_zero_before_predecessor_access",
+        "test_missing_counter_is_not_defaulted",
+        "test_missing_or_wrong_predecessor_shape_fails_closed",
+        "test_incomplete_receipt_marker_is_not_history"
+      ]
+    },
+    {
+      "path": "tests/admission_adapter/test_descriptors.py",
+      "sha256": "eae96270035a51adbc012c9125fd6be0d27f24c0ceb8b90951d6d42b117410dc",
+      "test_methods": [
+        "test_relative_posix_path_preservation_and_refusals",
+        "test_raw_canonical_and_spec_lf_descriptors_are_distinct",
+        "test_subset_spec_is_a_required_raw_actual_pin",
+        "test_exact_spec_edition_lf_pins_preserve_raw_crlf",
+        "test_descriptor_bytes_type_and_absent_optional_commitments",
+        "test_paired_index_raw_bytes_are_not_native_recipe_commitment",
+        "test_pending_metadata_keeps_missing_roles_and_external_pin_separate",
+        "test_unknown_artifact_and_binding_shape_panel_refuse",
+        "test_source_original_edit_commitments_and_panel_rules_refuse",
+        "test_external_generator_pin_is_required_and_compared_to_raw_generator",
+        "test_duplicate_artifact_path_and_wrong_spec_edition_target_refuse",
+        "test_source_raw_hash_mismatch_refuses_before_document_validation",
+        "test_change_task_and_raw_edit_hash_bindings_refuse",
+        "test_batch_pending_refuses_claiming_incomplete_packets_are_adapted"
+      ]
+    }
+  ],
+  "targets": {
+    "admission/prepare/generate.py": {
+      "raw_sha256": "4438bb3a481ca5e88d0cba7451e9de4c4a6d613686c67759043a40aff14278a8",
+      "git_blob_sha256": "4438bb3a481ca5e88d0cba7451e9de4c4a6d613686c67759043a40aff14278a8"
+    },
+    "admission/prepare/generator_adapter.py": {
+      "raw_sha256": "f92e72db4a4e2471bd326f96ae641685539adbd0ef6387ba7f605ba3206eb4ac",
+      "git_blob_sha256": "f92e72db4a4e2471bd326f96ae641685539adbd0ef6387ba7f605ba3206eb4ac"
+    },
+    "admission/prepare/generator_continuation.py": {
+      "raw_sha256": "f796cb274d3f5410794ea8f9696c9ea1ecdc27cdbc6ddc9a55c6cb389883ee11",
+      "git_blob_sha256": "f796cb274d3f5410794ea8f9696c9ea1ecdc27cdbc6ddc9a55c6cb389883ee11"
+    },
+    "admission/specs/GENERATOR.md": {
+      "raw_sha256": "4d5e94b792f4003c5071197f516515a992112f9953485d12ff8c8b21eb6f738e",
+      "git_blob_sha256": "706962cfa01ebe22892e8862260db1b8e4535d38d0e665af1c8b85bc5d4100fd"
+    },
+    "admission/specs/FAMILY.md": {
+      "raw_sha256": "fb8db290ab990c9bdc82e0a538f1d6264673eb9e856ca40f9a324dc8f9717180",
+      "git_blob_sha256": "f780695503c0f5764ba6f05737ff6d8c2466f767c847466efc4a1a6496afe483"
+    }
+  },
+  "status": "pending fresh static review; no native imports/calls"
+}
