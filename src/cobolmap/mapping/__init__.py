@@ -15,9 +15,9 @@ from cobolmap.contracts import (
 )
 from cobolmap.parse.models import ProgramIR
 
-from .analysis import MappingRefusal, produce, resolve_pointer
+from .analysis import MappingLimitRefusal, MappingRefusal, produce, resolve_pointer
 
-__all__ = ["build_map", "MappingRefusal", "resolve_pointer"]
+__all__ = ["build_map", "MappingRefusal", "MappingLimitRefusal", "resolve_pointer"]
 
 
 def _decimal(value: Fraction) -> str | None:
@@ -164,14 +164,15 @@ def build_map(program: ProgramIR) -> BehaviorMap:
     mapped_fields = tuple(MapField(
         name=f["name"], pic=f["pic"], usage=f["usage"], sign=f["sign"],
         offset=f["offset"], width=f["width"], scale=f["scale"], digits=f["digits"],
-        initial=f["initial"], storage=f["storage"], span=f["source"],
+        initial=f["initial"], storage=f["storage"], span=f["source"], record_name=f["record_name"],
     ) for f in payload["fields"])
     paragraphs = tuple(MapParagraph(
         name=p["name"], span=p["source"],
         statement_spans=tuple(e["source"] for e in payload["effects"] if e["paragraph"] == p["name"]),
     ) for p in payload["paragraphs"])
     edge_kind = {"perform": "perform", "perform_until_false": "perform",
-                 "then": "branch", "else": "branch", "size_error": "branch", "at_end": "branch"}
+                 "then": "branch", "else": "branch", "size_error": "branch", "at_end": "branch",
+                 "otherwise": "branch", "until_true": "branch"}
     edges = tuple(ControlEdge(source=e["from"], target=e["to"],
                               kind=edge_kind.get(e["kind"], "sequence"), span=e["source"])
                   for e in payload["control_edges"])

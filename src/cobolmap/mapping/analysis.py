@@ -17,6 +17,19 @@ class MappingRefusal(ValueError):
     code = "pointer_unresolved"
 
 
+class MappingLimitRefusal(MappingRefusal):
+    """Materializing a context-expanded graph would exceed its explicit budget."""
+
+    code = "map_limit"
+
+    def __init__(self, span: Any) -> None:
+        super().__init__("map_limit: context-expanded control graph exceeds4096 edges; no partial map")
+        self.span = span
+
+
+MAX_CONTROL_EDGES = 4096
+
+
 def resolve_pointer(program: Any, pointer: Any, *, raw: bytes | None = None) -> bytes:
     """Resolve an exact UTF-8 source span; optionally verify expected raw bytes.
 
@@ -220,6 +233,80 @@ def _dsl_guards(condition: Any, truth: bool) -> list[dict[str, Any]] | None:
     return [{"left": left, "op": "!=" if op == "<>" else op, "right": right}]
 
 
+def _control_edges(program: Any, paragraphs: dict[str, Any]) -> list[dict[str, Any]]:
+    """Context-expanded static graph with matching call-site returns.
+
+    Synthetic entry/return/test/exit identifiers describe analysis structure, not
+    executed events. Every edge retains an actual IR statement, condition, or
+    paragraph span. UNTIL is an abstract test-before loop, not a trace or an
+    unrolling claim; its source admission proof supplies the iteration bound.
+    """
+    edges: list[dict[str, Any]] = []
+
+    def edge(source: str, target: str, kind: str, span: Any) -> None:
+        if len(edges) >= MAX_CONTROL_EDGES:
+            raise MappingLimitRefusal(span)
+        edges.append({"from": source, "to": target, "kind": kind, "source": span})
+
+    def block(nodes: tuple[Any, ...], prefix: str, continuation: str,
+              active: tuple[str, ...]) -> None:
+        for position, node in enumerate(nodes):
+            location = f"{prefix}/{position}"
+            successor = f"{prefix}/{position + 1}" if position + 1 < len(nodes) else continuation
+            if node.kind == "perform":
+                called = node.args["paragraph"]
+                if called not in paragraphs:
+                    raise MappingRefusal("unresolved IR paragraph: " + called)
+                if called in active:
+                    raise MappingRefusal("control_flow: cyclic paragraph call graph")
+                entry = location + "/call:" + called
+                returned = location + "/return"
+                condition = node.args["until"]
+                if condition is None:
+                    edge(location, entry, "perform", node.span)
+                    edge(returned, successor, "return", node.span)
+                else:
+                    test = location + "/test"
+                    edge(location, test, "test_entry", node.span)
+                    edge(test, entry, "perform_until_false", condition.span)
+                    edge(test, successor, "until_true", condition.span)
+                    edge(returned, test, "loop_back", node.span)
+                paragraph(called, entry, returned, active + (called,))
+            elif node.kind == "if":
+                for children, label in ((node.body, "then"), (node.otherwise, "else")):
+                    child_prefix = location + "/" + label
+                    edge(location, child_prefix + "/0" if children else successor,
+                         label, node.args["condition"].span)
+                    block(children, child_prefix, successor, active)
+            elif node.kind == "stop":
+                if len(active) != 1 or active[-1] != "MAIN":
+                    raise MappingRefusal("control_flow: STOP in a performed paragraph")
+                edge(location, "program:exit", "stop", node.span)
+            else:
+                edge(location, successor, "success", node.span)
+                if node.body:
+                    edge(location, location + "/body/0",
+                         "at_end" if node.kind == "read" else "size_error", node.span)
+                    block(node.body, location + "/body", successor, active)
+                if node.otherwise:
+                    edge(location, location + "/otherwise/0", "otherwise", node.span)
+                    block(node.otherwise, location + "/otherwise", successor, active)
+
+    def paragraph(name: str, entry: str, continuation: str,
+                  active: tuple[str, ...]) -> None:
+        item = paragraphs[name]
+        edge(entry, entry + "/0" if item.statements else continuation, "entry", item.span)
+        block(item.statements, entry, continuation, active)
+
+    # Standalone paragraph components permit discovery of uncalled source. Each
+    # expanded call gets its own entry/body/return namespace; no callee exit is
+    # shared by two call sites or by a standalone paragraph component.
+    for item in program.paragraphs:
+        paragraph(item.name, "paragraph:" + item.name,
+                  "paragraph:" + item.name + "/exit", (item.name,))
+    return edges
+
+
 def produce(program: Any) -> dict[str, Any]:
     """Produce private JSON-shaped components for the shared contract adapter."""
     raw = program.source.encode("utf-8")
@@ -230,7 +317,6 @@ def produce(program: Any) -> dict[str, Any]:
     if len(fields) != len(program.fields) or len(paragraphs) != len(program.paragraphs):
         raise MappingRefusal("duplicate IR field/paragraph")
     effects: list[dict[str, Any]] = []
-    edges: list[dict[str, Any]] = []
     hazards: list[dict[str, Any]] = []
     claims: list[dict[str, Any]] = []
     bindings = {file.name: file for file in program.files}
@@ -269,13 +355,11 @@ def produce(program: Any) -> dict[str, Any]:
 
     def walk(nodes: tuple[Any, ...], paragraph: str, prefix: str,
              guards: tuple[tuple[Any, bool], ...] = (),
-             nonzero: frozenset[tuple[Any, ...]] = frozenset(),
-             continuation: str | None = None) -> None:
+             nonzero: frozenset[tuple[Any, ...]] = frozenset()) -> None:
         for position, node in enumerate(nodes):
             validate(node)
             location = f"{prefix}/{position}"
             identifier = location
-            successor = f"{prefix}/{position + 1}" if position + 1 < len(nodes) else continuation
             reads = _references(node)
             writes: set[str] = set()
             kind = node.kind
@@ -309,17 +393,10 @@ def produce(program: Any) -> dict[str, Any]:
                             "source": node.span,
                             "observable": "stdout" if kind == "display" else "output_record" if kind == "write" else None,
                             "max_iterations": node.args.get("max_iterations") if kind == "perform" else None})
-            if successor is not None and kind not in {"if", "stop"}:
-                edges.append({"from": identifier, "to": successor,
-                              "kind": ("until_true_or_return" if node.args["until"] is not None else "continuation") if kind == "perform" else "success",
-                              "source": node.span})
             if kind == "perform":
                 called = node.args["paragraph"]
                 if called not in paragraphs:
                     raise MappingRefusal("unresolved IR paragraph: " + called)
-                edges.append({"from": identifier, "to": "paragraph:" + called,
-                              "kind": "perform_until_false" if node.args["until"] is not None else "perform",
-                              "source": node.span})
             if kind in {"move", "add", "subtract", "multiply", "divide", "compute"}:
                 target = fields.get(node.args["target"])
                 expression = _expression(node)
@@ -386,24 +463,16 @@ def produce(program: Any) -> dict[str, Any]:
             if kind == "if":
                 condition = node.args["condition"]
                 for truth, children, label in ((True, node.body, "then"), (False, node.otherwise, "else")):
-                    destination = location + "/" + label + "/0" if children else successor
-                    if destination is not None:
-                        edges.append({"from": identifier, "to": destination,
-                                      "kind": label, "source": condition.span})
                     walk(children, paragraph, location + "/" + label,
-                         guards + ((condition, truth),), nonzero | frozenset(_nonzero(condition, truth)), successor)
+                         guards + ((condition, truth),), nonzero | frozenset(_nonzero(condition, truth)))
             else:
                 # A conditional write can invalidate a guard in the enclosing
                 # sequence. Remove facts for every field possibly written below.
-                if node.body:
-                    edges.append({"from": identifier, "to": location + "/body/0",
-                                  "kind": "at_end" if kind == "read" else "size_error",
-                                  "source": node.span})
                 body_nonzero = frozenset(k for k in nonzero
                                          if not (k[0] == "field" and k[1] in writes))
                 body_guards = tuple((c, t) for c, t in guards if not (_references(c) & writes))
-                walk(node.body, paragraph, location + "/body", body_guards, body_nonzero, successor)
-                walk(node.otherwise, paragraph, location + "/otherwise", body_guards, body_nonzero, successor)
+                walk(node.body, paragraph, location + "/body", body_guards, body_nonzero)
+                walk(node.otherwise, paragraph, location + "/otherwise", body_guards, body_nonzero)
             affected = set(writes)
             def nested_writes(children: tuple[Any, ...]) -> None:
                 for child in children:
@@ -425,11 +494,8 @@ def produce(program: Any) -> dict[str, Any]:
         resolve_pointer(program, field.span)
     for paragraph in program.paragraphs:
         resolve_pointer(program, paragraph.span)
-        if paragraph.statements:
-            edges.append({"from": "paragraph:" + paragraph.name,
-                          "to": "paragraph:" + paragraph.name + "/0",
-                          "kind": "entry", "source": paragraph.span})
         walk(paragraph.statements, paragraph.name, "paragraph:" + paragraph.name)
+    edges = _control_edges(program, paragraphs)
     return {"source_sha256": program.source_sha256, "filename": program.filename,
             "program_id": program.program_id,
             "fields": [{"name": f.name, "pic": f.pic, "usage": f.usage, "sign": f.sign,

@@ -31,6 +31,8 @@ class Validator:
         self.manifest = manifest
         self.bounds: dict[int, int] = {}
         self.loop_proofs: dict[int, Mapping[str, Any]] = {}
+        self.flow_steps = 0
+        self.proof_steps = 0
         if manifest is not None and not isinstance(manifest, Mapping):
             self.fail("return_contract", "ProgramManifest must be a mapping")
 
@@ -186,6 +188,7 @@ class Validator:
     def induction_writes(self, nodes: tuple[IRNode, ...], field: str) -> list[IRNode]:
         result = []
         for node in nodes:
+            self.proof_visit(node)
             if node.args.get("target") == field:
                 result.append(node)
             if node.kind == "perform":
@@ -199,6 +202,7 @@ class Validator:
     def steps(self, nodes: tuple[IRNode, ...], field: str) -> set[int]:
         steps = {0}
         for node in nodes:
+            self.proof_visit(node)
             delta = {0}
             if node.args.get("target") == field:
                 value = node.args.get("value")
@@ -227,6 +231,12 @@ class Validator:
             if len(steps) > 64:
                 self.fail("unbounded_perform", "Induction path proof exceeds bounded domain", node)
         return steps
+
+    def proof_visit(self, node: IRNode) -> None:
+        """Bound the pre-flow call-DAG traversals as well as flow unfolding."""
+        self.proof_steps += 1
+        if self.proof_steps > 100000:
+            self.fail("unbounded_perform", "Static induction proof budget exceeded; no partial IR", node)
 
     def linear_step(self, expression: IRNode, field: str, statement: IRNode) -> int:
         """Prove an integer I +/- literal COMPUTE progression without rounding."""
@@ -272,6 +282,9 @@ class Validator:
         state = set(opened)
         known = dict(known)
         for node in nodes:
+            self.flow_steps += 1
+            if self.flow_steps > 100000:
+                self.fail("unbounded_perform", "Static flow proof budget exceeded; no partial IR", node)
             args = node.args
             kind = node.kind
             if kind == "open":
