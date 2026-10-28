@@ -66,7 +66,32 @@ No Pydantic/test/product module was imported to inspect that setting. Exact obse
 interpreter, target commit, test-source pins, command, counts, exit and failures
 belong in READY. Any failure is a reproduction to retain and route to INT; a
 fixture expectation mistake requires reviewed test-source correction before a
-repeat. Tests are currently unexecuted pending source review.
+repeat.
+
+## Observed bounded diagnostic run
+
+Fresh Medium review required additional terminal missing-evidence coverage. That
+coverage was added, then a fresh High test-source review passed for
+5cbe7848db9df2a9858cedcd5499f6fe3c9ece24 before any test import/execution.
+The command above then discovered and ran46 tests in0.370seconds:46 passed,
+zero failures/errors/skips, exit0. All20 operator methods passed their source-edit
+expectations; this does not classify20 actual mutants as valid or killed.
+
+Actual interpreter: C:\Program Files\Python311\python.exe, CPython3.11.3,
+sys.dont_write_bytecode=True. Actual imported Pydantic2.12.5 came from user-site
+C:\Users\Roy Harden\AppData\Roaming\Python\Python311\site-packages\pydantic.
+The global installation also contains2.12.3; it was not the imported version.
+The product source target was5b75af5b58035f9879de414f151f19bd06664b46, containing
+instrument178136f; only the granted diagnostic test/doc files changed.
+
+This is one bounded diagnostic selection on an unsupported interpreter, not
+supported-runtime/package or actual study validation. Candidate text remained
+inert in memory throughout. No source packet became an imported/compiled/executed
+candidate module, no runtime.run_case ran, and no product source fix was needed.
+No installs, Docker, model/network/wire/ledger/SQLite/backend/guest calls occurred.
+The exact command/output/version record is retained in the owner's ignored
+.agent-work/instrument-r4-test-output.txt and pinned in READY. Source test pins
+remain unchanged from the pre-execution High-reviewed edition.
 
 Current reported RAM is below the install/Docker gate; no install/Docker attempt is
 made. USD0; no keys, account, model pin or placeholder value is consumed. Missing
