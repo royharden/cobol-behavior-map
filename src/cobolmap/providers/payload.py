@@ -1,11 +1,28 @@
 """Complete neutral payload checks before future accounting/transport; never sends."""
-from cobolmap.contracts import canonical_json, sha256
-from .models import LeakagePolicy, PreflightResult, ProviderRequest
+from cobolmap.contracts import (canonical_json, sha256, CounterexampleFeedback,
+                                DerivativeAuthority, DerivativeEvidence, feedback_json)
+from cobolmap.contracts.derivation import (authenticate_derivative, revalidate_closed,
+                                          validate_derivative, wire_json)
+from .models import ContextPart, Message, LeakagePolicy, PreflightResult, ProviderRequest
 
 
 def validate_payload(request: ProviderRequest, policy: LeakagePolicy, *,
-                     require_actual_context: bool = True) -> PreflightResult:
+                     require_actual_context: bool = True,
+                     derivative: DerivativeEvidence | None = None,
+                     derivative_authority: DerivativeAuthority | None = None,
+                     feedback: CounterexampleFeedback | None = None) -> PreflightResult:
+    request, policy = closed_request_policy(request, policy)
     issues = []
+    derivative_hash = None
+    if derivative is not None or derivative_authority is not None or feedback is not None:
+        try:
+            packet, local = derivative_request_binding(request, policy, feedback, derivative)
+            feedback_json(packet, loop_hashes=policy.loop_hashes, admitted=True,
+                          max_payload_bytes=policy.max_payload_bytes, derivative=local,
+                          derivative_authority=derivative_authority)
+            derivative_hash = local.final_case.case_sha256
+        except Exception:
+            issues.append("derivative_local_proof_or_authority_refused")
     if request.task_id != policy.task_id:
         issues.append("policy_task_mismatch")
     if not request.messages or any(not message.parts for message in request.messages):
@@ -19,7 +36,8 @@ def validate_payload(request: ProviderRequest, policy: LeakagePolicy, *,
                 issues.append("context_not_in_authorized_allowlist")
             if part.kind == "original_source": original.append(part.sha256)
             if part.kind == "loop_witness":
-                if request.arm != "D" or part.case_sha256 not in policy.loop_hashes:
+                if request.arm != "D" or (part.case_sha256 not in policy.loop_hashes
+                                           and part.case_sha256 != derivative_hash):
                     issues.append("loop_witness_not_permitted")
             if request.arm == "B" and part.kind == "map":
                 issues.append("B_cannot_receive_map")
@@ -72,3 +90,55 @@ def validate_payload(request: ProviderRequest, policy: LeakagePolicy, *,
             missing.append("full_loop_partition_required")
     return PreflightResult(status="pending" if missing else "checked", request_sha256=request.request_sha256(),
                            payload_sha256=sha256(raw), issues=tuple(missing))
+
+
+_PROVIDER_TYPES = (ContextPart, Message, ProviderRequest, LeakagePolicy)
+
+
+def closed_request_policy(request, policy):
+    return (revalidate_closed(request, ProviderRequest, extra_types=_PROVIDER_TYPES),
+            revalidate_closed(policy, LeakagePolicy, extra_types=_PROVIDER_TYPES))
+
+
+def derivative_request_binding(request, policy, packet, local):
+    """Match the exact single witness/context projection, never generic model dumps."""
+    request, policy = closed_request_policy(request, policy)
+    packet, local = validate_derivative(packet, local, policy.loop_hashes)
+    if (request.arm != "D" or request.task_id != packet.task_id
+            or request.attempt != packet.attempt
+            or policy.original_source_sha256 != packet.context.source_sha256):
+        raise ValueError("derivative_request_scope_mismatch")
+    previous = packet.context.previous_candidate
+    inherited_c = previous.call_id if previous.arm == "C" else previous.shared_c_call_id
+    if (not inherited_c or request.shared_c_call_id != inherited_c
+            or request.attempt != previous.attempt + 1
+            or request.model_id != previous.model_id):
+        raise ValueError("derivative_previous_candidate_call_mismatch")
+    context = packet.context
+    expected = {"original_source": context.source_text,
+                "map": wire_json(context.behavior_map).decode("utf-8"),
+                "shim_api": context.shim_api, "structured_change": context.request_text,
+                "previous_candidate": wire_json(previous).decode("utf-8"),
+                "loop_witness": wire_json(packet.witness).decode("utf-8")}
+    if context.diagnostic is not None:
+        expected["diagnostic"] = context.diagnostic
+    seen = set()
+    for message in request.messages:
+        for part in message.parts:
+            if part.kind == "instruction":
+                continue  # Still covered by allowlist/canaries/external full-wire authority.
+            if part.kind in seen or part.kind not in expected or part.text != expected[part.kind]:
+                raise ValueError("derivative_exact_context_projection_required")
+            if part.kind == "loop_witness" and part.case_sha256 != local.final_case.case_sha256:
+                raise ValueError("derivative_final_case_pin_mismatch")
+            seen.add(part.kind)
+    if seen != set(expected):
+        raise ValueError("derivative_context_projection_missing")
+    return packet, local
+
+
+def authenticate_derivative_wire(request, policy, packet, local, authority, wire_sha256):
+    """Recheck exact bindings and authenticate BOTH feedback and final wire digests."""
+    packet, local = derivative_request_binding(request, policy, packet, local)
+    authenticate_derivative(packet, local, policy.loop_hashes, authority,
+                            request=request, wire_sha256=wire_sha256)

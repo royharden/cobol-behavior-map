@@ -10,6 +10,8 @@ from .evidence import (ByteDifference, CaseBundle, ComparisonResult, DivergenceC
 from .study import (Arm, CandidateAttempt, CounterexampleFeedback, CountOnlyFeedback,
                     FeedbackContext, FeedbackPacket, InitialFeedback, LoopWitness,
                     ProgramManifest, RunPlan, RunResult, TaskBinding)
+from .derivation import (DerivativeAuthority, DerivativeEvidence, DerivativeScope,
+                         RetainedReduction, derivative_from_reduction)
 from .feedback import feedback_json
 
 __all__ = [
@@ -21,5 +23,6 @@ __all__ = [
     "EvidenceMode", "ExecutionObservation", "ExecutionPins", "ObservedFile", "OrdinaryObservation",
     "Outcome", "Arm", "CandidateAttempt", "CounterexampleFeedback", "CountOnlyFeedback",
     "FeedbackContext", "FeedbackPacket", "InitialFeedback", "LoopWitness", "ProgramManifest",
-    "RunPlan", "RunResult", "TaskBinding", "feedback_json",
+    "RunPlan", "RunResult", "TaskBinding", "feedback_json", "DerivativeAuthority",
+    "DerivativeEvidence", "DerivativeScope", "RetainedReduction", "derivative_from_reduction",
 ]
