@@ -61,6 +61,13 @@ ambiguous/out-of-context edits refuse. Raw edit artifact hashing stays with the
 caller; decoded mapping/canonical JSON is not its raw artifact identity. The changed
 source hash is a commitment only; translator never fetches oracle-only changed text.
 
+Numeric edit representability uses the nearest arithmetic receiver or the referenced
+peer field(s) in a comparison: exact scale, digit range and sign must fit without
+rounding. Literal-only comparisons without a declared field context refuse rather
+than inventing a numeric type. This restriction applies to edit eligibility, not
+ordinary source arithmetic intermediates. A future extension needs explicit context
+metadata; it must not silently admit an out-of-range or fractional replacement.
+
 Edits revalidate types/graphs and derive candidate loop bounds with the declared
 constant monotone integer proof form, all-path step checks, dominating known values,
 PIC fit and the64-iteration subset limit. This is static candidate reasoning, never

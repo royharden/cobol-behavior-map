@@ -66,6 +66,22 @@ def apply_change(plan, change):
             old, new = decimal_value(before), decimal_value(after)
             need(Fraction(old.coefficient, 10 ** old.scale) != Fraction(new.coefficient, 10 ** new.scale)
                  or old.negative_zero != new.negative_zero, "change_noop", "same numeric value/sign")
+            contexts = []
+            for parent in reversed(ancestors):
+                if parent["kind"] == "compare":
+                    contexts = [fields[parent[key]["name"]] for key in ("left", "right")
+                                if parent[key]["kind"] == "reference"]
+                elif parent["kind"] in ARITHMETIC:
+                    contexts = [fields[parent["target"]]]
+                if contexts:
+                    break
+            need(contexts, "change_out_of_subset", "numeric edit has no declared receiver/peer field context")
+            for field in contexts:
+                numerator, denominator = new.coefficient * 10 ** field["scale"], 10 ** new.scale
+                units, remainder = divmod(numerator, denominator)
+                need(not remainder and abs(units) < 10 ** field["digits"] and
+                     (field["pic"].startswith("S") or not new.is_negative),
+                     "change_out_of_subset", "numeric replacement is not exactly representable in context")
         else:
             need(before.rstrip(" ") != after.rstrip(" "), "change_noop", "same space-padded alpha value")
             need(all(32 <= ord(c) <= 126 for c in after), "change_out_of_subset", "alpha replacement encoding")
