@@ -50,8 +50,12 @@ Explicit construction hypotheses, all requiring pinned GnuCOBOL probes:
 - Implicit initial values are zero/spaces. Numeric DISPLAY renders picture digits
   with an implied decimal point and a separate sign, including a proxy for internal
   packed/embedded fields; this is not measured internal DISPLAY parity.
-- File statuses00/35/10 model successful/missing/EOF cases. Failed-open READ47 and
-  CLOSE42 are additional unverified hypotheses. Missing and present-empty differ;
+- File statuses00/35/10 model successful/missing/EOF cases. Missing input OPEN leaves
+  the modeled file closed and unavailable; guarded cleanup may proceed to STOP without
+  closing that failed OPEN. Subsequent READ/CLOSE on that closed file refuses with the
+  existing typed file_contract fault before any speculative47/42 status branch. The
+  defensive unavailable-but-open branches remain unverified hypotheses, not reachable
+  missing-OPEN outcomes. Present-empty input opens successfully and then reaches EOF;
   output presence starts at OPEN OUTPUT, records/stdout keep exact LF and spaces.
 
 Native `change` is exactly the FAMILY structured-edit mapping, with its existing

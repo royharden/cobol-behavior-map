@@ -161,12 +161,12 @@ class _State:
             elif kind == "open":
                 file = self.files[node["file"]]
                 require(not file["open"] and node["mode"] == file["direction"].upper(), "file_contract", "OPEN state/mode")
-                file["open"] = True
                 if file["direction"] == "input":
-                    file["available"] = self.present
+                    file["open"], file["available"] = self.present, self.present
                     self.input_index = 0
                     self.status(file, "00" if self.present else "35")
                 else:
+                    file["open"] = True
                     file["available"], self.output_present, self.output_records = True, True, []
                     self.output_size = 0
                     self.status(file, "00")
