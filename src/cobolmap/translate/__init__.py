@@ -3,8 +3,7 @@ from dataclasses import dataclass
 from pprint import pformat
 
 from cobolmap.shared.decimal_shim import ShimError
-from .edits import apply_change
-from .normalize import TranslationRefusal, normalize
+from .errors import TranslationRefusal
 
 
 @dataclass(frozen=True)
@@ -22,6 +21,10 @@ def translate(program, change=None):
     Raw edit artifact hashing remains the caller's task/provenance responsibility.
     """
     try:
+        # Fixed compiler imports are lazy: importing generated runtime must not
+        # require parser/contracts or make them part of the candidate SDK closure.
+        from .edits import apply_change
+        from .normalize import normalize
         plan = normalize(program)
         if change is not None:
             apply_change(plan, change)
