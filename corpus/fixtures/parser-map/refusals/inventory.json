@@ -1,0 +1,404 @@
+{
+  "cases": [
+    {
+      "case_id": "encoding_nonascii",
+      "diagnostic_filename": "encoding_nonascii.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "source_encoding",
+      "failure_focus": {
+        "byte_end": 592,
+        "byte_start": 590
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "encoding_nonascii.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/encoding_nonascii.cbl",
+        "sha256": "2bb428b40bfc7e88b84e5d8ed5e78bac2565b255a0ae0a1b121a406f52674702"
+      },
+      "what_bug_this_catches": "Refuses non-ASCII even inside a quoted literal, before treating it as harmless text."
+    },
+    {
+      "case_id": "line_limit_201",
+      "diagnostic_filename": "line_limit_201.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "source_limit",
+      "failure_focus": {
+        "byte_end": 2552,
+        "byte_start": 2541
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "line_limit_201.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/line_limit_201.cbl",
+        "sha256": "4bef7d585dcf45058508ed2cc3a511b2fce8cd6359ccf856a4e1202cdf12f7a1"
+      },
+      "what_bug_this_catches": "Rejects a complete otherwise-supported source above200 physical lines; no prefix success."
+    },
+    {
+      "case_id": "unknown_symbol",
+      "diagnostic_filename": "unknown_symbol.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "unknown_token",
+      "failure_focus": {
+        "byte_end": 579,
+        "byte_start": 578
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "unknown_symbol.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/unknown_symbol.cbl",
+        "sha256": "99912bb31c06ec0c3c644ffd21a053cd83750821dca317c181be6b405db62f50"
+      },
+      "what_bug_this_catches": "Unknown executable punctuation cannot disappear or be accepted as a partial token stream."
+    },
+    {
+      "case_id": "forbidden_call",
+      "diagnostic_filename": "forbidden_call.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "out_of_subset",
+      "failure_focus": {
+        "byte_end": 582,
+        "byte_start": 578
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "forbidden_call.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/forbidden_call.cbl",
+        "sha256": "61dcdf36e4162beabe6c4c712bbbb44c8525c0ac8310ec111a1ede5aed4097bc"
+      },
+      "what_bug_this_catches": "Recognized unsupported CALL refuses even though it is lexically well formed."
+    },
+    {
+      "case_id": "header_syntax",
+      "diagnostic_filename": "header_syntax.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "syntax_error",
+      "failure_focus": {
+        "byte_end": 16,
+        "byte_start": 0
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "header_syntax.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/header_syntax.cbl",
+        "sha256": "75419530c7001bd431b0ca2d6130952c32106ac7ba5b59327486899e6c9fa43d"
+      },
+      "what_bug_this_catches": "Required header word cannot be silently omitted."
+    },
+    {
+      "case_id": "duplicate_folded_name",
+      "diagnostic_filename": "duplicate_folded_name.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "duplicate_name",
+      "failure_focus": {
+        "byte_end": 581,
+        "byte_start": 552
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "duplicate_folded_name.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/duplicate_folded_name.cbl",
+        "sha256": "90f86b2631b6e217b739da3982dc1d30ab9b6a16a8b5b91923753327692ebff1"
+      },
+      "what_bug_this_catches": "Case folding must reject duplicate declarations rather than shadowing fields."
+    },
+    {
+      "case_id": "missing_receiver",
+      "diagnostic_filename": "missing_receiver.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "unresolved_name",
+      "failure_focus": {
+        "byte_end": 601,
+        "byte_start": 578
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "missing_receiver.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/missing_receiver.cbl",
+        "sha256": "f02354f01ef66da939b4c6cfcabbc126bf0e240c26b5aa050be00b5f56abf0e8"
+      },
+      "what_bug_this_catches": "Unknown assignment receivers must not become implicit fields or supported pointers."
+    },
+    {
+      "case_id": "bad_picture_prefix",
+      "diagnostic_filename": "bad_picture_prefix.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "bad_picture",
+      "failure_focus": {
+        "byte_end": 517,
+        "byte_start": 488
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "bad_picture_prefix.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/bad_picture_prefix.cbl",
+        "sha256": "285b0c80196995a9bf4e71662feac4d754b26db2bede628abb90a4a85f104fea"
+      },
+      "what_bug_this_catches": "Unsupported picture prefix cannot be interpreted as numeric or edited-format support."
+    },
+    {
+      "case_id": "numeric_digit_limit",
+      "diagnostic_filename": "numeric_digit_limit.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "field_limit",
+      "failure_focus": {
+        "byte_end": 517,
+        "byte_start": 488
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "numeric_digit_limit.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/numeric_digit_limit.cbl",
+        "sha256": "dab32aba3bbdbb0aa9210917617c0d2293a44e5e3519547841a15d4a0934e46e"
+      },
+      "what_bug_this_catches": "Nine total digits must refuse while valid numeric lexical syntax remains distinguishable."
+    },
+    {
+      "case_id": "external_signed_embedded",
+      "diagnostic_filename": "external_signed_embedded.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "bad_layout_or_sign",
+      "failure_focus": {
+        "byte_end": 371,
+        "byte_start": 351
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "external_signed_embedded.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/external_signed_embedded.cbl",
+        "sha256": "b7143556db6e7c9b0c2fb309d977f2198b73ce4279ba2034ed55fad5cfdae634"
+      },
+      "what_bug_this_catches": "Signed external FD fields require leading separate sign; no inferred external codec."
+    },
+    {
+      "case_id": "alpha_to_numeric",
+      "diagnostic_filename": "alpha_to_numeric.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "type_mismatch",
+      "failure_focus": {
+        "byte_end": 603,
+        "byte_start": 578
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "alpha_to_numeric.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/alpha_to_numeric.cbl",
+        "sha256": "052b23d6d6f0ad882b9a5f69c7280be5ba7a19f3fb4eab949101e78ebb5ae46d"
+      },
+      "what_bug_this_catches": "Alphanumeric MOVE must not silently coerce to numeric receiver."
+    },
+    {
+      "case_id": "value_overwidth",
+      "diagnostic_filename": "value_overwidth.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "literal_range",
+      "failure_focus": {
+        "byte_end": 555,
+        "byte_start": 518
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "value_overwidth.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/value_overwidth.cbl",
+        "sha256": "84a6e72d0e041beccc5fb59926f00448fc7b7e223e120ac5d12754a71abeebbd"
+      },
+      "what_bug_this_catches": "An overwidth declaration VALUE cannot rely on runtime truncation to enter the grammar."
+    },
+    {
+      "case_id": "compute_four_operators",
+      "diagnostic_filename": "compute_four_operators.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "compute_limit",
+      "failure_focus": {
+        "byte_end": 626,
+        "byte_start": 578
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "compute_four_operators.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/compute_four_operators.cbl",
+        "sha256": "ff84838b10762f55468cd60b868baca4924a58226dd1180a02e8efb6dc25a612"
+      },
+      "what_bug_this_catches": "Four binary operators must not pass a three-operator COMPUTE ceiling."
+    },
+    {
+      "case_id": "main_missing_stop",
+      "diagnostic_filename": "main_missing_stop.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "control_flow",
+      "failure_focus": {
+        "byte_end": 597,
+        "byte_start": 594
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "main_missing_stop.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/main_missing_stop.cbl",
+        "sha256": "a35929f8b151950a90b45fd6111304cdf485ccf766f2990e8b181f6e583bfe8f"
+      },
+      "what_bug_this_catches": "MAIN cannot fall through an implicit period instead of terminal STOP RUN."
+    },
+    {
+      "case_id": "until_without_proof",
+      "diagnostic_filename": "until_without_proof.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "unbounded_perform",
+      "failure_focus": {
+        "byte_end": 609,
+        "byte_start": 578
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "until_without_proof.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/until_without_proof.cbl",
+        "sha256": "1a89e833fbb57d70e825473391166001070fa3620990549992ae17f392dc17c5"
+      },
+      "what_bug_this_catches": "A bounded-looking UNTIL still requires source-linked manifest proof; a runtime cap cannot substitute."
+    },
+    {
+      "case_id": "read_before_open",
+      "diagnostic_filename": "read_before_open.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "file_contract",
+      "failure_focus": {
+        "byte_end": 619,
+        "byte_start": 578
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "read_before_open.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/read_before_open.cbl",
+        "sha256": "8b8e000b0dfbff9f7cdddf4547a89174a3a3cdd3ded163ec8e85237d640b998f"
+      },
+      "what_bug_this_catches": "READ needs a successful OPEN on every reaching path."
+    },
+    {
+      "case_id": "close_after_failed_open",
+      "diagnostic_filename": "close_after_failed_open.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "file_contract",
+      "failure_focus": {
+        "byte_end": 608,
+        "byte_start": 578
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "close_after_failed_open.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/close_after_failed_open.cbl",
+        "sha256": "ff10dea0df26b561d82196de663bb99df55d8b84f42d2c6461d9889e8a79e5ec"
+      },
+      "what_bug_this_catches": "Unconditional CLOSE must not treat a failed OPEN branch as successfully open."
+    },
+    {
+      "case_id": "external_input_binding",
+      "diagnostic_filename": "external_input_binding.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "external_path",
+      "failure_focus": {
+        "byte_end": 148,
+        "byte_start": 133
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "external_input_binding.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/external_input_binding.cbl",
+        "sha256": "e8d484513f26eb3292faf591355626db826f03aaea44678c6cc221e5b4fceb1f"
+      },
+      "what_bug_this_catches": "Alternative input paths must not be interpolated or accepted as the fixed binding."
+    },
+    {
+      "case_id": "logical_filename_escape",
+      "diagnostic_filename": "program.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "external_path",
+      "failure_focus": null,
+      "kind": "parse_refusal",
+      "logical_filename": "../escape.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/logical_filename_escape.cbl",
+        "sha256": "d3da190f96e77bca62770c2d39b2498dd6a48c9b4b102c0acd214ab322c23a0f"
+      },
+      "what_bug_this_catches": "Logical filename traversal refuses before tokenization with safe diagnostic filename."
+    },
+    {
+      "case_id": "return_without_manifest",
+      "diagnostic_filename": "return_without_manifest.cbl",
+      "expectation_status": "authored_static_unexecuted",
+      "expected_static_code": "return_contract",
+      "failure_focus": {
+        "byte_end": 599,
+        "byte_start": 578
+      },
+      "kind": "parse_refusal",
+      "logical_filename": "return_without_manifest.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/refusals/return_without_manifest.cbl",
+        "sha256": "95b641421069b321d328de63df33fd66309eee3598f32e572f1c92b5b8ee1d22"
+      },
+      "what_bug_this_catches": "A RETURN-CODE assignment needs explicit declared outcomes/source binding; no assumed code admission."
+    }
+  ],
+  "kind": "refusal",
+  "manifest_version": 1,
+  "status": "authored_static_unexecuted"
+}

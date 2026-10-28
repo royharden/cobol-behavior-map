@@ -1,0 +1,18 @@
+{
+  "manifest_version": 1,
+  "fixture_id": "h2_in_range",
+  "source": {
+    "path": "corpus/fixtures/parser-map/hazards/h2_in_range.cbl",
+    "source_sha256": "9e41c4caf24e05d08c86341db540825157b58f49c5868d42c5c9578b091f68cb",
+    "raw_sha256": "9e41c4caf24e05d08c86341db540825157b58f49c5868d42c5c9578b091f68cb"
+  },
+  "expected_static_hazard": {
+    "hazard_id": "H2",
+    "at_statement": "COMPUTE DEST-N = 1 + 1 END-COMPUTE",
+    "present": false
+  },
+  "what_bug_this_catches": "Flagging a bounded constant expression that fits the destination.",
+  "expected_observations": null,
+  "execution_status": "not_run",
+  "authorship_status": "builder-authored-static-expectation; not oracle evidence"
+}

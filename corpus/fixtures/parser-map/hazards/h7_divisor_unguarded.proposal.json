@@ -1,0 +1,18 @@
+{
+  "manifest_version": 1,
+  "fixture_id": "h7_divisor_unguarded",
+  "source": {
+    "path": "corpus/fixtures/parser-map/hazards/h7_divisor_unguarded.cbl",
+    "source_sha256": "5c5c883801d40916d1b97e1608114dc71536bce8cbffd4527092e642d65c1219",
+    "raw_sha256": "5c5c883801d40916d1b97e1608114dc71536bce8cbffd4527092e642d65c1219"
+  },
+  "expected_static_hazard": {
+    "hazard_id": "H7",
+    "at_statement": "DIVIDE 10 BY DIVISOR-N GIVING RESULT-N END-DIVIDE",
+    "present": true
+  },
+  "what_bug_this_catches": "Missing a possible zero divisor without a dominating guard.",
+  "expected_observations": null,
+  "execution_status": "not_run",
+  "authorship_status": "builder-authored-static-expectation; not oracle evidence"
+}

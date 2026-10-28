@@ -1,0 +1,91 @@
+{
+  "cases": [
+    {
+      "case_id": "quoted_span_lf",
+      "expectation_status": "authored_static_unexecuted",
+      "kind": "accepted_ir_or_mapping_precondition",
+      "logical_filename": "quoted_span_lf.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/ir/quoted_span_lf.cbl",
+        "sha256": "9fe3105979e008e22473c0954db6ba0d56ab99c4780678596a1f18e8225af2d8"
+      },
+      "what_bug_this_catches": "Escaped quotes and comment delimiters inside literals remain data; forbidden comment words are not executable tokens."
+    },
+    {
+      "case_id": "quoted_span_crlf",
+      "expectation_status": "authored_static_unexecuted",
+      "kind": "accepted_ir_or_mapping_precondition",
+      "logical_filename": "quoted_span_crlf.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/ir/quoted_span_crlf.cbl",
+        "sha256": "942552de3efc6eb592cd16fc8bf00ce7265e2a6d5296a8e3c7430cda0019a189"
+      },
+      "what_bug_this_catches": "CRLF raw hashes and byte spans must not be normalized through text-file newline conversion."
+    },
+    {
+      "case_id": "pic_layout",
+      "expectation_status": "authored_static_unexecuted",
+      "kind": "accepted_ir_or_mapping_precondition",
+      "logical_filename": "pic_layout.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/ir/pic_layout.cbl",
+        "sha256": "5ac21c9636150656d4f363ff0a8d9fe6aebb1cf995779e93afdbec2bcb5c463d"
+      },
+      "what_bug_this_catches": "Separate external sign contributes width and offsets; internal packed layout stays separate from DISPLAY codec and retains scale/sign."
+    },
+    {
+      "case_id": "two_call_returns",
+      "expectation_status": "authored_static_unexecuted",
+      "kind": "accepted_ir_or_mapping_precondition",
+      "logical_filename": "two_call_returns.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/ir/two_call_returns.cbl",
+        "sha256": "9a3c102b7fb3f6886f5e1d74123a17dbe9a6fb6feac64fb41a1671a1a603c6a6"
+      },
+      "what_bug_this_catches": "Two PERFORM sites must return to their own next statement, not a callee-wide shared continuation."
+    },
+    {
+      "case_id": "guarded_open_flag",
+      "expectation_status": "authored_static_unexecuted",
+      "kind": "accepted_ir_or_mapping_precondition",
+      "logical_filename": "guarded_open_flag.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/ir/guarded_open_flag.cbl",
+        "sha256": "0c4b33dc929a7d2b3e02b2c68f40d06554468e51529c446ccfa539791e23d48c"
+      },
+      "what_bug_this_catches": "Successful-open facts must survive ordinary alpha flag assignment; failed-open paths must skip cleanup."
+    },
+    {
+      "case_id": "map_context_limit",
+      "expectation_status": "authored_static_unexecuted",
+      "kind": "accepted_ir_or_mapping_precondition",
+      "logical_filename": "map_context_limit.cbl",
+      "manifest_version": 1,
+      "native_manifest": null,
+      "observations": null,
+      "source": {
+        "path": "corpus/fixtures/parser-map/ir/map_context_limit.cbl",
+        "sha256": "26058ee758881228adffc73e5cf585d3d4179b99e39c359606befe5db5ccc14a"
+      },
+      "what_bug_this_catches": "A small acyclic call DAG can expand beyond4096 map edges; materialization must refuse without partial BehaviorMap. Parser proof resource prerequisites remain unexecuted."
+    }
+  ],
+  "kind": "ir",
+  "manifest_version": 1,
+  "status": "authored_static_unexecuted"
+}

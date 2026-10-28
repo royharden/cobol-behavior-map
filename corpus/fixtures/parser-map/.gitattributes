@@ -1,0 +1,5 @@
+# Preserve exact fixture/proposal raw bytes, including intentional CRLF and encoding refusals.
+*.cbl -text
+*.json -text
+*.py -text
+*.md -text

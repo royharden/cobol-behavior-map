@@ -1,0 +1,18 @@
+{
+  "manifest_version": 1,
+  "fixture_id": "h5_unsigned_move",
+  "source": {
+    "path": "corpus/fixtures/parser-map/hazards/h5_unsigned_move.cbl",
+    "source_sha256": "491d1571bebb4e62bcfc703a37ef6cfbd597872f2c4aed0b54b112783dd7eb4e",
+    "raw_sha256": "491d1571bebb4e62bcfc703a37ef6cfbd597872f2c4aed0b54b112783dd7eb4e"
+  },
+  "expected_static_hazard": {
+    "hazard_id": "H5",
+    "at_statement": "MOVE SOURCE-N TO DEST-N",
+    "present": false
+  },
+  "what_bug_this_catches": "Treating unsigned-to-unsigned numeric MOVE as signed source.",
+  "expected_observations": null,
+  "execution_status": "not_run",
+  "authorship_status": "builder-authored-static-expectation; not oracle evidence"
+}

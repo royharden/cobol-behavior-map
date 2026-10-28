@@ -1,0 +1,17 @@
+{
+  "case_id": "logical_filename_escape",
+  "diagnostic_filename": "program.cbl",
+  "expectation_status": "authored_static_unexecuted",
+  "expected_static_code": "external_path",
+  "failure_focus": null,
+  "kind": "parse_refusal",
+  "logical_filename": "../escape.cbl",
+  "manifest_version": 1,
+  "native_manifest": null,
+  "observations": null,
+  "source": {
+    "path": "corpus/fixtures/parser-map/refusals/logical_filename_escape.cbl",
+    "sha256": "d3da190f96e77bca62770c2d39b2498dd6a48c9b4b102c0acd214ab322c23a0f"
+  },
+  "what_bug_this_catches": "Logical filename traversal refuses before tokenization with safe diagnostic filename."
+}

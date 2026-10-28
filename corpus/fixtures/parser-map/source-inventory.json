@@ -1,0 +1,805 @@
+{
+  "artifacts": [
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h1_rounded.cbl",
+      "sha256": "2ff0df5e942f14ed1d79e87e3fb8eb5db8967dea8ed1f2ccb0c910aad6d2a7c9"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h1_rounded.cbl.provenance.json",
+      "sha256": "3bdc010a9b30489e56bc7efd6da827dcec3cd1fc41f18b54d4abcfbbca4c9224"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h1_rounded.proposal.json",
+      "sha256": "d3efdefb93c3f3e33b29e0c8c2be87fc53c67d54d9b3537ec78e0612bfaa0436"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h1_rounded.proposal.json.provenance.json",
+      "sha256": "39955b972a1765c41f4cdd31b3077b053ab9821ab5c42ca32a4a5f38cc8d177e"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h1_scale_loss.cbl",
+      "sha256": "ec5ebd2e9d3e24a20a16e3ab485ff9377f311e922726b69fbe9b9e3703cffd82"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h1_scale_loss.cbl.provenance.json",
+      "sha256": "6cdd84d182244c73b5bb5cc20e27926f4421bff87362647ee75bfee9b1e82b41"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h1_scale_loss.proposal.json",
+      "sha256": "622513b77aaa988c94357996db2508b0df68e13c1a368c7a544822c4b2c3822e"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h1_scale_loss.proposal.json.provenance.json",
+      "sha256": "b203c6bdbf8fd14b020d0b37d1f83c4a3c4585321b09f54a6fee295a2cc0b51a"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h2_in_range.cbl",
+      "sha256": "9e41c4caf24e05d08c86341db540825157b58f49c5868d42c5c9578b091f68cb"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h2_in_range.cbl.provenance.json",
+      "sha256": "c30ffcda9bdf28fd6ffa05362c4a85ec537a000527f9e3208806c6e5b545278f"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h2_in_range.proposal.json",
+      "sha256": "ea79163260f5f1a68b4f5ebca353ad8a2ee18f57d313d08b341f060f26a3ba0e"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h2_in_range.proposal.json.provenance.json",
+      "sha256": "6e0114be2f6d66d3f317c7f22cf1ae1891cc0b70065cdf1ffc9ea40a317b6287"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h2_overflow.cbl",
+      "sha256": "3eba937916a551811f5f8f2b6c04a91368cf7c6ea1e931d2d21e3ee8d9eba9e3"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h2_overflow.cbl.provenance.json",
+      "sha256": "466e6d3006eb85c57478fb8e7376bf977aad4c00594936a22b77269dd22efa84"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h2_overflow.proposal.json",
+      "sha256": "0847d9379d6a035ea5c1f744c94cd04123ba1be9672b244d329844035d813ddc"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h2_overflow.proposal.json.provenance.json",
+      "sha256": "185f63744ccd8f95529f6275197336122bc0fb24c7d5a78e916975a21bac6646"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h3_file_open.cbl",
+      "sha256": "c39b06f3e3c4844d172aec30f271cbd44c65641ccd58c325e68baaf6732d5d45"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h3_file_open.cbl.provenance.json",
+      "sha256": "e2da58c04b5d5660ccb5c8bdd1b64abcbf1129cbf537b5d4a10b12b45c9b1656"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h3_file_open.proposal.json",
+      "sha256": "1056679ce548bfce41fa56db27dea9fc1e8998cc445aff1fab877e5a38954ca5"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h3_file_open.proposal.json.provenance.json",
+      "sha256": "1f87be082ce243c8475f33f3b9b424ae0ed502a398d9e4b420e7ebd18f7c3240"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h3_no_file_op.cbl",
+      "sha256": "c84ed9ce02d3ee8bf38973a456b2511d5a12e8c070bea782ec902d635415b914"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h3_no_file_op.cbl.provenance.json",
+      "sha256": "f9278357ab5c334a2031874265382e7a90b2130026a1a63f22473b6c9288b39a"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h3_no_file_op.proposal.json",
+      "sha256": "9ade3b34a9f4ca0e83a94f2f7c05d29f5f8b265e14a90bfa9c2883632ff36b72"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h3_no_file_op.proposal.json.provenance.json",
+      "sha256": "4dc0820ed6b9772d2abf1fa173b5ae76a0572bc19952e084bb9b0484e9ab33ba"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h4_year_no_pivot.cbl",
+      "sha256": "d8da1838bbcb89f1fb51e7cddc55bfa005b48d9a6af9ea2468380a8e52f0c7b3"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h4_year_no_pivot.cbl.provenance.json",
+      "sha256": "e044053e7eebfdf5da4bcc9b3d344a9762f75d346d2decf7f034d32c2431815e"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h4_year_no_pivot.proposal.json",
+      "sha256": "a67f03ba4d9afb77625553dec4a7348a50b890c3d7c2c10260ffefc94b478705"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h4_year_no_pivot.proposal.json.provenance.json",
+      "sha256": "6dacfee3d3d2233ebd16d7972925f516e826fbe025bea3e1f9d5daaee9180fac"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h4_year_pivot.cbl",
+      "sha256": "8bc03a778c3dad5729c6a893b3fcfb80a7c52c5be79bee507398e542a7ea6271"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h4_year_pivot.cbl.provenance.json",
+      "sha256": "3ba266b528116450be1388c12517d95c93bc8c4c5833aad2f0aa836db1afb5ab"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h4_year_pivot.proposal.json",
+      "sha256": "8110f7a66b35f0befc663cebc839d0a1f0281ba6e91bcdc973e111687717be1a"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h4_year_pivot.proposal.json.provenance.json",
+      "sha256": "14309e20e19a2d443547f4ba3f0ad56b36f8c625c16abb908dbed415ea4c3708"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h5_signed_move.cbl",
+      "sha256": "d20a04805bfe917294e927d81fcfc00da612b629d40c6be3ab42740ee820577b"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h5_signed_move.cbl.provenance.json",
+      "sha256": "03ac3fbacacabee7b8fa2db62c0d5d9c017b9f13149830eb0f941b4440b20159"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h5_signed_move.proposal.json",
+      "sha256": "a090d9fd7371aaf2226f156b6e3e5ba2b95273655e7ca318c96c8be13f201885"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h5_signed_move.proposal.json.provenance.json",
+      "sha256": "5270220703e4300a7a64ac627cd47ea9fb32feb60fa0c8eaf4e52d700cd9dd0a"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h5_unsigned_move.cbl",
+      "sha256": "491d1571bebb4e62bcfc703a37ef6cfbd597872f2c4aed0b54b112783dd7eb4e"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h5_unsigned_move.cbl.provenance.json",
+      "sha256": "5f87e225fa4363382abd275bff99acfd42fd1cbbc83d64eb5d3f5243f1131317"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h5_unsigned_move.proposal.json",
+      "sha256": "8dc5c90d1e4393f99124d4124a759cf1169454e41f1942df4b21159c92564666"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h5_unsigned_move.proposal.json.provenance.json",
+      "sha256": "9b1f659ec9cb459b3be9e4f5cc2dbd37d796ef7759812170aae4e85ae0b08faa"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h6_width_equal.cbl",
+      "sha256": "4bdcf7fc3565c2505e91a054f5f3d02d220f0dd518cc03d69ca0bf0596d5dec4"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h6_width_equal.cbl.provenance.json",
+      "sha256": "08647c95813fa9b21117dc2d26967e817d0a7ee0fdafeeda3b0adcee9fe9f44c"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h6_width_equal.proposal.json",
+      "sha256": "1f7b4792840d565a96d667926fbd53a9c72a7ace4266352d98f89d655c41ac85"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h6_width_equal.proposal.json.provenance.json",
+      "sha256": "213b61d0be998e12f305d1b9454fccca19ef809c44edc317da960f593ac8344b"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h6_width_mismatch.cbl",
+      "sha256": "68ba945efb69f63b82d3a6e01a240ff0f8c25c0853565d471d63ceb2c94667dd"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h6_width_mismatch.cbl.provenance.json",
+      "sha256": "b4c38a88f5fd707ebe91de28c4831fdb317db79826cddf5c7f422947b0027d18"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h6_width_mismatch.proposal.json",
+      "sha256": "37875bf201f6b0c59861deb770a558b269e7126856b1ff959a54c2b167076185"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h6_width_mismatch.proposal.json.provenance.json",
+      "sha256": "0234faa5c23a066837c22e862b01b338e01ffe5c574e4103887df1c122dd4dfc"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h7_divisor_guarded.cbl",
+      "sha256": "d0cf7de5313657d91be184155b4c4755e5bb742b743455b2feaf13c43ac517b7"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h7_divisor_guarded.cbl.provenance.json",
+      "sha256": "475aadaca59065ab99213ca1ad92f2c5f3f78f310c9f5298805060609ba3d4f7"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h7_divisor_guarded.proposal.json",
+      "sha256": "6425f397beed404f16d5bda74bcecc69a95afa7d15a8454da49fd638bbb1b726"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h7_divisor_guarded.proposal.json.provenance.json",
+      "sha256": "e834550e77e8fa5737dc80264421a6e00458c91c72f23f8b4811d668ca39ebc4"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h7_divisor_unguarded.cbl",
+      "sha256": "5c5c883801d40916d1b97e1608114dc71536bce8cbffd4527092e642d65c1219"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h7_divisor_unguarded.cbl.provenance.json",
+      "sha256": "692c9368573580fab410a3fd452ea5e83fa254e8817d56b9e1f89ea0f90f2b51"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h7_divisor_unguarded.proposal.json",
+      "sha256": "ec995d629f5f374beaf9621b096fa85d36f21757eb86218b7fb12cbde39ea731"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h7_divisor_unguarded.proposal.json.provenance.json",
+      "sha256": "a28419683c6af915f4afff2ef05d7dc335d7ed71116867ede3bf7e03f52c0da5"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h7_guard_invalidated.cbl",
+      "sha256": "7716fd1db65348fdf1a59347f7c3c82a683a20e7c1cc09affdee19378a1f117d"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h7_guard_invalidated.cbl.provenance.json",
+      "sha256": "b7e8c7dd6a27e8c7d070bd3d330cb70aa0e77fdf0d026a1048e99f358a3830ac"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h7_guard_invalidated.proposal.json",
+      "sha256": "a4e5bb898d832b90920fc44caa7074dbb1cee204745db9a304ceca3b4c8b284e"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h7_guard_invalidated.proposal.json.provenance.json",
+      "sha256": "8bc1d7f10318fd29c3a986732c8a0d0ca1bda6f4b5a4fabaa38937d59b528377"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h8_one_operator.cbl",
+      "sha256": "aab2a0d1b38d21b57a3bdffee2e7871f3b02c27ba6e8a18e64bf572d1b215628"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h8_one_operator.cbl.provenance.json",
+      "sha256": "459cadd98b5bb30c3c4f703948c30ffe2eb363db69755677d7688477ae8b99d3"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h8_one_operator.proposal.json",
+      "sha256": "4d450636205848335ae31701eadfff5babda424250013633832f5351c5610e95"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h8_one_operator.proposal.json.provenance.json",
+      "sha256": "a1a7e468646d7330f2448f4d0af5c884afe0a968e1e6bcaee7500080693ac6fe"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h8_two_operators.cbl",
+      "sha256": "5fd65d466abe590730f1be10cc6b8cb0ad4d1433c3e4acb2d6958b7745c3ab32"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h8_two_operators.cbl.provenance.json",
+      "sha256": "bf72c530b7e7607b4f9a07671bc6c2b12a4b5040f64cb369fdac354e945f3ca1"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h8_two_operators.proposal.json",
+      "sha256": "fbfc61c8e9dd9f6ebbf99595862835cce908a199372b22fb03ce02ab0f6644e5"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/h8_two_operators.proposal.json.provenance.json",
+      "sha256": "9519ca2561a6587a8ddec23079e06311912a5247e16b51e16a55d0a13764b2a3"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/source-inventory.json",
+      "sha256": "f373a2d25bfaaaa3b3d09b308b73d764a0d55e2adb2f4872c77e571bbee3d22e"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/hazards/source-inventory.json.provenance.json",
+      "sha256": "ee3ed96e6c4d3a6a3d06800d5e0087592507b7f336dc73ea31f6c73392ce6a93"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/guarded_open_flag.cbl",
+      "sha256": "0c4b33dc929a7d2b3e02b2c68f40d06554468e51529c446ccfa539791e23d48c"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/guarded_open_flag.cbl.provenance.json",
+      "sha256": "e86d400de3403b26aac3816ac2d1a7538a6d5e411e57bc60273420a52f6b74a4"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/guarded_open_flag.proposal.json",
+      "sha256": "df93f0996e7c9704b736aef59a1411223a871e0af86c40c15892457ed0dba6a9"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/guarded_open_flag.proposal.json.provenance.json",
+      "sha256": "a0c1bbbc6a16e342da8fc97da995b464325cbdd6a248db4ad0b50a3f015945bc"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/inventory.json",
+      "sha256": "fefb4aa2db25cd47f71e6b7191c649c592a5d2a9a036bf4b2ea6f25d4adf6e08"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/inventory.json.provenance.json",
+      "sha256": "8589f6c16c935058a99b2258375cee4b12d99a13fd2da1874e44d062500a205c"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/map_context_limit.cbl",
+      "sha256": "26058ee758881228adffc73e5cf585d3d4179b99e39c359606befe5db5ccc14a"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/map_context_limit.cbl.provenance.json",
+      "sha256": "8e0fd1c15e37419be4d65ff92b4db0c7f384f52cf7bafe3a3284a89eee4f0b5c"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/map_context_limit.proposal.json",
+      "sha256": "7d2ea76c8f964f16dfb1eb23ea608678d1f1d2f4c14261248bf6dc9236a6ab0b"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/map_context_limit.proposal.json.provenance.json",
+      "sha256": "7e7bc3e358beb4ddb0837d1671ae5f3638c48518969f1a5f9a9d752cf7d77175"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/pic_layout.cbl",
+      "sha256": "5ac21c9636150656d4f363ff0a8d9fe6aebb1cf995779e93afdbec2bcb5c463d"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/pic_layout.cbl.provenance.json",
+      "sha256": "55f353e89090095dfce6a8f9ff0fc49c117581f272b9dc176f42eac8058a1ef8"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/pic_layout.proposal.json",
+      "sha256": "fb0cd29d3eabe3dadc232848f4b83520aca43b35205c2944d44337a0e40e9b75"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/pic_layout.proposal.json.provenance.json",
+      "sha256": "b0310e9c8a5b7109194dc7d6704b34e7ca39be6b9d21e229f56dd396345bd828"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/quoted_span_crlf.cbl",
+      "sha256": "942552de3efc6eb592cd16fc8bf00ce7265e2a6d5296a8e3c7430cda0019a189"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/quoted_span_crlf.cbl.provenance.json",
+      "sha256": "1ac57de3c0585f91bca534e110e3d5a95b277255be245cec007b4003c705dfa0"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/quoted_span_crlf.proposal.json",
+      "sha256": "4ce12a5f0ba544af30cefc9b7171b595e57690dfd85e6ff1c9fb412fb8c20cac"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/quoted_span_crlf.proposal.json.provenance.json",
+      "sha256": "44b04e47f992cd616fa6a750bfb777c7e8d71316ad49540b29df0522dec3e9aa"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/quoted_span_lf.cbl",
+      "sha256": "9fe3105979e008e22473c0954db6ba0d56ab99c4780678596a1f18e8225af2d8"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/quoted_span_lf.cbl.provenance.json",
+      "sha256": "3ae76ce4cf97886c3291945f54d24bd217e6a209c71d6b8cbcbfa909a29dbc3f"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/quoted_span_lf.proposal.json",
+      "sha256": "c1199c3643b2175eba3409a8eff96083054e6329b3a85a505727c9753b0e18ee"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/quoted_span_lf.proposal.json.provenance.json",
+      "sha256": "e0da52fb09091037eb4aa6cb332fa24ced617dd56ce13e23907c9e282e51b07f"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/two_call_returns.cbl",
+      "sha256": "9a3c102b7fb3f6886f5e1d74123a17dbe9a6fb6feac64fb41a1671a1a603c6a6"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/two_call_returns.cbl.provenance.json",
+      "sha256": "d4a1f839a1905cf663cad631475af5e05f12bf07b22017e9d14e012ec6b1e1ba"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/two_call_returns.proposal.json",
+      "sha256": "363cda90636c197ddd608f1256a2614909325bb496f84fa3325818ed0d98df18"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/ir/two_call_returns.proposal.json.provenance.json",
+      "sha256": "73319bdf596b85976fcac4066180f0961e7802d08a1f0346483254dad1d4c777"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/alpha_to_numeric.cbl",
+      "sha256": "052b23d6d6f0ad882b9a5f69c7280be5ba7a19f3fb4eab949101e78ebb5ae46d"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/alpha_to_numeric.cbl.provenance.json",
+      "sha256": "26b794a74a475f4a8bc5730113efce86633f903ec4b71922ae089f9bc165c2a9"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/alpha_to_numeric.proposal.json",
+      "sha256": "597303d0bbf25c41af4c671b25de5c48550d0707f8a9e5568d81aa7cfb138fc2"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/alpha_to_numeric.proposal.json.provenance.json",
+      "sha256": "3ccb25fe738a84dfd05b9325a1f618089494523aebb38b432978da8cfcb893c8"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/bad_picture_prefix.cbl",
+      "sha256": "285b0c80196995a9bf4e71662feac4d754b26db2bede628abb90a4a85f104fea"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/bad_picture_prefix.cbl.provenance.json",
+      "sha256": "0bff6eeb5d679401c96b3cb0b7de67ece8faf23749faab1249ef795bc7315f70"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/bad_picture_prefix.proposal.json",
+      "sha256": "03f7485c7fc44d6fea45b4e100c4fa0debc8fc4463b662757a1c9425ab69af2b"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/bad_picture_prefix.proposal.json.provenance.json",
+      "sha256": "d6349d92895bb62c53f84984f3ba4b4a746e49b7f24615ef1b5e23a0d01a152c"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/close_after_failed_open.cbl",
+      "sha256": "ff10dea0df26b561d82196de663bb99df55d8b84f42d2c6461d9889e8a79e5ec"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/close_after_failed_open.cbl.provenance.json",
+      "sha256": "8d840bbd84a323795138fac3eed0382c08fa4633c945312afe57f6862778e344"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/close_after_failed_open.proposal.json",
+      "sha256": "83ee12c6716884b4b921c0266bcba7b151259ccc4f4659311246eae7838c93ac"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/close_after_failed_open.proposal.json.provenance.json",
+      "sha256": "a5bfb0455078991f310877682a7d596426ed53dde5261a3b769b1f871a478eb0"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/compute_four_operators.cbl",
+      "sha256": "ff84838b10762f55468cd60b868baca4924a58226dd1180a02e8efb6dc25a612"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/compute_four_operators.cbl.provenance.json",
+      "sha256": "0ba20bee9861aa95666c64beed1366d5eea97b7b5105164e9d2697ef35d005cc"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/compute_four_operators.proposal.json",
+      "sha256": "fe310cfbd21afc25672247f2edb04e8769bbb6d5f7045df4ff5e1b39fcf0adac"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/compute_four_operators.proposal.json.provenance.json",
+      "sha256": "0f0aad6a2b4dc04638e3e99b390183bf4fe0d57a4e8080f2e40d1bb3f38edd9a"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/duplicate_folded_name.cbl",
+      "sha256": "90f86b2631b6e217b739da3982dc1d30ab9b6a16a8b5b91923753327692ebff1"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/duplicate_folded_name.cbl.provenance.json",
+      "sha256": "0ee61ab277819a93909c925e44fb3763fae1674b5117400fe2b192f8d6467c04"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/duplicate_folded_name.proposal.json",
+      "sha256": "83b280cd1bba0749dc280b984b83b32814206913d85698a69a11e5da492b3e9b"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/duplicate_folded_name.proposal.json.provenance.json",
+      "sha256": "d74ba07295d8beec58d321001be52509f5cdfb7a50e233ac47cb08781195d90f"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/encoding_nonascii.cbl",
+      "sha256": "2bb428b40bfc7e88b84e5d8ed5e78bac2565b255a0ae0a1b121a406f52674702"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/encoding_nonascii.cbl.provenance.json",
+      "sha256": "b9a580745319806abf2d96e6d9cf80acaac15ea9ffe4dd3f12f48c532d31c518"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/encoding_nonascii.proposal.json",
+      "sha256": "cb78fb5b0079260e570bdae195c0377e96af938a34fd0782a449e43787b6c973"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/encoding_nonascii.proposal.json.provenance.json",
+      "sha256": "42a46c4b58469fbf93006c3b8dd84f1daa68ddd7f9edbbbbabf374a640961186"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/external_input_binding.cbl",
+      "sha256": "e8d484513f26eb3292faf591355626db826f03aaea44678c6cc221e5b4fceb1f"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/external_input_binding.cbl.provenance.json",
+      "sha256": "1439c529179f57496c7efc18b7091bea70e65e4d82296e8207a4421337f34410"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/external_input_binding.proposal.json",
+      "sha256": "c7e81c62c0df92e1e9385ce191ac92be6749dc54b568cc591f6285b860e23702"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/external_input_binding.proposal.json.provenance.json",
+      "sha256": "4e8ecf8898c928b6b60ecc8138b392334d8214d55bcbb763876c10aaa15ca547"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/external_signed_embedded.cbl",
+      "sha256": "b7143556db6e7c9b0c2fb309d977f2198b73ce4279ba2034ed55fad5cfdae634"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/external_signed_embedded.cbl.provenance.json",
+      "sha256": "3a5574769b60ad15427feb1c18d1d88b784ca1cf30d4348ef44566256be61b6b"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/external_signed_embedded.proposal.json",
+      "sha256": "2d2c9e05297cd3e1c6be09c83cf447c83c1c5c13512b47cee15cedc7b698399a"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/external_signed_embedded.proposal.json.provenance.json",
+      "sha256": "edf164ed1e07573a19dac69fb4cd0b14f5602d4da49099972012cbc048ba0376"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/forbidden_call.cbl",
+      "sha256": "61dcdf36e4162beabe6c4c712bbbb44c8525c0ac8310ec111a1ede5aed4097bc"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/forbidden_call.cbl.provenance.json",
+      "sha256": "de3223e272f606bdb1c9386f8726e364ff7fad77be722e75c6c3de0a9e8fc031"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/forbidden_call.proposal.json",
+      "sha256": "d233e9f28029857c3ed835a956208bf90c8ec966d0263d7f4c9f057871451172"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/forbidden_call.proposal.json.provenance.json",
+      "sha256": "a4bdbf2de34e4df26dbc67f45cc82d76f4f4387bb910e39ef315a618532e9a5c"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/header_syntax.cbl",
+      "sha256": "75419530c7001bd431b0ca2d6130952c32106ac7ba5b59327486899e6c9fa43d"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/header_syntax.cbl.provenance.json",
+      "sha256": "9129cf2fe0a4b54038a2c0ff2e3c4636a10209148ad65afb5c01fe91c91772e7"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/header_syntax.proposal.json",
+      "sha256": "be3d1af50fc1ac04537d2b9d30a9ab37ec06a0745ff3ac770ea916b6b0f3ab61"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/header_syntax.proposal.json.provenance.json",
+      "sha256": "f0c008e43ef1f3e1326bf04119376a1e5bbf53b5f1cdd8cd0bd76016564eeeb1"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/inventory.json",
+      "sha256": "70ea50ed5c4486e7085272c5e6ed6b8ea1c826971d0774b340002ab6c6504675"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/inventory.json.provenance.json",
+      "sha256": "c1a7ea7f59177e6cec757f63d874e666ec6ddef124c4326be7e2f0ebe2802768"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/line_limit_201.cbl",
+      "sha256": "4bef7d585dcf45058508ed2cc3a511b2fce8cd6359ccf856a4e1202cdf12f7a1"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/line_limit_201.cbl.provenance.json",
+      "sha256": "060fd3f20afe88f5b522f5c18b732dd4cfbf7c57266155be1dcd1c8b4549f64e"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/line_limit_201.proposal.json",
+      "sha256": "d2776a298139c78e70c181e5de3097f756c32d9e9657051748e22e34e6b223c9"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/line_limit_201.proposal.json.provenance.json",
+      "sha256": "b99bba850631a0f71b95fc69e72210209872338bac93dce5907542aec3661f92"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/logical_filename_escape.cbl",
+      "sha256": "d3da190f96e77bca62770c2d39b2498dd6a48c9b4b102c0acd214ab322c23a0f"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/logical_filename_escape.cbl.provenance.json",
+      "sha256": "0f6c23443056ba53db1f88b51b36a28087bc3d77ba1fdc36acb22b2ec61d5e68"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/logical_filename_escape.proposal.json",
+      "sha256": "87fbf9d0def08f23d76bd0f14a305ea5db44474a3aa076a584eca17c53d5bae1"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/logical_filename_escape.proposal.json.provenance.json",
+      "sha256": "f273b0f17c33e75f58bbb3f912db5aa8a0a6c9ce37725a1df182906b67c79175"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/main_missing_stop.cbl",
+      "sha256": "a35929f8b151950a90b45fd6111304cdf485ccf766f2990e8b181f6e583bfe8f"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/main_missing_stop.cbl.provenance.json",
+      "sha256": "720d5d28c25f4fed50a4a7e642bdf2d42f31079f84086f275075018785af41a4"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/main_missing_stop.proposal.json",
+      "sha256": "b0e77169cb1751aad493fc522a9ae33fa0b713742cdfcd1a0d1ea9f835a1caef"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/main_missing_stop.proposal.json.provenance.json",
+      "sha256": "f68ee42b2591bb0caf4abbe469857aff1e31468272a16a21e3d66578920bc4a3"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/missing_receiver.cbl",
+      "sha256": "f02354f01ef66da939b4c6cfcabbc126bf0e240c26b5aa050be00b5f56abf0e8"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/missing_receiver.cbl.provenance.json",
+      "sha256": "be369193216b27e337c2d8f16897537c8a836f98bd9d98fd4b7b5f12e3a0c2c3"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/missing_receiver.proposal.json",
+      "sha256": "a4a66a4fbf648a6416bc28ad0734ebd94b8a95cb75d0a382b346d8b4adf6c044"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/missing_receiver.proposal.json.provenance.json",
+      "sha256": "ad9c1a67b836fb5be1f625d29c7e2e1d9e0d783716ae45654fd2c35fee3fd159"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/numeric_digit_limit.cbl",
+      "sha256": "dab32aba3bbdbb0aa9210917617c0d2293a44e5e3519547841a15d4a0934e46e"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/numeric_digit_limit.cbl.provenance.json",
+      "sha256": "1619043dccb08126e9bb994e91fc501c908920280c358c5e9850d0e750b34ee2"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/numeric_digit_limit.proposal.json",
+      "sha256": "5a3004d319d06b8ebad99808ff5988df365f6c89c83134e8178dc818998560c5"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/numeric_digit_limit.proposal.json.provenance.json",
+      "sha256": "87f051e11a1c5d9a78d98688f97afd13f5ea53183713638c3bbec5b343e96686"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/read_before_open.cbl",
+      "sha256": "8b8e000b0dfbff9f7cdddf4547a89174a3a3cdd3ded163ec8e85237d640b998f"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/read_before_open.cbl.provenance.json",
+      "sha256": "e6cfef6406e86e8305c8f4039aabc52b88a6af632b2a24f5c386ea10258baa7c"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/read_before_open.proposal.json",
+      "sha256": "83e475e03ae13d04f5a06b2b913fcb2226cbeb1ee01ee686576711236c0a57be"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/read_before_open.proposal.json.provenance.json",
+      "sha256": "1ed14bc6f4ac763059a383a141099cb7fc1eded9030313a98e9a69b5f141ea6b"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/return_without_manifest.cbl",
+      "sha256": "95b641421069b321d328de63df33fd66309eee3598f32e572f1c92b5b8ee1d22"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/return_without_manifest.cbl.provenance.json",
+      "sha256": "0d2c0694bc6d9ff170f7f0df5e51180bfafc8d4fc4ad063d3b84a870a0f86658"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/return_without_manifest.proposal.json",
+      "sha256": "6dddaea53439caf9309184629f8a16ef92e0584c6cc29171c271ceafae2173a1"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/return_without_manifest.proposal.json.provenance.json",
+      "sha256": "2e70246e41468a6e16132e3d2b777b0845d2593bcb82848f6ae0fe0642e81a0d"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/unknown_symbol.cbl",
+      "sha256": "99912bb31c06ec0c3c644ffd21a053cd83750821dca317c181be6b405db62f50"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/unknown_symbol.cbl.provenance.json",
+      "sha256": "a0f3e5b641db32396c4fc5d0400a0591909703f4cc24584a1227773c0251e152"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/unknown_symbol.proposal.json",
+      "sha256": "9afc6877c478004c928c06ca97e43456ae1d303a732abff59af94cbeef6d86d6"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/unknown_symbol.proposal.json.provenance.json",
+      "sha256": "ea8670569f9f707a171f856ac497eb9f4ec4e9f5bdfbb0ed56a681338a05e9be"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/until_without_proof.cbl",
+      "sha256": "1a89e833fbb57d70e825473391166001070fa3620990549992ae17f392dc17c5"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/until_without_proof.cbl.provenance.json",
+      "sha256": "dc40674f9576b00ea5c147d5646386462136ecc37583d81e0fdf5728b5992706"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/until_without_proof.proposal.json",
+      "sha256": "5a379a174f60d9343ea66b0b89788c32b48c9df2e3a04eaaca79b56c2d59fd8c"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/until_without_proof.proposal.json.provenance.json",
+      "sha256": "7105581e55afc69f5772e8647bbd952182abbb9576f8474d0de91c356831a0ad"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/value_overwidth.cbl",
+      "sha256": "84a6e72d0e041beccc5fb59926f00448fc7b7e223e120ac5d12754a71abeebbd"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/value_overwidth.cbl.provenance.json",
+      "sha256": "beb6fe5a21990590bf58d08d11589a57745f77727e4ebba9d6b59ce7b01b3a9e"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/value_overwidth.proposal.json",
+      "sha256": "4dc56ef3459eec3d5e610e509bd6e62009d07ed6926a3c66fc960a342762a00b"
+    },
+    {
+      "path": "corpus/fixtures/parser-map/refusals/value_overwidth.proposal.json.provenance.json",
+      "sha256": "e8c60553b72d1f4881f90b401ed39bf7cebeaa760faf8bb0465b54a7147fbda9"
+    }
+  ],
+  "author_callsign": "0003_Codex_GPT-6_M10-DL2",
+  "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
+  "baseline": "ead52b34e83bc587a7dec5b85986a4f9893ad7d3",
+  "brief_sha256": "b396b1b1aadc2de3092d78a754fbd230472fccb73eda2176aa26253872e36ff6",
+  "created_at": "2026-10-28T02:03:38Z",
+  "diagnostic_grant": {
+    "name": "ROUND2-DL2-DL3-DIAGNOSTICS.md",
+    "raw_sha256": "b5e4bbf6ac5668a9cae620049bdb59b59475d096edc3ea4e4e999dea33f32954",
+    "restriction": "fresh_static_review_then_own_explicit_unittest_only_py311_diagnostic_not_supported_runtime_validation"
+  },
+  "emitted_parser_codes_targeted": [
+    "bad_layout_or_sign",
+    "bad_picture",
+    "compute_limit",
+    "control_flow",
+    "duplicate_name",
+    "external_path",
+    "field_limit",
+    "file_contract",
+    "literal_range",
+    "out_of_subset",
+    "return_contract",
+    "source_encoding",
+    "source_limit",
+    "syntax_error",
+    "type_mismatch",
+    "unbounded_perform",
+    "unknown_token",
+    "unresolved_name"
+  ],
+  "execution_status": "not_run_at_authoring",
+  "gaps": [
+    {
+      "code": "partial_parse",
+      "reason": "Documented SUBSET enum has no current lexer/parser/validation fail/refuse path; trailing tokens are parsed as paragraphs or fail another stage. Future test explicitly skipped.",
+      "status": "no_emitting_current_path"
+    },
+    {
+      "hazard": "H3",
+      "reason": "Current detector warns every file operation, even guarded. Negative has no file operation; no invented guarded negative.",
+      "status": "no_guarded_suppression_pair"
+    }
+  ],
+  "kind": "builder_parser_map_regression_sources",
+  "manifest_version": 1,
+  "map_refusal_targets": [
+    "pointer_unresolved",
+    "map_limit"
+  ],
+  "product_source_read_raw_pins": {
+    "src/cobolmap/mapping/__init__.py": "a2ca1014e61d5e8b2ffd87c597ca98c5f42bba49da5b8686cde68bc93fbe9497",
+    "src/cobolmap/mapping/analysis.py": "5322071667b523a0efedebaa876eee4ab4a12b7f14b2e551ac4ce6a8bc824aae",
+    "src/cobolmap/parse/lexer.py": "2bb8adcd7f8aa6a7de9e3cbabd2f10189d58479147b9fbb44a236cbe18341fef",
+    "src/cobolmap/parse/models.py": "5a6933fd64a0856f8edb063a6cc04981bcd8ae78f01f991e981a6f244dc4bba0",
+    "src/cobolmap/parse/parser.py": "f00f7cd3028b28b14bfb0354c00b43c67c921537bf1ceb6142aed6f992a18c85",
+    "src/cobolmap/parse/validation.py": "0f552aa1b7ac30a6b89cbb65a12a9fc47a7d0c89970eb14b201250355c3f3297"
+  },
+  "source_counts": {
+    "hazard": 17,
+    "ir_mapping": 6,
+    "refusal": 20
+  },
+  "static_expectations": "builder_authored_not_oracle_observations",
+  "tests": [
+    {
+      "path": "tests/parser_map/test_hazards.py",
+      "sha256": "ebe73f3a6e1a706b6aaf696d745973457cabe0580cba44b3ae7fb825e7b60e44"
+    },
+    {
+      "path": "tests/parser_map/test_hazards.py.provenance.json",
+      "sha256": "8a879bda9f1215aeb364de7b3c2c141ced5610f54b36d3cc8f96b59a62fdc5a2"
+    },
+    {
+      "path": "tests/parser_map/test_ir_mapping.py",
+      "sha256": "7e999e3779c276e0891385c4ff642f4c2966919b4dab67708cd2062d0dbe02d8"
+    },
+    {
+      "path": "tests/parser_map/test_ir_mapping.py.provenance.json",
+      "sha256": "e6e42648dfaa46dce24fd72ebda2308436dbdb1cd4c73e1f6820e21cfbcb70dd"
+    },
+    {
+      "path": "tests/parser_map/test_refusals.py",
+      "sha256": "267da0b49b21c7ab9609627b03edeb47e7c144e7b2aacfe2e3373baf8d78782f"
+    },
+    {
+      "path": "tests/parser_map/test_refusals.py.provenance.json",
+      "sha256": "cabb3ad5ddbd489b17104e3fd085cd9fd908979dd76707aeb78fb7557e097675"
+    }
+  ]
+}

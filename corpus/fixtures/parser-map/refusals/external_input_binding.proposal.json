@@ -1,0 +1,20 @@
+{
+  "case_id": "external_input_binding",
+  "diagnostic_filename": "external_input_binding.cbl",
+  "expectation_status": "authored_static_unexecuted",
+  "expected_static_code": "external_path",
+  "failure_focus": {
+    "byte_end": 148,
+    "byte_start": 133
+  },
+  "kind": "parse_refusal",
+  "logical_filename": "external_input_binding.cbl",
+  "manifest_version": 1,
+  "native_manifest": null,
+  "observations": null,
+  "source": {
+    "path": "corpus/fixtures/parser-map/refusals/external_input_binding.cbl",
+    "sha256": "e8d484513f26eb3292faf591355626db826f03aaea44678c6cc221e5b4fceb1f"
+  },
+  "what_bug_this_catches": "Alternative input paths must not be interpolated or accepted as the fixed binding."
+}

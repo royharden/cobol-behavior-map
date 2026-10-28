@@ -1,0 +1,18 @@
+{
+  "manifest_version": 1,
+  "fixture_id": "h7_divisor_guarded",
+  "source": {
+    "path": "corpus/fixtures/parser-map/hazards/h7_divisor_guarded.cbl",
+    "source_sha256": "d0cf7de5313657d91be184155b4c4755e5bb742b743455b2feaf13c43ac517b7",
+    "raw_sha256": "d0cf7de5313657d91be184155b4c4755e5bb742b743455b2feaf13c43ac517b7"
+  },
+  "expected_static_hazard": {
+    "hazard_id": "H7",
+    "at_statement": "DIVIDE 10 BY DIVISOR-N GIVING RESULT-N END-DIVIDE",
+    "present": false
+  },
+  "what_bug_this_catches": "Failing to honor a dominating nonzero comparison on the same divisor.",
+  "expected_observations": null,
+  "execution_status": "not_run",
+  "authorship_status": "builder-authored-static-expectation; not oracle evidence"
+}

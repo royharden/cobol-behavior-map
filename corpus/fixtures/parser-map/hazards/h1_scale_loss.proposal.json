@@ -1,0 +1,18 @@
+{
+  "manifest_version": 1,
+  "fixture_id": "h1_scale_loss",
+  "source": {
+    "path": "corpus/fixtures/parser-map/hazards/h1_scale_loss.cbl",
+    "source_sha256": "ec5ebd2e9d3e24a20a16e3ab485ff9377f311e922726b69fbe9b9e3703cffd82",
+    "raw_sha256": "ec5ebd2e9d3e24a20a16e3ab485ff9377f311e922726b69fbe9b9e3703cffd82"
+  },
+  "expected_static_hazard": {
+    "hazard_id": "H1",
+    "at_statement": "MOVE SOURCE-N TO DEST-N",
+    "present": true
+  },
+  "what_bug_this_catches": "Dropping fractional scale loss from an unrounded numeric MOVE.",
+  "expected_observations": null,
+  "execution_status": "not_run",
+  "authorship_status": "builder-authored-static-expectation; not oracle evidence"
+}

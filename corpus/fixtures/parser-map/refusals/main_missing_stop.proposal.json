@@ -1,0 +1,20 @@
+{
+  "case_id": "main_missing_stop",
+  "diagnostic_filename": "main_missing_stop.cbl",
+  "expectation_status": "authored_static_unexecuted",
+  "expected_static_code": "control_flow",
+  "failure_focus": {
+    "byte_end": 597,
+    "byte_start": 594
+  },
+  "kind": "parse_refusal",
+  "logical_filename": "main_missing_stop.cbl",
+  "manifest_version": 1,
+  "native_manifest": null,
+  "observations": null,
+  "source": {
+    "path": "corpus/fixtures/parser-map/refusals/main_missing_stop.cbl",
+    "sha256": "a35929f8b151950a90b45fd6111304cdf485ccf766f2990e8b181f6e583bfe8f"
+  },
+  "what_bug_this_catches": "MAIN cannot fall through an implicit period instead of terminal STOP RUN."
+}

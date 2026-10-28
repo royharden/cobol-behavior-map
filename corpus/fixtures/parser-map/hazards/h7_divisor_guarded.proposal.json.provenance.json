@@ -1,0 +1,21 @@
+{
+  "manifest_version": 1,
+  "artifact_kind": "proposal",
+  "artifact_path": "corpus/fixtures/parser-map/hazards/h7_divisor_guarded.proposal.json",
+  "artifact_sha256": "6425f397beed404f16d5bda74bcecc69a95afa7d15a8454da49fd638bbb1b726",
+  "source_sha256": "6425f397beed404f16d5bda74bcecc69a95afa7d15a8454da49fd638bbb1b726",
+  "raw_sha256": "6425f397beed404f16d5bda74bcecc69a95afa7d15a8454da49fd638bbb1b726",
+  "author_callsign": "0080_Codex_GPT-6_Sub_DL2HazardRegressions",
+  "author_session_id": "01a18034-a156-7751-810a-188e171c8fbc",
+  "author_harness": "Codex",
+  "parent_callsign_id": "0003",
+  "parent_artifact_sha256": null,
+  "license_id": null,
+  "license_approval_id": null,
+  "license_status": "pending",
+  "split": "dev",
+  "created_at": "2026-10-28T01:54:40.734593+00:00",
+  "originality_attestation": "Original static regression source authored by implementation-lineage child; no product import, test, compiler, oracle, CaseBundle, input record, or runtime observation.",
+  "original_artifact_path": "corpus/fixtures/parser-map/h7_divisor_guarded.proposal.json",
+  "relocation_note": "Assigned hazards subtree correction; source bytes preserved where artifact is COBOL."
+}

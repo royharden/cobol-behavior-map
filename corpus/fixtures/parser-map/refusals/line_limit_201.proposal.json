@@ -1,0 +1,20 @@
+{
+  "case_id": "line_limit_201",
+  "diagnostic_filename": "line_limit_201.cbl",
+  "expectation_status": "authored_static_unexecuted",
+  "expected_static_code": "source_limit",
+  "failure_focus": {
+    "byte_end": 2552,
+    "byte_start": 2541
+  },
+  "kind": "parse_refusal",
+  "logical_filename": "line_limit_201.cbl",
+  "manifest_version": 1,
+  "native_manifest": null,
+  "observations": null,
+  "source": {
+    "path": "corpus/fixtures/parser-map/refusals/line_limit_201.cbl",
+    "sha256": "4bef7d585dcf45058508ed2cc3a511b2fce8cd6359ccf856a4e1202cdf12f7a1"
+  },
+  "what_bug_this_catches": "Rejects a complete otherwise-supported source above200 physical lines; no prefix success."
+}
