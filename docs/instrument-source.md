@@ -107,6 +107,18 @@ execution_receipt)` must cover every frozen case for every DEV task. Each
 ExecutionObservation/ComparisonResult. Passing A requires actual matching ordinary
 presence/output/stdout/stderr/return, correct oracle and candidate source identities,
 parent candidate hash, task/program/case, target pins and real receipts/authority.
+Both native oracle/candidate `source_sha256` fields bind the common logical
+original/source-map identity, matching integrated runner `_assemble` and native
+comparison. This never asserts that changed oracle bytes equal original bytes.
+The complete TaskBinding retains panel, edit, raw original and compiled
+`oracle_source`; FrozenVerification retains the distinct actual compiled-source
+binding. External authority must authenticate the underlying actual oracle
+request/plan/compiled bytes and candidate request/plan/executed bytes, joined to
+each frozen case/partition/tool pin and actual observation/comparison receipt.
+For changed tasks an original-only execution receipt is insufficient. Actual
+task artifact refs, baseline execution receipt and native runtime receipt refs
+carry these external joins; absent or unjoinable request/plan/staged-byte proof
+refuses. No source hashes or supplied observation objects are rewritten here.
 Missing baseline/partition remains pending; a claimed nonpass refuses as a passing
 proof. Compiler faults, unknown/infra and source availability cannot become passes.
 
@@ -141,7 +153,9 @@ or raises is an external protocol, absent by default. It must authenticate the
 actual approved code/edition/scope manifest, real positive execution/receipt counts,
 frozen byte partitions, pins/targets, all observations, actual nonauthor validity/
 non-equivalence/class/equivalence proof, exact independent registry/parent/fork
-lineage, and any revalidation/reseal. The caller must authenticate the verifier's
+lineage, each complete task/actual compiled-oracle/candidate/request/plan/receipt
+join described above, and any revalidation/reseal. Logical source equality alone
+does not prove the changed oracle ran. The caller must authenticate the verifier's
 actual designation separately; a duck-typed callback returning None is not proof.
 No verifier implementation, independent receipt, authority revision or actor is
 authored here. Unknown/extra/subclassed nested native evidence cannot be silently

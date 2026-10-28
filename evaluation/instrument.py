@@ -82,6 +82,16 @@ class InstrumentAuthority(Protocol):
         actual observations, frozen partitions, passing A, original/non-equivalent
         validity/classification or written equivalence, nonauthor review lineage,
         true execution receipts and any sole dev improvement/reseal/renewed GO.
+        Authenticate every full TaskBinding panel/edit/raw original/compiled
+        oracle_source; each actual oracle request/plan and compiled source bytes;
+        each candidate request/plan and executed candidate bytes; exact partition/
+        case/tool pins and actual observation/comparison receipt joins. Both native
+        observations use original.sha256 as LOGICAL context only. A change task
+        must really execute task.oracle_source, never an original-only receipt.
+        TaskBinding raw artifact refs, baseline execution_receipt and each native
+        evidence.runtime_receipt carry external artifact joins; missing request/
+        plan/staged-byte/compiled-source proof MUST refuse. Do not infer these facts
+        from logical context equality, metadata labels or a callback's None return.
         Caller must authenticate this verifier's external appointment separately.
         Presence, hashes, status flags or a callback returning None are not proof.
         No implementation or actual appointment is provided by this source.
@@ -173,9 +183,9 @@ def _comparison(item, task, candidate_hash, oracle_pins, candidate_pins, *, matc
                 or observation.case_sha256 != item.case_sha256 or observation.evidence.mode != 'actual'
                 or observation.evidence.missing_actual() or observation.evidence.pins != pins):
             raise ValueError('actual task/program/case/pin/receipt/authority context required')
-    if (oracle.source_sha256 != task.oracle_source.sha256 or oracle.candidate_sha256 is not None
+    if (oracle.source_sha256 != task.original.sha256 or oracle.candidate_sha256 is not None
             or candidate.source_sha256 != task.original.sha256 or candidate.candidate_sha256 != candidate_hash):
-        raise ValueError('oracle/source/candidate identity drift')
+        raise ValueError('logical source-map context/candidate identity drift')
     if oracle.outcome not in ('completed', 'handled') or oracle.ordinary is None:
         raise ValueError('uncontrolled oracle fault/infra is not instrument evidence')
     if matching:
