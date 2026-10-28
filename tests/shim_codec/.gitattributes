@@ -1,0 +1,3 @@
+# Preserve raw source/catalog provenance pins.
+*.py -text
+*.json -text

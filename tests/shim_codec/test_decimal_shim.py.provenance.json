@@ -1,0 +1,24 @@
+{
+  "artifact_kind": "instrument",
+  "artifact_path": "tests/shim_codec/test_decimal_shim.py",
+  "artifact_sha256": "f61db9e7c9a1bf7c405d32b03030ee3289c5984679a19310072eeab99ecf30f2",
+  "author_callsign": "0088_Codex_GPT-6_Sub_DL2DecimalRegressions",
+  "author_harness": "Codex",
+  "author_session_id": "01a1804f-3bf7-76d2-99ae-c717ca9fda22",
+  "brief_sha256": "1828d31bc54340c5abc67a299caa5618e877041b56c36ac8805542477a779ba6",
+  "created_at": "2026-10-28T02:22:17Z",
+  "evidence_paths": [
+    "admission/specs/SHIM-API.md",
+    "src/cobolmap/shared/decimal_shim.py"
+  ],
+  "family_id": null,
+  "generator_sha256": null,
+  "license_approval_id": null,
+  "license_id": null,
+  "license_status": "pending",
+  "manifest_version": 1,
+  "originality_attestation": "Original finite builder decimal-shim unit hypotheses authored by child 0088 under parent 0003. This revision nests three assertRaises/code assertions within each subTest for clean vector diagnostics; prior source SHA256 9c64d465444ee9e2fff41d38290d7b470aeec73077301a78ac9061aae7bc720d. Static inspection of equal-access SHIM-API.md and shared decimal_shim.py only; no compiler/native observations, candidate/guest code execution, test invocation, parity claim, actual evidence, or external/prohibited ingestion. Python test imports are local to methods and will execute only after independent exact-edition source review.",
+  "parent_artifact_sha256": "9c64d465444ee9e2fff41d38290d7b470aeec73077301a78ac9061aae7bc720d",
+  "source_sha256": null,
+  "split": "dev"
+}

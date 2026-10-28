@@ -1,0 +1,23 @@
+{
+  "artifact_kind": "instrument",
+  "artifact_path": "tests/shim_codec/test_display_codec.py",
+  "artifact_sha256": "5423b1d7ebd73cb955031db5acf1744c4be0d2401588c274610cfee5d22c156e",
+  "author_callsign": "0003_Codex_GPT-6_M10-DL2",
+  "author_harness": "Codex",
+  "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
+  "brief_sha256": "1828d31bc54340c5abc67a299caa5618e877041b56c36ac8805542477a779ba6",
+  "created_at": "2026-10-28T02:28:15Z",
+  "evidence_paths": [
+    "docs/shim-codec-diagnostics.md"
+  ],
+  "family_id": null,
+  "generator_sha256": null,
+  "license_approval_id": null,
+  "license_id": null,
+  "license_status": "pending",
+  "manifest_version": 1,
+  "originality_attestation": "Original builder shared decimal/DISPLAY regression source/catalog, Codex GPT-6 family, actual parent0003/0912 session; finite authored unit arithmetic/byte hypotheses only, no external/prohibited data, compiler observations, admitted CaseBundles, independent proof or native calls during authoring.",
+  "parent_artifact_sha256": null,
+  "source_sha256": "5423b1d7ebd73cb955031db5acf1744c4be0d2401588c274610cfee5d22c156e",
+  "split": "dev"
+}
