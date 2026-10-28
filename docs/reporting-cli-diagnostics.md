@@ -58,16 +58,38 @@ PYDANTIC_DISABLE_PLUGINS=__all__, and the fresh retained root variable above.
 Exact selection (90-second owned-process timeout, no shell interpolation):
 
 ```text
-<designated venv-312/Scripts/python.exe> -B -m unittest discover -s tests/reporting_cli -p test_*.py -v
+C:\Users\Roy Harden\OneDrive\PJ-OD\PortfolioBuilder\cobol-behavior-map\cobol-behavior-map\.agent-work\venv-312\Scripts\python.exe -B -m unittest discover -s tests/reporting_cli -p test_*.py -v
 ```
 
-The bracketed notation describes the exact executable specified by
-ROUND2-PY312-TEST-ENV.md, not an executed account/key/model placeholder. The actual
+This is the exact executable specified by ROUND2-PY312-TEST-ENV.md. The actual
 absolute executable, args, source/env pins, run root, stdout/stderr, exit/counts
 and any failures are recorded in READY. No pytest/plugin/unrelated discovery or
 broader repeats. Product defect reproductions are retained and routed to INT;
-assertions are not weakened to manufacture a pass. This suite is currently
-unexecuted pending source review.
+assertions are not weakened to manufacture a pass.
+
+## Observed run
+
+Fresh Medium test-source review passed for9979ed2f77cff50f7fce3515f621e44be29aab8d
+before any test import/execution. The single authorized selection then ran27 tests
+in0.989s:27 passed, zero failures/errors/skips, owned process15444 exited0 within
+the90second timeout. Actual CPython3.12.13/Pydantic2.12.5 and all four reviewed
+test/helper hashes matched preflight. The environment lock hash matched
+860845b56a69e5b715790c9b0d8f096383b081cd5849eed345fbc82255e0f905; every designated
+package version and the imported venv/prefix were verified. The environment was
+read-only and no dependency was installed or modified. No other suite ran.
+
+Retained root:
+C:\Worktrees\PortfolioBuilder\cobol-behavior-map\DL4-admission-gate\.agent-work\reporting-cli-diagnostics\builder-82b796768f1446a58d670e63d7f5f3df
+
+Preflight, raw unittest stdout/stderr, owner-observed process metadata and every
+input/output vector remain there. Helper/native writes were exclusive; no file
+was cleaned up, deleted, unlinked or overwritten. The existing-output negative
+route refused and retained original bytes. All file replay vectors remained
+unavailable/refused; no genuine available replay was manufactured. The actual-mode
+manifest mismatch and missing-reference completion claim refused as intended.
+No product defect was observed in this selection, and no product source changed.
+Only this document records results after the reviewed test-source edition; the
+four test files remain unchanged. Exact output/source pins are in READY.
 
 Finite builder passes establish only these selected boundaries, not genuine A,
 compiler equivalence, real returned candidate/model history, complete available
