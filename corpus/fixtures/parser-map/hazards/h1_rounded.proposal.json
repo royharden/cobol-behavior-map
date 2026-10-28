@@ -1,0 +1,18 @@
+{
+  "manifest_version": 1,
+  "fixture_id": "h1_rounded",
+  "source": {
+    "path": "corpus/fixtures/parser-map/hazards/h1_rounded.cbl",
+    "source_sha256": "2ff0df5e942f14ed1d79e87e3fb8eb5db8967dea8ed1f2ccb0c910aad6d2a7c9",
+    "raw_sha256": "2ff0df5e942f14ed1d79e87e3fb8eb5db8967dea8ed1f2ccb0c910aad6d2a7c9"
+  },
+  "expected_static_hazard": {
+    "hazard_id": "H1",
+    "at_statement": "COMPUTE DEST-N = SOURCE-N ROUNDED END-COMPUTE",
+    "present": false
+  },
+  "what_bug_this_catches": "Warning for a destination whose arithmetic explicitly requests ROUNDED.",
+  "expected_observations": null,
+  "execution_status": "not_run",
+  "authorship_status": "builder-authored-static-expectation; not oracle evidence"
+}

@@ -1,0 +1,18 @@
+{
+  "manifest_version": 1,
+  "fixture_id": "h8_one_operator",
+  "source": {
+    "path": "corpus/fixtures/parser-map/hazards/h8_one_operator.cbl",
+    "source_sha256": "aab2a0d1b38d21b57a3bdffee2e7871f3b02c27ba6e8a18e64bf572d1b215628",
+    "raw_sha256": "aab2a0d1b38d21b57a3bdffee2e7871f3b02c27ba6e8a18e64bf572d1b215628"
+  },
+  "expected_static_hazard": {
+    "hazard_id": "H8",
+    "at_statement": "COMPUTE RESULT-N = 1 + 2 END-COMPUTE",
+    "present": false
+  },
+  "what_bug_this_catches": "Flagging a single-operator COMPUTE as a multi-operator expression.",
+  "expected_observations": null,
+  "execution_status": "not_run",
+  "authorship_status": "builder-authored-static-expectation; not oracle evidence"
+}

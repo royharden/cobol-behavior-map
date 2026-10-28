@@ -1,0 +1,23 @@
+{
+  "artifact_kind": "request",
+  "artifact_path": "corpus/fixtures/parser-map/ir/quoted_span_crlf.proposal.json",
+  "artifact_sha256": "4ce12a5f0ba544af30cefc9b7171b595e57690dfd85e6ff1c9fb412fb8c20cac",
+  "author_callsign": "0003_Codex_GPT-6_M10-DL2",
+  "author_harness": "Codex",
+  "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
+  "brief_sha256": "b396b1b1aadc2de3092d78a754fbd230472fccb73eda2176aa26253872e36ff6",
+  "created_at": "2026-10-28T01:57:44Z",
+  "evidence_paths": [
+    "docs/parser-map-fixture-source.md"
+  ],
+  "family_id": null,
+  "generator_sha256": null,
+  "license_approval_id": null,
+  "license_id": null,
+  "license_status": "pending",
+  "manifest_version": 1,
+  "originality_attestation": "Original builder parser/map regression source or authored static expectation, Codex GPT-6 family, actual session0003/0912; no external/prohibited ingestion, parser/map/test/compiler invocation, oracle observations, actual input cases or independent proof.",
+  "parent_artifact_sha256": "942552de3efc6eb592cd16fc8bf00ce7265e2a6d5296a8e3c7430cda0019a189",
+  "source_sha256": "942552de3efc6eb592cd16fc8bf00ce7265e2a6d5296a8e3c7430cda0019a189",
+  "split": "dev"
+}

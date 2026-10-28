@@ -1,0 +1,18 @@
+{
+  "manifest_version": 1,
+  "fixture_id": "h4_year_no_pivot",
+  "source": {
+    "path": "corpus/fixtures/parser-map/hazards/h4_year_no_pivot.cbl",
+    "source_sha256": "d8da1838bbcb89f1fb51e7cddc55bfa005b48d9a6af9ea2468380a8e52f0c7b3",
+    "raw_sha256": "d8da1838bbcb89f1fb51e7cddc55bfa005b48d9a6af9ea2468380a8e52f0c7b3"
+  },
+  "expected_static_hazard": {
+    "hazard_id": "H4",
+    "at_statement": "ADD YEAR-YY TO RESULT-N END-ADD",
+    "present": true
+  },
+  "what_bug_this_catches": "Missing two-digit-year arithmetic without a pivot guard.",
+  "expected_observations": null,
+  "execution_status": "not_run",
+  "authorship_status": "builder-authored-static-expectation; not oracle evidence"
+}

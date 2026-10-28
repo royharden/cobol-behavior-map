@@ -1,0 +1,20 @@
+{
+  "case_id": "encoding_nonascii",
+  "diagnostic_filename": "encoding_nonascii.cbl",
+  "expectation_status": "authored_static_unexecuted",
+  "expected_static_code": "source_encoding",
+  "failure_focus": {
+    "byte_end": 592,
+    "byte_start": 590
+  },
+  "kind": "parse_refusal",
+  "logical_filename": "encoding_nonascii.cbl",
+  "manifest_version": 1,
+  "native_manifest": null,
+  "observations": null,
+  "source": {
+    "path": "corpus/fixtures/parser-map/refusals/encoding_nonascii.cbl",
+    "sha256": "2bb428b40bfc7e88b84e5d8ed5e78bac2565b255a0ae0a1b121a406f52674702"
+  },
+  "what_bug_this_catches": "Refuses non-ASCII even inside a quoted literal, before treating it as harmless text."
+}

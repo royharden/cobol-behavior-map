@@ -1,0 +1,14 @@
+{
+  "case_id": "guarded_open_flag",
+  "expectation_status": "authored_static_unexecuted",
+  "kind": "accepted_ir_or_mapping_precondition",
+  "logical_filename": "guarded_open_flag.cbl",
+  "manifest_version": 1,
+  "native_manifest": null,
+  "observations": null,
+  "source": {
+    "path": "corpus/fixtures/parser-map/ir/guarded_open_flag.cbl",
+    "sha256": "0c4b33dc929a7d2b3e02b2c68f40d06554468e51529c446ccfa539791e23d48c"
+  },
+  "what_bug_this_catches": "Successful-open facts must survive ordinary alpha flag assignment; failed-open paths must skip cleanup."
+}

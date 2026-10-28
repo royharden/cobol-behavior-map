@@ -1,0 +1,20 @@
+{
+  "case_id": "value_overwidth",
+  "diagnostic_filename": "value_overwidth.cbl",
+  "expectation_status": "authored_static_unexecuted",
+  "expected_static_code": "literal_range",
+  "failure_focus": {
+    "byte_end": 555,
+    "byte_start": 518
+  },
+  "kind": "parse_refusal",
+  "logical_filename": "value_overwidth.cbl",
+  "manifest_version": 1,
+  "native_manifest": null,
+  "observations": null,
+  "source": {
+    "path": "corpus/fixtures/parser-map/refusals/value_overwidth.cbl",
+    "sha256": "84a6e72d0e041beccc5fb59926f00448fc7b7e223e120ac5d12754a71abeebbd"
+  },
+  "what_bug_this_catches": "An overwidth declaration VALUE cannot rely on runtime truncation to enter the grammar."
+}

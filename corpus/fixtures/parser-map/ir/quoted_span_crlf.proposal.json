@@ -1,0 +1,14 @@
+{
+  "case_id": "quoted_span_crlf",
+  "expectation_status": "authored_static_unexecuted",
+  "kind": "accepted_ir_or_mapping_precondition",
+  "logical_filename": "quoted_span_crlf.cbl",
+  "manifest_version": 1,
+  "native_manifest": null,
+  "observations": null,
+  "source": {
+    "path": "corpus/fixtures/parser-map/ir/quoted_span_crlf.cbl",
+    "sha256": "942552de3efc6eb592cd16fc8bf00ce7265e2a6d5296a8e3c7430cda0019a189"
+  },
+  "what_bug_this_catches": "CRLF raw hashes and byte spans must not be normalized through text-file newline conversion."
+}

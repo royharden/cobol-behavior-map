@@ -1,0 +1,18 @@
+{
+  "manifest_version": 1,
+  "fixture_id": "h6_width_mismatch",
+  "source": {
+    "path": "corpus/fixtures/parser-map/hazards/h6_width_mismatch.cbl",
+    "source_sha256": "68ba945efb69f63b82d3a6e01a240ff0f8c25c0853565d471d63ceb2c94667dd",
+    "raw_sha256": "68ba945efb69f63b82d3a6e01a240ff0f8c25c0853565d471d63ceb2c94667dd"
+  },
+  "expected_static_hazard": {
+    "hazard_id": "H6",
+    "at_statement": "MOVE SOURCE-X TO DEST-X",
+    "present": true
+  },
+  "what_bug_this_catches": "Missing alphanumeric truncation risk for unequal widths.",
+  "expected_observations": null,
+  "execution_status": "not_run",
+  "authorship_status": "builder-authored-static-expectation; not oracle evidence"
+}

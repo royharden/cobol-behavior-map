@@ -1,0 +1,14 @@
+{
+  "case_id": "quoted_span_lf",
+  "expectation_status": "authored_static_unexecuted",
+  "kind": "accepted_ir_or_mapping_precondition",
+  "logical_filename": "quoted_span_lf.cbl",
+  "manifest_version": 1,
+  "native_manifest": null,
+  "observations": null,
+  "source": {
+    "path": "corpus/fixtures/parser-map/ir/quoted_span_lf.cbl",
+    "sha256": "9fe3105979e008e22473c0954db6ba0d56ab99c4780678596a1f18e8225af2d8"
+  },
+  "what_bug_this_catches": "Escaped quotes and comment delimiters inside literals remain data; forbidden comment words are not executable tokens."
+}

@@ -1,0 +1,20 @@
+{
+  "case_id": "external_signed_embedded",
+  "diagnostic_filename": "external_signed_embedded.cbl",
+  "expectation_status": "authored_static_unexecuted",
+  "expected_static_code": "bad_layout_or_sign",
+  "failure_focus": {
+    "byte_end": 371,
+    "byte_start": 351
+  },
+  "kind": "parse_refusal",
+  "logical_filename": "external_signed_embedded.cbl",
+  "manifest_version": 1,
+  "native_manifest": null,
+  "observations": null,
+  "source": {
+    "path": "corpus/fixtures/parser-map/refusals/external_signed_embedded.cbl",
+    "sha256": "b7143556db6e7c9b0c2fb309d977f2198b73ce4279ba2034ed55fad5cfdae634"
+  },
+  "what_bug_this_catches": "Signed external FD fields require leading separate sign; no inferred external codec."
+}
