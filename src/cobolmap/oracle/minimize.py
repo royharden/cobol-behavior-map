@@ -20,7 +20,7 @@ from .minimize_models import (
 
 
 def _validated_case(case: CaseBundle) -> None:
-    if not isinstance(case, CaseBundle):
+    if type(case) is not CaseBundle:
         raise ValueError("case_bundle_required")
     CaseBundle.model_validate(case.model_dump())
 
@@ -70,12 +70,12 @@ def _validate_context(case: CaseBundle, context: LoopContext) -> tuple:
 
 
 def _comparison(pair: ObservationPair, case: CaseBundle, context: LoopContext):
-    if not isinstance(pair, ObservationPair):
+    if type(pair) is not ObservationPair:
         raise ValueError("callback_observation_pair_required")
     for role, observation, pins, candidate in (
             ("oracle", pair.oracle, context.oracle_pins, None),
             ("candidate", pair.candidate, context.candidate_pins, context.candidate_sha256)):
-        if not isinstance(observation, ExecutionObservation):
+        if type(observation) is not ExecutionObservation:
             raise ValueError(f"{role}:execution_observation_required")
         ExecutionObservation.model_validate(observation.model_dump())
         if (observation.task_id != context.task_id or observation.program_id != context.program_id
@@ -231,7 +231,8 @@ def minimize_loop(case: CaseBundle, baseline: ObservationPair | None = None,
                 return False
             if not keepgoing():
                 return False
-            lineage.append(ReductionStep(best.case_sha256, proposal.case_sha256, reason, pair))
+            lineage.append(ReductionStep(best.case_sha256, proposal.case_sha256, reason, pair,
+                                         parent_case=best, derivative_case=proposal))
             best, witness = proposal, pair
             return True
         except Exception as exc:
@@ -279,4 +280,5 @@ def minimize_loop(case: CaseBundle, baseline: ObservationPair | None = None,
                            case=best, witness=witness, lineage=tuple(lineage),
                            proposals=proposals, callback_calls=calls,
                            elapsed_seconds=time.monotonic() - started,
-                           issues=tuple(issues), minimization="best_found")
+                           issues=tuple(issues), minimization="best_found",
+                           origin_case=case, origin_witness=baseline)
