@@ -2,10 +2,11 @@
 
 Builders are future-call APIs, not authority boundaries. External admission,
 context provenance, equal shim access, canary policy, whole-wire token/byte
-checks and accounting remain required. No derivative transport is adopted here.
+checks and accounting remain required. Local derivative proof grants no transport.
 """
+from __future__ import annotations
 from dataclasses import dataclass
-from typing import Literal, TypeVar
+from typing import TYPE_CHECKING, Literal, TypeVar
 
 from cobolmap.contracts.base import ArtifactRef, FrozenModel, SourcePointer, canonical_json, sha256
 from cobolmap.contracts.claim_models import (
@@ -22,6 +23,9 @@ from cobolmap.contracts.study import (
     InitialFeedback, LoopWitness, TaskBinding,
 )
 from cobolmap.providers.models import ContextKind, ContextPart, Message
+
+if TYPE_CHECKING:
+    from cobolmap.contracts.derivation import DerivativeAuthority, DerivativeEvidence
 
 
 # Literal template SOURCE only. No template or task context is instantiated at
@@ -226,12 +230,15 @@ def build_counterexample_prompt(packet: CounterexampleFeedback, *, task: TaskBin
                                 call_id: str, shared_c_call_id: str,
                                 expected_previous_call_id: str,
                                 loop_hashes: frozenset[str], admitted: bool = False,
-                                max_payload_bytes: int = 60000) -> tuple[Message, ...]:
-    """One original-partition witness and permitted diagnostic, never proofs.
+                                max_payload_bytes: int = 60000,
+                                derivative: DerivativeEvidence | None = None,
+                                derivative_authority: DerivativeAuthority | None = None) -> tuple[Message, ...]:
+    """One final witness and permitted diagnostic; local proofs never wire.
 
-    New-hash minimized derivatives require a separately adopted authenticated
-    derivative path. They are refused by current canonical loop membership.
-    Local proof/lineage objects are deliberately absent from this API.
+    Requires accepted canonical feedback API9e9af9691fe or descendant. Optional
+    LOCAL derivative evidence is forwarded only to its authenticated validation;
+    missing actual authority refuses. Provider preparation must independently
+    reauthenticate the final wire digest; prompt validation grants no transport.
     """
     packet = _revalidate(packet, CounterexampleFeedback)
     task = _revalidate(task, TaskBinding)
@@ -242,7 +249,8 @@ def build_counterexample_prompt(packet: CounterexampleFeedback, *, task: TaskBin
     if packet.witness is not None and previous.code is None:
         raise ValueError("witness path requires candidate source")
     feedback_json(packet, loop_hashes=loop_hashes, admitted=admitted,
-                  max_payload_bytes=max_payload_bytes)
+                  max_payload_bytes=max_payload_bytes, derivative=derivative,
+                  derivative_authority=derivative_authority)
     parts = _base_parts(packet) + (
         _part(packet.task_id, "previous_candidate", canonical_json(previous).decode("utf-8")),
     )

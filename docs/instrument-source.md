@@ -179,10 +179,19 @@ cases.` D/R permit candidate compile/import/runtime diagnostics under the same
 failed/refused/invalid policy; generated candidates cannot receive diagnostics.
 R never receives witness bytes/class/field, D repairs or reduction lineage.
 
-Native feedback validation keeps the trusted original32 fixed. New-hash minimized
-derivatives remain unsupported/refused by these builders; current producer
-outboundFalse and DL3 derivative reconciliation are not bypassed. Local full
-origin/retained proofs and intermediate oracle answers are absent from prompt APIs.
+Native feedback validation keeps the trusted original32 fixed. D additionally
+accepts optional LOCAL `derivative: DerivativeEvidence` and
+`derivative_authority: DerivativeAuthority`, forwarding them only to canonical
+`feedback_json` from accepted9e9af9691fed5a06e918b88d5cb3addce2165832 or descendant.
+That actual API revalidates the complete local origin/retained proof and requires
+an external designated actual authority; absent proofs/authority refuse by default.
+Only the already authenticated final witness enters the existing message shape.
+Local full origin/retained proofs and intermediate oracle answers never become
+prompt text or provider union fields. Provider final preparation separately
+reauthenticates feedback and wire digests; prompt-stage authentication grants no
+transport. R/B/C expose no derivative arguments. No positive producer outbound
+flag, authority implementation or actual joined result is fabricated. The in-flight
+branch retains its4628fb1 base; integration must include the accepted native API.
 No verification/changed oracle/trace/private-family/cross-task context is accepted.
 Previous CandidateAttempt projection matches the provider's current declared full
 native projection; it is not a reduction-proof carrier.
