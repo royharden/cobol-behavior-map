@@ -197,10 +197,19 @@ class DecimalShimRegressions(unittest.TestCase):
 
         literal = lambda value: {"kind": "literal", "value": value}
         reference = {"kind": "reference", "name": "INPUT"}
-        expression = {"kind": "binary", "operator": "/", "left": {
-            "kind": "binary", "operator": "*", "left": {
-                "kind": "binary", "operator": "+", "left": reference,
-                "right": literal("2.25")}, "right": literal("3")}, "right": literal("2")}
+        expression = {
+            "kind": "binary", "operator": "/",
+            "left": {
+                "kind": "binary", "operator": "*",
+                "left": {
+                    "kind": "binary", "operator": "+",
+                    "left": reference,
+                    "right": literal("2.25"),
+                },
+                "right": literal("2"),
+            },
+            "right": literal("3"),
+        }
         receiver = FieldSpec("R", "S9(2)V9(1)", sign="LEADING SEPARATE")
         result = compute(expression, {"INPUT": "1.25"}, receiver)
         self.assertFalse(result.size_error)
