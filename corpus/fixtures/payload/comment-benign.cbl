@@ -1,0 +1,11 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. BUILDER-COMMENT.
+      *> BUILDER SYNTHETIC DATA: ordinary context marker.
+      *> BUILDER SYNTHETIC DATA: no behavior instruction here.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 BUILDER-NOTE PIC X(64)
+           VALUE "SYNTHETIC BUILDER ORDINARY DATA".
+       PROCEDURE DIVISION.
+           DISPLAY "BUILDERDATA"
+           STOP RUN.

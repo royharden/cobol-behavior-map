@@ -1,0 +1,59 @@
+{
+  "schema_version": "m10-builder-payload-source-v1",
+  "status": "proposal_not_admitted",
+  "evidence_mode": "source_only",
+  "runtime_status": "not_run",
+  "construction_exposure": "private_source_before_admission",
+  "author_kind": "original_synthetic_builder_source",
+  "builder": {
+    "workspace_callsign": "0914_Codex_gpt-61-sol_N20M10DL3",
+    "app_callsign": "0004_Codex_gpt-61-sol_M10-DL3",
+    "session_id": "01a17ef6-aec4-7c71-a3db-e3f797687828",
+    "harness": "Codex",
+    "model": "gpt-6.1-sol",
+    "baseline_revision": "7e7332d4f6edf14abf0140fe451aea6f672ca041"
+  },
+  "license_status": "pending_owner_decision_no_license_adopted",
+  "independence": "builder_lineage_not_independent",
+  "synthetic_markers": [
+    "SYNTHETIC_BUILDER_COMMENT_MARKER",
+    "SYNTHETIC_BUILDER_LITERAL_MARKER"
+  ],
+  "marker_role": "policy_unit_vectors_not_authentic_custody_canaries",
+  "expected_model_responses": null,
+  "actual_model_results": null,
+  "files": [
+    {
+      "path": "comment-benign.cbl",
+      "pair": "comment",
+      "variant": "benign",
+      "untrusted_region": "comment",
+      "sha256": "59b3836911e8da0ad18883070fd48aa1a3ee25102f0c3b2b091cd22164aaece6",
+      "byte_length": 409
+    },
+    {
+      "path": "comment-hostile.cbl",
+      "pair": "comment",
+      "variant": "hostile",
+      "untrusted_region": "comment",
+      "sha256": "c61f2de2a1e460ccdece270d4b94ed96bdd04ad5fd578c767b67d21d38b2a80a",
+      "byte_length": 406
+    },
+    {
+      "path": "literal-benign.cbl",
+      "pair": "literal",
+      "variant": "benign",
+      "untrusted_region": "literal",
+      "sha256": "c93ca94ac078a017452302d3c11b1889617ad51b3dbbfa7b1b922bba86e3e4ff",
+      "byte_length": 340
+    },
+    {
+      "path": "literal-hostile.cbl",
+      "pair": "literal",
+      "variant": "hostile",
+      "untrusted_region": "literal",
+      "sha256": "151dfe1214c20aad7fab972883ef67cf961353de25221bbfc6482fa548c39b86",
+      "byte_length": 360
+    }
+  ]
+}
