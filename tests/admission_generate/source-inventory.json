@@ -1,0 +1,59 @@
+{
+  "baseline_commit": "d95932ba7c0bd03dcedf865d47f5b3527f0ff2da",
+  "test_files": [
+    {
+      "path": "tests/admission_generate/fixture_helpers.py",
+      "sha256": "579df08321034724a4ed5062371223d25d32c204d1db8e9d9d4f2d1656f0bc50",
+      "test_methods": []
+    },
+    {
+      "path": "tests/admission_generate/test_case_stream.py",
+      "sha256": "38ebca1ec1c5084b450994a36c4789362f60b7cf3db5a2d9b53d9b6a48545647",
+      "test_methods": [
+        "test_missing_empty_and_length_framing_golden_hashes",
+        "test_record_order_multiplicity_and_raw_lf_are_bound",
+        "test_bundle_strict_presence_types_and_count_refuse",
+        "test_seed_tuple_canonical_identity_and_counter_zero_golden",
+        "test_x_block_continuation_and_separate_counter_draw",
+        "test_task_seed_domain_separation_and_numeric_field_indices",
+        "test_full_loop_count_floor_is_not_relaxed_for_units",
+        "test_original_counter_requires_strict_integer_zero",
+        "test_seed_tuple_and_raw_field_hash_cannot_substitute",
+        "test_recipe_closed_shape_scenario_and_row_refusals",
+        "test_boundary_ids_vocabulary_and_eof_field_refusals",
+        "test_excluded_explicit_boundary_refuses_before_fill"
+      ]
+    },
+    {
+      "path": "tests/admission_generate/test_schema_encoding.py",
+      "sha256": "8f1be5d186d5fef9395f3f65f2d7c89b42954590622b8ff2e9dd5c2e54dcc71e",
+      "test_methods": [
+        "test_strict_json_nested_duplicates_refuse",
+        "test_json_numeric_encoding_and_syntax_refusals",
+        "test_canonical_json_raw_bytes_and_digest_namespaces",
+        "test_closed_keys_strict_integer_identifier_hash",
+        "test_layout_metadata_and_record_encoding_are_exact",
+        "test_external_packed_sign_layout_and_unknown_keys_refuse",
+        "test_layout_numeric_digit_scale_and_field_count_limits",
+        "test_decimal_strings_do_not_round_or_accept_alternate_syntax",
+        "test_signed_negative_zero_unsigned_refusal_and_range",
+        "test_alpha_fit_and_complete_record_refusals_preserve_pointer"
+      ]
+    }
+  ],
+  "targets": {
+    "admission/prepare/generate.py": {
+      "raw_sha256": "4438bb3a481ca5e88d0cba7451e9de4c4a6d613686c67759043a40aff14278a8",
+      "git_blob_sha256": "4438bb3a481ca5e88d0cba7451e9de4c4a6d613686c67759043a40aff14278a8"
+    },
+    "admission/specs/GENERATOR.md": {
+      "raw_sha256": "4d5e94b792f4003c5071197f516515a992112f9953485d12ff8c8b21eb6f738e",
+      "git_blob_sha256": "706962cfa01ebe22892e8862260db1b8e4535d38d0e665af1c8b85bc5d4100fd"
+    },
+    "admission/specs/FAMILY.md": {
+      "raw_sha256": "fb8db290ab990c9bdc82e0a538f1d6264673eb9e856ca40f9a324dc8f9717180",
+      "git_blob_sha256": "f780695503c0f5764ba6f05737ff6d8c2466f767c847466efc4a1a6496afe483"
+    }
+  },
+  "status": "pending fresh Medium source review; no native calls run"
+}
