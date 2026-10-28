@@ -8,6 +8,10 @@ from cobolmap.contracts import (
 from .isolation import BackendConformance
 from .pins import exact
 from .requests import CandidateRequest, ExecutionPlan, OracleRequest, prepare_request
+from .candidate_transport import (
+    CandidateSidecar, CandidateTransportExpectation, StagedTransportPin,
+    TransportDecode, decode_candidate_transport,
+)
 
 Flag = Literal["cpu", "wall", "memory", "pids", "scratch", "output", "forbidden", "import", "signal"]
 
@@ -44,8 +48,9 @@ class RawExecution(FrozenModel):
     backend_id: Identifier
     execution_id: Identifier
     runtime_receipt: ArtifactRef
-    phases: Annotated[tuple[PhaseResult, ...], Field(min_length=1, max_length=2)]
+    phases: Annotated[tuple[PhaseResult, ...], Field(max_length=2)]
     normalization: TraceNormalization | None = None
+    candidate_transport: CandidateSidecar | None = None
 
 
 class RunnerResult(FrozenModel):
@@ -53,6 +58,7 @@ class RunnerResult(FrozenModel):
     plan: ExecutionPlan | None = None
     raw: RawExecution | None = None
     observation: ExecutionObservation | None = None
+    candidate_decoding: TransportDecode | None = None
     issues: tuple[str, ...] = ()
     # No transport authority or reusable caller-controlled authorized flag.
 
@@ -63,7 +69,11 @@ class TrustedBackend(Protocol):
 
 class ResultAuthority(Protocol):
     def verify_result(self, *, plan: ExecutionPlan, conformance: BackendConformance,
-                      result: RawExecution) -> None: ...
+                      result: RawExecution, candidate_decoding: TransportDecode | None = None) -> None:
+        """Authenticate actual collection/staged image/entry/control/physical facts
+        and exact raw-to-logical mapping; an injected object is not self-authenticating.
+        """
+        ...
     def verify_trace(self, *, plan: ExecutionPlan, result: RawExecution,
                      normalization: TraceNormalization) -> None: ...
 
@@ -110,8 +120,33 @@ def _phase_fault(phase: PhaseResult, plan: ExecutionPlan) -> str | None:
     return None
 
 
-def _assemble(plan: ExecutionPlan, raw: RawExecution, authority) -> ExecutionObservation:
+def _candidate_decode(plan: ExecutionPlan, raw: RawExecution) -> TransportDecode:
     request = plan.request
+    if (type(request) is not CandidateRequest or raw.candidate_transport is None
+            or raw.phases or raw.normalization is not None):
+        raise ValueError("explicit candidate sidecar required; legacy phases refuse")
+    sidecar = raw.candidate_transport
+    if (sidecar.backend_id != raw.backend_id or sidecar.execution_id != raw.execution_id
+            or sidecar.plan_sha256 != raw.plan_sha256):
+        raise ValueError("candidate sidecar execution identity mismatch")
+    expected = CandidateTransportExpectation(plan_sha256=plan.plan_sha256,
+        case_sha256=request.case.case_sha256, candidate_sha256=request.candidate.ref.sha256,
+        staged=tuple(StagedTransportPin(path=blob.ref.path, sha256=blob.ref.sha256,
+                                       byte_length=len(blob.data)) for blob in request.helpers),
+        allowed_return_codes=request.allowed_return_codes)
+    return decode_candidate_transport(sidecar, expected=expected)
+
+
+def _assemble(plan: ExecutionPlan, raw: RawExecution, authority,
+              candidate_decoding: TransportDecode | None = None) -> ExecutionObservation:
+    request = plan.request
+    if plan.role == "candidate":
+        # Even a structurally valid frame cannot close the output-accounting gap.
+        # Future activation requires a separate conformance/policy ruling.
+        _candidate_decode(plan, raw)
+        raise ValueError("candidate_control_capture_policy_unresolved")
+    if raw.candidate_transport is not None or not raw.phases:
+        raise ValueError("oracle requires actual phases and no candidate sidecar")
     phases = raw.phases
     if plan.role == "oracle":
         if phases[0].phase != "compile":
@@ -185,8 +220,12 @@ def run_request(request: OracleRequest | CandidateRequest, *, backend: TrustedBa
     """
     plan = None
     raw = None
+    candidate_decoding = None
     try:
         plan = prepare_request(request)
+        if plan.role == "candidate":
+            return RunnerResult(status="pending", plan=plan,
+                                issues=("candidate_control_capture_policy_unresolved",))
         if backend is None or conformance is None:
             return RunnerResult(status="pending", plan=plan, issues=("backend_conformance_missing",))
         conformance = exact(conformance, BackendConformance)
@@ -210,12 +249,18 @@ def run_request(request: OracleRequest | CandidateRequest, *, backend: TrustedBa
         raw = exact(received, RawExecution)
         if raw.plan_sha256 != plan.plan_sha256 or raw.backend_id != conformance.backend_id:
             raise ValueError("backend result belongs to different request/backend")
-        _verified(authority.verify_result(plan=plan, conformance=conformance, result=raw))
-        observation = _assemble(plan, raw, authority)
-        return RunnerResult(status="observed", plan=plan, raw=raw, observation=observation)
+        if plan.role == "candidate":
+            candidate_decoding = _candidate_decode(plan, raw)
+            _verified(authority.verify_result(plan=plan, conformance=conformance, result=raw,
+                                             candidate_decoding=candidate_decoding))
+        else:
+            _verified(authority.verify_result(plan=plan, conformance=conformance, result=raw))
+        observation = _assemble(plan, raw, authority, candidate_decoding)
+        return RunnerResult(status="observed", plan=plan, raw=raw, observation=observation,
+                            candidate_decoding=candidate_decoding)
     except Exception as error:
         # No exception message forwarding: backend diagnostics can contain secrets.
-        return RunnerResult(status="invalid", plan=plan, raw=raw,
+        return RunnerResult(status="invalid", plan=plan, raw=raw, candidate_decoding=candidate_decoding,
                             issues=("boundary_refused:" + type(error).__name__,))
 
 
