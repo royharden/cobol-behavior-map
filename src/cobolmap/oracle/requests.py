@@ -6,6 +6,7 @@ from cobolmap.contracts import (
 )
 from .isolation import SandboxPolicy
 from .pins import Blob, CandidateToolchain, OracleToolchain, SDK_PATHS, exact, helper_digest
+from .candidate_transport import CandidateTransportSpec
 
 Codes = Annotated[tuple[Annotated[int, Field(ge=0, le=255)], ...], Field(min_length=1, max_length=256)]
 
@@ -84,9 +85,21 @@ class ExecutionPlan(FrozenModel):
     commands: tuple[Command, ...]
     environment: tuple[tuple[str, str], ...]
     stdin: bytes
-    output_path: Literal["/work/output.dat"] = "/work/output.dat"
+    output_path: Literal["/work/output.dat"] | None = "/work/output.dat"
+    candidate_transport: CandidateTransportSpec | None = None
     input_present: bool
     abi: Literal["line-sequential-v1", "m10-run-case-v1"]
+
+    @model_validator(mode="after")
+    def channels(self) -> Self:
+        if self.role == "candidate":
+            if (type(self.request) is not CandidateRequest or self.output_path is not None
+                    or self.candidate_transport is None or self.abi != "m10-run-case-v1"):
+                raise ValueError("candidate requires explicit logical/control/physical transport")
+        elif (type(self.request) is not OracleRequest or self.output_path != "/work/output.dat"
+              or self.candidate_transport is not None or self.abi != "line-sequential-v1"):
+            raise ValueError("oracle retains physical file and ordinary/trace collection")
+        return self
 
     @property
     def plan_sha256(self) -> str:
@@ -120,4 +133,6 @@ def prepare_request(request: OracleRequest | CandidateRequest) -> ExecutionPlan:
     return ExecutionPlan(request=request, role=role, policy=SandboxPolicy(),
                          staging=tuple(stages), commands=commands,
                          environment=request.toolchain.environment, stdin=stdin,
+                         output_path="/work/output.dat" if role == "oracle" else None,
+                         candidate_transport=CandidateTransportSpec() if role == "candidate" else None,
                          input_present=request.case.input_present, abi=abi)
