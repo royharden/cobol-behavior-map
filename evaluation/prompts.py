@@ -6,6 +6,7 @@ checks and accounting remain required. Local derivative proof grants no transpor
 """
 from __future__ import annotations
 from dataclasses import dataclass
+import re
 from typing import TYPE_CHECKING, Literal, TypeVar
 
 from cobolmap.contracts.base import ArtifactRef, FrozenModel, SourcePointer, canonical_json, sha256
@@ -61,6 +62,36 @@ R_INSTRUCTION = (
 class PromptTemplate:
     arm: Literal["B", "C", "D", "R"]
     instruction: str
+
+
+@dataclass(frozen=True)
+class FixturePrompt:
+    """Scripted DEV control only; never actual admission or paid-wire authority."""
+    messages: tuple[Message, ...]
+    evidence_mode: Literal['fixture'] = 'fixture'
+    processing_mode: Literal['dev_fixture_control'] = 'dev_fixture_control'
+    count_provenance: Literal['caller_scripted_control_not_measurement'] = 'caller_scripted_control_not_measurement'
+    admitted: Literal[False] = False
+    transport_authorized: Literal[False] = False
+
+    def __post_init__(self):
+        if (type(self) is not FixturePrompt or self.admitted is not False
+                or self.transport_authorized is not False or self.evidence_mode != 'fixture'
+                or self.processing_mode != 'dev_fixture_control'
+                or self.count_provenance != 'caller_scripted_control_not_measurement'):
+            raise ValueError('fixture control provenance is fixed and never authority')
+        if type(self.messages) is not tuple or len(self.messages) != 2:
+            raise ValueError('exact system/user fixture message tuple required')
+        for message, role in zip(self.messages, ('system', 'user')):
+            if (type(message) is not Message or message.role != role
+                    or set(message.__dict__) != set(Message.model_fields) or message.__pydantic_extra__
+                    or type(message.parts) is not tuple):
+                raise ValueError('closed native fixture messages required')
+            for part in message.parts:
+                if (type(part) is not ContextPart or set(part.__dict__) != set(ContextPart.model_fields)
+                        or part.__pydantic_extra__):
+                    raise ValueError('closed native fixture context part required')
+                ContextPart.model_validate_json(canonical_json(part))
 
 
 def prompt_template(arm: Literal["B", "C", "D", "R"]) -> PromptTemplate:
@@ -226,6 +257,28 @@ def _diagnostic(packet: CounterexampleFeedback | CountOnlyFeedback,
     return (_part(packet.task_id, "diagnostic", diagnostic),)
 
 
+def _repair_parts(packet, previous):
+    """One canonical permitted projection shared by real and fixture builders."""
+    diagnostic = _diagnostic(packet, previous)
+    parts = _base_parts(packet) + (
+        _part(packet.task_id, 'previous_candidate', canonical_json(previous).decode('utf-8')),
+    )
+    if type(packet) is CounterexampleFeedback:
+        if packet.witness is not None:
+            if previous.code is None:
+                raise ValueError('witness path requires candidate source')
+            parts += (_part(packet.task_id, 'loop_witness', canonical_json(packet.witness).decode('utf-8'),
+                            case_sha256=packet.witness.case.case_sha256),)
+        elif not diagnostic:
+            raise ValueError('failed-candidate diagnostic required')
+    elif type(packet) is CountOnlyFeedback:
+        counts = f'Your candidate failed {packet.failed_cases} of {packet.loop_cases} loop-set cases.'
+        parts += (_part(packet.task_id, 'counts', counts),)
+    else:
+        raise ValueError('exact D or R repair packet required')
+    return parts + diagnostic
+
+
 def build_counterexample_prompt(packet: CounterexampleFeedback, *, task: TaskBinding,
                                 call_id: str, shared_c_call_id: str,
                                 expected_previous_call_id: str,
@@ -245,23 +298,11 @@ def build_counterexample_prompt(packet: CounterexampleFeedback, *, task: TaskBin
     _context(task, packet)
     previous = _previous(packet, call_id=call_id, shared_c_call_id=shared_c_call_id,
                          expected_previous_call_id=expected_previous_call_id)
-    diagnostic = _diagnostic(packet, previous)
-    if packet.witness is not None and previous.code is None:
-        raise ValueError("witness path requires candidate source")
+    parts = _repair_parts(packet, previous)
     feedback_json(packet, loop_hashes=loop_hashes, admitted=admitted,
                   max_payload_bytes=max_payload_bytes, derivative=derivative,
                   derivative_authority=derivative_authority)
-    parts = _base_parts(packet) + (
-        _part(packet.task_id, "previous_candidate", canonical_json(previous).decode("utf-8")),
-    )
-    if packet.witness is not None:
-        parts += (_part(packet.task_id, "loop_witness", canonical_json(packet.witness).decode("utf-8"),
-                        case_sha256=packet.witness.case.case_sha256),)
-    elif not diagnostic:
-        # Native CounterexampleFeedback validation already requires a nonempty
-        # diagnostic paired with a failed/refused/invalid previous candidate.
-        raise ValueError("failed-candidate diagnostic required")
-    return _messages("D", packet.task_id, parts + diagnostic, max_payload_bytes)
+    return _messages("D", packet.task_id, parts, max_payload_bytes)
 
 
 def build_count_prompt(packet: CountOnlyFeedback, *, task: TaskBinding,
@@ -274,14 +315,72 @@ def build_count_prompt(packet: CountOnlyFeedback, *, task: TaskBinding,
     _context(task, packet)
     previous = _previous(packet, call_id=call_id, shared_c_call_id=shared_c_call_id,
                          expected_previous_call_id=expected_previous_call_id)
-    diagnostic = _diagnostic(packet, previous)
+    parts = _repair_parts(packet, previous)
     feedback_json(packet, loop_hashes=loop_hashes, admitted=admitted,
                   max_payload_bytes=max_payload_bytes)
-    # Frozen-plan count sentence only, inside Message.content's JSON framing.
-    # No feedback union, witness/observation/derivative is serialized here.
-    counts = f"Your candidate failed {packet.failed_cases} of {packet.loop_cases} loop-set cases."
-    parts = _base_parts(packet) + (
-        _part(packet.task_id, "previous_candidate", canonical_json(previous).decode("utf-8")),
-        _part(packet.task_id, "counts", counts),
-    )
-    return _messages("R", packet.task_id, parts + diagnostic, max_payload_bytes)
+    return _messages("R", packet.task_id, parts, max_payload_bytes)
+
+
+def _fixture_loop(packet, loop_hashes, max_payload_bytes):
+    """Caller-scripted set consistency, explicitly NOT authenticated admission."""
+    if (type(loop_hashes) is not frozenset or len(loop_hashes) != 32
+            or any(type(h) is not str or re.fullmatch('[0-9a-f]{64}', h) is None for h in loop_hashes)):
+        raise ValueError('exact32 distinct fixture-control loop hashes required')
+    if type(max_payload_bytes) is not int or max_payload_bytes <= 0:
+        raise ValueError('positive fixture byte bound required')
+    if type(packet) is CounterexampleFeedback:
+        packet.assert_loop_membership(loop_hashes)  # No derivative path here.
+    elif type(packet) is CountOnlyFeedback and packet.loop_cases != 32:
+        raise ValueError('fixture count must refer to exact original32')
+    # No feedback_json call and no admitted=True bypass on this control path.
+
+
+def _fixture_previous(packet, call_id, shared_c_call_id, expected_previous_call_id):
+    previous = _previous(packet, call_id=call_id, shared_c_call_id=shared_c_call_id,
+                         expected_previous_call_id=expected_previous_call_id)
+    if (previous.evidence_mode != 'fixture' or previous.model_id is not None
+            or any(re.fullmatch('[a-z][a-z0-9_-]{0,63}', value) is None for value in
+                   (call_id, shared_c_call_id, expected_previous_call_id))):
+        raise ValueError('fixture-only prior candidate, unset model and native call identities required')
+    return previous
+
+
+def build_fixture_initial_prompt(packet: InitialFeedback, *, task: TaskBinding,
+                                 loop_hashes: frozenset[str], max_payload_bytes: int = 60000) -> FixturePrompt:
+    packet = _revalidate(packet, InitialFeedback)
+    task = _revalidate(task, TaskBinding)
+    if task.split != 'dev':
+        raise ValueError('fixture prompt projection is DEV only')
+    _context(task, packet)
+    if packet.context.diagnostic is not None:
+        raise ValueError('initial fixture context cannot receive diagnostics')
+    _fixture_loop(packet, loop_hashes, max_payload_bytes)
+    return FixturePrompt(_messages(packet.arm, packet.task_id, _base_parts(packet), max_payload_bytes))
+
+
+def build_fixture_counterexample_prompt(packet: CounterexampleFeedback, *, task: TaskBinding,
+                                        call_id: str, shared_c_call_id: str,
+                                        expected_previous_call_id: str, loop_hashes: frozenset[str],
+                                        max_payload_bytes: int = 60000) -> FixturePrompt:
+    packet = _revalidate(packet, CounterexampleFeedback)
+    task = _revalidate(task, TaskBinding)
+    if task.split != 'dev':
+        raise ValueError('fixture prompt projection is DEV only')
+    _context(task, packet)
+    previous = _fixture_previous(packet, call_id, shared_c_call_id, expected_previous_call_id)
+    _fixture_loop(packet, loop_hashes, max_payload_bytes)
+    return FixturePrompt(_messages('D', packet.task_id, _repair_parts(packet, previous), max_payload_bytes))
+
+
+def build_fixture_count_prompt(packet: CountOnlyFeedback, *, task: TaskBinding,
+                               call_id: str, shared_c_call_id: str,
+                               expected_previous_call_id: str, loop_hashes: frozenset[str],
+                               max_payload_bytes: int = 60000) -> FixturePrompt:
+    packet = _revalidate(packet, CountOnlyFeedback)
+    task = _revalidate(task, TaskBinding)
+    if task.split != 'dev':
+        raise ValueError('fixture prompt projection is DEV only')
+    _context(task, packet)
+    previous = _fixture_previous(packet, call_id, shared_c_call_id, expected_previous_call_id)
+    _fixture_loop(packet, loop_hashes, max_payload_bytes)
+    return FixturePrompt(_messages('R', packet.task_id, _repair_parts(packet, previous), max_payload_bytes))

@@ -90,9 +90,12 @@ source hashes, generator/runtime hashes, the complete48 DEV tasks, separate nati
 oracle/candidate execution pins, authorization and independent review refs. It never
 fills authorizations or appoints roles. Exact six-family/four-program/both-panel
 frame, unique IDs and identical paired original source hashes are mandatory.
-Oracle and candidate images/configuration may differ; their respective pins must
-match the actual observation target. Candidate generator execution pin also matches
-the policy's generator source commitment.
+Oracle and candidate image pins may differ; their respective pins must match the
+actual observation target. `generator_sha256` in MutationBinding/policy binds the
+DL2 translator implementation. Separate `preparation_generator_sha256` binds native
+ExecutionPins.generator_sha256 for both oracle and candidate. Shared compiler/config/
+runtime/libcob/default/generator/shim pins agree; translator source is never equated
+with the case-preparation generator.
 
 `FrozenVerification(task_id,program_id,source_sha256,partition,cases)` binds actual
 128 unique native CaseBundles to the exact task's oracle source and raw partition
@@ -119,8 +122,12 @@ declared operator to check exact edit lineage; this is data transformation, not
 execution. Parent must equal the genuinely passing A for that task. All20 operators
 remain scheduled. A valid non-equivalent kill must use a hash-identified case in
 that program's frozen verification partition and actual nonmatching observations.
-The declared class must be present in the actual comparison and supported by
-separate nonauthor class review. Genuine candidate fault may be detected; an oracle
+The established class requires authenticated nonauthor class review bound to the
+actual mutation, frozen case and comparison. Native heuristic tags remain unchanged
+and need not equal the independently proved cause: the comparator cannot infer
+SIZE ERROR, rounding or truncation from bytes alone. An unknown/different heuristic
+does not substitute for or erase class proof. Without proof the class stays missing.
+Genuine candidate fault may be detected; an oracle
 fault/infra event never kills. Heuristic comparison tags alone do not establish cause.
 Every targeted comparator class must have a demonstrated frozen-case kill. Any
 survivor, missing operator/class, unresolved proof or invalid catalogue blocks fit;
@@ -202,6 +209,33 @@ canaries, actual admission, whole-wire byte/token proofs, fixed model/run/price 
 accounting/transport authority remain mandatory. Substring scans are not authentic
 canary verification. There is no send, backend, ledger instance or live activation.
 
+The canonical fixture-only APIs are `build_fixture_initial_prompt`,
+`build_fixture_counterexample_prompt` and `build_fixture_count_prompt`. Their
+packet/task/loop/byte arguments match the real builders; repair helpers retain
+call_id/shared_c_call_id/expected_previous_call_id. They expose neither admitted
+nor derivative arguments. They revalidate the same closed native phase/context,
+task/source/edit/pointers, exact original32 fixture-loop membership/count, prior
+C/own-arm call chain and byte bounds. DEV only; previous candidate must explicitly
+be fixture with model unset and native call identities. There is no
+`feedback_json(admitted=True)` shortcut. Actual admitted/derivative paths retain
+their authentication gates.
+
+They return frozen `FixturePrompt(messages,evidence_mode='fixture',
+processing_mode='dev_fixture_control',
+count_provenance='caller_scripted_control_not_measurement',admitted=False,
+transport_authorized=False)`. Wrapper provenance/flags are fixed and native
+system/user Message/ContextPart shapes validated. The same `_repair_parts` and
+neutral templates build both real and fixture contexts; local proofs are never
+message fields. No actual prompt was instantiated during construction.
+
+DL3's dedicated ScriptedMock route consumes this wrapper with an unset model,
+run-plan/price/token-count/context authority. Its neutral control request digest
+is not a paid provider wire digest. Fixture controls/counts are not measurements,
+ordinary observations, billing evidence, admission or authenticity. Conversion to
+a paid request is not supplied or authorized. No alternate prompt schema/ID
+algorithm is authored by the consumer. Exact final owner APIs/source pins are
+published in SEAM-DL4-instrument-product-r3.md before consumer READY.
+
 ## Deferred verification and seam limitation
 
 Static checks only: AST, Git diff/whitespace/hash, source/API/logic and fresh
@@ -213,7 +247,15 @@ all20 applicability, before/after lineage, genuine baseline/partition/authority 
 survivor/equivalence/coverage rules, one-improvement history, typed prompt equality,
 leakage/derivative refusal, full-wire token/canary/source injection and joined APIs.
 
-A separate static seam defect was reported to INT: r2 schedule emits bare64hex
-call IDs, while native ProviderRequest requires a leading letter/max64. The active
-r3 excludes edits to evaluator core. No prompt or backend workaround is introduced;
-that earlier source needs its own exact correction/owner ruling before joined use.
+INT's bounded seam ruling additionally grants the scheduler identifier correction:
+`m10-call-id-v2` uses version/domain-separated, length-framed identity and `c_` plus62
+lowercase SHA256 hex characters. Ordinary/shared-C/smoke references retain one
+algorithm/uniqueness check; raw SHA256 fields are unchanged. This explicit algorithm
+revision never rewrites an old seal; this team emitted no actual inventory.
+
+DL1's provisional `screen_candidate`/`ScreenContext` r6 supports only the exact
+translator-plan-v1 wrapper and approved eight-helper/source/entry closure. Its
+pending/refused/screened result keeps execution/containment/study flags false.
+The mutation reader's bounded data edits neither replace that screen nor prove
+OS isolation; it can admit an inert edit that a later screen legitimately refuses.
+No actual screening call, helper approval or backend invocation occurred here.

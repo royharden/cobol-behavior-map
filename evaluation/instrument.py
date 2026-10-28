@@ -62,6 +62,7 @@ class InstrumentPolicy:
     generator_sha256: str
     runtime_sha256: str
     plan_reader_sha256: str
+    preparation_generator_sha256: str
     dev_tasks: tuple[TaskBinding, ...]
     oracle_pins: ExecutionPins
     candidate_pins: ExecutionPins
@@ -206,13 +207,19 @@ def evaluate_instrument(policy: InstrumentPolicy, baselines: tuple[BaselineProof
     if policy.edition != INSTRUMENT_EDITION:
         raise ValueError('exact externally pinned instrument edition required')
     for digest in (policy.instrument_source_sha256, policy.catalogue_source_sha256,
-                   policy.generator_sha256, policy.runtime_sha256, policy.plan_reader_sha256):
+                   policy.generator_sha256, policy.runtime_sha256, policy.plan_reader_sha256,
+                   policy.preparation_generator_sha256):
         _digest(digest)
     tasks = _frame(policy.dev_tasks)
     oracle_pins = _native(policy.oracle_pins, ExecutionPins)
     candidate_pins = _native(policy.candidate_pins, ExecutionPins)
-    if candidate_pins.generator_sha256 != policy.generator_sha256:
-        raise ValueError('candidate generator execution pin drift')
+    # generator_sha256 above binds DL2 translator source; native execution pins
+    # bind the separate preparation/case generator. Never equate these roles.
+    if any(p.generator_sha256 != policy.preparation_generator_sha256 for p in (oracle_pins, candidate_pins)):
+        raise ValueError('shared preparation generator execution pin drift')
+    if any(getattr(oracle_pins, name) != getattr(candidate_pins, name)
+           for name in ExecutionPins.model_fields if name != 'image_sha256'):
+        raise ValueError('shared oracle/candidate execution pins drift')
     if type(policy.generation_round) is not int or policy.generation_round not in (0, 1):
         raise ValueError('only one DEV generator improvement/reseal is permitted')
     if any(type(v) is not tuple for v in (baselines, cases, assessments)):
@@ -337,8 +344,6 @@ def evaluate_instrument(policy: InstrumentPolicy, baselines: tuple[BaselineProof
                 comparison = _comparison(assessment.kill, task, mutation.changed_candidate_sha256, oracle_pins, candidate_pins, matching=False)
                 if assessment.observed_class != operators[assessment.operator_id].intended_class:
                     issues.append(assessment.operator_id + ':intended_class_not_demonstrated')
-                elif not any(d.classification == assessment.observed_class for d in comparison.differences):
-                    issues.append(assessment.operator_id + ':class_not_in_actual_comparison')
                 elif assessment.classification_review is None:
                     issues.append(assessment.operator_id + ':missing_nonauthor_class_proof')
                 else:
