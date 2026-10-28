@@ -20,6 +20,9 @@ ExecutionObservation, authentic receipt, admitted corpus or equivalence claim.
 No filesystem path, clock, environment, network, subprocess, eval or dynamic import
 is exposed. Only explicit input/output record bindings select storage; FD role is
 never guessed from a path or field offset. Logical source filenames are metadata.
+The facade loads its fixed compiler modules only when translate is explicitly
+called. Importing the generated runtime therefore does not require parse/contracts;
+runtime/shared packaging and actual import checks still await authorized activation.
 
 The closed plan supports MOVE, ADD, SUBTRACT, MULTIPLY, DIVIDE GIVING, bounded
 three-operator COMPUTE, comparisons/AND/OR/IF, named PERFORM/UNTIL, OPEN/READ AT END/

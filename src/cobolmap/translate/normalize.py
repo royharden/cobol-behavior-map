@@ -5,12 +5,7 @@ import re
 
 from cobolmap.parse.models import IRNode, ProgramIR
 from cobolmap.shared.decimal_shim import FieldSpec, decimal_value
-
-
-class TranslationRefusal(ValueError):
-    def __init__(self, code, message, span=None):
-        super().__init__(message)
-        self.code, self.message, self.span = code, message, span
+from .errors import TranslationRefusal
 
 
 def need(condition, code, message, span=None):
