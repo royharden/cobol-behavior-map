@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from dataclasses import replace
+from dataclasses import dataclass, replace
 import re
 from typing import Any
 
@@ -19,6 +19,18 @@ def walk(nodes: tuple[IRNode, ...]):
         yield node
         yield from walk(node.body)
         yield from walk(node.otherwise)
+
+
+@dataclass(frozen=True)
+class _Unknown:
+    excluded: frozenset[str | int] = frozenset()
+
+
+@dataclass
+class _Path:
+    opened: frozenset[str]
+    values: dict[str, int | str | _Unknown]
+    exhausted: frozenset[str] = frozenset()
 
 
 class Validator:
@@ -278,92 +290,195 @@ class Validator:
         maximum = 10 ** field.digits - 1
         return -maximum <= value <= maximum if field.pic.startswith("S") else 0 <= value <= maximum
 
-    def flow(self, nodes: tuple[IRNode, ...], opened: frozenset[str], known: dict[str, int]) -> tuple[frozenset[str], dict[str, int]]:
-        state = set(opened)
-        known = dict(known)
+    def flow_visit(self, node: IRNode) -> None:
+        # Count before every path copy, condition expansion and statement visit.
+        self.flow_steps += 1
+        if self.flow_steps > 100000:
+            self.fail("unbounded_perform", "Static flow proof budget exceeded; no partial IR", node)
+
+    def fork(self, path: _Path, node: IRNode) -> _Path:
+        self.flow_visit(node)
+        return _Path(path.opened, dict(path.values), path.exhausted)
+
+    def append_path(self, paths: list[_Path], path: _Path, node: IRNode) -> None:
+        self.flow_visit(node)
+        if len(paths) >= 256:
+            self.fail("file_contract", "Static path limit256 exceeded; no partial IR", node)
+        paths.append(path)
+
+    def scalar(self, node: IRNode, path: _Path) -> int | str | _Unknown:
+        if node.kind == "reference":
+            return path.values.get(node.args["name"], _Unknown())
+        if node.kind == "literal" and node.args["literal_type"] == "alpha":
+            return node.args["value"].rstrip(" ")
+        integers = {name: value for name, value in path.values.items() if type(value) is int}
+        value = self.known_integer(node, integers)
+        return value if value is not None else _Unknown()
+
+    def condition(self, node: IRNode, path: _Path, truth: bool) -> list[_Path]:
+        self.flow_visit(node)
+        if node.kind == "boolean":
+            # Disjoint short-circuit alternatives retain field refinements.
+            first = node.args["op"] == "AND"
+            result = []
+            if truth == first:
+                for left in self.condition(node.args["left"], path, first):
+                    for right in self.condition(node.args["right"], left, first):
+                        self.append_path(result, right, node)
+            else:
+                for left in self.condition(node.args["left"], path, not first):
+                    self.append_path(result, left, node)
+                for left in self.condition(node.args["left"], path, first):
+                    for right in self.condition(node.args["right"], left, not first):
+                        self.append_path(result, right, node)
+            return result
+        left_node, right_node = node.args["left"], node.args["right"]
+        left, right = self.scalar(left_node, path), self.scalar(right_node, path)
+        op = node.args["op"]
+        if not isinstance(left, _Unknown) and not isinstance(right, _Unknown):
+            if type(left) is type(right):
+                return [self.fork(path, node)] if self.compare(left, op, right) == truth else []
+        # Refine alpha equality only. Numeric uncertainty stays conservative;
+        # an IF does not substitute for the manifest's dominating integer MOVE.
+        reference, domain, literal = left_node, left, right
+        if right_node.kind == "reference" and left_node.kind == "literal":
+            reference, domain, literal = right_node, right, left
+        result = self.fork(path, node)
+        if (reference.kind == "reference" and isinstance(domain, _Unknown)
+                and isinstance(literal, str) and op in {"=", "<>"}):
+            equal = truth == (op == "=")
+            if equal and literal in domain.excluded:
+                return []
+            result.values[reference.args["name"]] = (literal if equal else
+                _Unknown(domain.excluded | {literal}))
+        return [result]
+
+    def flow(self, nodes: tuple[IRNode, ...], paths: list[_Path]) -> list[_Path]:
         for node in nodes:
-            self.flow_steps += 1
-            if self.flow_steps > 100000:
-                self.fail("unbounded_perform", "Static flow proof budget exceeded; no partial IR", node)
-            args = node.args
-            kind = node.kind
-            if kind == "open":
-                if args["file"] in state:
-                    self.fail("file_contract", "File already OPEN", node)
-                state.add(args["file"])
-            elif kind == "close":
-                if args["file"] not in state:
-                    self.fail("file_contract", "CLOSE without OPEN", node)
-                state.remove(args["file"])
-            elif kind in {"read", "write"}:
-                file = args["file"] if kind == "read" else self.records[args["record"]].name
-                if file not in state:
-                    self.fail("file_contract", "IO requires OPEN", node)
-                if kind == "read":
-                    for field in self.program.fields:
-                        if field.storage == "input":
-                            known.pop(field.name, None)
-                    after, branch = self.flow(node.body, frozenset(state), known)
-                    if after != frozenset(state):
-                        self.fail("file_contract", "READ AT END changes file state inconsistently", node)
-                    known = {key: value for key, value in known.items() if branch.get(key) == value}
-            elif kind == "if":
-                left, a = self.flow(node.body, frozenset(state), known)
-                right, b = self.flow(node.otherwise, frozenset(state), known)
-                if left != right:
-                    self.fail("file_contract", "IF paths must leave the same file state", node)
-                state = set(left)
-                known = {key: value for key, value in a.items() if b.get(key) == value}
-            elif kind == "perform":
-                body = self.paragraphs[args["paragraph"]].statements
-                if args["until"] is None:
-                    after, known = self.flow(body, frozenset(state), known)
-                    state = set(after)
-                else:
-                    proof = self.loop_proofs[node.span.byte_start]
-                    field = proof["induction_field"]
-                    if known.get(field) != integer_value(proof["initial"]):
-                        self.fail("unbounded_perform", "Declared initialization does not dominate loop", node)
-                    # Static bounded data-flow unfolding, never COBOL execution.
-                    for _ in range(self.bounds[node.span.byte_start]):
-                        after, known = self.flow(body, frozenset(state), known)
-                        if after != frozenset(state):
-                            self.fail("file_contract", "Loop must preserve open-file state", node)
-                    if known.get(field) != integer_value(proof["initial"]) + integer_value(proof["step"]) * self.bounds[node.span.byte_start]:
-                        self.fail("unbounded_perform", "Induction data-flow proof disagrees", node)
-            elif kind in {"move", "add", "subtract", "multiply", "divide", "compute"}:
-                target = args["target"]
-                value = args.get("value")
-                numeric = None
-                if value is not None and value.kind == "literal" and value.args["literal_type"] == "numeric" and value.args["value"].lstrip("+-").isdigit() and len(value.args["value"].lstrip("+-0")) <= 8:
-                    numeric = integer_value(value.args["value"])
-                elif value is not None and value.kind == "reference":
-                    numeric = known.get(value.args["name"])
-                if kind in {"add", "subtract"}:
-                    numeric = known[target] + numeric * (-1 if kind == "subtract" else 1) if target in known and numeric is not None else None
-                elif kind == "compute":
-                    numeric = self.known_integer(args["expression"], known)
-                elif kind != "move":
-                    numeric = None
-                field = self.fields.get(target)
-                if numeric is not None and field is not None and field.scale == 0 and self.fits(field, numeric):
-                    known[target] = numeric
-                else:
-                    known.pop(target, None)
-                if node.body:
-                    after, branch = self.flow(node.body, frozenset(state), known)
-                    if after != frozenset(state):
-                        self.fail("file_contract", "SIZE ERROR paths change file state inconsistently", node)
-                    known = {key: value for key, value in known.items() if branch.get(key) == value}
-            elif kind == "stop" and state:
-                self.fail("file_contract", "STOP RUN requires balanced CLOSE", node)
-        return frozenset(state), known
+            after = []
+            for path in paths:
+                self.flow_visit(node)
+                for result in self.statement(node, path):
+                    self.append_path(after, result, node)
+            paths = after
+        return paths
+
+    def statement(self, node: IRNode, path: _Path) -> list[_Path]:
+        args, kind = node.args, node.kind
+        if kind == "if":
+            result = []
+            for truth, body in ((True, node.body), (False, node.otherwise)):
+                for branch in self.condition(args["condition"], path, truth):
+                    for after in self.flow(body, [branch]):
+                        self.append_path(result, after, node)
+            return result
+        if kind == "perform":
+            body = self.paragraphs[args["paragraph"]].statements
+            if args["until"] is None:
+                return self.flow(body, [path])
+            proof = self.loop_proofs[node.span.byte_start]
+            field = proof["induction_field"]
+            if path.values.get(field) != integer_value(proof["initial"]):
+                self.fail("unbounded_perform", "Declared initialization does not dominate loop", node)
+            paths = [path]
+            for _ in range(self.bounds[node.span.byte_start]):
+                paths = self.flow(body, paths)
+            expected = integer_value(proof["initial"]) + integer_value(proof["step"]) * self.bounds[node.span.byte_start]
+            if any(after.values.get(field) != expected for after in paths):
+                self.fail("unbounded_perform", "Induction data-flow proof disagrees", node)
+            return paths
+        current = self.fork(path, node)
+        if kind == "open":
+            name = args["file"]
+            if name in current.opened:
+                self.fail("file_contract", "File already OPEN", node)
+            failed = self.fork(current, node)
+            status = self.files[name].status_name
+            failed.values[status] = _Unknown(frozenset({"00"}))
+            current.values[status] = "00"
+            current.opened = current.opened | {name}
+            current.exhausted = current.exhausted - {name}
+            return [current, failed]
+        if kind in {"close", "read", "write"}:
+            name = args["file"] if kind != "write" else self.records[args["record"]].name
+            if name not in current.opened:
+                self.fail("file_contract", "IO/CLOSE requires proven successful OPEN", node)
+            status = self.files[name].status_name
+            if kind == "close":
+                # Discharge the source cleanup attempt, not a runtime close claim.
+                current.opened = current.opened - {name}
+                current.exhausted = current.exhausted - {name}
+                current.values[status] = _Unknown()
+            elif kind == "write":
+                current.values[status] = _Unknown()
+            else:
+                if name in current.exhausted:
+                    self.fail("file_contract", "READ after EOF/unresolved read failure", node)
+                for field in self.program.fields:
+                    if field.storage == "input" and field.record_name == self.files[name].record_name:
+                        current.values.pop(field.name, None)
+                end = self.fork(current, node)
+                error = self.fork(current, node)
+                end.exhausted = error.exhausted = current.exhausted | {name}
+                current.values[status] = "00"
+                end.values[status] = error.values[status] = _Unknown(frozenset({"00"}))
+                result = [current, error]
+                for branch in self.flow(node.body, [end]):
+                    self.append_path(result, branch, node)
+                return result
+        elif kind in {"move", "add", "subtract", "multiply", "divide", "compute"}:
+            target = args["target"]
+            field = self.fields.get(target)
+            value = self.scalar(args["value"], path) if "value" in args else _Unknown()
+            if kind in {"add", "subtract"}:
+                before = path.values.get(target)
+                value = (before + value * (-1 if kind == "subtract" else 1)
+                         if type(before) is int and type(value) is int else _Unknown())
+            elif kind == "compute":
+                value = self.scalar(args["expression"], path)
+            elif kind != "move":
+                value = _Unknown()
+            if field is not None and field.pic.startswith("X"):
+                if isinstance(value, str):
+                    value = value[:field.width].rstrip(" ")
+                elif (isinstance(value, _Unknown) and kind == "move"
+                      and args["value"].kind == "reference"
+                      and self.fields[args["value"].args["name"]].width != field.width):
+                    # Truncation may turn an excluded full value into a possible
+                    # prefix. Drop exclusions rather than proving a false guard.
+                    value = _Unknown()
+                elif kind != "move" or not isinstance(value, _Unknown):
+                    value = _Unknown()
+            elif (field is None or type(value) is not int or field.scale != 0
+                  or not self.fits(field, value)):
+                value = _Unknown()
+            current.values[target] = value
+            if node.body:
+                # Error-path destination is unspecified; never retain a guessed value.
+                error = self.fork(current, node)
+                error.values[target] = _Unknown()
+                result = [current]
+                for branch in self.flow(node.body, [error]):
+                    self.append_path(result, branch, node)
+                return result
+        elif kind == "stop":
+            if current.opened:
+                self.fail("file_contract", "STOP RUN requires all-path guarded CLOSE", node)
+            return []
+        return [current]
 
     def run(self) -> ProgramIR:
         self.types()
         self.cycles()
         self.manifest_proofs()
-        self.flow(self.program.paragraphs[0].statements, frozenset(), {})
+        # Seed only alpha VALUE facts. Integer loop initialization still requires
+        # an analyzed source assignment, not a declaration or guessed input.
+        initial = {field.name: field.initial.rstrip(" ") for field in self.program.fields
+                   if field.pic.startswith("X") and field.initial is not None
+                   and field.storage == "working"}
+        remaining = self.flow(self.program.paragraphs[0].statements, [_Path(frozenset(), initial)])
+        if any(path.opened for path in remaining):
+            self.fail("file_contract", "Main exit requires balanced cleanup")
         # Unreachable performed paragraphs still need loop proofs: no proof can
         # be excused because a current main graph does not reach its source.
         def attach(nodes: tuple[IRNode, ...]) -> tuple[IRNode, ...]:
