@@ -35,6 +35,8 @@ def _exclusive(stream):
 
 def export_jsonl(path: Path, events: list[dict], *, protected_database: Path):
     from .ledger import encoded
+    if str(path).startswith(("\\\\", "//")) or str(path).startswith("file:"):
+        raise LedgerError("projection_path", "Local filesystem projection only")
     absolute = path.absolute()
     if any(part.is_symlink() or (hasattr(part, "is_junction") and part.is_junction()) for part in (absolute, *absolute.parents)):
         raise LedgerError("projection_path", "Linked projection path refused")

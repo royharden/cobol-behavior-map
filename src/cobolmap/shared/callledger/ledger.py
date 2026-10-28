@@ -79,6 +79,8 @@ class Ledger:
     """
 
     def __init__(self, path: str | Path, budget_usd: Any, *, plan: PricePlan | None = None):
+        if str(path).startswith(("\\\\", "//")) or str(path).startswith("file:"):
+            raise LedgerError("database_path", "Local filesystem database only, no network/URI paths")
         self.path = Path(path)
         self.budget = canonical_money(budget_usd)
         if plan is not None and not isinstance(plan, PricePlan):
@@ -174,6 +176,8 @@ class Ledger:
     @staticmethod
     def _holds(state):
         reasons = list(state["faults"])
+        if state["plan"] and compare_money(add_money(state["plan"]["worst_schedule_usd"], sum_money(expense["cost_usd"] for expense in state["expenses"].values())), state["budget_usd"]) > 0:
+            reasons.append("frozen_full_schedule_unfunded")
         if any(call["state"] in {"sent", "unknown"} for call in state["calls"].values()):
             reasons.append("unresolved_sent_or_unknown_outcome")
         known, reserved = Ledger._totals(state)
