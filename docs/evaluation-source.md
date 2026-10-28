@@ -36,6 +36,19 @@ No callback, provider invocation, cross-task memory, feedback truncation or impl
 fixture exists. A future caller must authenticate loop observations and persist all
 attempts, including sent-unknown calls, independently of these pure transitions.
 
+DL1's proposed `ReductionResult.origin_case_sha256` is separate from the final
+`case.case_sha256`. Only the original root belongs to the sealed original32; no
+derivative is inserted into that set or counted as a new original. `ReductionStep`
+retains parent/derivative hashes and actual witness pairs as local control evidence.
+The current minimizer explicitly has `outbound_feedback_compatible=False`.
+Evaluation contains no feedback serialization or generic model-dump path and does
+not consume that result as an original member. Derivative feedback remains missing
+until DL3's explicitly adopted interface authenticates exact origin/task/program/
+source/candidate/pins, retained lineage and final witness using external authority.
+Full lineage/intermediate witnesses must stay local; D may receive only the one
+permitted final witness, R counts only, with no verification/trace/other-task leak.
+Hash lineage or flags alone cannot authenticate execution or authorize transport.
+
 ## Preregistration and accounting boundary
 
 `prereg.Preregistration` contains a native `RunPlan`, closed named `Commitment`
