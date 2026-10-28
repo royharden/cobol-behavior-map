@@ -9,9 +9,10 @@ from typing import Literal, Self
 
 from pydantic import model_validator
 
-from cobolmap.contracts import FrozenModel, Sha256, sha256
+from cobolmap.contracts import (FrozenModel, Sha256, sha256, CounterexampleFeedback,
+                                DerivativeAuthority, DerivativeEvidence)
 from .models import LeakagePolicy, ProviderFault, ProviderRequest, ProviderResult, Usage
-from .payload import validate_payload
+from .payload import validate_payload, closed_request_policy, authenticate_derivative_wire
 
 PayloadFormat = Literal["openai_chat", "anthropic_messages"]
 
@@ -38,14 +39,21 @@ class PreparedPayload(FrozenModel):
 
 
 def prepare_payload(request: ProviderRequest, format: PayloadFormat, *,
-                    policy: LeakagePolicy | None = None) -> PreparedPayload:
+                    policy: LeakagePolicy | None = None,
+                    derivative: DerivativeEvidence | None = None,
+                    derivative_authority: DerivativeAuthority | None = None,
+                    feedback: CounterexampleFeedback | None = None) -> PreparedPayload:
     """Serialize all context without truncation; full wire-policy admission is external."""
+    if policy is not None:
+        request, policy = closed_request_policy(request, policy)
     base = {"format": format, "request_sha256": request.request_sha256()}
     if format not in ("openai_chat", "anthropic_messages"):
         raise ValueError("unsupported payload format")
     if policy is None:
         return PreparedPayload(**base, issues=("payload_policy_missing",))
-    checked = validate_payload(request, policy, require_actual_context=False)
+    checked = validate_payload(request, policy, require_actual_context=False,
+                               derivative=derivative, derivative_authority=derivative_authority,
+                               feedback=feedback)
     if checked.status != "checked":
         return PreparedPayload(**base, status=checked.status, issues=checked.issues)
     if request.model_id is None:
@@ -80,6 +88,15 @@ def prepare_payload(request: ProviderRequest, format: PayloadFormat, *,
         issues.append("wire_payload_byte_limit_never_truncate")
     if any(value in raw.decode("utf-8") for value in policy.prohibited_fingerprints):
         issues.append("prohibited_wire_fingerprint")
+    if not issues and (derivative is not None or derivative_authority is not None or feedback is not None):
+        try:
+            authenticate_derivative_wire(request, policy, feedback, derivative,
+                                         derivative_authority, sha256(raw))
+        except Exception:
+            issues.append("derivative_final_wire_authority_refused")
+    if issues and derivative is not None:
+        # Do not return even a rejected derivative wire to a caller after failed auth.
+        return PreparedPayload(**base, status="refused", issues=tuple(issues))
     return PreparedPayload(**base, payload_json=raw, payload_sha256=sha256(raw),
                            status="refused" if issues else "prepared", issues=tuple(issues))
 

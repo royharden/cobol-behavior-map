@@ -3,10 +3,12 @@ from collections.abc import Mapping
 from typing import Any, Literal, Protocol
 import re
 
-from cobolmap.contracts import ArtifactRef, FrozenModel, sha256
+from cobolmap.contracts import (ArtifactRef, FrozenModel, sha256, CounterexampleFeedback,
+                                DerivativeAuthority, DerivativeEvidence)
 from cobolmap.providers.adapters import PreparedPayload, prepare_payload
 from cobolmap.providers.models import LeakagePolicy, ProviderRequest, ProviderResult
-from cobolmap.providers.payload import validate_payload
+from cobolmap.providers.payload import validate_payload, closed_request_policy
+from cobolmap.contracts.derivation import revalidate_closed
 from cobolmap.shared.callledger import CostBounds
 
 
@@ -99,11 +101,19 @@ class AccountingBridge:
 
     def prepare(self, request: ProviderRequest, payload: PreparedPayload, policy: LeakagePolicy, *,
                 estimate_usd: str | None = None, bounds: CostBounds | None = None,
-                artifacts: ApprovalArtifacts | None = None) -> BridgeResult:
-        checked = validate_payload(request, policy, require_actual_context=True)
+                artifacts: ApprovalArtifacts | None = None,
+                derivative: DerivativeEvidence | None = None,
+                derivative_authority: DerivativeAuthority | None = None,
+                feedback: CounterexampleFeedback | None = None) -> BridgeResult:
+        request, policy = closed_request_policy(request, policy)
+        payload = revalidate_closed(payload, PreparedPayload, extra_types=(PreparedPayload,))
+        checked = validate_payload(request, policy, require_actual_context=True,
+                                   derivative=derivative, derivative_authority=derivative_authority,
+                                   feedback=feedback)
         if checked.status != "checked":
             return self._result(request, checked.status, *checked.issues)
-        expected = prepare_payload(request, payload.format, policy=policy)
+        expected = prepare_payload(request, payload.format, policy=policy, derivative=derivative,
+                                   derivative_authority=derivative_authority, feedback=feedback)
         if (payload.status != "prepared" or expected.status != "prepared"
                 or payload.request_sha256 != request.request_sha256()
                 or payload.payload_json != expected.payload_json or payload.payload_sha256 != expected.payload_sha256):
@@ -165,8 +175,13 @@ class AccountingBridge:
 
     def mark_sent(self, request: ProviderRequest, payload: PreparedPayload, policy: LeakagePolicy, *,
                   estimate_usd: str | None = None, bounds: CostBounds | None = None,
-                  artifacts: ApprovalArtifacts | None = None) -> BridgeResult:
-        reserved = self.prepare(request, payload, policy, estimate_usd=estimate_usd, bounds=bounds, artifacts=artifacts)
+                  artifacts: ApprovalArtifacts | None = None,
+                  derivative: DerivativeEvidence | None = None,
+                  derivative_authority: DerivativeAuthority | None = None,
+                  feedback: CounterexampleFeedback | None = None) -> BridgeResult:
+        reserved = self.prepare(request, payload, policy, estimate_usd=estimate_usd, bounds=bounds,
+                                artifacts=artifacts, derivative=derivative,
+                                derivative_authority=derivative_authority, feedback=feedback)
         if reserved.status != "reserved":
             return reserved
         call = self._call(self._report(), request)
