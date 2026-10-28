@@ -1,0 +1,23 @@
+{
+  "artifact_kind": "candidate",
+  "artifact_path": "corpus/fixtures/hostile/host_volume_read.py",
+  "artifact_sha256": "2c8052cb7cdcf52176868684596d0940dfa7771a8794854b1de2bd9e5632effb",
+  "author_callsign": "0003_Codex_GPT-6_M10-DL2",
+  "author_harness": "Codex",
+  "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
+  "brief_sha256": "eca31f6cf6a91071e5a01ec057dbf5f472ce0073094021501ba5b7c2f89b7d3c",
+  "created_at": "2026-10-28T01:37:51Z",
+  "evidence_paths": [
+    "docs/hostile-fixture-source.md"
+  ],
+  "family_id": null,
+  "generator_sha256": null,
+  "license_approval_id": null,
+  "license_id": null,
+  "license_status": "pending",
+  "manifest_version": 1,
+  "originality_attestation": "Original inert hostile candidate/source declaration authored by builder0003/0912, Codex GPT-6 family, actual session; fake markers only, no external/prohibited source ingestion, fixture invocation, observed/expected outcomes, independent roles or containment approval. Generic static source writer only.",
+  "parent_artifact_sha256": null,
+  "source_sha256": "2c8052cb7cdcf52176868684596d0940dfa7771a8794854b1de2bd9e5632effb",
+  "split": "dev"
+}
