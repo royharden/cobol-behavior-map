@@ -1,12 +1,12 @@
 {
   "artifact_kind": "specification",
   "artifact_path": "corpus/fixtures/parser-map/source-inventory.json",
-  "artifact_sha256": "da0f229943737e52bbc93690bdfced055ea6b248db31f632268bb941d713e9cf",
+  "artifact_sha256": "f9792870e93e6d4c3df30cd93e1d442763b76e5a88949e006272b1b55fbc7325",
   "author_callsign": "0003_Codex_GPT-6_M10-DL2",
   "author_harness": "Codex",
   "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
   "brief_sha256": "b396b1b1aadc2de3092d78a754fbd230472fccb73eda2176aa26253872e36ff6",
-  "created_at": "2026-10-28T02:03:38Z",
+  "created_at": "2026-10-28T02:09:01Z",
   "evidence_paths": [
     "docs/parser-map-fixture-source.md"
   ],
@@ -16,8 +16,8 @@
   "license_id": null,
   "license_status": "pending",
   "manifest_version": 1,
-  "originality_attestation": "Builder0003/0912 Codex GPT-6 actual session catalogues original parent refusal/IR and child0080 hazard regression source plus unexecuted static expectations; child source lineage retained in own sidecars. No app/test/compiler invocation or oracle/independent proof.",
-  "parent_artifact_sha256": null,
+  "originality_attestation": "Builder0003/0912 Codex GPT-6 actual session catalogues original parent refusal/IR and child0080 hazard regression source plus unexecuted static expectations; child source lineage retained in own sidecars. No app/test/compiler invocation or oracle/independent proof. Current catalog revision binds strengthened test source/provenance; prior inventory SHA256 da0f229943737e52bbc93690bdfced055ea6b248db31f632268bb941d713e9cf and prior sidecar SHA256 9687af50766505864822c5ec21a7f88cd730aa2742f26e43440957a11e30a619.",
+  "parent_artifact_sha256": "da0f229943737e52bbc93690bdfced055ea6b248db31f632268bb941d713e9cf",
   "source_sha256": null,
   "split": "dev"
 }

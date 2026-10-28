@@ -60,9 +60,34 @@ class IRMapRegressions(unittest.TestCase):
         self.assertNotIn((second, "paragraph:MAIN/1"), edges)
 
     def test_cleanup_flag_tracks_successful_open(self):
+        from cobolmap.mapping import resolve_pointer
         raw, program = load_ir("guarded_open_flag")
         self.assertEqual(program.source.encode("ascii"), raw)
-        self.assertEqual(program.paragraphs[-1].name, "MAIN")
+        main = program.paragraphs[0]
+        self.assertEqual(main.name, "MAIN")
+        self.assertEqual([node.kind for node in main.statements], ["open", "if", "if", "stop"])
+        opened, success, cleanup, stopped = main.statements
+        self.assertEqual(dict(opened.args), {"file": "INFILE", "mode": "INPUT"})
+        for guarded, field, value in ((success, "IN-STATUS", "00"), (cleanup, "OPEN-FLAG", "Y")):
+            condition = guarded.args["condition"]
+            self.assertEqual(condition.kind, "compare")
+            self.assertEqual(condition.args["op"], "=")
+            self.assertEqual(condition.args["left"].kind, "reference")
+            self.assertEqual(condition.args["left"].args["name"], field)
+            self.assertEqual(dict(condition.args["right"].args), {"value": value, "literal_type": "alpha"})
+            self.assertFalse(guarded.otherwise)
+            self.assertEqual(len(guarded.body), 1)
+        marked = success.body[0]
+        self.assertEqual(marked.kind, "move")
+        self.assertEqual(marked.args["target"], "OPEN-FLAG")
+        self.assertEqual(dict(marked.args["value"].args), {"value": "Y", "literal_type": "alpha"})
+        self.assertEqual(resolve_pointer(program, marked.span), b'MOVE "Y" TO OPEN-FLAG')
+        closed = cleanup.body[0]
+        self.assertEqual(closed.kind, "close")
+        self.assertEqual(dict(closed.args), {"file": "INFILE"})
+        self.assertEqual(resolve_pointer(program, closed.span), b"CLOSE INFILE")
+        self.assertLess(cleanup.span.byte_start, closed.span.byte_start)
+        self.assertLess(closed.span.byte_end, cleanup.span.byte_end)
 
     def test_context_expansion_limit_has_no_partial_map(self):
         from cobolmap.mapping import build_map, MappingLimitRefusal

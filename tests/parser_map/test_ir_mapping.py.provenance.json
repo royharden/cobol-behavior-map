@@ -1,12 +1,12 @@
 {
   "artifact_kind": "instrument",
   "artifact_path": "tests/parser_map/test_ir_mapping.py",
-  "artifact_sha256": "7e999e3779c276e0891385c4ff642f4c2966919b4dab67708cd2062d0dbe02d8",
+  "artifact_sha256": "7d33c423893f0c240f41005d89385910304bfe03276c8c77ebc54df2d4b916f6",
   "author_callsign": "0003_Codex_GPT-6_M10-DL2",
   "author_harness": "Codex",
   "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
   "brief_sha256": "b396b1b1aadc2de3092d78a754fbd230472fccb73eda2176aa26253872e36ff6",
-  "created_at": "2026-10-28T01:57:44Z",
+  "created_at": "2026-10-28T02:09:01Z",
   "evidence_paths": [
     "docs/parser-map-fixture-source.md"
   ],
@@ -16,8 +16,8 @@
   "license_id": null,
   "license_status": "pending",
   "manifest_version": 1,
-  "originality_attestation": "Original builder parser/map regression source or authored static expectation, Codex GPT-6 family, actual session0003/0912; no external/prohibited ingestion, parser/map/test/compiler invocation, oracle observations, actual input cases or independent proof.",
-  "parent_artifact_sha256": null,
+  "originality_attestation": "Original builder parser/map regression source or authored static expectation, Codex GPT-6 family, actual session0003/0912; no external/prohibited ingestion, parser/map/test/compiler invocation, oracle observations, actual input cases or independent proof. Parent0003 revision strengthens successful-OPEN guard/alpha-flag assignment/guarded-CLOSE IR and exact source-span assertions after Medium review; prior test SHA256 7e999e3779c276e0891385c4ff642f4c2966919b4dab67708cd2062d0dbe02d8 and prior sidecar SHA256 e6e42648dfaa46dce24fd72ebda2308436dbdb1cd4c73e1f6820e21cfbcb70dd. No test invocation.",
+  "parent_artifact_sha256": "7e999e3779c276e0891385c4ff642f4c2966919b4dab67708cd2062d0dbe02d8",
   "source_sha256": null,
   "split": "dev"
 }
