@@ -1,0 +1,38 @@
+{
+  "allowed_return_codes": [
+    0
+  ],
+  "family_id": "dev_year_century",
+  "hazards": [
+    {
+      "hazard_id": "H4",
+      "observable": "output.dat:OUT-YEAR",
+      "reachability_recipe_ids": [],
+      "target": {
+        "byte_end": 1441,
+        "byte_start": 1395,
+        "file": "changed.cbl",
+        "line": 60
+      }
+    },
+    {
+      "hazard_id": "H5",
+      "observable": "output.dat:OUT-MAGNITUDE",
+      "reachability_recipe_ids": [],
+      "target": {
+        "byte_end": 1587,
+        "byte_start": 1553,
+        "file": "changed.cbl",
+        "line": 65
+      }
+    }
+  ],
+  "input_fields_sha256": "071e5ddbda3e72589c4f3b06ec0132329da851b531143b6f8354e1492de5bf9c",
+  "loops": [],
+  "manifest_version": 1,
+  "output_fields_sha256": "3b459fad62d54b4a0c750e769978253b414c37ec2831a26ba5ef84124657f2cc",
+  "program_id": "year-century-01",
+  "provenance_sha256": "84badc2aac90fda0c805d91336c708f6f739702f07700d23b3c0198c7bf24ee2",
+  "source_sha256": "6f86c9566f2407066c6a01fd460461d2429f766d8ba8c5373c966ae4c5937271",
+  "split": "dev"
+}

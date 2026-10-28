@@ -1,0 +1,26 @@
+{
+  "fields": [
+    {
+      "name": "AMOUNT",
+      "offset": 0,
+      "pic": "9(3)V9(2)",
+      "scale": 2,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 5
+    },
+    {
+      "name": "SIGNED-DEBT",
+      "offset": 5,
+      "pic": "S9(2)V9(2)",
+      "scale": 2,
+      "sign": "leading_separate",
+      "usage": "DISPLAY",
+      "width": 5
+    }
+  ],
+  "manifest_version": 1,
+  "program_id": "fee-tier-02",
+  "record_width": 10,
+  "source_sha256": "754e3f362d8e2fd9451709d059bbb283da9bbbd50765892ce328e3eae3755c2c"
+}

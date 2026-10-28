@@ -1,0 +1,38 @@
+{
+  "allowed_return_codes": [
+    0
+  ],
+  "family_id": "dev_decimal_chain",
+  "hazards": [
+    {
+      "hazard_id": "H7",
+      "observable": "output.dat:OUT-TOTAL / source error outcome pending",
+      "reachability_recipe_ids": [],
+      "target": {
+        "byte_end": 1453,
+        "byte_start": 1377,
+        "file": "changed.cbl",
+        "line": 58
+      }
+    },
+    {
+      "hazard_id": "H8",
+      "observable": "output.dat:OUT-TOTAL",
+      "reachability_recipe_ids": [],
+      "target": {
+        "byte_end": 1453,
+        "byte_start": 1377,
+        "file": "changed.cbl",
+        "line": 58
+      }
+    }
+  ],
+  "input_fields_sha256": "943583e97b19e47fff909a258297895947729b80e3d545c5712e54e2b25796b2",
+  "loops": [],
+  "manifest_version": 1,
+  "output_fields_sha256": "5d9c45e54cf7ef2f7cc6d282a55d78698cf603779c3589311f4ab6b1815d90ee",
+  "program_id": "fee-chain-04",
+  "provenance_sha256": "b497df4ab27dab395c1b77c05727010ad38970aac96bb9441923fd2c37dc63a9",
+  "source_sha256": "945761fd6b164ffebccdeda1f68876a577b829624f8ea5044c594411785e5826",
+  "split": "dev"
+}

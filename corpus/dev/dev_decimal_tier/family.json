@@ -1,0 +1,19 @@
+{
+  "author_provenance_sha256": "b3e9f2321ce4b61d25656c95e32091a7adc6dd8cde98f614ab6edb16b09d1648",
+  "domain": "decimal_fees",
+  "family_id": "dev_decimal_tier",
+  "hazard_ids": [
+    "H1",
+    "H5"
+  ],
+  "manifest_version": 1,
+  "program_ids": [
+    "fee-tier-01",
+    "fee-tier-02",
+    "fee-tier-03",
+    "fee-tier-04"
+  ],
+  "split": "dev",
+  "template_description": "Threshold branch selects fee multiplication; separate signed-debt magnitude transfer. Branch graph and H1/H5 differ from the chained COMPUTE family.",
+  "template_id": "fee_threshold_branch"
+}

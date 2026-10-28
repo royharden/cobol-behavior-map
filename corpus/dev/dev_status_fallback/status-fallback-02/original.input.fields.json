@@ -1,0 +1,17 @@
+{
+  "fields": [
+    {
+      "name": "PAYLOAD",
+      "offset": 0,
+      "pic": "X(6)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 6
+    }
+  ],
+  "manifest_version": 1,
+  "program_id": "status-fallback-02",
+  "record_width": 6,
+  "source_sha256": "564ac8e7b28234891db68640a18f635e98914336fe886e9b922f7517b474bfd3"
+}

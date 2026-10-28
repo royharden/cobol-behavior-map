@@ -1,0 +1,17 @@
+{
+  "after": "50.00",
+  "before": "45.00",
+  "changed_sha256": "90c4c1af65da374b36826908e1ef1e02f821b2d467a8749b9f6bb039eab427eb",
+  "manifest_version": 1,
+  "operation": "replace_numeric_literal",
+  "original_sha256": "754e3f362d8e2fd9451709d059bbb283da9bbbd50765892ce328e3eae3755c2c",
+  "prose": "Move one fee-tier threshold within its declared amount field; no behavior-changing witness claimed.",
+  "target": {
+    "byte_end": 1330,
+    "byte_start": 1325,
+    "file": "original.cbl",
+    "line": 57,
+    "node_kind": "literal"
+  },
+  "task_id": "fee-tier-02-change"
+}

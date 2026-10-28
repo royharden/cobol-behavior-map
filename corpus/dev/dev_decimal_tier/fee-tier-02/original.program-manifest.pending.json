@@ -1,0 +1,38 @@
+{
+  "allowed_return_codes": [
+    0
+  ],
+  "family_id": "dev_decimal_tier",
+  "hazards": [
+    {
+      "hazard_id": "H1",
+      "observable": "output.dat:OUT-FEE",
+      "reachability_recipe_ids": [],
+      "target": {
+        "byte_end": 1392,
+        "byte_start": 1358,
+        "file": "original.cbl",
+        "line": 59
+      }
+    },
+    {
+      "hazard_id": "H5",
+      "observable": "output.dat:OUT-MAGNITUDE",
+      "reachability_recipe_ids": [],
+      "target": {
+        "byte_end": 1520,
+        "byte_start": 1487,
+        "file": "original.cbl",
+        "line": 65
+      }
+    }
+  ],
+  "input_fields_sha256": "d2c9f11717dd2cf6a4a933a9772f01618fe9e486aeb79a7457eb2f814b727842",
+  "loops": [],
+  "manifest_version": 1,
+  "output_fields_sha256": "7889cce4ef3df9593200d50f27845359d8c3fff98dff73212a801b3963e751ad",
+  "program_id": "fee-tier-02",
+  "provenance_sha256": "a60aa282a058091a1a59460f0c2881f35a11822ee9fb2d79059e4f6f81f46b0c",
+  "source_sha256": "754e3f362d8e2fd9451709d059bbb283da9bbbd50765892ce328e3eae3755c2c",
+  "split": "dev"
+}

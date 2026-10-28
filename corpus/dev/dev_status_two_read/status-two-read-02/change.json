@@ -1,0 +1,17 @@
+{
+  "after": ">=",
+  "before": ">",
+  "changed_sha256": "0435ecd7c3dfe105df946159a6e6fd6e4019c3c6b6b507ef3a7a161de8b1997d",
+  "manifest_version": 1,
+  "operation": "replace_comparator",
+  "original_sha256": "866eadd4f861830cd62c446298f742043652862b1e93e9e27acfedfa05f3b2fb",
+  "prose": "Change one count gate on the second unrolled read; intended record-count effect has no compiler witness.",
+  "target": {
+    "byte_end": 1271,
+    "byte_start": 1257,
+    "file": "original.cbl",
+    "line": 49,
+    "node_kind": "compare"
+  },
+  "task_id": "status-two-read-02-change"
+}
