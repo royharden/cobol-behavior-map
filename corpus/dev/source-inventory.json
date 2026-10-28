@@ -2727,7 +2727,7 @@
       "path": "corpus/dev/dev_decimal_tier/fee-tier-01/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_decimal_tier/fee-tier-01/original.program-manifest.pending.json.provenance.json",
-        "sha256": "658df48311a5edb54e6b576897c936e56e6b751a94769fd4b6d47e863c3363b9"
+        "sha256": "e8feb76ad192adc3684e30b2c77d2339405134ee3c8940cfb213d039f0d030e5"
       },
       "sha256": "382e886ce213599e9b25e54cb50c891d57a5108c558e37e92bb854deac422860"
     },
@@ -2751,7 +2751,7 @@
       "path": "corpus/dev/dev_decimal_tier/fee-tier-01/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_decimal_tier/fee-tier-01/change.program-manifest.pending.json.provenance.json",
-        "sha256": "1288f78b2e1c9f8c7f61c13db9dfbab0649ac396f22dbc93593667860b25602f"
+        "sha256": "16b0eafc80d8057c41f187e269e04fa96c442582a4523d13ea70269512a31ba1"
       },
       "sha256": "b1c2fb35fcbddc735ba6361325f5136086a552aedc769416e83f1ce97661223e"
     },
@@ -2799,7 +2799,7 @@
       "path": "corpus/dev/dev_decimal_tier/fee-tier-02/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_decimal_tier/fee-tier-02/original.program-manifest.pending.json.provenance.json",
-        "sha256": "0a2ad1396095517a3729e93e5f5b7f41104593da7077f0db9d51c0a7f24f4067"
+        "sha256": "fc16b4cd4c8d0dfb6fb6fd0ce5b343103c9125cdc8d7cbfb15e4eda70e262f10"
       },
       "sha256": "a17cd5d693b13ed36e1c0b53fa8accbe9d171e539f1d0a221be004fa89aa0d86"
     },
@@ -2823,7 +2823,7 @@
       "path": "corpus/dev/dev_decimal_tier/fee-tier-02/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_decimal_tier/fee-tier-02/change.program-manifest.pending.json.provenance.json",
-        "sha256": "d84da4e6cb7377539de35558801feb251e1206cf6278f0fe658aa132e6939c9c"
+        "sha256": "d3ce6e2847aaa69223a7be46fefef83855c23c886c826d362ca337cb866947d2"
       },
       "sha256": "78cac64b9916d7546aef03a4c5f46e13e26e0b951e609dabf4e680dc4d3cd14b"
     },
@@ -2871,7 +2871,7 @@
       "path": "corpus/dev/dev_decimal_tier/fee-tier-03/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_decimal_tier/fee-tier-03/original.program-manifest.pending.json.provenance.json",
-        "sha256": "0da9d38e1c0a642aea9779ecf50a846d6978e6d5f8bec16852d141bfd4c74960"
+        "sha256": "6120928e0efbeb45b6a58889918834f9b6eb508d026f2478005119db2882ebed"
       },
       "sha256": "da04be32694b527850acc9a796f8ebb27d9723fcfa765104b24060b1f620d22a"
     },
@@ -2895,7 +2895,7 @@
       "path": "corpus/dev/dev_decimal_tier/fee-tier-03/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_decimal_tier/fee-tier-03/change.program-manifest.pending.json.provenance.json",
-        "sha256": "fc16c16923619f5eafde33b495d0e7f591070e605235d44b9e3116150b1031ec"
+        "sha256": "6365276e441d97e8ec36ad0adaaa90ddbc6ac0850bde30cb4136757e334b864b"
       },
       "sha256": "8c2ae7030aefb5c0087aa3c6b49d01e0eda6d1a688c3234d0b44e1f341cc2bf6"
     },
@@ -2943,7 +2943,7 @@
       "path": "corpus/dev/dev_decimal_tier/fee-tier-04/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_decimal_tier/fee-tier-04/original.program-manifest.pending.json.provenance.json",
-        "sha256": "f435dd8513656f0ff299553f8602ae865b452012cbb4310131a4986991c9021a"
+        "sha256": "7f7f4e088198ef4b0638eb3e578d648b9094379b36c07143fe0010109082a4bb"
       },
       "sha256": "fea310c437182ecf173a608b375307dc4b285b1448913c057d8ea1aabdb947ce"
     },
@@ -2967,7 +2967,7 @@
       "path": "corpus/dev/dev_decimal_tier/fee-tier-04/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_decimal_tier/fee-tier-04/change.program-manifest.pending.json.provenance.json",
-        "sha256": "b5ae1f5690e648a0228169bba74539b99d36a7c9e82eecc7d8ebd5b88af0a5ed"
+        "sha256": "38b465fb9ff7d1a6a2afcbc02e5127a1b4cf4481696ac07dd6604d8db84371b8"
       },
       "sha256": "809ede43d474d3e4b91b083ed2e782e54ae61122b534512f459025d78863f406"
     },
@@ -3023,7 +3023,7 @@
       "path": "corpus/dev/dev_decimal_chain/fee-chain-01/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_decimal_chain/fee-chain-01/original.program-manifest.pending.json.provenance.json",
-        "sha256": "57d96826649ca7af9156947b670fa2db41ca588b2ba1566e3d870b1ba85a92d2"
+        "sha256": "8ad0d5310065b38a98364e2d995c7c740a50bc2ac40019922ca46209d96d2e28"
       },
       "sha256": "7a20906cc0b4ef3d5a7b2ba38ad17de62f48a731441f8057717adeafb98994b0"
     },
@@ -3047,7 +3047,7 @@
       "path": "corpus/dev/dev_decimal_chain/fee-chain-01/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_decimal_chain/fee-chain-01/change.program-manifest.pending.json.provenance.json",
-        "sha256": "42c3d0aa10416eaa74c67de7c2f9b012a6a471c34e6fd2561545dbc3703c6d3e"
+        "sha256": "43b6282adf72c0e15b2c608baefe0a895e1d0afccd0e9a74e6319c5fe2c0c84f"
       },
       "sha256": "19bed2c8b4e5104342e449239d5ff5a0b53b7fcf82cf412bfa83946165961afd"
     },
@@ -3095,7 +3095,7 @@
       "path": "corpus/dev/dev_decimal_chain/fee-chain-02/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_decimal_chain/fee-chain-02/original.program-manifest.pending.json.provenance.json",
-        "sha256": "52ca723cf56f68e7aa8f35171ca84618625731f4f18292edc78a2559e5627074"
+        "sha256": "8440f6823bdc49e23c3cd084f56795d957503771ccf5318481660d9dfc97d663"
       },
       "sha256": "e9631cefd28bb744f5ee5bd7771e5897870ceac6dc15c5c30a272800db2429da"
     },
@@ -3119,7 +3119,7 @@
       "path": "corpus/dev/dev_decimal_chain/fee-chain-02/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_decimal_chain/fee-chain-02/change.program-manifest.pending.json.provenance.json",
-        "sha256": "8a403c988d57bfc88093923cea9275578b9ee4e5c9561b0199a8e0c0bbff864b"
+        "sha256": "a0b41be32be91533279827fb4594afe8c678451d42c738a94305f21f569ba220"
       },
       "sha256": "b3977bec96d5205bde298fae3c65ffeae5505811f411d97a0aee2e5a329a913d"
     },
@@ -3167,7 +3167,7 @@
       "path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.program-manifest.pending.json.provenance.json",
-        "sha256": "0779b528a39553348a3ba37ebbcc6726a138a351f0bae4489569d0891868b06a"
+        "sha256": "ed46b977f237bf32978e7662902e1de799ab64e8682ee20b8a5b71aa946ce3ba"
       },
       "sha256": "4c8543267fb3a757b807e78881f709a0d1513115bc6fe74312f727c1ad356001"
     },
@@ -3191,7 +3191,7 @@
       "path": "corpus/dev/dev_decimal_chain/fee-chain-03/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_decimal_chain/fee-chain-03/change.program-manifest.pending.json.provenance.json",
-        "sha256": "66b0aecd287de7bc2d39ec97fb32189fd8ac148a30d186901ee5a27c63102fbd"
+        "sha256": "554fa738aaac587873b77777dc33718b0c97ac81af25da569bf897fe92b775b0"
       },
       "sha256": "d2a7b5c2091dec3c5b2d3ebf8c36f7e134939e84c5db09d21b304b68f0daa9f1"
     },
@@ -3239,7 +3239,7 @@
       "path": "corpus/dev/dev_decimal_chain/fee-chain-04/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_decimal_chain/fee-chain-04/original.program-manifest.pending.json.provenance.json",
-        "sha256": "414a048282af63aa3835f4aca12b1cb52f10f2e0285256d2e74eb2c3cf8fdaf9"
+        "sha256": "c8445683513c51499686214ae87bc2a0e8cc0f6e20f3b18ba6798ca23beb7870"
       },
       "sha256": "e8495e1cbb6a0b1c158ba7be35fee6880c9f5cd1b3cccf7736ab43999934fe12"
     },
@@ -3263,7 +3263,7 @@
       "path": "corpus/dev/dev_decimal_chain/fee-chain-04/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_decimal_chain/fee-chain-04/change.program-manifest.pending.json.provenance.json",
-        "sha256": "605b27387eccdae622e6ce16c6b52f6f85b91b644423419f87320cd50e0eba20"
+        "sha256": "a08fae1a42796e33d0991d788ea0f7324eb5d39a727dbac8f6d1bddf0e623b82"
       },
       "sha256": "2fb31dbade1d8ed853f6561240bebd3be6dbb1783bd2c46c311a8c5aa95b12fb"
     },
@@ -3319,7 +3319,7 @@
       "path": "corpus/dev/dev_status_fallback/status-fallback-01/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_status_fallback/status-fallback-01/original.program-manifest.pending.json.provenance.json",
-        "sha256": "e9c1020171942f95fbf841ce05d840a7b0f93479730e838087d2ff232f78b5f0"
+        "sha256": "9b968db771737765d64ff62b73449add199c0fbab0bf38cfa46dc40f67da2bef"
       },
       "sha256": "fd1587684650e3f845d387dfe7dcc1cdb86b74895e882a2805ef8e49fd5ec91c"
     },
@@ -3343,7 +3343,7 @@
       "path": "corpus/dev/dev_status_fallback/status-fallback-01/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_status_fallback/status-fallback-01/change.program-manifest.pending.json.provenance.json",
-        "sha256": "a12df750563e0b6788708b090906a8a2804e680e36f2f3836a793355db3b4619"
+        "sha256": "923efa90c365dc3a9f3294106979310e971c0096ac09a74b98cfd2d5d6ceaf68"
       },
       "sha256": "20c6b8fbfa9d64d80adab6ea05a0ab75dee968820245810120415684bf54e2b4"
     },
@@ -3391,7 +3391,7 @@
       "path": "corpus/dev/dev_status_fallback/status-fallback-02/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_status_fallback/status-fallback-02/original.program-manifest.pending.json.provenance.json",
-        "sha256": "73e6b0243009d03727dc568590d32dac0d41e4f20b72a4291e16f7f3e561ecff"
+        "sha256": "1a3fdd7ae92e4bd6f5633424c4ca0aa00c99ae9e38f1c07bae31905760168a24"
       },
       "sha256": "8c4f0f8218bece6661182e74e12c8c4b45d5f1c233a51303d57c0e2b16d2d361"
     },
@@ -3415,7 +3415,7 @@
       "path": "corpus/dev/dev_status_fallback/status-fallback-02/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_status_fallback/status-fallback-02/change.program-manifest.pending.json.provenance.json",
-        "sha256": "64bffcaeff40cd2a40a15d1769946a99f073bb878dd1c5f6e40ffe90078c2f2e"
+        "sha256": "f2802a298762ce963fab602dbc88f6f04e16e7590465cad1f60308970161c4eb"
       },
       "sha256": "7868a8b637b1c940e9b16a4e25ef52f004c5bdd4f319b12610a470948d593c6c"
     },
@@ -3463,7 +3463,7 @@
       "path": "corpus/dev/dev_status_fallback/status-fallback-03/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_status_fallback/status-fallback-03/original.program-manifest.pending.json.provenance.json",
-        "sha256": "d3d724b6c32ea06b120126a4ca37f873feb2184a5a646704390172933ed3f3d5"
+        "sha256": "962b436b71edc0f8b573cdb973c4ab2f160cb4ff65703d7ab6dc6e37981c1c18"
       },
       "sha256": "c5b0368cee911cc76d60f2d4133e630e51673b42c3e2476ce8468c8f8e662950"
     },
@@ -3487,7 +3487,7 @@
       "path": "corpus/dev/dev_status_fallback/status-fallback-03/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_status_fallback/status-fallback-03/change.program-manifest.pending.json.provenance.json",
-        "sha256": "5cd5026c21a0e01c48fd8f0c3d3c264992fee2b000c6debe77c852f6f407a7d5"
+        "sha256": "9244ae95caee8f15fda73954d7e5d5e8c44b8be994ed724c42acf52b76cf9743"
       },
       "sha256": "b2df8272d4506e2a65f4032d92ec64149b44774ebd759237d5f713a4035391d5"
     },
@@ -3535,7 +3535,7 @@
       "path": "corpus/dev/dev_status_fallback/status-fallback-04/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_status_fallback/status-fallback-04/original.program-manifest.pending.json.provenance.json",
-        "sha256": "998d4443d7e7f09f73ba9bc8be2cab246428e6e5c21d2e290d094addb5f51282"
+        "sha256": "04fc50041ced842c13f8c8c718515bc1e6b6353fbf4414d4e42b77261997ef75"
       },
       "sha256": "3fc4e1b91b72c182d4dae294a79e6e0b3adaa913e7397495638ba7211ec4bc63"
     },
@@ -3559,7 +3559,7 @@
       "path": "corpus/dev/dev_status_fallback/status-fallback-04/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_status_fallback/status-fallback-04/change.program-manifest.pending.json.provenance.json",
-        "sha256": "d849a2f9010db5c7e1c322297672741a3632896ff79b9b075a44e837f2d5ae7e"
+        "sha256": "469334ffe571b84434902c7814529535ea4ae038fc01671e75468f763a2d546e"
       },
       "sha256": "af4e0c88499796ad4dabec89d6e62e2aaaa23b8e432d2a4ee406ec9aacb111f1"
     },
@@ -3615,7 +3615,7 @@
       "path": "corpus/dev/dev_status_two_read/status-two-read-01/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_status_two_read/status-two-read-01/original.program-manifest.pending.json.provenance.json",
-        "sha256": "3f4ba0a9fa6e6a268d7bc2eac22548e853305fb8179f0e36359c464fc0773614"
+        "sha256": "e35fe5ae967d0b872f8947bcc9d4453a84e78d50a86eed3ce67882fef6257909"
       },
       "sha256": "f3d8eb12d295f2af4c0a63eb2e5871505cbaba0f3a8f803e5f18981ec3cef588"
     },
@@ -3639,7 +3639,7 @@
       "path": "corpus/dev/dev_status_two_read/status-two-read-01/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_status_two_read/status-two-read-01/change.program-manifest.pending.json.provenance.json",
-        "sha256": "293c3d6dba7c3ade0e089e334c7e27d2ea6b6812f84e2b7baf8216b9b578cc25"
+        "sha256": "e2eaf98f1b12b920fac17512e40621b681dbce4dc10cab19db1e35d8e3eb2deb"
       },
       "sha256": "6f8d145d58de71011af26ddbf59f47b85c5851c4ab29a82dd68ddcf909ff9d30"
     },
@@ -3687,7 +3687,7 @@
       "path": "corpus/dev/dev_status_two_read/status-two-read-02/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_status_two_read/status-two-read-02/original.program-manifest.pending.json.provenance.json",
-        "sha256": "21e4cfc51e9974dae696a443feecb15ba0025ea395b917826e2bf2c37a65a227"
+        "sha256": "ac4e473f300e34bed26af44c3bf7079911152f779eb28427d592ec14097fdf12"
       },
       "sha256": "7b54bd5938df030a995db428bf788d8e98134efda122ff45223e6c66418143ec"
     },
@@ -3711,7 +3711,7 @@
       "path": "corpus/dev/dev_status_two_read/status-two-read-02/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_status_two_read/status-two-read-02/change.program-manifest.pending.json.provenance.json",
-        "sha256": "8667e7308307cdc65f3218241229ed78b135e4d62e09b31973d0b36ec68aa7b8"
+        "sha256": "01e367c2b69d953ba202a6fff0cec2761b284a8b914d90a5d10d8bb925385d62"
       },
       "sha256": "6af891642f95b29903f319e2ca04024972224bec9887da89f062b2221f1e2df6"
     },
@@ -3759,7 +3759,7 @@
       "path": "corpus/dev/dev_status_two_read/status-two-read-03/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_status_two_read/status-two-read-03/original.program-manifest.pending.json.provenance.json",
-        "sha256": "28fe5c0e098a6ce953e8d85247435d88f6558d39f2112e7b6ac5adde2fa5dfd1"
+        "sha256": "9a6bef7da5202e4577af57906d31abdb6f8be0063333a84286371413bce5bc09"
       },
       "sha256": "96b8ba8bfe9dff7a3aeb8571b0a87da5a991d140b92f0a21d3c6db583a96dc78"
     },
@@ -3783,7 +3783,7 @@
       "path": "corpus/dev/dev_status_two_read/status-two-read-03/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_status_two_read/status-two-read-03/change.program-manifest.pending.json.provenance.json",
-        "sha256": "3e5bec190e5bda44fef7d68d5debb9b8059338b5a8bea311cf5e941190578bfe"
+        "sha256": "79228472ebd2942fdcf5e1f7724847b93bc10937553ec9675a42e170e499816a"
       },
       "sha256": "563c8ed7cfd6a7787055f25ab93d07106b5ac4ed2c13abe94f90506e181d9652"
     },
@@ -3831,7 +3831,7 @@
       "path": "corpus/dev/dev_status_two_read/status-two-read-04/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_status_two_read/status-two-read-04/original.program-manifest.pending.json.provenance.json",
-        "sha256": "783e10956a4474e391fe86afd60bd134f904419dfc3d503a37bfc52183e61f0c"
+        "sha256": "92e87d439cd50e7ede125a0a2af85d51c21c550ca764e62e7f1718122408b094"
       },
       "sha256": "0944d9c9a7bc538881469ee5e53a454429cc4346753ee4cf78d9aa10dcc6602c"
     },
@@ -3855,7 +3855,7 @@
       "path": "corpus/dev/dev_status_two_read/status-two-read-04/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_status_two_read/status-two-read-04/change.program-manifest.pending.json.provenance.json",
-        "sha256": "339e0f1e2162c066041e4218a72cc8f74741ab831163cfacfd9e077a018d6fad"
+        "sha256": "d221a660bf28ef50d572a3216d9295c64314337dc2f8d3b0043e78494354415f"
       },
       "sha256": "d41834e4a18dada4eee33c27da2cf23dba9a67117988582dd41a965c3ed32b16"
     },
@@ -3911,7 +3911,7 @@
       "path": "corpus/dev/dev_year_century/year-century-01/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_year_century/year-century-01/original.program-manifest.pending.json.provenance.json",
-        "sha256": "96fa3cb5f614dc718e95f5ec814717e6bf9d21b9ca2f449034720825767ed614"
+        "sha256": "d458659a0091bf6bc221690dad4145e3f5bc3202e434e839ca4c09a4eddd7a54"
       },
       "sha256": "550fd9096022308c8392576fdd8dc8bc1bc0e9d66b3491be50160a6c506efd46"
     },
@@ -3935,7 +3935,7 @@
       "path": "corpus/dev/dev_year_century/year-century-01/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_year_century/year-century-01/change.program-manifest.pending.json.provenance.json",
-        "sha256": "87f3e42e89aa00dacc5ddde5dce13032e7fac235ec4dfff2ffb7d9cabfc290a9"
+        "sha256": "2e0391bacaa7c03625917eaacee3ebc3eb0ddfc1476933a178620218f133607b"
       },
       "sha256": "eff97bdcf5b4de8400ce4f8139872fae3e48b2225f164e0be6c55c12c0ea30fe"
     },
@@ -3983,7 +3983,7 @@
       "path": "corpus/dev/dev_year_century/year-century-02/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_year_century/year-century-02/original.program-manifest.pending.json.provenance.json",
-        "sha256": "70ae6b29f6367f237c9ebd833cf76ff566f625a32f8c95142985f8b25fa54bca"
+        "sha256": "2622c5ce6b7302e4a7043d6d07af994e31c3582bc1893ab01eeea298cae93f58"
       },
       "sha256": "8712faf446cfc43c45acea8b5b5b510321f01fc6eaae3e3ae1a5667ebdf89ffe"
     },
@@ -4007,7 +4007,7 @@
       "path": "corpus/dev/dev_year_century/year-century-02/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_year_century/year-century-02/change.program-manifest.pending.json.provenance.json",
-        "sha256": "28d42b40c8d1fbfccb8eb8c50640b4c460ca8a96b8850b59b6c608da0dee0638"
+        "sha256": "1630012fb7b1e6c3e5eb43f1b2610938454cbf70d83225630aa50a999a7b398b"
       },
       "sha256": "39790bd6c6db5c2b592e9b42d09c54b0c7a9e611e35c3260e01f6be313151979"
     },
@@ -4055,7 +4055,7 @@
       "path": "corpus/dev/dev_year_century/year-century-03/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_year_century/year-century-03/original.program-manifest.pending.json.provenance.json",
-        "sha256": "e945967d175dd87faa2f74eeeee223f97f1fb3065c06f497132dc3792e1e6275"
+        "sha256": "6943b558dc78ca7adf623c80ce5aab681bffdfc664be2072d2f22b2d80c21d16"
       },
       "sha256": "1354bb1a2ca6b37c6aec41cffe98235d9fd9999d404bd7f846d7876f2c48b9c4"
     },
@@ -4079,7 +4079,7 @@
       "path": "corpus/dev/dev_year_century/year-century-03/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_year_century/year-century-03/change.program-manifest.pending.json.provenance.json",
-        "sha256": "f6d3d653f6b969e23f6d9b7ccfd74db458174c4a075635534f016d19475471ec"
+        "sha256": "a05c218b2db8c1e3056aec20c72ff9e41f19ce30bf8035ca04e34f2986ebf4dd"
       },
       "sha256": "e504f44f687c0420d7f82033b2f0ba369fac8e2b8feed9ac6ed5c2a6d1e0921a"
     },
@@ -4127,7 +4127,7 @@
       "path": "corpus/dev/dev_year_century/year-century-04/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_year_century/year-century-04/original.program-manifest.pending.json.provenance.json",
-        "sha256": "c07a24f2ab28bc1fa56de8c4b7b7f55beb654cf908788c4d38a63b7d7a10db98"
+        "sha256": "f076657331af3023176b6a39be08a8e0d192585ba3fd269acccf7b59266024aa"
       },
       "sha256": "cbc1bc7db6b694a85428fb51d4c3113bcbdece0a269790d9a2c6118a19796ec3"
     },
@@ -4151,7 +4151,7 @@
       "path": "corpus/dev/dev_year_century/year-century-04/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_year_century/year-century-04/change.program-manifest.pending.json.provenance.json",
-        "sha256": "03d05d5767cfb59169d9e6f38f75abc9260c5f24327d241bc0d5c386e23ce982"
+        "sha256": "fac3ed30e2fca64a64bbe92823e515d301d7724bb164fb54f9e45e4080e8027c"
       },
       "sha256": "624676adf6b153c4ada76f0feecb0aa139729d65b523e232ed96eddd42296438"
     },
@@ -4207,7 +4207,7 @@
       "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/original.program-manifest.pending.json.provenance.json",
-        "sha256": "9aa523c24aa457fcb16de8b23d008c8336eba968d57498a57077b86c04127b3d"
+        "sha256": "1e2925f72a5ca00bb118b72e847c14b48011dbad068a8f68e4fa5d799553fbdf"
       },
       "sha256": "54bc08388842ecea4b991a151e06c3d9f7dfa0b64ac403a9ec7c6c0a7a2bc5ad"
     },
@@ -4231,7 +4231,7 @@
       "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-01/change.program-manifest.pending.json.provenance.json",
-        "sha256": "5b658cd9cc24723ffbeb3e57a330010f062af2e4b4bdd0e7bc18642a33f77b52"
+        "sha256": "b5332df4586b3c0b637f9d2bfe77f0025484f28e70fef219d94c6a316879bf66"
       },
       "sha256": "4bbff64b6eb21d0532cce54277a05c35a10ac9f9bc89dfa2877f5b683fbe3a87"
     },
@@ -4279,7 +4279,7 @@
       "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/original.program-manifest.pending.json.provenance.json",
-        "sha256": "f765e154581cc114279012a8d02c9d513fe2c909a7e27af33a89806513ad3885"
+        "sha256": "86f000ad0a7f52a84e0ce88335e44eed7ad3d5884d0c2daec20f106ae83b8dc8"
       },
       "sha256": "30b3328f4192ccef62d148f7d59fafd1e2c69598c083e554262897a0d11a9568"
     },
@@ -4303,7 +4303,7 @@
       "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/change.program-manifest.pending.json.provenance.json",
-        "sha256": "12e02839b4005432b3d6d7fcf567613a85b012c04e2bad8dc555097a89b35e77"
+        "sha256": "d941a86fb814577ed56108aaa7d64e2c387eca4ffa8941a074fdd32fdbce91fc"
       },
       "sha256": "07dcd36cb6f6ce580624b549e051f5a079d58227674e706f5968783edc10a244"
     },
@@ -4351,7 +4351,7 @@
       "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/original.program-manifest.pending.json.provenance.json",
-        "sha256": "9453cba922b14e7e198ed302bbe399da933d0eb96e0d3e80df4a762bb5df9986"
+        "sha256": "e6a0c79abb6e83c58913a5ee2aeacc841b4be71ee2369ad94411f7c00a33866b"
       },
       "sha256": "ae4c22e1f8b25cf4f61d569caec3c1a32bea1bd96d1c475e74834f29edc01755"
     },
@@ -4375,7 +4375,7 @@
       "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-03/change.program-manifest.pending.json.provenance.json",
-        "sha256": "93305e83dcddb5c054b07ba679fe3ca0227d8d62468afa02157665b03fd2d783"
+        "sha256": "f985bb5262509b4c5834462dc7e11116d1b6bf0ee2c1e10a01431ab8c836dc6c"
       },
       "sha256": "763316d50771d6c7e88c1f7d6d21fb702d194f93e04d41d2d93d7dab077e222e"
     },
@@ -4423,7 +4423,7 @@
       "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/original.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/original.program-manifest.pending.json.provenance.json",
-        "sha256": "6c0b4a7d867444b0725e9d1e4e05d952e4ef7b4859c711db6696dda59d014430"
+        "sha256": "50bb463e13d1fcb4206bf0f283e14d0ec620c9a99fb00615eddda528d6e5b0d8"
       },
       "sha256": "ba3cc3fd203885f800d6867eea1a9e0a8d2924c38e25829fff960d0243df277e"
     },
@@ -4447,7 +4447,7 @@
       "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/change.program-manifest.pending.json",
       "provenance": {
         "path": "corpus/dev/dev_year_pivot_score/year-pivot-score-04/change.program-manifest.pending.json.provenance.json",
-        "sha256": "ad8f39b3ce1a6232f4ac3cd17f8ece352c59cdf3aa8b639d31103d574e11cf71"
+        "sha256": "0d72a1c2eab13ed17b322ccbbd8c6b838cad2d3cd0d76adfe0761e2a57ad1b1e"
       },
       "sha256": "36eb0c923ba79c73ffaff69a944d94b071afbaf187783a7899f8b0a604bca71e"
     }
