@@ -1,24 +1,24 @@
 {
-  "manifest_version": 1,
-  "probe_id": "S21",
-  "program_id": "probe-s21",
-  "source_sha256": "2cd0834805ef77143901b9f8bf1e36ce7e54bb6115bf0d94af846100a63bf8a7",
+  "coverage_status": "proposed_unverified",
   "focus": "multi-operator COMPUTE intermediate order",
-  "record_width": 8,
   "input_fields": [
     {
       "name": "IN-TEXT",
-      "pic": "X(8)",
-      "usage": "DISPLAY",
-      "sign": "none",
       "offset": 0,
-      "width": 8,
-      "scale": 0
+      "pic": "X(8)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 8
     }
   ],
+  "manifest_version": 1,
+  "pending_measurement": null,
+  "probe_id": "S21",
+  "program_id": "probe-s21",
   "proposed_case_scenarios": [],
   "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "record_width": 8,
   "source_execution_status": "not_run",
-  "coverage_status": "proposed_unverified",
-  "pending_measurement": null
+  "source_sha256": "1bdd2f14bb9a9cca1b5a45c7da34a50b32f77cfb50373654556f2dbd3cb85a81"
 }

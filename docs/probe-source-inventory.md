@@ -22,17 +22,17 @@ Each `.cbl` and `.proposal.json` has its own raw-hash provenance sidecar; propos
 | S08 | tiny discarded negative fraction | `e9f5ae50e0fc357d52ee59a812f8d6b97946a14368191ba5ced6541d5c907ddd` | proposed_unverified |
 | S09 | positive truncation without ROUNDED | `f42182b34fee764897c3ef5b3a41d6fd4d3daae7f5253ade9b9a4ae8237fad6d` | proposed_unverified |
 | S10 | negative truncation without ROUNDED | `fef7c3ce07540f3ce62e2431078076000667073d01465e9a8ca806cf9eaafd88` | proposed_unverified |
-| S11 | negative zero through MOVE | `b2e06dd3ae63952979d4268a19a333edbca0fa40a85bcd3dabf885bf87d2daaf` | proposed_unverified |
-| S12 | negative zero through arithmetic | `f37a168394355df120a6ba7b2cbe5b8d4ec17cc29cf798c3a7a87c536f06e607` | proposed_unverified |
+| S11 | negative zero through MOVE | `41a67e01c511a57e4789c8265893c4cbbf067395558a5f39dd725d160165d2a9` | proposed_unverified |
+| S12 | negative zero through arithmetic | `24f30b0166187ee8ba6f7abcbd46ace634b6a7fa2b32ef38b0d296ad59d9a16b` | proposed_unverified |
 | S13 | leading separate sign width and position | `d78323b636645caafb2ba93caf6605bf23f3991e43b8558e6c134d601074ce16` | proposed_unverified |
 | S14 | trailing separate sign pending: only leading proxy is inside subset | `01c05160f9bb6bb69e3e6973b1def738a8439b707d484b94119b4ea3705b5f0c` | partial_pending_out_of_subset_measurement |
 | S15 | internal COMP-3 byte size pending: only value movement is observable | `8b3667b5ef21084b37665dddf1c0e48f3251c2a46b837342fe1c8c2fe3eb79cf` | partial_pending_out_of_subset_measurement |
-| S16 | internal packed truncation to display | `9f331b73480a156261cdffd6fdf5dee5880d9188e698caef43041d59522576f1` | proposed_unverified |
+| S16 | internal packed truncation to display | `1089553d46b9372e87c29ec7ad54b080a2c3ed40e17eedc4992938cbcddbed0e` | proposed_unverified |
 | S17 | overflow without handler | `5890447919cc76e5c7d78c8427431a1ccd88b06a3c8be514aaa786bf891dd39c` | proposed_unverified |
 | S18 | overflow with SIZE ERROR handler | `d326d4a5f67dc87a4dd68fd680bfe09c2c02f67b38acc121753e76f896657e6c` | proposed_unverified |
 | S19 | destination sentinel on SIZE ERROR | `c2f7100f7182c81c1811554d81eaac4976f668e7f2b4f4c3671fb67f130eebf9` | proposed_unverified |
 | S20 | divide by zero handled and unhandled | `e469bcff3132f5f68d916cd452da358c01ddbc0bfbdce688269d70891ea5b4d0` | proposed_unverified |
-| S21 | multi-operator COMPUTE intermediate order | `2cd0834805ef77143901b9f8bf1e36ce7e54bb6115bf0d94af846100a63bf8a7` | proposed_unverified |
+| S21 | multi-operator COMPUTE intermediate order | `1bdd2f14bb9a9cca1b5a45c7da34a50b32f77cfb50373654556f2dbd3cb85a81` | proposed_unverified |
 | S22 | missing input status | `570b4432c6669fd45be102658e5d95ce5718031f711765bb6ee361e93652d772` | proposed_unverified |
 | S23 | empty input first and subsequent EOF | `ca2d7571f38ef2929d375c7a6452d8545030cb62852e8474c826b0f96bce5a76` | proposed_unverified |
 | S24 | explicit two-digit integer year window with pivot 50; year pivot minus one and pivot | `6b4731bbf3fffbfb1d71d8fe498531783ed615a376856eef1c51ef9960fbd0b8` | proposed_unverified |
@@ -49,3 +49,5 @@ Each `.cbl` and `.proposal.json` has its own raw-hash provenance sidecar; propos
 - S13 writes an external signed output field, guarded by successful OPEN, to make physical sign position and width observable later; no output has been generated. S14 retains only a leading-sign input proxy, with no actual input record bytes. A05/S24/S25 source-declare a two-digit pivot of 50 and mapping below pivot to 2000+YY, otherwise 1900+YY; this is a proposed algorithm, not a compiler finding or a built-in year-window claim.
 - A06 has one unchanged source for later ordinary/trace builds and repeated observations; no build or parity check occurred.
 - Statements and metadata have not been validated by a parser or GnuCOBOL. Compiler acceptance, line-sequential physical framing, signed-zero retention, overflow behavior, divide-by-zero behavior, and all claimed focuses remain open.
+
+Corrective source revision: S11/S12/S16/S21 now explicitly declare DEC-OUT PIC S9(3)V9(2) SIGN LEADING SEPARATE, the intended signed quantization receiver. Parent0003 revised these child0064 sources and metadata after XHigh found unresolved references; raw sidecars retain original author/session and prior edition hashes. No source was executed or parsed.

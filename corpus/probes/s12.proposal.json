@@ -1,24 +1,24 @@
 {
-  "manifest_version": 1,
-  "probe_id": "S12",
-  "program_id": "probe-s12",
-  "source_sha256": "f37a168394355df120a6ba7b2cbe5b8d4ec17cc29cf798c3a7a87c536f06e607",
+  "coverage_status": "proposed_unverified",
   "focus": "negative zero through arithmetic",
-  "record_width": 8,
   "input_fields": [
     {
       "name": "IN-TEXT",
-      "pic": "X(8)",
-      "usage": "DISPLAY",
-      "sign": "none",
       "offset": 0,
-      "width": 8,
-      "scale": 0
+      "pic": "X(8)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 8
     }
   ],
+  "manifest_version": 1,
+  "pending_measurement": null,
+  "probe_id": "S12",
+  "program_id": "probe-s12",
   "proposed_case_scenarios": [],
   "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "record_width": 8,
   "source_execution_status": "not_run",
-  "coverage_status": "proposed_unverified",
-  "pending_measurement": null
+  "source_sha256": "24f30b0166187ee8ba6f7abcbd46ace634b6a7fa2b32ef38b0d296ad59d9a16b"
 }

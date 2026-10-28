@@ -1,24 +1,24 @@
 {
-  "manifest_version": 1,
-  "probe_id": "S16",
-  "program_id": "probe-s16",
-  "source_sha256": "9f331b73480a156261cdffd6fdf5dee5880d9188e698caef43041d59522576f1",
+  "coverage_status": "proposed_unverified",
   "focus": "internal packed truncation to display",
-  "record_width": 8,
   "input_fields": [
     {
       "name": "IN-TEXT",
-      "pic": "X(8)",
-      "usage": "DISPLAY",
-      "sign": "none",
       "offset": 0,
-      "width": 8,
-      "scale": 0
+      "pic": "X(8)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 8
     }
   ],
+  "manifest_version": 1,
+  "pending_measurement": null,
+  "probe_id": "S16",
+  "program_id": "probe-s16",
   "proposed_case_scenarios": [],
   "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "record_width": 8,
   "source_execution_status": "not_run",
-  "coverage_status": "proposed_unverified",
-  "pending_measurement": null
+  "source_sha256": "1089553d46b9372e87c29ec7ad54b080a2c3ed40e17eedc4992938cbcddbed0e"
 }
