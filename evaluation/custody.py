@@ -112,6 +112,10 @@ def validate_chain(events: tuple[CustodyEvent, ...], *, commitment_sha256: str,
                 raise ValueError('unknown custody action')
         previous = digest
         seen_hashes.add(digest)
-    return CustodyReport(phase, tuple(sorted(completed)),
-                         tuple(sorted(call for (_, call), state in calls.items() if state == 'reserved')),
+    globally_blocked = any(state in ('sent', 'unknown') for state in calls.values())
+    resumable = tuple(sorted(call for (task, call), state in calls.items()
+                             if state == 'reserved' and phase == 'running'
+                             and task not in candidates and task not in completed
+                             and not globally_blocked))
+    return CustodyReport(phase, tuple(sorted(completed)), resumable,
                          tuple(sorted(call for (_, call), state in calls.items() if state in ('sent', 'unknown'))), previous)

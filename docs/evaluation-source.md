@@ -17,7 +17,8 @@ declared. Declarations are never model approval. There is one sample per task/mo
 
 `Schedule.tasks` describes each free deterministic A slot, repeated for each model
 comparison without a paid call. `calls` describes B/C attempt0 and D/R repairs1..3;
-length-framed SHA256 call identities bind run/task/model-slot/arm/attempt. Maximums
+domain-separated, length-framed SHA256 identities bind run/task/model-slot/arm/attempt.
+Adapter smoke occupies a separate identity domain; all1346 IDs must be unique. Maximums
 are 768 dev, 576 heldout and two separate smoke slots, 1346 total. All task source,
 oracle/edit and recipe refs are native `TaskBinding`, not a second corpus model.
 Hidden slots are opaque metadata only; builders must not materialize/read hidden
@@ -103,6 +104,9 @@ and post-completion replacements refuse. Reserved call IDs are unique; only
 never-sent reservations are resumable. Unresolved sent/unknown IDs globally block
 new sends/reservations and completion. Settlement reconciles the same call ID,
 never another request. No backend calls or model regeneration occur.
+The resumable report uses the same running/open-unit/global-hold predicates as the
+send transition; sealed, disclosed, completed, burned or globally blocked units
+never appear structurally eligible. This is still bookkeeping, not send authority.
 
 Verification fixes the candidate hash permanently. Genuine observed candidate-
 independent infra faults can retain another verification record for the identical

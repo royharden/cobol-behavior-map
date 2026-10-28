@@ -65,9 +65,9 @@ def build_schedule(plan: RunPlan) -> Schedule:
     if len(plan.model_ids) not in (0, 2) or (plan.model_ids and
             (len(set(plan.model_ids)) != 2 or any(not m.strip() for m in plan.model_ids))):
         raise ScheduleError('zero pending or two distinct declared model IDs required')
-    def identity(task: str, model_slot: str, arm: str, attempt: int) -> str:
+    def identity(task: str, model_slot: str, arm: str, attempt: int, *, domain: str = 'study_task') -> str:
         # Length framing prevents delimiter collisions in arbitrary identifiers.
-        fields = (plan.run_id, task, model_slot, arm, str(attempt))
+        fields = (domain, plan.run_id, task, model_slot, arm, str(attempt))
         raw = b''.join(len(f.encode()).to_bytes(4, 'big') + f.encode() for f in fields)
         return sha256(raw).hexdigest()
     calls = []
@@ -80,7 +80,10 @@ def build_schedule(plan: RunPlan) -> Schedule:
                     calls.append(CallSlot(identity(task.task_id, model_slot, arm, attempt),
                                           task.task_id, model_slot, model, arm, attempt,
                                           shared if arm in ('D', 'R') else None))
-    smoke = tuple(identity('smoke', slot, 'B', 0) for slot in ('primary', 'replication'))
+    smoke = tuple(identity('smoke', slot, 'B', 0, domain='adapter_smoke')
+                  for slot in ('primary', 'replication'))
+    if len({call.call_id for call in calls} | set(smoke)) != 1346:
+        raise ScheduleError('full schedule call identities must be unique')
     return Schedule(plan.tasks, tuple(calls), smoke)
 
 
