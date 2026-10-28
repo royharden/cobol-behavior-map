@@ -67,6 +67,9 @@ rounding. Literal-only comparisons without a declared field context refuse rathe
 than inventing a numeric type. This restriction applies to edit eligibility, not
 ordinary source arithmetic intermediates. A future extension needs explicit context
 metadata; it must not silently admit an out-of-range or fractional replacement.
+Expression ownership stops at the nearest statement, including handler/AT END bodies;
+an inner MOVE or literal-only IF cannot borrow an outer arithmetic receiver. Numeric
+MOVE literal edits are outside FAMILY's arithmetic/comparison edit vocabulary.
 
 Edits revalidate types/graphs and derive candidate loop bounds with the declared
 constant monotone integer proof form, all-path step checks, dominating known values,

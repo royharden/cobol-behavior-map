@@ -8,6 +8,16 @@ from .normalize import ARITHMETIC, TranslationRefusal, need, validate_nodes
 from .bounds import reprove_edited_loops
 
 
+def _owner(ancestors):
+    expressions = []
+    for parent in reversed(ancestors):
+        if parent["kind"] in ("literal", "reference", "binary", "compare", "boolean"):
+            expressions.append(parent)
+        else:
+            return parent, expressions
+    return None, expressions
+
+
 def _all_nodes(plan):
     def visit(node, ancestors):
         yield node, ancestors
@@ -52,13 +62,17 @@ def apply_change(plan, change):
             matches.append((node, parents))
     need(len(matches) == 1, "change_target", "target must resolve to exactly one IR node")
     node, ancestors = matches[0]
+    owner, expressions = _owner(ancestors)
+    comparison = next((parent for parent in expressions if parent["kind"] == "compare"), None)
     operation, before, after = change["operation"], change["before"], change["after"]
     fields = {field["name"]: field for field in plan["fields"]}
     if operation in ("replace_numeric_literal", "replace_alpha_literal"):
         category = "numeric" if operation == "replace_numeric_literal" else "alpha"
-        allowed = ARITHMETIC | {"compare"} if category == "numeric" else {"move", "compare"}
+        allowed_owner = owner is not None and (
+            (owner["kind"] in ARITHMETIC if category == "numeric" else owner["kind"] == "move")
+            or (owner["kind"] in ("if", "perform") and comparison is not None))
         need(node["kind"] == "literal" and node["literal_type"] == category
-             and any(parent["kind"] in allowed for parent in ancestors), "change_target", "literal context")
+             and allowed_owner, "change_target", "literal expression owner/context")
         need(type(before) is str and type(after) is str and node["value"] == before,
              "change_target", "literal before/type mismatch")
         need(before != after, "change_noop", "identical replacement")
@@ -67,14 +81,11 @@ def apply_change(plan, change):
             need(Fraction(old.coefficient, 10 ** old.scale) != Fraction(new.coefficient, 10 ** new.scale)
                  or old.negative_zero != new.negative_zero, "change_noop", "same numeric value/sign")
             contexts = []
-            for parent in reversed(ancestors):
-                if parent["kind"] == "compare":
-                    contexts = [fields[parent[key]["name"]] for key in ("left", "right")
-                                if parent[key]["kind"] == "reference"]
-                elif parent["kind"] in ARITHMETIC:
-                    contexts = [fields[parent["target"]]]
-                if contexts:
-                    break
+            if comparison is not None:
+                contexts = [fields[comparison[key]["name"]] for key in ("left", "right")
+                            if comparison[key]["kind"] == "reference"]
+            elif owner["kind"] in ARITHMETIC:
+                contexts = [fields[owner["target"]]]
             need(contexts, "change_out_of_subset", "numeric edit has no declared receiver/peer field context")
             for field in contexts:
                 numerator, denominator = new.coefficient * 10 ** field["scale"], 10 ** new.scale
@@ -86,16 +97,15 @@ def apply_change(plan, change):
             need(before.rstrip(" ") != after.rstrip(" "), "change_noop", "same space-padded alpha value")
             need(all(32 <= ord(c) <= 126 for c in after), "change_out_of_subset", "alpha replacement encoding")
             widths = []
-            for parent in ancestors:
-                if parent["kind"] == "move":
-                    widths.append(fields[parent["target"]]["width"])
-                elif parent["kind"] == "compare":
-                    widths.extend(fields[parent[key]["name"]]["width"] for key in ("left", "right")
-                                  if parent[key]["kind"] == "reference")
+            if comparison is not None:
+                widths = [fields[comparison[key]["name"]]["width"] for key in ("left", "right")
+                          if comparison[key]["kind"] == "reference"]
+            elif owner["kind"] == "move":
+                widths = [fields[owner["target"]]["width"]]
             need(widths and len(after) <= min(widths), "change_out_of_subset", "alpha replacement must fit context")
         node["value"] = after
     elif operation == "replace_comparator":
-        need(node["kind"] == "compare" and any(parent["kind"] == "if" for parent in ancestors),
+        need(node["kind"] == "compare" and owner is not None and owner["kind"] == "if",
              "change_target", "numeric IF comparison required")
         need(all((child["kind"] == "literal" and child["literal_type"] == "numeric") or
                  (child["kind"] == "reference" and not fields[child["name"]]["pic"].startswith("X"))
@@ -113,6 +123,6 @@ def apply_change(plan, change):
     else:
         raise TranslationRefusal("unsupported_change", "unknown structured operation")
     validate_nodes(plan)
-    affected = {parent["target"] for parent in ancestors if parent["kind"] in ARITHMETIC}
+    affected = {owner["target"]} if owner is not None and owner["kind"] in ARITHMETIC else set()
     reprove_edited_loops(plan, node["span"]["byte_start"],
                         affected if operation == "replace_numeric_literal" else set())
