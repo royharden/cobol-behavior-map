@@ -8,7 +8,7 @@
     },
     {
       "path": "tests/translate_source/test_structured_edits.py",
-      "sha256": "1e152b233d08d11f32c849474ea9342ca667f88ce012a8cb3b8e6744deb45300",
+      "sha256": "08589cc70c7b0909a98e303fd76286d424c9e4c64d2021e0c105e690015f5bab",
       "test_methods": [
         "test_numeric_literal_changes_only_bound_arithmetic_operand",
         "test_comparator_changes_only_numeric_if_relation",

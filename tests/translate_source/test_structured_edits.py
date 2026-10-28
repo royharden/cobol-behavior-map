@@ -1,6 +1,7 @@
 """Source-only native edit tests. Generated candidate text is never executed."""
 import copy
-from dataclasses import replace
+from dataclasses import replace, fields, is_dataclass
+from collections.abc import Mapping
 import hashlib
 import unittest
 
@@ -8,10 +9,27 @@ from cobolmap.translate import TranslationRefusal, translate
 from dl2_translate_fixtures import make_change, one_ir, parse_source, plan_from_result, plan_node, source, walk_ir
 
 
+def _snapshot(value):
+    """Copy IR content to primitives without pickling immutable mapping proxies."""
+    if is_dataclass(value):
+        return (type(value).__name__, tuple((field.name, _snapshot(getattr(value, field.name)))
+                                           for field in fields(value)))
+    if isinstance(value, Mapping):
+        return tuple(sorted((key, _snapshot(item)) for key, item in value.items()))
+    if isinstance(value, (tuple, list)):
+        return tuple(_snapshot(item) for item in value)
+    if hasattr(value, "source_sha256") and hasattr(value, "byte_start"):
+        return tuple((key, getattr(value, key)) for key in
+                     ("source_sha256", "filename", "line_start", "line_end", "byte_start", "byte_end"))
+    if type(value) in (str, int, bool, type(None)):
+        return value
+    raise TypeError("unsupported snapshot value")
+
+
 class StructuredEditSourceTests(unittest.TestCase):
     def _plans(self, text, kind, spelling, operation, before, after, replacement):
         program = parse_source(text)
-        original_ir = copy.deepcopy(program)
+        original_ir = _snapshot(program)
         raw = program.source.encode("ascii")
         candidates = [node for node in walk_ir(program) if node.kind == kind and
                       raw[node.span.byte_start:node.span.byte_end] == spelling.encode("ascii")]
@@ -22,7 +40,7 @@ class StructuredEditSourceTests(unittest.TestCase):
         changed_result = translate(program, change)
         _, base = plan_from_result(base_result)
         _, changed = plan_from_result(changed_result)
-        self.assertEqual(program, original_ir, "translate must not mutate frozen parser IR")
+        self.assertEqual(_snapshot(program), original_ir, "translate must not mutate frozen parser IR")
         self.assertEqual(program.source, text, "an edit must not change original COBOL bytes")
         digest = hashlib.sha256(text.encode("ascii")).hexdigest()
         self.assertEqual(base_result.original_source_sha256, digest)
