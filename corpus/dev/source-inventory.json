@@ -13,8 +13,8 @@
   ],
   "author_callsign": "0003_Codex_GPT-6_M10-DL2",
   "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
-  "brief_sha256": "42383cf484a9d97f5ea5e117f6e68addc7a19aadbbe9639180421b70b21a7d25",
-  "created_at": "2026-10-28T00:44:08Z",
+  "brief_sha256": "9f5a5b807e19217593e11e3a2a9aca14b695cbc8b2ba184b939d7b7738cbd72a",
+  "created_at": "2026-10-28T01:19:48Z",
   "families": [
     {
       "artifact": {
@@ -95,6 +95,11 @@
       "template_id": "pivot_division"
     }
   ],
+  "initial_inventory_attribution": {
+    "brief_sha256": "42383cf484a9d97f5ea5e117f6e68addc7a19aadbbe9639180421b70b21a7d25",
+    "created_at": "2026-10-28T00:44:08Z",
+    "meaning": "initial r2 source inventory attribution, not current edition"
+  },
   "manifest_version": 1,
   "programs": [
     {
@@ -5992,6 +5997,7 @@
   ],
   "recipe_corpus_version": "m10-dev-source-r4",
   "recipe_status": "authored_source_only_not_emitted_or_admitted",
+  "revision_note": "Current r4 inventory edition; authored-time recipe/manifest/probe sidecars keep their own brief edition. Later probe-only subset ruling r6 read, S14/S15 remain unsupported measurement obligations.",
   "source_counts": {
     "changed": 24,
     "families": 6,
