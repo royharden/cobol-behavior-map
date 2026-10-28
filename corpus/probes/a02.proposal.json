@@ -1,0 +1,24 @@
+{
+  "manifest_version": 1,
+  "probe_id": "A02",
+  "program_id": "probe-a02",
+  "source_sha256": "5c4b3508769e9b81c08392c84af9c08db3d58b67eef505ca8a68a18b8e2ad98e",
+  "focus": "ROUNDED positive/negative ties and adjacent values",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null
+}

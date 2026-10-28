@@ -1,7 +1,7 @@
 {
   "artifact_kind": "specification",
   "artifact_path": "corpus/dev/dev_decimal_tier/fee-tier-04/change.program-manifest.pending.json",
-  "artifact_sha256": "77e8b78b95ec70a0b1e9cd122b202f2358cc1a5dbf6cf11c68e6f0e18bf1647a",
+  "artifact_sha256": "809ede43d474d3e4b91b083ed2e782e54ae61122b534512f459025d78863f406",
   "author_callsign": "0003_Codex_GPT-6_M10-DL2",
   "author_harness": "Codex",
   "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",

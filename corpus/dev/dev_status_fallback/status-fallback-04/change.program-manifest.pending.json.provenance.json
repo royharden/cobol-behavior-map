@@ -1,7 +1,7 @@
 {
   "artifact_kind": "specification",
   "artifact_path": "corpus/dev/dev_status_fallback/status-fallback-04/change.program-manifest.pending.json",
-  "artifact_sha256": "27ae6e82f01e445d12e945f6f7e0e25fa5e7665490d93e4ea20f7c6f8efbfa7d",
+  "artifact_sha256": "af4e0c88499796ad4dabec89d6e62e2aaaa23b8e432d2a4ee406ec9aacb111f1",
   "author_callsign": "0003_Codex_GPT-6_M10-DL2",
   "author_harness": "Codex",
   "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",

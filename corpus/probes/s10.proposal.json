@@ -1,0 +1,24 @@
+{
+  "manifest_version": 1,
+  "probe_id": "S10",
+  "program_id": "probe-s10",
+  "source_sha256": "fef7c3ce07540f3ce62e2431078076000667073d01465e9a8ca806cf9eaafd88",
+  "focus": "negative truncation without ROUNDED",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null
+}

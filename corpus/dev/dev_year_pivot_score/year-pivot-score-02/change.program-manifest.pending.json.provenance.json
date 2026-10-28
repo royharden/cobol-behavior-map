@@ -1,7 +1,7 @@
 {
   "artifact_kind": "specification",
   "artifact_path": "corpus/dev/dev_year_pivot_score/year-pivot-score-02/change.program-manifest.pending.json",
-  "artifact_sha256": "96e8f6408b094e6109322eed36f091954ff2311f24bbc913712761c6acb4e478",
+  "artifact_sha256": "07dcd36cb6f6ce580624b549e051f5a079d58227674e706f5968783edc10a244",
   "author_callsign": "0003_Codex_GPT-6_M10-DL2",
   "author_harness": "Codex",
   "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",

@@ -1,0 +1,14 @@
+{
+  "change_sha256": "2818b284d6cd9cecf7e3b92b7f48123d0746f34848b01c96dcb71b22cd71d653",
+  "family_id": "dev_year_pivot_score",
+  "fields_sha256": "ac6c78be5ba327828a139d7a7e2971a7e46c120a27dd63537cda67ab985f0c0a",
+  "generator_sha256": "4438bb3a481ca5e88d0cba7451e9de4c4a6d613686c67759043a40aff14278a8",
+  "manifest_version": 1,
+  "oracle_source_sha256": "2b931b49b21dd65eb9988149f28c21ad9f187d60cb4e865974bf7c302e61aec1",
+  "original_sha256": "d4028ceee984fd59c587393aa8548166b71127d4c15cf85eb9f837d55f61206b",
+  "panel": "change",
+  "program_id": "year-pivot-score-04",
+  "recipe_sha256": "ba9d56c3a20559b84a71d60b972f61f80686d85eefc4861ec3d7578e9fa92c0e",
+  "split": "dev",
+  "task_id": "year-pivot-score-04-change"
+}

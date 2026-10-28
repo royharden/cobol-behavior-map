@@ -1,0 +1,14 @@
+{
+  "change_sha256": "d0e4bf99db8e285768f8be5e2c1856b59f72fcc871876ef04328e3813bc52451",
+  "family_id": "dev_decimal_tier",
+  "fields_sha256": "8b2c43dab2d48b054bd379eb8743eea05013209efa88e407e91a1d92ba6ffa2b",
+  "generator_sha256": "4438bb3a481ca5e88d0cba7451e9de4c4a6d613686c67759043a40aff14278a8",
+  "manifest_version": 1,
+  "oracle_source_sha256": "64efb111f4fc33aac84fe6a58c6789ccce3533ce2ff10f7d5a65a5fc990d2fd4",
+  "original_sha256": "ae70143cc1ff12f19c6185810403fbc5a4fb9776d78b689a070d6d72d14a23f9",
+  "panel": "change",
+  "program_id": "fee-tier-04",
+  "recipe_sha256": "720a1f7029a69052c61eefd8a9eb174fe272ab9773aed0f757d99675df9a6cf6",
+  "split": "dev",
+  "task_id": "fee-tier-04-change"
+}

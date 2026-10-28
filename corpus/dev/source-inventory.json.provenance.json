@@ -1,7 +1,7 @@
 {
   "artifact_kind": "specification",
   "artifact_path": "corpus/dev/source-inventory.json",
-  "artifact_sha256": "759005b3b043cdb5146fa1abc1717aaa43d35587bbf6f47286155e395b0c27c4",
+  "artifact_sha256": "b1bba5104be44ee93dfeb134dc4a62a15fa8930e6fd30ba6b379965789e26fa3",
   "author_callsign": "0003_Codex_GPT-6_M10-DL2",
   "author_harness": "Codex",
   "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",

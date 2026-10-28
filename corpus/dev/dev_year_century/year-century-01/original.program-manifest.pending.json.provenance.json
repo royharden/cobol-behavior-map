@@ -1,7 +1,7 @@
 {
   "artifact_kind": "specification",
   "artifact_path": "corpus/dev/dev_year_century/year-century-01/original.program-manifest.pending.json",
-  "artifact_sha256": "3f2cf6a7b9c725791d310b529770c83fd52720713a49c41a9f0a04127c9f961a",
+  "artifact_sha256": "550fd9096022308c8392576fdd8dc8bc1bc0e9d66b3491be50160a6c506efd46",
   "author_callsign": "0003_Codex_GPT-6_M10-DL2",
   "author_harness": "Codex",
   "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",

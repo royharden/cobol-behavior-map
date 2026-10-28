@@ -1,0 +1,36 @@
+{
+  "manifest_version": 1,
+  "probe_id": "S13",
+  "program_id": "probe-s13",
+  "source_sha256": "d78323b636645caafb2ba93caf6605bf23f3991e43b8558e6c134d601074ce16",
+  "focus": "leading separate sign width and position",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": "Raw output-file bytes, sign position and width require pinned execution; source has not run",
+  "output_record_width": 6,
+  "output_fields": [
+    {
+      "name": "OUT-NUM",
+      "pic": "S9(3)V9(2)",
+      "usage": "DISPLAY",
+      "sign": "leading_separate",
+      "offset": 0,
+      "width": 6,
+      "scale": 2
+    }
+  ]
+}

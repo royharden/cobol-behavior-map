@@ -1,0 +1,30 @@
+{
+  "manifest_version": 1,
+  "probe_id": "A05",
+  "program_id": "probe-a05",
+  "source_sha256": "1bcaf2cecf6fff0f2d2f070d2d3c301c4ea79de9e7b8dc3fba9952cf0292f890",
+  "focus": "explicit two-digit integer year window with pivot 50; integer year pivot sides",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null,
+  "proposed_year_values": [
+    49,
+    50,
+    51
+  ],
+  "century_mapping": "YY < 50: 2000 + YY; otherwise 1900 + YY; source-declared hypothesis, not observed compiler behavior"
+}

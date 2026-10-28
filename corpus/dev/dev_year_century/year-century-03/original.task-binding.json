@@ -1,0 +1,14 @@
+{
+  "change_sha256": null,
+  "family_id": "dev_year_century",
+  "fields_sha256": "f466be3c3595672d653aa1837a80c9456c5e17bfd592f098abd9fd9fe76de1c8",
+  "generator_sha256": "4438bb3a481ca5e88d0cba7451e9de4c4a6d613686c67759043a40aff14278a8",
+  "manifest_version": 1,
+  "oracle_source_sha256": "e4f8d4daa58a6020cbc34e4dd5086766d75694dc08edf8ef2896ce39f8652611",
+  "original_sha256": "e4f8d4daa58a6020cbc34e4dd5086766d75694dc08edf8ef2896ce39f8652611",
+  "panel": "unchanged",
+  "program_id": "year-century-03",
+  "recipe_sha256": "5f09397a29ed499083bd1722f61913e208a6dd3d330e40f388a20244b2c0173d",
+  "split": "dev",
+  "task_id": "year-century-03-original"
+}

@@ -1,7 +1,7 @@
 {
   "artifact_kind": "specification",
   "artifact_path": "corpus/dev/dev_decimal_chain/fee-chain-03/original.program-manifest.pending.json",
-  "artifact_sha256": "4b899e71af2e275e316263ba4ef8ab9469c6e67450ae4a92ca7d298649f6e5d1",
+  "artifact_sha256": "4c8543267fb3a757b807e78881f709a0d1513115bc6fe74312f727c1ad356001",
   "author_callsign": "0003_Codex_GPT-6_M10-DL2",
   "author_harness": "Codex",
   "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",

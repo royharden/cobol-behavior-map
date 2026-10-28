@@ -1,0 +1,29 @@
+{
+  "manifest_version": 1,
+  "probe_id": "S24",
+  "program_id": "probe-s24",
+  "source_sha256": "6b4731bbf3fffbfb1d71d8fe498531783ed615a376856eef1c51ef9960fbd0b8",
+  "focus": "explicit two-digit integer year window with pivot 50; year pivot minus one and pivot",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null,
+  "proposed_year_values": [
+    49,
+    50
+  ],
+  "century_mapping": "YY < 50: 2000 + YY; otherwise 1900 + YY; source-declared hypothesis, not observed compiler behavior"
+}

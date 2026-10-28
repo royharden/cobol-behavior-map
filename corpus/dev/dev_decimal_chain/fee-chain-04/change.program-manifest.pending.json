@@ -7,7 +7,10 @@
     {
       "hazard_id": "H7",
       "observable": "output.dat:OUT-TOTAL / source error outcome pending",
-      "reachability_recipe_ids": [],
+      "reachability_recipe_ids": [
+        "fee-chain-04-change-loop-zero-divisor",
+        "fee-chain-04-change-verification-zero-divisor"
+      ],
       "target": {
         "byte_end": 1453,
         "byte_start": 1377,
@@ -18,7 +21,10 @@
     {
       "hazard_id": "H8",
       "observable": "output.dat:OUT-TOTAL",
-      "reachability_recipe_ids": [],
+      "reachability_recipe_ids": [
+        "fee-chain-04-change-loop-mixed",
+        "fee-chain-04-change-verification-mixed"
+      ],
       "target": {
         "byte_end": 1453,
         "byte_start": 1377,

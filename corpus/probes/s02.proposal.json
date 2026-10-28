@@ -1,0 +1,24 @@
+{
+  "manifest_version": 1,
+  "probe_id": "S02",
+  "program_id": "probe-s02",
+  "source_sha256": "f4fd2d4e6f80cf80076605892eb07e6fc8d6e0c75ca861c069b64a1ae25dc1bf",
+  "focus": "negative rounded tie",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null
+}

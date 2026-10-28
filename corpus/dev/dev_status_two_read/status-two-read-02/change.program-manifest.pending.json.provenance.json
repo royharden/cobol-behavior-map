@@ -1,7 +1,7 @@
 {
   "artifact_kind": "specification",
   "artifact_path": "corpus/dev/dev_status_two_read/status-two-read-02/change.program-manifest.pending.json",
-  "artifact_sha256": "36aeae4dedc5e8e3472feed3d527e951982add9bbab178a61f463dde351de395",
+  "artifact_sha256": "6af891642f95b29903f319e2ca04024972224bec9887da89f062b2221f1e2df6",
   "author_callsign": "0003_Codex_GPT-6_M10-DL2",
   "author_harness": "Codex",
   "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",

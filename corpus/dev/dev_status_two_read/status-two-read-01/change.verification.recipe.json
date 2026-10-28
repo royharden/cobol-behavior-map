@@ -1,0 +1,70 @@
+{
+  "boundaries": [
+    {
+      "field": "PAYLOAD",
+      "id": "status-two-read-01-change-verification-full-width",
+      "kind": "field_max",
+      "records": [
+        {
+          "PAYLOAD": "ABCDE"
+        },
+        {
+          "PAYLOAD": "ABCDE"
+        },
+        {
+          "PAYLOAD": "ABCDE"
+        }
+      ],
+      "scenario": "records"
+    },
+    {
+      "field": null,
+      "id": "status-two-read-01-change-verification-ordered",
+      "kind": "eof",
+      "records": [
+        {
+          "PAYLOAD": "ABCDE"
+        },
+        {
+          "PAYLOAD": "FGHIJ"
+        },
+        {
+          "PAYLOAD": "ABCDE"
+        }
+      ],
+      "scenario": "records"
+    }
+  ],
+  "collision_counter": 0,
+  "corpus_version": "m10-dev-source-r4",
+  "family_id": "dev_status_two_read",
+  "fields_sha256": "228e698df0526a8f9ac970a19c6d5eb792b85a3e965ce0c5978d4dda25e75acf",
+  "fill": {
+    "algorithm": "sha256-counter-v1",
+    "max_records": 3,
+    "seed_material": [
+      "m10-dev-source-r4",
+      "dev_status_two_read",
+      "status-two-read-01",
+      "status-two-read-01-change",
+      "verification"
+    ],
+    "target_count": 128
+  },
+  "manifest_version": 1,
+  "partition": "verification",
+  "program_id": "status-two-read-01",
+  "records": [
+    {
+      "PAYLOAD": "ABCDE"
+    },
+    {
+      "PAYLOAD": "ABCDE"
+    },
+    {
+      "PAYLOAD": "ABCDE"
+    }
+  ],
+  "scenario": "records",
+  "task_id": "status-two-read-01-change"
+}

@@ -7,7 +7,16 @@
     {
       "hazard_id": "H1",
       "observable": "output.dat:OUT-FEE",
-      "reachability_recipe_ids": [],
+      "reachability_recipe_ids": [
+        "fee-tier-02-change-loop-below",
+        "fee-tier-02-change-loop-at",
+        "fee-tier-02-change-loop-above",
+        "fee-tier-02-change-loop-least",
+        "fee-tier-02-change-verification-below",
+        "fee-tier-02-change-verification-at",
+        "fee-tier-02-change-verification-above",
+        "fee-tier-02-change-verification-least"
+      ],
       "target": {
         "byte_end": 1392,
         "byte_start": 1358,
@@ -18,7 +27,16 @@
     {
       "hazard_id": "H5",
       "observable": "output.dat:OUT-MAGNITUDE",
-      "reachability_recipe_ids": [],
+      "reachability_recipe_ids": [
+        "fee-tier-02-change-loop-below",
+        "fee-tier-02-change-loop-at",
+        "fee-tier-02-change-loop-above",
+        "fee-tier-02-change-loop-negative",
+        "fee-tier-02-change-verification-below",
+        "fee-tier-02-change-verification-at",
+        "fee-tier-02-change-verification-above",
+        "fee-tier-02-change-verification-negative"
+      ],
       "target": {
         "byte_end": 1520,
         "byte_start": 1487,
