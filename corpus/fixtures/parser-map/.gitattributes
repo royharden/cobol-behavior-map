@@ -3,3 +3,5 @@
 *.json -text
 *.py -text
 *.md -text
+# The CRLF span fixture intentionally retains CR bytes as source data.
+ir/quoted_span_crlf.cbl whitespace=cr-at-eol
