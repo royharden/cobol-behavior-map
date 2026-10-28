@@ -200,13 +200,13 @@ class DecimalShimRegressions(unittest.TestCase):
         expression = {"kind": "binary", "operator": "/", "left": {
             "kind": "binary", "operator": "*", "left": {
                 "kind": "binary", "operator": "+", "left": reference,
-                "right": literal("2.25")}, "right": literal("2")}, "right": literal("2")}
+                "right": literal("2.25")}, "right": literal("3")}, "right": literal("2")}
         receiver = FieldSpec("R", "S9(2)V9(1)", sign="LEADING SEPARATE")
         result = compute(expression, {"INPUT": "1.25"}, receiver)
         self.assertFalse(result.size_error)
         self.assertIsNone(result.fault_or_null)
-        self.assertEqual(str(result.value), "3.5")
-        self.assertEqual(result.stored_bytes_or_null, b"+035")
+        self.assertEqual(str(result.value), "2.3")
+        self.assertEqual(result.stored_bytes_or_null, b"+023")
 
     def test_compute_missing_reference_cycle_and_unsupported_shapes(self):
         """what_bug_this_catches: implicit globals/eval, cycles, or unbounded expression trees."""
