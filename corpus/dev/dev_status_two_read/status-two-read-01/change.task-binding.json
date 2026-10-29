@@ -1,0 +1,14 @@
+{
+  "change_sha256": "c2353b51cd764b46124bb4dbefe3d3b94277da6f4a14c896c5f918e0158c734f",
+  "family_id": "dev_status_two_read",
+  "fields_sha256": "9464e737d9ad7e11eb2a650de4b40b9294b331c473e6cbdf78f60b0d13c0cf42",
+  "generator_sha256": "4438bb3a481ca5e88d0cba7451e9de4c4a6d613686c67759043a40aff14278a8",
+  "manifest_version": 1,
+  "oracle_source_sha256": "b17b084d896a5ad81bb3584d582690c4f62d73cff07c87db797e5cc3be6af0c3",
+  "original_sha256": "0e6a2382752bc419d6717fce64bf1d790a3f19d651a6ef36b06adb4348aa007c",
+  "panel": "change",
+  "program_id": "status-two-read-01",
+  "recipe_sha256": "20fb5546b30c31884b9fe444d04acc0e44e5bea4e07089cdb6b6c1f8880b89c9",
+  "split": "dev",
+  "task_id": "status-two-read-01-change"
+}

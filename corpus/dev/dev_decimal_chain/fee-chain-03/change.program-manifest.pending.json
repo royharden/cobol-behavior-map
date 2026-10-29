@@ -1,0 +1,44 @@
+{
+  "allowed_return_codes": [
+    0
+  ],
+  "family_id": "dev_decimal_chain",
+  "hazards": [
+    {
+      "hazard_id": "H7",
+      "observable": "output.dat:OUT-TOTAL / source error outcome pending",
+      "reachability_recipe_ids": [
+        "fee-chain-03-change-loop-zero-divisor",
+        "fee-chain-03-change-verification-zero-divisor"
+      ],
+      "target": {
+        "byte_end": 1453,
+        "byte_start": 1377,
+        "file": "changed.cbl",
+        "line": 58
+      }
+    },
+    {
+      "hazard_id": "H8",
+      "observable": "output.dat:OUT-TOTAL",
+      "reachability_recipe_ids": [
+        "fee-chain-03-change-loop-mixed",
+        "fee-chain-03-change-verification-mixed"
+      ],
+      "target": {
+        "byte_end": 1453,
+        "byte_start": 1377,
+        "file": "changed.cbl",
+        "line": 58
+      }
+    }
+  ],
+  "input_fields_sha256": "082ddfdefef7f60280d55f79451be8c2470c72dc2192ed8b70d43db46353a860",
+  "loops": [],
+  "manifest_version": 1,
+  "output_fields_sha256": "77de8c60a16dfdc1daf39fd4fa72eea0c321d2b0c7e66bde7b9278283ed02b32",
+  "program_id": "fee-chain-03",
+  "provenance_sha256": "d8a30a7551396b9c3fb16813b68120e4c237c5fd99efd3c645d2a173b9d4c975",
+  "source_sha256": "9d3f6512d0cc7315de1e35b7de3e0abad8d90224368e7d5da2f8a53544fb838a",
+  "split": "dev"
+}

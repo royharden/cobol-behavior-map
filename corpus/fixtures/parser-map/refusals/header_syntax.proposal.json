@@ -1,0 +1,20 @@
+{
+  "case_id": "header_syntax",
+  "diagnostic_filename": "header_syntax.cbl",
+  "expectation_status": "authored_static_unexecuted",
+  "expected_static_code": "syntax_error",
+  "failure_focus": {
+    "byte_end": 16,
+    "byte_start": 0
+  },
+  "kind": "parse_refusal",
+  "logical_filename": "header_syntax.cbl",
+  "manifest_version": 1,
+  "native_manifest": null,
+  "observations": null,
+  "source": {
+    "path": "corpus/fixtures/parser-map/refusals/header_syntax.cbl",
+    "sha256": "75419530c7001bd431b0ca2d6130952c32106ac7ba5b59327486899e6c9fa43d"
+  },
+  "what_bug_this_catches": "Required header word cannot be silently omitted."
+}

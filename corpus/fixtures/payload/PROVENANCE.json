@@ -1,0 +1,21 @@
+{
+  "schema_version": "m10-builder-payload-provenance-v1",
+  "inventory": {
+    "path": "inventory.proposed.json",
+    "sha256": "1a34f284aa031bbcdc52031ae3a511bc1e7aa03b364566e144263cdadeb29223",
+    "byte_length": 1961
+  },
+  "builder": {
+    "workspace_callsign": "0914_Codex_gpt-61-sol_N20M10DL3",
+    "app_callsign": "0004_Codex_gpt-61-sol_M10-DL3",
+    "session_id": "01a17ef6-aec4-7c71-a3db-e3f797687828",
+    "harness": "Codex",
+    "model": "gpt-6.1-sol",
+    "baseline_revision": "7e7332d4f6edf14abf0140fe451aea6f672ca041"
+  },
+  "source_status": "original_synthetic_builder_proposal",
+  "license_status": "pending_owner_decision_no_license_adopted",
+  "independence": "builder_lineage_not_independent",
+  "runtime_or_model_evidence": null,
+  "actual_spend_usd": "0"
+}

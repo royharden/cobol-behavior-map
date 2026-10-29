@@ -1,0 +1,112 @@
+{
+  "manifest_version": 1,
+  "status": "author-declared-static-source-only; unexecuted",
+  "author_callsign": "0080_Codex_GPT-6_Sub_DL2HazardRegressions",
+  "fixtures": [
+    {
+      "fixture_id": "h1_scale_loss",
+      "source_path": "corpus/fixtures/parser-map/hazards/h1_scale_loss.cbl",
+      "source_sha256": "ec5ebd2e9d3e24a20a16e3ab485ff9377f311e922726b69fbe9b9e3703cffd82",
+      "proposal_path": "corpus/fixtures/parser-map/hazards/h1_scale_loss.proposal.json"
+    },
+    {
+      "fixture_id": "h1_rounded",
+      "source_path": "corpus/fixtures/parser-map/hazards/h1_rounded.cbl",
+      "source_sha256": "2ff0df5e942f14ed1d79e87e3fb8eb5db8967dea8ed1f2ccb0c910aad6d2a7c9",
+      "proposal_path": "corpus/fixtures/parser-map/hazards/h1_rounded.proposal.json"
+    },
+    {
+      "fixture_id": "h2_overflow",
+      "source_path": "corpus/fixtures/parser-map/hazards/h2_overflow.cbl",
+      "source_sha256": "3eba937916a551811f5f8f2b6c04a91368cf7c6ea1e931d2d21e3ee8d9eba9e3",
+      "proposal_path": "corpus/fixtures/parser-map/hazards/h2_overflow.proposal.json"
+    },
+    {
+      "fixture_id": "h2_in_range",
+      "source_path": "corpus/fixtures/parser-map/hazards/h2_in_range.cbl",
+      "source_sha256": "9e41c4caf24e05d08c86341db540825157b58f49c5868d42c5c9578b091f68cb",
+      "proposal_path": "corpus/fixtures/parser-map/hazards/h2_in_range.proposal.json"
+    },
+    {
+      "fixture_id": "h3_file_open",
+      "source_path": "corpus/fixtures/parser-map/hazards/h3_file_open.cbl",
+      "source_sha256": "c39b06f3e3c4844d172aec30f271cbd44c65641ccd58c325e68baaf6732d5d45",
+      "proposal_path": "corpus/fixtures/parser-map/hazards/h3_file_open.proposal.json"
+    },
+    {
+      "fixture_id": "h3_no_file_op",
+      "source_path": "corpus/fixtures/parser-map/hazards/h3_no_file_op.cbl",
+      "source_sha256": "c84ed9ce02d3ee8bf38973a456b2511d5a12e8c070bea782ec902d635415b914",
+      "proposal_path": "corpus/fixtures/parser-map/hazards/h3_no_file_op.proposal.json"
+    },
+    {
+      "fixture_id": "h4_year_no_pivot",
+      "source_path": "corpus/fixtures/parser-map/hazards/h4_year_no_pivot.cbl",
+      "source_sha256": "d8da1838bbcb89f1fb51e7cddc55bfa005b48d9a6af9ea2468380a8e52f0c7b3",
+      "proposal_path": "corpus/fixtures/parser-map/hazards/h4_year_no_pivot.proposal.json"
+    },
+    {
+      "fixture_id": "h4_year_pivot",
+      "source_path": "corpus/fixtures/parser-map/hazards/h4_year_pivot.cbl",
+      "source_sha256": "8bc03a778c3dad5729c6a893b3fcfb80a7c52c5be79bee507398e542a7ea6271",
+      "proposal_path": "corpus/fixtures/parser-map/hazards/h4_year_pivot.proposal.json"
+    },
+    {
+      "fixture_id": "h5_signed_move",
+      "source_path": "corpus/fixtures/parser-map/hazards/h5_signed_move.cbl",
+      "source_sha256": "d20a04805bfe917294e927d81fcfc00da612b629d40c6be3ab42740ee820577b",
+      "proposal_path": "corpus/fixtures/parser-map/hazards/h5_signed_move.proposal.json"
+    },
+    {
+      "fixture_id": "h5_unsigned_move",
+      "source_path": "corpus/fixtures/parser-map/hazards/h5_unsigned_move.cbl",
+      "source_sha256": "491d1571bebb4e62bcfc703a37ef6cfbd597872f2c4aed0b54b112783dd7eb4e",
+      "proposal_path": "corpus/fixtures/parser-map/hazards/h5_unsigned_move.proposal.json"
+    },
+    {
+      "fixture_id": "h6_width_mismatch",
+      "source_path": "corpus/fixtures/parser-map/hazards/h6_width_mismatch.cbl",
+      "source_sha256": "68ba945efb69f63b82d3a6e01a240ff0f8c25c0853565d471d63ceb2c94667dd",
+      "proposal_path": "corpus/fixtures/parser-map/hazards/h6_width_mismatch.proposal.json"
+    },
+    {
+      "fixture_id": "h6_width_equal",
+      "source_path": "corpus/fixtures/parser-map/hazards/h6_width_equal.cbl",
+      "source_sha256": "4bdcf7fc3565c2505e91a054f5f3d02d220f0dd518cc03d69ca0bf0596d5dec4",
+      "proposal_path": "corpus/fixtures/parser-map/hazards/h6_width_equal.proposal.json"
+    },
+    {
+      "fixture_id": "h7_divisor_unguarded",
+      "source_path": "corpus/fixtures/parser-map/hazards/h7_divisor_unguarded.cbl",
+      "source_sha256": "5c5c883801d40916d1b97e1608114dc71536bce8cbffd4527092e642d65c1219",
+      "proposal_path": "corpus/fixtures/parser-map/hazards/h7_divisor_unguarded.proposal.json"
+    },
+    {
+      "fixture_id": "h7_divisor_guarded",
+      "source_path": "corpus/fixtures/parser-map/hazards/h7_divisor_guarded.cbl",
+      "source_sha256": "d0cf7de5313657d91be184155b4c4755e5bb742b743455b2feaf13c43ac517b7",
+      "proposal_path": "corpus/fixtures/parser-map/hazards/h7_divisor_guarded.proposal.json"
+    },
+    {
+      "fixture_id": "h7_guard_invalidated",
+      "source_path": "corpus/fixtures/parser-map/hazards/h7_guard_invalidated.cbl",
+      "source_sha256": "7716fd1db65348fdf1a59347f7c3c82a683a20e7c1cc09affdee19378a1f117d",
+      "proposal_path": "corpus/fixtures/parser-map/hazards/h7_guard_invalidated.proposal.json"
+    },
+    {
+      "fixture_id": "h8_two_operators",
+      "source_path": "corpus/fixtures/parser-map/hazards/h8_two_operators.cbl",
+      "source_sha256": "5fd65d466abe590730f1be10cc6b8cb0ad4d1433c3e4acb2d6958b7745c3ab32",
+      "proposal_path": "corpus/fixtures/parser-map/hazards/h8_two_operators.proposal.json"
+    },
+    {
+      "fixture_id": "h8_one_operator",
+      "source_path": "corpus/fixtures/parser-map/hazards/h8_one_operator.cbl",
+      "source_sha256": "aab2a0d1b38d21b57a3bdffee2e7871f3b02c27ba6e8a18e64bf572d1b215628",
+      "proposal_path": "corpus/fixtures/parser-map/hazards/h8_one_operator.proposal.json"
+    }
+  ],
+  "authoring_utility_historical_path": "C:\\Users\\Roy Harden\\OneDrive\\PJ-OD\\PortfolioBuilder\\cobol-behavior-map\\agentops\\runs\\M10-DIRTY-20261027\\requests\\DL2-r6-authoring\\write_hazard_sources.py",
+  "authoring_utility_sha256": "39f523d20b927741c09a187d4c1fcd72b7ffdb9428f96213c53c5fad9dbe9f04",
+  "relocation_note": "Hazard artifact bytes relocated to assigned hazards subtree; COBOL source bytes and original source SHA256 unchanged. Utility preserved in OUTER requests as historical authoring scratch and was not rerun."
+}

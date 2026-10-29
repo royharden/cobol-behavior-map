@@ -1,0 +1,44 @@
+{
+  "allowed_return_codes": [
+    0
+  ],
+  "family_id": "dev_status_fallback",
+  "hazards": [
+    {
+      "hazard_id": "H3",
+      "observable": "stdout:OUT-STATUS",
+      "reachability_recipe_ids": [
+        "status-fallback-02-change-loop-full-width",
+        "status-fallback-02-change-verification-full-width"
+      ],
+      "target": {
+        "byte_end": 1045,
+        "byte_start": 1032,
+        "file": "changed.cbl",
+        "line": 43
+      }
+    },
+    {
+      "hazard_id": "H6",
+      "observable": "output.dat:OUT-TEXT",
+      "reachability_recipe_ids": [
+        "status-fallback-02-change-loop-full-width",
+        "status-fallback-02-change-verification-full-width"
+      ],
+      "target": {
+        "byte_end": 1007,
+        "byte_start": 983,
+        "file": "changed.cbl",
+        "line": 41
+      }
+    }
+  ],
+  "input_fields_sha256": "21c3e2a1e6de5bcf38f569e34388785dc0779316a5ba58016070c7d20d2eb4fb",
+  "loops": [],
+  "manifest_version": 1,
+  "output_fields_sha256": "d97e93b4104988bacc5540db344e7a81f623228c3529c673d126e57baa36a1df",
+  "program_id": "status-fallback-02",
+  "provenance_sha256": "366db2983ae390575455e8f22cbff098ed6cab901bc09cd2fd877c0959fbac74",
+  "source_sha256": "453d8d58167148b5f62d91aff60279ce4b1c774ce3dba4628179df64f6517b8f",
+  "split": "dev"
+}

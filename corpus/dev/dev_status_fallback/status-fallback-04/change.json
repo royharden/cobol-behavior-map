@@ -1,0 +1,17 @@
+{
+  "after": "READY",
+  "before": "VOIDX",
+  "changed_sha256": "d0d3c2644785efd8ef1118b29b76b84d9bc8efabeeadd9d2b852146723e1858b",
+  "manifest_version": 1,
+  "operation": "replace_alpha_literal",
+  "original_sha256": "4c23d24d22e8fbd3fd09fc4df4ad1f687dfe9fb8e5c20f3237e0f1ea738f9304",
+  "prose": "Replace one EOF fallback literal before truncating MOVE; actual EOF/witness behavior is pending.",
+  "target": {
+    "byte_end": 865,
+    "byte_start": 858,
+    "file": "original.cbl",
+    "line": 34,
+    "node_kind": "literal"
+  },
+  "task_id": "status-fallback-04-change"
+}

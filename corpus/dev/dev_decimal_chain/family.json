@@ -1,0 +1,19 @@
+{
+  "author_provenance_sha256": "b3e9f2321ce4b61d25656c95e32091a7adc6dd8cde98f614ab6edb16b09d1648",
+  "domain": "decimal_fees",
+  "family_id": "dev_decimal_chain",
+  "hazard_ids": [
+    "H7",
+    "H8"
+  ],
+  "manifest_version": 1,
+  "program_ids": [
+    "fee-chain-01",
+    "fee-chain-02",
+    "fee-chain-03",
+    "fee-chain-04"
+  ],
+  "split": "dev",
+  "template_description": "One three-operator COMPUTE uses packed internal adjustment/total and an unguarded input divisor; no tier branch.",
+  "template_id": "three_operator_division"
+}

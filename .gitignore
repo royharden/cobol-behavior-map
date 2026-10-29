@@ -1,3 +1,25 @@
 .agent-work/
 __pycache__/
 *.pyc
+
+# Local credentials and generated artifacts
+.env
+.env.*
+.creds/
+ArchiveManager-creds.txt
+*.pem
+*.key
+*.p12
+*.pfx
+node_modules/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+*.zip
+*.7z
+*.tar
+*.tar.gz

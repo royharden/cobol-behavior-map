@@ -1,0 +1,18 @@
+{
+  "manifest_version": 1,
+  "fixture_id": "h8_two_operators",
+  "source": {
+    "path": "corpus/fixtures/parser-map/hazards/h8_two_operators.cbl",
+    "source_sha256": "5fd65d466abe590730f1be10cc6b8cb0ad4d1433c3e4acb2d6958b7745c3ab32",
+    "raw_sha256": "5fd65d466abe590730f1be10cc6b8cb0ad4d1433c3e4acb2d6958b7745c3ab32"
+  },
+  "expected_static_hazard": {
+    "hazard_id": "H8",
+    "at_statement": "COMPUTE RESULT-N = 1 + 2 * 3 END-COMPUTE",
+    "present": true
+  },
+  "what_bug_this_catches": "Missing intermediate-precision risk at two binary operators.",
+  "expected_observations": null,
+  "execution_status": "not_run",
+  "authorship_status": "builder-authored-static-expectation; not oracle evidence"
+}

@@ -1,0 +1,14 @@
+{
+  "case_id": "pic_layout",
+  "expectation_status": "authored_static_unexecuted",
+  "kind": "accepted_ir_or_mapping_precondition",
+  "logical_filename": "pic_layout.cbl",
+  "manifest_version": 1,
+  "native_manifest": null,
+  "observations": null,
+  "source": {
+    "path": "corpus/fixtures/parser-map/ir/pic_layout.cbl",
+    "sha256": "5ac21c9636150656d4f363ff0a8d9fe6aebb1cf995779e93afdbec2bcb5c463d"
+  },
+  "what_bug_this_catches": "Separate external sign contributes width and offsets; internal packed layout stays separate from DISPLAY codec and retains scale/sign."
+}

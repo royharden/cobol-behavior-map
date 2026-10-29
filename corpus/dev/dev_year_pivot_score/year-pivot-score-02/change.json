@@ -1,0 +1,17 @@
+{
+  "after": "<=",
+  "before": "<",
+  "changed_sha256": "e7a89ee516515cc9c5017aeea34fefa67a82b4eb651dd468042e4fbcde1467ed",
+  "manifest_version": 1,
+  "operation": "replace_comparator",
+  "original_sha256": "8d8a0217e4e7675e68f2e609a1839a9613cd82291145276a46c0bd1e02a548d5",
+  "prose": "Toggle one pivot comparator boundary; actual century/score witness remains pending.",
+  "target": {
+    "byte_end": 1402,
+    "byte_start": 1390,
+    "file": "original.cbl",
+    "line": 60,
+    "node_kind": "compare"
+  },
+  "task_id": "year-pivot-score-02-change"
+}

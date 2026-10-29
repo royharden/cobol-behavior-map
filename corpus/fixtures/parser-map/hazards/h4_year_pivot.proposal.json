@@ -1,0 +1,18 @@
+{
+  "manifest_version": 1,
+  "fixture_id": "h4_year_pivot",
+  "source": {
+    "path": "corpus/fixtures/parser-map/hazards/h4_year_pivot.cbl",
+    "source_sha256": "8bc03a778c3dad5729c6a893b3fcfb80a7c52c5be79bee507398e542a7ea6271",
+    "raw_sha256": "8bc03a778c3dad5729c6a893b3fcfb80a7c52c5be79bee507398e542a7ea6271"
+  },
+  "expected_static_hazard": {
+    "hazard_id": "H4",
+    "at_statement": "ADD YEAR-YY TO RESULT-N END-ADD",
+    "present": false
+  },
+  "what_bug_this_catches": "Ignoring a dominating explicit two-digit-year comparison with a pivot literal.",
+  "expected_observations": null,
+  "execution_status": "not_run",
+  "authorship_status": "builder-authored-static-expectation; not oracle evidence"
+}

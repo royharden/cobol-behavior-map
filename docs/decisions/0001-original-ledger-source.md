@@ -1,0 +1,5 @@
+# Original ledger source fallback during private construction
+
+Decision2026-10-27 under delegated Dirty source overlay. Use original stdlib SQLite call-ledger source in shared/callledger, authored by DL1; DL3 owns provider protocols/mock/accounting bridge. Existing proposed S3 reuse is not approved: no source/license inspection, copying or vendoring occurs while R03 remains open. This is the plan section12 local fallback route, not a claim that vendor closure or conformance failed in execution.
+
+The original source must support the same future reservation/concurrency/unknown-liability/fees/recovery/shared-C/projection conformance scope. Backend remains backend_unverified and dispatch_allowed=False until separately authorized validation/authentication. Accounting records, configured ceilings and PricePlan are not spend/live authority. Current spend authorized0; no keys/providers are called. Future source or provider compatibility requires actual tests/receipts; no actual conformance passed now. Code stays private with no license adopted or publication.

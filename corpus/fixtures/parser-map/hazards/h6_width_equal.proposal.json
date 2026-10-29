@@ -1,0 +1,18 @@
+{
+  "manifest_version": 1,
+  "fixture_id": "h6_width_equal",
+  "source": {
+    "path": "corpus/fixtures/parser-map/hazards/h6_width_equal.cbl",
+    "source_sha256": "4bdcf7fc3565c2505e91a054f5f3d02d220f0dd518cc03d69ca0bf0596d5dec4",
+    "raw_sha256": "4bdcf7fc3565c2505e91a054f5f3d02d220f0dd518cc03d69ca0bf0596d5dec4"
+  },
+  "expected_static_hazard": {
+    "hazard_id": "H6",
+    "at_statement": "MOVE SOURCE-X TO DEST-X",
+    "present": false
+  },
+  "what_bug_this_catches": "Flagging equal-width alphanumeric MOVE as a width mismatch.",
+  "expected_observations": null,
+  "execution_status": "not_run",
+  "authorship_status": "builder-authored-static-expectation; not oracle evidence"
+}

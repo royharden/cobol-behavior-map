@@ -1,0 +1,48 @@
+{
+  "allowed_return_codes": [
+    0
+  ],
+  "family_id": "dev_year_pivot_score",
+  "hazards": [
+    {
+      "hazard_id": "H2",
+      "observable": "output.dat:OUT-SCORE / source error outcome pending",
+      "reachability_recipe_ids": [
+        "year-pivot-score-04-change-loop-below",
+        "year-pivot-score-04-change-loop-at",
+        "year-pivot-score-04-change-loop-above",
+        "year-pivot-score-04-change-verification-below",
+        "year-pivot-score-04-change-verification-at",
+        "year-pivot-score-04-change-verification-above"
+      ],
+      "target": {
+        "byte_end": 1630,
+        "byte_start": 1582,
+        "file": "changed.cbl",
+        "line": 67
+      }
+    },
+    {
+      "hazard_id": "H7",
+      "observable": "output.dat:OUT-SCORE / source error outcome pending",
+      "reachability_recipe_ids": [
+        "year-pivot-score-04-change-loop-zero-divisor",
+        "year-pivot-score-04-change-verification-zero-divisor"
+      ],
+      "target": {
+        "byte_end": 1630,
+        "byte_start": 1582,
+        "file": "changed.cbl",
+        "line": 67
+      }
+    }
+  ],
+  "input_fields_sha256": "ac6c78be5ba327828a139d7a7e2971a7e46c120a27dd63537cda67ab985f0c0a",
+  "loops": [],
+  "manifest_version": 1,
+  "output_fields_sha256": "73c5c31147d62cc4879bb828134cd1d651dcbe6eae4104ae96576894af5f6e4e",
+  "program_id": "year-pivot-score-04",
+  "provenance_sha256": "0860cdb77a9bcfd52df14d93a2e09da7fba3f588b20b6ed104fe2d8b2f97addc",
+  "source_sha256": "2b931b49b21dd65eb9988149f28c21ad9f187d60cb4e865974bf7c302e61aec1",
+  "split": "dev"
+}

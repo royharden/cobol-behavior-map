@@ -1,0 +1,14 @@
+{
+  "case_id": "map_context_limit",
+  "expectation_status": "authored_static_unexecuted",
+  "kind": "accepted_ir_or_mapping_precondition",
+  "logical_filename": "map_context_limit.cbl",
+  "manifest_version": 1,
+  "native_manifest": null,
+  "observations": null,
+  "source": {
+    "path": "corpus/fixtures/parser-map/ir/map_context_limit.cbl",
+    "sha256": "26058ee758881228adffc73e5cf585d3d4179b99e39c359606befe5db5ccc14a"
+  },
+  "what_bug_this_catches": "A small acyclic call DAG can expand beyond4096 map edges; materialization must refuse without partial BehaviorMap. Parser proof resource prerequisites remain unexecuted."
+}

@@ -1,0 +1,28 @@
+{
+  "manifest_version": 1,
+  "probe_id": "S25",
+  "program_id": "probe-s25",
+  "source_sha256": "802fa480de3e8a02dbe24e1783a2993bad8f98eec22ad1127acf430d9d805af6",
+  "focus": "explicit two-digit integer year window with pivot 50; year pivot plus one",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null,
+  "proposed_year_values": [
+    51
+  ],
+  "century_mapping": "YY < 50: 2000 + YY; otherwise 1900 + YY; source-declared hypothesis, not observed compiler behavior"
+}

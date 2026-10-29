@@ -1,0 +1,21 @@
+{
+  "artifact_kind": "recipe",
+  "artifact_path": "corpus/dev/dev_status_fallback/status-fallback-04/original.paired-recipes.json",
+  "artifact_sha256": "80c490f6b579ed0af031e2528f370a6cb86d8adf90c29d22c9c5663cd4a27e36",
+  "author_callsign": "0003_Codex_GPT-6_M10-DL2",
+  "author_harness": "Codex",
+  "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
+  "brief_sha256": "1e53aface2f8320767814b7eeaed56f44416bec0342b3a4788f5d5016097c7c4",
+  "created_at": "2026-10-28T01:08:55Z",
+  "evidence_paths": [],
+  "family_id": "dev_status_fallback",
+  "generator_sha256": null,
+  "license_approval_id": null,
+  "license_id": null,
+  "license_status": "pending",
+  "manifest_version": 1,
+  "originality_attestation": "Original builder-authored declarative DEV recipe/task source, Codex GPT-6 family, actual session; generic static authoring only, no encoded/generated cases, external ingestion, observed answers or independent authority.",
+  "parent_artifact_sha256": null,
+  "source_sha256": "4c23d24d22e8fbd3fd09fc4df4ad1f687dfe9fb8e5c20f3237e0f1ea738f9304",
+  "split": "dev"
+}

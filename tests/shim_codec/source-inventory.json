@@ -1,0 +1,157 @@
+{
+  "author_callsign": "0003_Codex_GPT-6_M10-DL2",
+  "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
+  "baseline": "3768eb7c0bffd67f5a0618e5a7721f100e509d25",
+  "brief_sha256": "1828d31bc54340c5abc67a299caa5618e877041b56c36ac8805542477a779ba6",
+  "created_at": "2026-10-28T02:39:02Z",
+  "expectations": "finite_builder_unit_hypotheses_not_compiler_outputs",
+  "kind": "builder_shared_numeric_codec_regressions",
+  "limits": [
+    "No general rounding-mode enum argument; named functions and rounded bool only.",
+    "Codec has no input_present/file-presence or framed record-stream API; null/nonbytes record rejection is not missing-file behavior.",
+    "No external packed codec or trailing separate sign support; S14/S15 measurements pending.",
+    "COMPUTE exact rational intermediary and SIZE ERROR/negative-zero/MOVE magnitude semantics remain compiler-unverified.",
+    "String-operation/native typed input domain is finite; invalid unhashable op objects not exercised and no all-type refusal guarantee claimed.",
+    "Only exact reviewed current shim/codec unit tests may use designated read-only3.12.13; finite pass is not full product/compiler/model/containment/independence/P2 validation."
+  ],
+  "manifest_version": 1,
+  "read_environment_grant": {
+    "interpreter": "C:\\Users\\Roy Harden\\OneDrive\\PJ-OD\\PortfolioBuilder\\cobol-behavior-map\\cobol-behavior-map\\.agent-work\\venv-312\\Scripts\\python.exe",
+    "name": "ROUND2-PY312-TEST-ENV.md",
+    "raw_sha256": "61dfddb0c025b3af1dcbc19936adc161977ad47ca907bc211124f9bd14ebb410",
+    "requirements_lock_sha256": "860845b56a69e5b715790c9b0d8f096383b081cd5849eed345fbc82255e0f905",
+    "test_status": "not_run_pending_fresh_static_review"
+  },
+  "status": "authored_not_run_at_creation",
+  "target_product_raw_sha256": {
+    "src/cobolmap/shared/__init__.py": "36bd7fd760730546f56de7f76e9b193b14e76d613e7601858cb56d51ec8a5616",
+    "src/cobolmap/shared/codec.py": "d0369ee06e3cc0c82a3ffb93a1d69d4693229987ca36982393adf8103723e2a6",
+    "src/cobolmap/shared/decimal_shim.py": "0b9c3fcf6d7f3b798476bcc3dcf2daa8c42d956feeff5e4b2a7527eef1be174f"
+  },
+  "tests": [
+    {
+      "methods": [
+        {
+          "name": "test_exact_text_and_signed_zero_construction",
+          "what_bug_this_catches": "what_bug_this_catches: float conversion, scale collapse, or erased zero sign."
+        },
+        {
+          "name": "test_inexact_or_unbounded_literals_refuse_with_typed_error",
+          "what_bug_this_catches": "what_bug_this_catches: implicit float/bool/scientific coercion or unsafe size acceptance."
+        },
+        {
+          "name": "test_named_rounding_functions_both_signs_and_near_controls",
+          "what_bug_this_catches": "what_bug_this_catches: ties-to-even, away-from-zero on non-ties, or signed bias."
+        },
+        {
+          "name": "test_tiny_fractions_and_negative_zero_survive_quantization",
+          "what_bug_this_catches": "what_bug_this_catches: loss of zero sign and ROUND_UP on tiny non-ties."
+        },
+        {
+          "name": "test_rounding_refuses_invalid_scale_and_ignores_ambient_context",
+          "what_bug_this_catches": "what_bug_this_catches: ambient precision/rounding leakage or scale coercion."
+        },
+        {
+          "name": "test_numeric_move_truncates_and_unsigned_takes_magnitude_hypothesis",
+          "what_bug_this_catches": "what_bug_this_catches: confusing MOVE magnitude with arithmetic sign policy."
+        },
+        {
+          "name": "test_arithmetic_rounded_flag_and_exact_intermediate_hypothesis",
+          "what_bug_this_catches": "what_bug_this_catches: early intermediate rounding or wrong assignment tie rule."
+        },
+        {
+          "name": "test_arithmetic_negative_zero_and_comparison_zero_equality",
+          "what_bug_this_catches": "what_bug_this_catches: dropping signed zero in arithmetic or ordering it below zero."
+        },
+        {
+          "name": "test_numeric_comparison_enums_and_refusals",
+          "what_bug_this_catches": "what_bug_this_catches: lexical numeric ordering or silent comparator coercion."
+        },
+        {
+          "name": "test_overflow_preserves_previous_and_distinguishes_handler",
+          "what_bug_this_catches": "what_bug_this_catches: clamping, replacing receiver, or treating handler as success."
+        },
+        {
+          "name": "test_division_zero_preserves_previous_with_and_without_handler",
+          "what_bug_this_catches": "what_bug_this_catches: Python ZeroDivisionError or lost SIZE ERROR distinction."
+        },
+        {
+          "name": "test_compute_closed_three_operator_tree",
+          "what_bug_this_catches": "what_bug_this_catches: lost grouping, early rounding, or unresolved valid binding."
+        },
+        {
+          "name": "test_compute_missing_reference_cycle_and_unsupported_shapes",
+          "what_bug_this_catches": "what_bug_this_catches: implicit globals/eval, cycles, or unbounded expression trees."
+        },
+        {
+          "name": "test_compute_division_zero_and_arithmetic_unknown_operation",
+          "what_bug_this_catches": "what_bug_this_catches: zero-division exception or invented operation dispatch."
+        }
+      ],
+      "path": "tests/shim_codec/test_decimal_shim.py",
+      "provenance": {
+        "path": "tests\\shim_codec\\test_decimal_shim.py.provenance.json",
+        "sha256": "622d39eb9cfe8422a7c893daeb476f1a72ef7d5b8ae4f035292ad0ac725c83be"
+      },
+      "sha256": "e22c93c7f73a95f5532382c376522efc678bee65d1f646251a1f7562078b91d7"
+    },
+    {
+      "methods": [
+        {
+          "name": "test_signed_implied_scale_and_zero_sign_round_trip",
+          "what_bug_this_catches": "Catch physical decimal insertion, sign stripping, or negative-zero erasure."
+        },
+        {
+          "name": "test_unsigned_encoding_is_exact_not_assignment_rounding",
+          "what_bug_this_catches": "Catch hidden quantization, magnitude coercion, or field max off-by-one."
+        },
+        {
+          "name": "test_numeric_bytes_require_digits_and_explicit_leading_sign",
+          "what_bug_this_catches": "Catch whitespace/dot/sign normalization and malformed DISPLAY acceptance."
+        },
+        {
+          "name": "test_exact_width_and_builtin_bytes_are_required",
+          "what_bug_this_catches": "Catch accepting streams, LF terminators, mutable buffers or null as a record."
+        },
+        {
+          "name": "test_alpha_padding_and_preserved_spaces_without_codec_truncation",
+          "what_bug_this_catches": "Catch trimming decoded spaces or truncating an overwidth format request."
+        },
+        {
+          "name": "test_alpha_move_assignment_pads_truncates_and_rejects_mixed_types",
+          "what_bug_this_catches": "Catch conflating assignment truncation with exact codec formatting or coercion."
+        },
+        {
+          "name": "test_internal_signed_or_packed_fields_have_no_external_codec",
+          "what_bug_this_catches": "Catch accidental completion of embedded/packed external byte policies."
+        },
+        {
+          "name": "test_layout_metadata_and_mapping_reject_false_types",
+          "what_bug_this_catches": "Catch bool-as-int metadata, inconsistent widths, unknown keys and S14 widening."
+        },
+        {
+          "name": "test_record_offsets_control_encoding_order",
+          "what_bug_this_catches": "Catch list-order encoding, sign loss, extra-binding leakage, or alpha trimming."
+        },
+        {
+          "name": "test_record_layout_gap_overlap_and_folded_duplicate_refuse",
+          "what_bug_this_catches": "Catch silent record holes, overlapping fields or case-folded duplicate names."
+        },
+        {
+          "name": "test_record_length_and_missing_binding_failures_remain_distinct",
+          "what_bug_this_catches": "Catch missing-field defaults, trailing LF consumption or null-as-empty coercion."
+        },
+        {
+          "name": "test_record_field_count_boundary_is_explicit",
+          "what_bug_this_catches": "Catch off-by-one field caps without generating an input partition."
+        }
+      ],
+      "path": "tests/shim_codec/test_display_codec.py",
+      "provenance": {
+        "path": "tests\\shim_codec\\test_display_codec.py.provenance.json",
+        "sha256": "3842afa05b2d10ffb985d9ab116aa897867fa3b4491fd2065625d6910a993e87"
+      },
+      "sha256": "5423b1d7ebd73cb955031db5acf1744c4be0d2401588c274610cfee5d22c156e"
+    }
+  ]
+}

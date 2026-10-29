@@ -1,0 +1,20 @@
+{
+  "case_id": "numeric_digit_limit",
+  "diagnostic_filename": "numeric_digit_limit.cbl",
+  "expectation_status": "authored_static_unexecuted",
+  "expected_static_code": "field_limit",
+  "failure_focus": {
+    "byte_end": 517,
+    "byte_start": 488
+  },
+  "kind": "parse_refusal",
+  "logical_filename": "numeric_digit_limit.cbl",
+  "manifest_version": 1,
+  "native_manifest": null,
+  "observations": null,
+  "source": {
+    "path": "corpus/fixtures/parser-map/refusals/numeric_digit_limit.cbl",
+    "sha256": "dab32aba3bbdbb0aa9210917617c0d2293a44e5e3519547841a15d4a0934e46e"
+  },
+  "what_bug_this_catches": "Nine total digits must refuse while valid numeric lexical syntax remains distinguishable."
+}

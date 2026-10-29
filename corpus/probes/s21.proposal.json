@@ -1,0 +1,24 @@
+{
+  "coverage_status": "proposed_unverified",
+  "focus": "multi-operator COMPUTE intermediate order",
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "offset": 0,
+      "pic": "X(8)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 8
+    }
+  ],
+  "manifest_version": 1,
+  "pending_measurement": null,
+  "probe_id": "S21",
+  "program_id": "probe-s21",
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "record_width": 8,
+  "source_execution_status": "not_run",
+  "source_sha256": "1bdd2f14bb9a9cca1b5a45c7da34a50b32f77cfb50373654556f2dbd3cb85a81"
+}

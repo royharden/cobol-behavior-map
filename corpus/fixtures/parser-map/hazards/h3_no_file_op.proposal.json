@@ -1,0 +1,18 @@
+{
+  "manifest_version": 1,
+  "fixture_id": "h3_no_file_op",
+  "source": {
+    "path": "corpus/fixtures/parser-map/hazards/h3_no_file_op.cbl",
+    "source_sha256": "c84ed9ce02d3ee8bf38973a456b2511d5a12e8c070bea782ec902d635415b914",
+    "raw_sha256": "c84ed9ce02d3ee8bf38973a456b2511d5a12e8c070bea782ec902d635415b914"
+  },
+  "expected_static_hazard": {
+    "hazard_id": "H3",
+    "at_statement": "DISPLAY IN-STATUS",
+    "present": false
+  },
+  "what_bug_this_catches": "Treating a status-field display as a file operation.",
+  "expected_observations": null,
+  "execution_status": "not_run",
+  "authorship_status": "builder-authored-static-expectation; not oracle evidence"
+}

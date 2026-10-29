@@ -1,0 +1,50 @@
+{
+  "allowed_return_codes": [
+    0
+  ],
+  "family_id": "dev_year_century",
+  "hazards": [
+    {
+      "hazard_id": "H4",
+      "observable": "output.dat:OUT-YEAR",
+      "reachability_recipe_ids": [
+        "year-century-03-original-loop-year-zero",
+        "year-century-03-original-loop-year-max",
+        "year-century-03-original-verification-year-zero",
+        "year-century-03-original-verification-year-max"
+      ],
+      "target": {
+        "byte_end": 1441,
+        "byte_start": 1395,
+        "file": "original.cbl",
+        "line": 60
+      }
+    },
+    {
+      "hazard_id": "H5",
+      "observable": "output.dat:OUT-MAGNITUDE",
+      "reachability_recipe_ids": [
+        "year-century-03-original-loop-year-zero",
+        "year-century-03-original-loop-year-max",
+        "year-century-03-original-loop-negative",
+        "year-century-03-original-verification-year-zero",
+        "year-century-03-original-verification-year-max",
+        "year-century-03-original-verification-negative"
+      ],
+      "target": {
+        "byte_end": 1587,
+        "byte_start": 1553,
+        "file": "original.cbl",
+        "line": 65
+      }
+    }
+  ],
+  "input_fields_sha256": "f466be3c3595672d653aa1837a80c9456c5e17bfd592f098abd9fd9fe76de1c8",
+  "loops": [],
+  "manifest_version": 1,
+  "output_fields_sha256": "4821f77ffd00a5018935f8ecd937f1f00f1b955ff89a3e55225211b33d808151",
+  "program_id": "year-century-03",
+  "provenance_sha256": "704a60b2862efe66edc8e512f824d9dd7fad5ecc8ed96742dfb91403883f741c",
+  "source_sha256": "e4f8d4daa58a6020cbc34e4dd5086766d75694dc08edf8ef2896ce39f8652611",
+  "split": "dev"
+}

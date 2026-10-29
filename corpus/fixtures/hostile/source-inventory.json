@@ -1,0 +1,278 @@
+{
+  "actual_execution": null,
+  "actual_receipts": null,
+  "author_callsign": "0003_Codex_GPT-6_M10-DL2",
+  "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
+  "brief_sha256": "eca31f6cf6a91071e5a01ec057dbf5f472ce0073094021501ba5b7c2f89b7d3c",
+  "created_at": "2026-10-28T01:37:51Z",
+  "fixtures": [
+    {
+      "category": "out-of-scratch read",
+      "fixture_id": "outside_scratch_read",
+      "proposal": {
+        "path": "corpus/fixtures/hostile/outside_scratch_read.proposal.json",
+        "sha256": "3270d28314614a78deb05c59bb50067199c349ed501c40f4957677ca633dc19f"
+      },
+      "proposal_provenance": {
+        "path": "corpus/fixtures/hostile/outside_scratch_read.proposal.json.provenance.json",
+        "sha256": "b6032e5277be2673077b3e22220608541a098438a16b1ee2f84e7dab8f031755"
+      },
+      "source": {
+        "path": "corpus/fixtures/hostile/outside_scratch_read.py",
+        "sha256": "f133d50c3b24b15310a48d9922205da08d7def272b901a13c5b4355825ea8ab7"
+      },
+      "source_provenance": {
+        "path": "corpus/fixtures/hostile/outside_scratch_read.py.provenance.json",
+        "sha256": "8103d3b31a876a1fb8baebcfeb19299a9fbbdf5814d8d8df711c1ac6e6c2a2d9"
+      }
+    },
+    {
+      "category": "oracle-private read attempt",
+      "fixture_id": "oracle_private_read",
+      "proposal": {
+        "path": "corpus/fixtures/hostile/oracle_private_read.proposal.json",
+        "sha256": "fdf8527534b029df64bd4bd48839720d7c20eb1ac0fc602db283270bdd5f78fb"
+      },
+      "proposal_provenance": {
+        "path": "corpus/fixtures/hostile/oracle_private_read.proposal.json.provenance.json",
+        "sha256": "1a98527c6bc99ea47599216f9bf670b065219842c4464361fbd6dc2bcb16cbc7"
+      },
+      "source": {
+        "path": "corpus/fixtures/hostile/oracle_private_read.py",
+        "sha256": "8f57a4a88530b16425eea5dddf3c4b2d742161808977c5e77953f00be249744a"
+      },
+      "source_provenance": {
+        "path": "corpus/fixtures/hostile/oracle_private_read.py.provenance.json",
+        "sha256": "5773b26ed1950b6e4bec8ab5076de6d2a6e62b735a04a5a99e098914f3fddd1c"
+      }
+    },
+    {
+      "category": "socket/network attempt",
+      "fixture_id": "network_socket",
+      "proposal": {
+        "path": "corpus/fixtures/hostile/network_socket.proposal.json",
+        "sha256": "b5628559db9769c82ebd7d45fb16ed05e10f10ab75fd12aa333c3e3ad8582980"
+      },
+      "proposal_provenance": {
+        "path": "corpus/fixtures/hostile/network_socket.proposal.json.provenance.json",
+        "sha256": "601bc5ebf0baecbcaf63365054710c695c7214180fff2b057e6452f9106a4668"
+      },
+      "source": {
+        "path": "corpus/fixtures/hostile/network_socket.py",
+        "sha256": "28680419c7bc41b4315c0a10c9d38ef1b4808413fda786bd41a5ef01aa098155"
+      },
+      "source_provenance": {
+        "path": "corpus/fixtures/hostile/network_socket.py.provenance.json",
+        "sha256": "aef89db3d7bf5bd1eeab01ed7eb548c6b099c0452285acf71c2027c82912f9e1"
+      }
+    },
+    {
+      "category": "subprocess execution attempt",
+      "fixture_id": "subprocess_attempt",
+      "proposal": {
+        "path": "corpus/fixtures/hostile/subprocess_attempt.proposal.json",
+        "sha256": "34a33a7a36f2420f2b8457a3bb29d5bbc08dddc3965c045af3bf032217a97861"
+      },
+      "proposal_provenance": {
+        "path": "corpus/fixtures/hostile/subprocess_attempt.proposal.json.provenance.json",
+        "sha256": "f183194417131ec88b3749246ad0d23414ecf431f3f54045ca5a15f0b8763771"
+      },
+      "source": {
+        "path": "corpus/fixtures/hostile/subprocess_attempt.py",
+        "sha256": "d7103e8ec7f261b848d2d82c73528f895edc5d5bd8e50f0445e6ba1585861e00"
+      },
+      "source_provenance": {
+        "path": "corpus/fixtures/hostile/subprocess_attempt.py.provenance.json",
+        "sha256": "df80bb4160d13927dae9b3cb5e0e8e90d214ef31edb54f6af110f3522614a47d"
+      }
+    },
+    {
+      "category": "bounded process spawning beyond policy",
+      "fixture_id": "process_limit",
+      "proposal": {
+        "path": "corpus/fixtures/hostile/process_limit.proposal.json",
+        "sha256": "fddd17c56998512f079c5c9e0a034774c188204c246510dabd65d943711a0c9a"
+      },
+      "proposal_provenance": {
+        "path": "corpus/fixtures/hostile/process_limit.proposal.json.provenance.json",
+        "sha256": "ca519fae0ef8e58ea7a636134e8780daf1ee5c9c6ac400b67322ffb105ba254b"
+      },
+      "source": {
+        "path": "corpus/fixtures/hostile/process_limit.py",
+        "sha256": "a14434faa2a34acf61614d3c180b214b9c1f0ccb62509ae40d782689ebbd0b0e"
+      },
+      "source_provenance": {
+        "path": "corpus/fixtures/hostile/process_limit.py.provenance.json",
+        "sha256": "ff4eab9eac4746f79ccf7b0d9f3cb99310bf5c7954a3a4189f0192fc893467e0"
+      }
+    },
+    {
+      "category": "allocation beyond memory policy",
+      "fixture_id": "memory_limit",
+      "proposal": {
+        "path": "corpus/fixtures/hostile/memory_limit.proposal.json",
+        "sha256": "cae97f52bfc20532d0e95173ffcede83576c42786d675ba23aceb582070008ab"
+      },
+      "proposal_provenance": {
+        "path": "corpus/fixtures/hostile/memory_limit.proposal.json.provenance.json",
+        "sha256": "a393d96fd2f4d7aabb3862a0ee13ac0fc08aebd16d863c60a746aee47f471252"
+      },
+      "source": {
+        "path": "corpus/fixtures/hostile/memory_limit.py",
+        "sha256": "35cafd6d2397ef08a416d90a4a79a0bfa415e5defa5c5ec83b3b2ad5b09b4682"
+      },
+      "source_provenance": {
+        "path": "corpus/fixtures/hostile/memory_limit.py.provenance.json",
+        "sha256": "aed06701f936505d0329eb687f6575ab020c3ca1cb09fd8b5c3053009eb8f183"
+      }
+    },
+    {
+      "category": "scratch file growth beyond policy",
+      "fixture_id": "scratch_limit",
+      "proposal": {
+        "path": "corpus/fixtures/hostile/scratch_limit.proposal.json",
+        "sha256": "b2c206075e321a93b089a2134e291a6e0dc400b5c1ca7c3001cbd515f6f6c858"
+      },
+      "proposal_provenance": {
+        "path": "corpus/fixtures/hostile/scratch_limit.proposal.json.provenance.json",
+        "sha256": "b2b3b8cceae5dbbfe2195af9258c53ca7137c7fec88a69f1c33f13189cfb6795"
+      },
+      "source": {
+        "path": "corpus/fixtures/hostile/scratch_limit.py",
+        "sha256": "700c13b9c84a00eddbed60e4faa75509a87b7182f0d3c02f6e52996b2bf7cce3"
+      },
+      "source_provenance": {
+        "path": "corpus/fixtures/hostile/scratch_limit.py.provenance.json",
+        "sha256": "4e073d20004e5ed3d3f7cf901bb3fa3a467dd828b4c725c91034826a4a5d41ee"
+      }
+    },
+    {
+      "category": "stdout beyond captured output policy",
+      "fixture_id": "stdout_limit",
+      "proposal": {
+        "path": "corpus/fixtures/hostile/stdout_limit.proposal.json",
+        "sha256": "455bf3aee3dd2b19413ac9beb434d9969dee1d2fb1f367f4c0d95926cc995add"
+      },
+      "proposal_provenance": {
+        "path": "corpus/fixtures/hostile/stdout_limit.proposal.json.provenance.json",
+        "sha256": "d18b5d292a0151fb09ad0ebfc7d5652189105c0289a03fd62c3f0977c569ad77"
+      },
+      "source": {
+        "path": "corpus/fixtures/hostile/stdout_limit.py",
+        "sha256": "7ec53d082e5c6f08b97514fc7ea15cb7881b3b7ef9408a33e10e378407e6ff82"
+      },
+      "source_provenance": {
+        "path": "corpus/fixtures/hostile/stdout_limit.py.provenance.json",
+        "sha256": "e0d0878590d64e4c44aa74a47e74a64d56ab89d1a6fe57ef62e5f86f4b633b46"
+      }
+    },
+    {
+      "category": "combined stdout/stderr beyond aggregate policy",
+      "fixture_id": "aggregate_output_limit",
+      "proposal": {
+        "path": "corpus/fixtures/hostile/aggregate_output_limit.proposal.json",
+        "sha256": "c48523b9e11cbf8db0222da904b89d766204e651522f0c5a76f1e92f07b2b969"
+      },
+      "proposal_provenance": {
+        "path": "corpus/fixtures/hostile/aggregate_output_limit.proposal.json.provenance.json",
+        "sha256": "93eb3b3883fa804ee7efbae3290fa34025d1c3691cb2dbc07a5fca76c2d0b4fe"
+      },
+      "source": {
+        "path": "corpus/fixtures/hostile/aggregate_output_limit.py",
+        "sha256": "2c4539f18f8c70808fd1a93bb9635c1164d67970553862622fec4cbd5a27ebd6"
+      },
+      "source_provenance": {
+        "path": "corpus/fixtures/hostile/aggregate_output_limit.py.provenance.json",
+        "sha256": "70d64254a979c77e8633338a9cb462e06a9079ab813a1f9d011b864565027c71"
+      }
+    },
+    {
+      "category": "endless CPU loop",
+      "fixture_id": "endless_loop",
+      "proposal": {
+        "path": "corpus/fixtures/hostile/endless_loop.proposal.json",
+        "sha256": "ca6237121a17406d8507c440b077d0d6dfc7bbbecfdd974ce1e88291af0b31ae"
+      },
+      "proposal_provenance": {
+        "path": "corpus/fixtures/hostile/endless_loop.proposal.json.provenance.json",
+        "sha256": "c797d542ea49b131c357a663b59e3b648d5253560baf2c92548391c38804f184"
+      },
+      "source": {
+        "path": "corpus/fixtures/hostile/endless_loop.py",
+        "sha256": "bf6a413493d847cd9c0d837be6d08dbf9e65a1a73b54fb7b1c8589b18013db29"
+      },
+      "source_provenance": {
+        "path": "corpus/fixtures/hostile/endless_loop.py.provenance.json",
+        "sha256": "901e985a89d4e57ab2e8b7339b44da42533edcf96bf181c2a16c305057258e2c"
+      }
+    },
+    {
+      "category": "non-SDK import attempt",
+      "fixture_id": "forbidden_import",
+      "proposal": {
+        "path": "corpus/fixtures/hostile/forbidden_import.proposal.json",
+        "sha256": "d6d74d7fbab2c61f1cd526ae0a123d732530b2ed59b0c90ebeddbb8c9438a433"
+      },
+      "proposal_provenance": {
+        "path": "corpus/fixtures/hostile/forbidden_import.proposal.json.provenance.json",
+        "sha256": "ec396022952267546b5094c445ea4ab53bd785e3d913a7cef324dfa2f60f87d0"
+      },
+      "source": {
+        "path": "corpus/fixtures/hostile/forbidden_import.py",
+        "sha256": "29236d88166b4aeed239f6afa59c4b504afa9fb718f9d437e76ee934bc87e679"
+      },
+      "source_provenance": {
+        "path": "corpus/fixtures/hostile/forbidden_import.py.provenance.json",
+        "sha256": "2ad02e4f16cbc590cbd58ecaa95cbf17329c56f8d77a87517f6912f78d3bc5f8"
+      }
+    },
+    {
+      "category": "fake mounted host-volume access",
+      "fixture_id": "host_volume_read",
+      "proposal": {
+        "path": "corpus/fixtures/hostile/host_volume_read.proposal.json",
+        "sha256": "9f0c38174bc555c3649624d742cd787f7b64f057b46bfc5da2574528d6d4af44"
+      },
+      "proposal_provenance": {
+        "path": "corpus/fixtures/hostile/host_volume_read.proposal.json.provenance.json",
+        "sha256": "a4531f65d41e739a8146dfde56569feca71b6a53b7c5c92c0cbca99f28021e15"
+      },
+      "source": {
+        "path": "corpus/fixtures/hostile/host_volume_read.py",
+        "sha256": "2c8052cb7cdcf52176868684596d0940dfa7771a8794854b1de2bd9e5632effb"
+      },
+      "source_provenance": {
+        "path": "corpus/fixtures/hostile/host_volume_read.py.provenance.json",
+        "sha256": "a3189d49218c558d87c9cce74b73bf8bbdfb6bb7ab611581152891cb023d19f6"
+      }
+    },
+    {
+      "category": "write outside scratch/read-only-root attempt",
+      "fixture_id": "readonly_root_write",
+      "proposal": {
+        "path": "corpus/fixtures/hostile/readonly_root_write.proposal.json",
+        "sha256": "b14251b6aaeef0673243369331271b493c8053e0d9d974a62869bb389889f2b7"
+      },
+      "proposal_provenance": {
+        "path": "corpus/fixtures/hostile/readonly_root_write.proposal.json.provenance.json",
+        "sha256": "4bc17755189f39f20252773b8fe1e72d7b79b3e00472d688467e9f3b54de307d"
+      },
+      "source": {
+        "path": "corpus/fixtures/hostile/readonly_root_write.py",
+        "sha256": "e8c29bed0d4a3f7477f7215efcaeddc07acf85f89cdb54e061d1810c9442e2e7"
+      },
+      "source_provenance": {
+        "path": "corpus/fixtures/hostile/readonly_root_write.py.provenance.json",
+        "sha256": "60d13e4787d33138738e80cd32203003f447176501363e8288f5da75bc0f7320"
+      }
+    }
+  ],
+  "kind": "builder_hostile_fixture_source_inventory",
+  "manifest_version": 1,
+  "policy_source": {
+    "path": "src/cobolmap/oracle/isolation.py",
+    "raw_sha256": "0391423b180ee38ddd97ea1ff77e4786bfdf6c899eb5db8d9fa034fecc40d911"
+  },
+  "screening_status": "not_invoked_not_os_conformance",
+  "status": "inert_source_only_not_run"
+}

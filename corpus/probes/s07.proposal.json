@@ -1,0 +1,24 @@
+{
+  "manifest_version": 1,
+  "probe_id": "S07",
+  "program_id": "probe-s07",
+  "source_sha256": "740970c41e1f815ffb7a34f6ef594b3bd06f6c40c3e0e04c6ca870d4e1f305c4",
+  "focus": "tiny discarded positive fraction",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null
+}

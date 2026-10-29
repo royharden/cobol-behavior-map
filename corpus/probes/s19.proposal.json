@@ -1,0 +1,24 @@
+{
+  "manifest_version": 1,
+  "probe_id": "S19",
+  "program_id": "probe-s19",
+  "source_sha256": "c2f7100f7182c81c1811554d81eaac4976f668e7f2b4f4c3671fb67f130eebf9",
+  "focus": "destination sentinel on SIZE ERROR",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null
+}

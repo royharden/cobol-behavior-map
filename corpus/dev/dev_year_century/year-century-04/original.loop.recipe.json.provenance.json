@@ -1,0 +1,21 @@
+{
+  "artifact_kind": "recipe",
+  "artifact_path": "corpus/dev/dev_year_century/year-century-04/original.loop.recipe.json",
+  "artifact_sha256": "df4c7f3d9c9ec2dcd8c595c37aa263c61b08a6b7a371cc95d473d8e28cfa9c3b",
+  "author_callsign": "0003_Codex_GPT-6_M10-DL2",
+  "author_harness": "Codex",
+  "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
+  "brief_sha256": "1e53aface2f8320767814b7eeaed56f44416bec0342b3a4788f5d5016097c7c4",
+  "created_at": "2026-10-28T01:08:55Z",
+  "evidence_paths": [],
+  "family_id": "dev_year_century",
+  "generator_sha256": null,
+  "license_approval_id": null,
+  "license_id": null,
+  "license_status": "pending",
+  "manifest_version": 1,
+  "originality_attestation": "Original builder-authored declarative DEV recipe/task source, Codex GPT-6 family, actual session; generic static authoring only, no encoded/generated cases, external ingestion, observed answers or independent authority.",
+  "parent_artifact_sha256": null,
+  "source_sha256": "be283e3fd734f24381ed2c6d7a9e98e2de7c5c2b2bff5e43ceffe91c06a46e64",
+  "split": "dev"
+}

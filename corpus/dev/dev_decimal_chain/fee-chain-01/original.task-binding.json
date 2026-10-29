@@ -1,0 +1,14 @@
+{
+  "change_sha256": null,
+  "family_id": "dev_decimal_chain",
+  "fields_sha256": "05b45d9f3bff9479029377a7c3b584e2564d6046d8cc92976b78fa2a91f81ec1",
+  "generator_sha256": "4438bb3a481ca5e88d0cba7451e9de4c4a6d613686c67759043a40aff14278a8",
+  "manifest_version": 1,
+  "oracle_source_sha256": "561efdb960c0f4d6749e9afdcccdba9b6e1db3a1e71215c60aa6750394bdd813",
+  "original_sha256": "561efdb960c0f4d6749e9afdcccdba9b6e1db3a1e71215c60aa6750394bdd813",
+  "panel": "unchanged",
+  "program_id": "fee-chain-01",
+  "recipe_sha256": "58fb91b579624f6a52f96d6438a50abc152b616b4fbf7674862feeb7e628aba2",
+  "split": "dev",
+  "task_id": "fee-chain-01-original"
+}

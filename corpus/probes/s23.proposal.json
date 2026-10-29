@@ -1,0 +1,27 @@
+{
+  "manifest_version": 1,
+  "probe_id": "S23",
+  "program_id": "probe-s23",
+  "source_sha256": "ca2d7571f38ef2929d375c7a6452d8545030cb62852e8474c826b0f96bce5a76",
+  "focus": "empty input first and subsequent EOF",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [
+    "empty"
+  ],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null,
+  "file_state_guard": "second READ only after first READ status 00; CLOSE only after OPEN status 00"
+}

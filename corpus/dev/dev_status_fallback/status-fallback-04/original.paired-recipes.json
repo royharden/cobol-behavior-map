@@ -1,0 +1,20 @@
+{
+  "corpus_version": "m10-dev-source-r4",
+  "family_id": "dev_status_fallback",
+  "fields_sha256": "1ed257307aa063d8a83d8fc20945227e4621a5ca7261477cf23188c5541333f1",
+  "manifest_version": 1,
+  "panel": "unchanged",
+  "program_id": "status-fallback-04",
+  "recipes": {
+    "loop": {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-04/original.loop.recipe.json",
+      "sha256": "270fca70a814953cd600e151e17e60233adc2903d974387e7c82cdaf0b637fca"
+    },
+    "verification": {
+      "path": "corpus/dev/dev_status_fallback/status-fallback-04/original.verification.recipe.json",
+      "sha256": "a26a38849262c9f9723629ca316c7dd7ff8abc1b23979207f1a956a3f7e28aec"
+    }
+  },
+  "split": "dev",
+  "task_id": "status-fallback-04-original"
+}

@@ -1,0 +1,35 @@
+{
+  "fields": [
+    {
+      "name": "AMOUNT",
+      "offset": 0,
+      "pic": "9(3)V9(2)",
+      "scale": 2,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 5
+    },
+    {
+      "name": "FACTOR",
+      "offset": 5,
+      "pic": "9(1)V9(2)",
+      "scale": 2,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 3
+    },
+    {
+      "name": "DIVISOR",
+      "offset": 8,
+      "pic": "9(1)",
+      "scale": 0,
+      "sign": "none",
+      "usage": "DISPLAY",
+      "width": 1
+    }
+  ],
+  "manifest_version": 1,
+  "program_id": "fee-chain-02",
+  "record_width": 9,
+  "source_sha256": "ed59e9538258a8fb375d281e7830aec22a5696be6c6d172772e0984b46b8d86b"
+}

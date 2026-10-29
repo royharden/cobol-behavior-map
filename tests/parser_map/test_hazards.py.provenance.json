@@ -1,0 +1,20 @@
+{
+  "manifest_version": 1,
+  "artifact_kind": "test-source",
+  "artifact_path": "tests/parser_map/test_hazards.py",
+  "artifact_sha256": "ebe73f3a6e1a706b6aaf696d745973457cabe0580cba44b3ae7fb825e7b60e44",
+  "source_sha256": "ebe73f3a6e1a706b6aaf696d745973457cabe0580cba44b3ae7fb825e7b60e44",
+  "raw_sha256": "ebe73f3a6e1a706b6aaf696d745973457cabe0580cba44b3ae7fb825e7b60e44",
+  "author_callsign": "0080_Codex_GPT-6_Sub_DL2HazardRegressions",
+  "author_session_id": "01a18034-a156-7751-810a-188e171c8fbc",
+  "author_harness": "Codex",
+  "parent_callsign_id": "0003",
+  "parent_artifact_sha256": null,
+  "license_id": null,
+  "license_approval_id": null,
+  "license_status": "pending",
+  "split": "dev",
+  "created_at": "2026-10-28T01:54:41.062696+00:00",
+  "originality_attestation": "Original static regression source authored by implementation-lineage child; no product import, test, compiler, oracle, CaseBundle, input record, or runtime observation.",
+  "relocation_note": "Assigned hazards subtree correction; source bytes preserved where artifact is COBOL."
+}

@@ -1,0 +1,24 @@
+{
+  "manifest_version": 1,
+  "probe_id": "A03",
+  "program_id": "probe-a03",
+  "source_sha256": "99827686654644bbcdaf0387ca84ff15680fe9bc1dcbd3ae062fb8c235b72a40",
+  "focus": "overflow with and without handler, destination before/after",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null
+}

@@ -1,0 +1,21 @@
+{
+  "artifact_kind": "specification",
+  "artifact_path": "corpus/dev/source-inventory.json",
+  "artifact_sha256": "aeef18152e76a6c30183bcd7ff53644f6ed97e17e877949bdb57feb9eb21b049",
+  "author_callsign": "0003_Codex_GPT-6_M10-DL2",
+  "author_harness": "Codex",
+  "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
+  "brief_sha256": "9f5a5b807e19217593e11e3a2a9aca14b695cbc8b2ba184b939d7b7738cbd72a",
+  "created_at": "2026-10-28T01:19:48Z",
+  "evidence_paths": [],
+  "family_id": null,
+  "generator_sha256": null,
+  "license_approval_id": null,
+  "license_id": null,
+  "license_status": "pending",
+  "manifest_version": 1,
+  "originality_attestation": "R4 metadata revision authored by original builder0003/0912, Codex GPT-6 family, actual session01a17ef6-6282-7162-9d28-0d5deb0d6496. Revises prior metadata artifact SHA256 759005b3b043cdb5146fa1abc1717aaa43d35587bbf6f47286155e395b0c27c4 with prior sidecar SHA256 32b69bcbd891304279e33a07a5d8d1c8ae3b2575adf5dbd01240b88893edcc0b at baselinefce9761; existing source_sha256 and valid source-parent relationship retained. Adds authored native boundary intent/recipe inventory only, no observed reachability, generated cases, independent authority, external ingestion or license approval. Inventory attribution repair revises immediately preceding inventory SHA256 61371967982613dedbb7867390d4385b61c00f16525ca2d37edea77930a70d42 at543dc86, under later r4 brief edition after its probe-only ruling addendum; earlier artifact brief pins are preserved as authored.",
+  "parent_artifact_sha256": null,
+  "source_sha256": null,
+  "split": "shared"
+}

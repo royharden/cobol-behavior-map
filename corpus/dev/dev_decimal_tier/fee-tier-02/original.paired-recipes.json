@@ -1,0 +1,20 @@
+{
+  "corpus_version": "m10-dev-source-r4",
+  "family_id": "dev_decimal_tier",
+  "fields_sha256": "d2c9f11717dd2cf6a4a933a9772f01618fe9e486aeb79a7457eb2f814b727842",
+  "manifest_version": 1,
+  "panel": "unchanged",
+  "program_id": "fee-tier-02",
+  "recipes": {
+    "loop": {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-02/original.loop.recipe.json",
+      "sha256": "a72614c5748f9a7aa924954b6aa2bc5c5760b08d359b0e5ca2cb7b880b2df260"
+    },
+    "verification": {
+      "path": "corpus/dev/dev_decimal_tier/fee-tier-02/original.verification.recipe.json",
+      "sha256": "817dc45e74a722d1b4c5a7810c8b52927129b1bd2beea1670d58a5530f42d11d"
+    }
+  },
+  "split": "dev",
+  "task_id": "fee-tier-02-original"
+}

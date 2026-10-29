@@ -1,0 +1,18 @@
+{
+  "manifest_version": 1,
+  "fixture_id": "h7_guard_invalidated",
+  "source": {
+    "path": "corpus/fixtures/parser-map/hazards/h7_guard_invalidated.cbl",
+    "source_sha256": "7716fd1db65348fdf1a59347f7c3c82a683a20e7c1cc09affdee19378a1f117d",
+    "raw_sha256": "7716fd1db65348fdf1a59347f7c3c82a683a20e7c1cc09affdee19378a1f117d"
+  },
+  "expected_static_hazard": {
+    "hazard_id": "H7",
+    "at_statement": "DIVIDE 10 BY DIVISOR-N GIVING RESULT-N END-DIVIDE",
+    "present": true
+  },
+  "what_bug_this_catches": "Retaining a nonzero fact after a write to the guarded divisor.",
+  "expected_observations": null,
+  "execution_status": "not_run",
+  "authorship_status": "builder-authored-static-expectation; not oracle evidence"
+}

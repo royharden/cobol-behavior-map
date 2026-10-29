@@ -1,0 +1,18 @@
+{
+  "manifest_version": 1,
+  "fixture_id": "h2_overflow",
+  "source": {
+    "path": "corpus/fixtures/parser-map/hazards/h2_overflow.cbl",
+    "source_sha256": "3eba937916a551811f5f8f2b6c04a91368cf7c6ea1e931d2d21e3ee8d9eba9e3",
+    "raw_sha256": "3eba937916a551811f5f8f2b6c04a91368cf7c6ea1e931d2d21e3ee8d9eba9e3"
+  },
+  "expected_static_hazard": {
+    "hazard_id": "H2",
+    "at_statement": "ADD 1 TO DEST-N END-ADD",
+    "present": true
+  },
+  "what_bug_this_catches": "Losing conservative max-plus-one overflow on an unhandled ADD.",
+  "expected_observations": null,
+  "execution_status": "not_run",
+  "authorship_status": "builder-authored-static-expectation; not oracle evidence"
+}

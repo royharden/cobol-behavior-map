@@ -1,0 +1,24 @@
+{
+  "manifest_version": 1,
+  "probe_id": "S17",
+  "program_id": "probe-s17",
+  "source_sha256": "5890447919cc76e5c7d78c8427431a1ccd88b06a3c8be514aaa786bf891dd39c",
+  "focus": "overflow without handler",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null
+}

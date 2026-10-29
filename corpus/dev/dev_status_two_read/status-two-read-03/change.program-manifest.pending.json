@@ -1,0 +1,48 @@
+{
+  "allowed_return_codes": [
+    0
+  ],
+  "family_id": "dev_status_two_read",
+  "hazards": [
+    {
+      "hazard_id": "H3",
+      "observable": "stdout:OUT-STATUS",
+      "reachability_recipe_ids": [
+        "status-two-read-03-change-loop-full-width",
+        "status-two-read-03-change-loop-ordered",
+        "status-two-read-03-change-verification-full-width",
+        "status-two-read-03-change-verification-ordered"
+      ],
+      "target": {
+        "byte_end": 1676,
+        "byte_start": 1663,
+        "file": "changed.cbl",
+        "line": 70
+      }
+    },
+    {
+      "hazard_id": "H6",
+      "observable": "output.dat:OUT-TEXT",
+      "reachability_recipe_ids": [
+        "status-two-read-03-change-loop-full-width",
+        "status-two-read-03-change-loop-ordered",
+        "status-two-read-03-change-verification-full-width",
+        "status-two-read-03-change-verification-ordered"
+      ],
+      "target": {
+        "byte_end": 1592,
+        "byte_start": 1568,
+        "file": "changed.cbl",
+        "line": 67
+      }
+    }
+  ],
+  "input_fields_sha256": "26d85fcc2760b309b80ed5dc041e1dc619a6d920690d6997c42537efac6cac98",
+  "loops": [],
+  "manifest_version": 1,
+  "output_fields_sha256": "315d8a24c4dba64d2120b439fcb159f9e8bfa1f99c5ddda63037d8e8da9e0caf",
+  "program_id": "status-two-read-03",
+  "provenance_sha256": "8f067502bb37251e196da001671d1cc5d5c05364151cb1ab7ec9053378476344",
+  "source_sha256": "c74babf6a772add7c4080db2b811924b69e75b5aeb4c31e1b6fc09d39a001a2c",
+  "split": "dev"
+}

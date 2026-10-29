@@ -1,0 +1,18 @@
+{
+  "manifest_version": 1,
+  "fixture_id": "h5_signed_move",
+  "source": {
+    "path": "corpus/fixtures/parser-map/hazards/h5_signed_move.cbl",
+    "source_sha256": "d20a04805bfe917294e927d81fcfc00da612b629d40c6be3ab42740ee820577b",
+    "raw_sha256": "d20a04805bfe917294e927d81fcfc00da612b629d40c6be3ab42740ee820577b"
+  },
+  "expected_static_hazard": {
+    "hazard_id": "H5",
+    "at_statement": "MOVE SIGNED-N TO DEST-N",
+    "present": true
+  },
+  "what_bug_this_catches": "Dropping a signed-to-unsigned MOVE sign-loss warning.",
+  "expected_observations": null,
+  "execution_status": "not_run",
+  "authorship_status": "builder-authored-static-expectation; not oracle evidence"
+}

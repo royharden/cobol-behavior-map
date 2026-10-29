@@ -1,0 +1,20 @@
+{
+  "case_id": "return_without_manifest",
+  "diagnostic_filename": "return_without_manifest.cbl",
+  "expectation_status": "authored_static_unexecuted",
+  "expected_static_code": "return_contract",
+  "failure_focus": {
+    "byte_end": 599,
+    "byte_start": 578
+  },
+  "kind": "parse_refusal",
+  "logical_filename": "return_without_manifest.cbl",
+  "manifest_version": 1,
+  "native_manifest": null,
+  "observations": null,
+  "source": {
+    "path": "corpus/fixtures/parser-map/refusals/return_without_manifest.cbl",
+    "sha256": "95b641421069b321d328de63df33fd66309eee3598f32e572f1c92b5b8ee1d22"
+  },
+  "what_bug_this_catches": "A RETURN-CODE assignment needs explicit declared outcomes/source binding; no assumed code admission."
+}

@@ -1,0 +1,21 @@
+{
+  "artifact_kind": "recipe",
+  "artifact_path": "corpus/dev/dev_decimal_chain/fee-chain-04/change.task-binding.json",
+  "artifact_sha256": "cf512dc9aefc3d30a0456137a361f7668ab8bcd85f2ad4bc5b40b97db2cde9ee",
+  "author_callsign": "0003_Codex_GPT-6_M10-DL2",
+  "author_harness": "Codex",
+  "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
+  "brief_sha256": "1e53aface2f8320767814b7eeaed56f44416bec0342b3a4788f5d5016097c7c4",
+  "created_at": "2026-10-28T01:08:55Z",
+  "evidence_paths": [],
+  "family_id": "dev_decimal_chain",
+  "generator_sha256": null,
+  "license_approval_id": null,
+  "license_id": null,
+  "license_status": "pending",
+  "manifest_version": 1,
+  "originality_attestation": "Original builder-authored declarative DEV recipe/task source, Codex GPT-6 family, actual session; generic static authoring only, no encoded/generated cases, external ingestion, observed answers or independent authority.",
+  "parent_artifact_sha256": null,
+  "source_sha256": "945761fd6b164ffebccdeda1f68876a577b829624f8ea5044c594411785e5826",
+  "split": "dev"
+}

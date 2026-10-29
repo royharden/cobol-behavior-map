@@ -1,0 +1,56 @@
+{
+  "allowed_return_codes": [
+    0
+  ],
+  "family_id": "dev_decimal_tier",
+  "hazards": [
+    {
+      "hazard_id": "H1",
+      "observable": "output.dat:OUT-FEE",
+      "reachability_recipe_ids": [
+        "fee-tier-01-change-loop-below",
+        "fee-tier-01-change-loop-at",
+        "fee-tier-01-change-loop-above",
+        "fee-tier-01-change-loop-least",
+        "fee-tier-01-change-verification-below",
+        "fee-tier-01-change-verification-at",
+        "fee-tier-01-change-verification-above",
+        "fee-tier-01-change-verification-least"
+      ],
+      "target": {
+        "byte_end": 1392,
+        "byte_start": 1358,
+        "file": "changed.cbl",
+        "line": 59
+      }
+    },
+    {
+      "hazard_id": "H5",
+      "observable": "output.dat:OUT-MAGNITUDE",
+      "reachability_recipe_ids": [
+        "fee-tier-01-change-loop-below",
+        "fee-tier-01-change-loop-at",
+        "fee-tier-01-change-loop-above",
+        "fee-tier-01-change-loop-negative",
+        "fee-tier-01-change-verification-below",
+        "fee-tier-01-change-verification-at",
+        "fee-tier-01-change-verification-above",
+        "fee-tier-01-change-verification-negative"
+      ],
+      "target": {
+        "byte_end": 1520,
+        "byte_start": 1487,
+        "file": "changed.cbl",
+        "line": 65
+      }
+    }
+  ],
+  "input_fields_sha256": "b42b9eb744fff9584e32cef2d294d9b46e411a7c22c1896427e67b73891e2fe8",
+  "loops": [],
+  "manifest_version": 1,
+  "output_fields_sha256": "f030d6eeb0eaca580eb86a0de81643be4bda5801a9d630c6b22af07a81f647e0",
+  "program_id": "fee-tier-01",
+  "provenance_sha256": "9f4b9343cc950a1c37714993cb2b9ecfa99c5a9201b1aedaf65b4570c1dc1c44",
+  "source_sha256": "84365b8bc1f7bda4e6cad9ad29c54d1094d2f87346a666ed78fdcadce6296e6e",
+  "split": "dev"
+}

@@ -1,0 +1,23 @@
+{
+  "artifact_kind": "request",
+  "artifact_path": "corpus/fixtures/parser-map/refusals/line_limit_201.proposal.json",
+  "artifact_sha256": "d2776a298139c78e70c181e5de3097f756c32d9e9657051748e22e34e6b223c9",
+  "author_callsign": "0003_Codex_GPT-6_M10-DL2",
+  "author_harness": "Codex",
+  "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
+  "brief_sha256": "b396b1b1aadc2de3092d78a754fbd230472fccb73eda2176aa26253872e36ff6",
+  "created_at": "2026-10-28T01:57:44Z",
+  "evidence_paths": [
+    "docs/parser-map-fixture-source.md"
+  ],
+  "family_id": null,
+  "generator_sha256": null,
+  "license_approval_id": null,
+  "license_id": null,
+  "license_status": "pending",
+  "manifest_version": 1,
+  "originality_attestation": "Original builder parser/map regression source or authored static expectation, Codex GPT-6 family, actual session0003/0912; no external/prohibited ingestion, parser/map/test/compiler invocation, oracle observations, actual input cases or independent proof.",
+  "parent_artifact_sha256": "4bef7d585dcf45058508ed2cc3a511b2fce8cd6359ccf856a4e1202cdf12f7a1",
+  "source_sha256": "4bef7d585dcf45058508ed2cc3a511b2fce8cd6359ccf856a4e1202cdf12f7a1",
+  "split": "dev"
+}

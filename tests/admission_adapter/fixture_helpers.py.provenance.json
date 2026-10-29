@@ -1,0 +1,26 @@
+{
+  "manifest_version": 1,
+  "artifact_kind": "instrument",
+  "artifact_path": "tests/admission_adapter/fixture_helpers.py",
+  "artifact_sha256": "f36bd62a1643d1382c6a4125aa0910e65de832e41fefe2916e3bc82704c9511c",
+  "source_sha256": "f36bd62a1643d1382c6a4125aa0910e65de832e41fefe2916e3bc82704c9511c",
+  "author_callsign": "0003_Codex_GPT-6_M10-DL2",
+  "author_harness": "Codex",
+  "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
+  "brief_sha256": "4876367c6d123f4f2209b1f36090cef7fcd2d83db4acef1feb5a52862194f5e6",
+  "created_at": "2026-10-28T03:31:58.223524+00:00",
+  "split": "dev",
+  "family_id": null,
+  "generator_sha256": "4438bb3a481ca5e88d0cba7451e9de4c4a6d613686c67759043a40aff14278a8",
+  "parent_artifact_sha256": null,
+  "license_id": null,
+  "license_approval_id": null,
+  "license_status": "pending",
+  "evidence_paths": [
+    "admission/prepare/generator_adapter.py",
+    "admission/prepare/generator_continuation.py",
+    "admission/specs/GENERATOR.md",
+    "admission/specs/FAMILY.md"
+  ],
+  "originality_attestation": "Original builder DEV metadata/descriptor and malformed-predecessor refusal unit vectors. No actual recipes/partitions/cases/receipts/witnesses/authentication synthesized. Empty JSON artifact markers and deliberately malformed edit marker are untrusted structural declarations only, not eligible program/task data. No full adapt/continuation/generation success. Fixed three native modules only; assertion-only no-fill guard never fabricates cases. Raw versus canonical/LF hashes remain contextual; no oracle/compiler/P1/independence evidence or license approval."
+}

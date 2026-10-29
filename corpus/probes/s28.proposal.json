@@ -1,0 +1,29 @@
+{
+  "manifest_version": 1,
+  "probe_id": "S28",
+  "program_id": "probe-s28",
+  "source_sha256": "dada035cab323059c7fac1edfe233e572f33002009ec926132165be811ee7ebb",
+  "focus": "ordered input records and presence",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [
+    "missing",
+    "empty",
+    "records"
+  ],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null,
+  "file_state_guard": "second READ only after first READ status 00; CLOSE only after OPEN status 00"
+}

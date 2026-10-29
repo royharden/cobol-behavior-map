@@ -1,0 +1,20 @@
+{
+  "case_id": "forbidden_call",
+  "diagnostic_filename": "forbidden_call.cbl",
+  "expectation_status": "authored_static_unexecuted",
+  "expected_static_code": "out_of_subset",
+  "failure_focus": {
+    "byte_end": 582,
+    "byte_start": 578
+  },
+  "kind": "parse_refusal",
+  "logical_filename": "forbidden_call.cbl",
+  "manifest_version": 1,
+  "native_manifest": null,
+  "observations": null,
+  "source": {
+    "path": "corpus/fixtures/parser-map/refusals/forbidden_call.cbl",
+    "sha256": "61dcdf36e4162beabe6c4c712bbbb44c8525c0ac8310ec111a1ede5aed4097bc"
+  },
+  "what_bug_this_catches": "Recognized unsupported CALL refuses even though it is lexically well formed."
+}

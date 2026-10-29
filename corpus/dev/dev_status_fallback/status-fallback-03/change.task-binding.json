@@ -1,0 +1,14 @@
+{
+  "change_sha256": "65b0cd03f4b73af53117d40e1938390f46c3a21d3c4a39aee96037fae57ab09d",
+  "family_id": "dev_status_fallback",
+  "fields_sha256": "82e60959d3dd42169a54ff480d9bad48fcaa0ff13c8d754702d3017052da3da5",
+  "generator_sha256": "4438bb3a481ca5e88d0cba7451e9de4c4a6d613686c67759043a40aff14278a8",
+  "manifest_version": 1,
+  "oracle_source_sha256": "88a3946cdfe7c5f672948268d364b9c8a771d1f341ea62d7d66d9577c6586e75",
+  "original_sha256": "8db8dbbc3e0297f5ef42bc188ad0305e82e472dd624b0a353dad772c389c1b5f",
+  "panel": "change",
+  "program_id": "status-fallback-03",
+  "recipe_sha256": "779d3b3f5e598cea13251fd117d0709b5520ee832906ab93575df39431f77ab4",
+  "split": "dev",
+  "task_id": "status-fallback-03-change"
+}

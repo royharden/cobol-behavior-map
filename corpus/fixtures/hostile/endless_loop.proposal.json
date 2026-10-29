@@ -1,0 +1,60 @@
+{
+  "category": "endless CPU loop",
+  "classification_hypothesis": {
+    "candidate_caused": "timeout",
+    "flag_hypothesis": "cpu",
+    "not_a_measured_outcome": true,
+    "setup_or_transport_failure": "infra_invalid_only_when_externally_authenticated_as_candidate_independent"
+  },
+  "conformance_receipt": null,
+  "entry_adapter_status": "external_approved_entry_adapter_absent",
+  "entry_api": {
+    "abi": "m10-run-case-v1",
+    "module_level": "docstring_and_function_definition_only",
+    "name": "run_case",
+    "parameters": [
+      "input_present",
+      "records"
+    ],
+    "stage_candidate_at": "/stage/candidate.py"
+  },
+  "execution_status": "pending_separate_authority",
+  "expected_observations": null,
+  "fixture_id": "endless_loop",
+  "intent": {
+    "termination_in_source": false
+  },
+  "interpretation_limits": [
+    "Source intent does not establish that entry or operation was exercised.",
+    "Pure screening refusal does not establish OS containment.",
+    "Incidental missing marker/executable, failed route or missing module does not prove enforcement.",
+    "A source or raw SHA256 and a declared policy are not authentic backend measurements.",
+    "Actual authority must authenticate candidate versus infrastructure fault attribution and descendant cleanup."
+  ],
+  "manifest_version": 1,
+  "policy_declared_source": {
+    "cap_drop": "ALL",
+    "cpu_microseconds": 5000000,
+    "cpus": 1,
+    "host_mounts": [],
+    "inherit_environment": false,
+    "memory_bytes": 268435456,
+    "network": "none",
+    "no_new_privileges": true,
+    "output_bytes": 1048576,
+    "pids": 64,
+    "profile": "m10-isolation-v1",
+    "root_read_only": true,
+    "scratch_bytes": 16777216,
+    "scratch_path": "/work",
+    "uid": 10001,
+    "wall_microseconds": 10000000
+  },
+  "requested_policy_assertion": "Future authenticated backend must demonstrate this candidate cannot violate its pinned isolation/resource policy and that host/control-plane state remains unaffected.",
+  "screening_status": "not_screened",
+  "source": {
+    "path": "corpus/fixtures/hostile/endless_loop.py",
+    "raw_sha256": "bf6a413493d847cd9c0d837be6d08dbf9e65a1a73b54fb7b1c8589b18013db29"
+  },
+  "source_status": "not_run"
+}

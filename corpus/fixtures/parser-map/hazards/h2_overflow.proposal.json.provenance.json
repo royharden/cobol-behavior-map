@@ -1,0 +1,21 @@
+{
+  "manifest_version": 1,
+  "artifact_kind": "proposal",
+  "artifact_path": "corpus/fixtures/parser-map/hazards/h2_overflow.proposal.json",
+  "artifact_sha256": "0847d9379d6a035ea5c1f744c94cd04123ba1be9672b244d329844035d813ddc",
+  "source_sha256": "0847d9379d6a035ea5c1f744c94cd04123ba1be9672b244d329844035d813ddc",
+  "raw_sha256": "0847d9379d6a035ea5c1f744c94cd04123ba1be9672b244d329844035d813ddc",
+  "author_callsign": "0080_Codex_GPT-6_Sub_DL2HazardRegressions",
+  "author_session_id": "01a18034-a156-7751-810a-188e171c8fbc",
+  "author_harness": "Codex",
+  "parent_callsign_id": "0003",
+  "parent_artifact_sha256": null,
+  "license_id": null,
+  "license_approval_id": null,
+  "license_status": "pending",
+  "split": "dev",
+  "created_at": "2026-10-28T01:54:39.130458+00:00",
+  "originality_attestation": "Original static regression source authored by implementation-lineage child; no product import, test, compiler, oracle, CaseBundle, input record, or runtime observation.",
+  "original_artifact_path": "corpus/fixtures/parser-map/h2_overflow.proposal.json",
+  "relocation_note": "Assigned hazards subtree correction; source bytes preserved where artifact is COBOL."
+}

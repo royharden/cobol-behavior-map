@@ -1,0 +1,21 @@
+{
+  "artifact_kind": "specification",
+  "artifact_path": "corpus/dev/dev_status_fallback/status-fallback-03/change.program-manifest.pending.json",
+  "artifact_sha256": "b2df8272d4506e2a65f4032d92ec64149b44774ebd759237d5f713a4035391d5",
+  "author_callsign": "0003_Codex_GPT-6_M10-DL2",
+  "author_harness": "Codex",
+  "author_session_id": "01a17ef6-6282-7162-9d28-0d5deb0d6496",
+  "brief_sha256": "1e53aface2f8320767814b7eeaed56f44416bec0342b3a4788f5d5016097c7c4",
+  "created_at": "2026-10-28T01:15:42Z",
+  "evidence_paths": [],
+  "family_id": "dev_status_fallback",
+  "generator_sha256": null,
+  "license_approval_id": null,
+  "license_id": null,
+  "license_status": "pending",
+  "manifest_version": 1,
+  "originality_attestation": "R4 metadata revision authored by original builder0003/0912, Codex GPT-6 family, actual session01a17ef6-6282-7162-9d28-0d5deb0d6496. Revises prior metadata artifact SHA256 32237e7e2bb46cf156289a8aa961db9288b8b8dd75935b5660151aac6c2f6fc7 with prior sidecar SHA256 b221a1c2305f4a9ecd18ddf86d34759e95a189a2da4a1dcde4f0135e0a3877d6 at baselinefce9761; existing source_sha256 and valid source-parent relationship retained. Adds authored native boundary intent/recipe inventory only, no observed reachability, generated cases, independent authority, external ingestion or license approval.",
+  "parent_artifact_sha256": "88a3946cdfe7c5f672948268d364b9c8a771d1f341ea62d7d66d9577c6586e75",
+  "source_sha256": "88a3946cdfe7c5f672948268d364b9c8a771d1f341ea62d7d66d9577c6586e75",
+  "split": "dev"
+}

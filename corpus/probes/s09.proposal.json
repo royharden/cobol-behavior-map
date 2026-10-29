@@ -1,0 +1,24 @@
+{
+  "manifest_version": 1,
+  "probe_id": "S09",
+  "program_id": "probe-s09",
+  "source_sha256": "f42182b34fee764897c3ef5b3a41d6fd4d3daae7f5253ade9b9a4ae8237fad6d",
+  "focus": "positive truncation without ROUNDED",
+  "record_width": 8,
+  "input_fields": [
+    {
+      "name": "IN-TEXT",
+      "pic": "X(8)",
+      "usage": "DISPLAY",
+      "sign": "none",
+      "offset": 0,
+      "width": 8,
+      "scale": 0
+    }
+  ],
+  "proposed_case_scenarios": [],
+  "proposed_recipe_status": "partial_intent_only_no_native_recipe_no_cases",
+  "source_execution_status": "not_run",
+  "coverage_status": "proposed_unverified",
+  "pending_measurement": null
+}
